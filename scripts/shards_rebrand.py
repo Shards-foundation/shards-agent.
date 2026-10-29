@@ -71,11 +71,12 @@ text = replace_once(
 )
 text = replace_once(text, 'authors = [{ name = "Nous Research" }]', 'authors = [{ name = "Shards Foundation" }]\n# Derived from Hermes Agent by Nous Research; see LICENSE and upstream attribution.')
 text = text.replace("hermes-agent[", "shards-agent[")
-text = replace_once(
-    text,
-    'hermes-agent = "agent.legacy_cli:main"',
-    'shards-agent = "agent.legacy_cli:main"\nhermes-agent = "agent.legacy_cli:main"  # Compatibility alias for existing users.',
-)
+if 'shards-agent = "agent.legacy_cli:main"' not in text:
+    text = replace_once(
+        text,
+        'hermes-agent = "agent.legacy_cli:main"',
+        'shards-agent = "agent.legacy_cli:main"\nhermes-agent = "agent.legacy_cli:main"  # Compatibility alias for existing users.',
+    )
 if 'shards = "hermes_cli.main:main"' not in text:
     text = replace_once(
         text,
