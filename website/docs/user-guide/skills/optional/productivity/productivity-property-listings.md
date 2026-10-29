@@ -17,7 +17,7 @@ Present property and rental listings as desktop cards.
 | Source | Optional — install with `hermes skills install official/productivity/property-listings` |
 | Path | `optional-skills/productivity/property-listings` |
 | Version | `0.1.0` |
-| Author | Teknium (teknium1), Hermes Agent |
+| Author | Teknium (teknium1), Shards Agent |
 | License | MIT |
 | Platforms | linux, macos, windows |
 | Tags | `property`, `rental`, `real-estate`, `listings`, `desktop`, `cards` |

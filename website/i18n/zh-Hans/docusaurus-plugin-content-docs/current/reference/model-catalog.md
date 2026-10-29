@@ -6,7 +6,7 @@ description: 远程托管的清单文件，驱动 OpenRouter 和 Nous Portal 的
 
 # 模型目录
 
-Hermes 从托管于文档站点旁的 JSON 清单中获取 **OpenRouter** 和 **Nous Portal** 的精选模型列表。这样维护者无需发布新的 `hermes-agent` 版本即可更新选择器列表。
+Hermes 从托管于文档站点旁的 JSON 清单中获取 **OpenRouter** 和 **Nous Portal** 的精选模型列表。这样维护者无需发布新的 `shards-agent` 版本即可更新选择器列表。
 
 当清单不可达时（离线、网络受阻、托管故障），Hermes 会静默回退到随 CLI 一同发布的仓库内置快照。清单永远不会导致选择器崩溃——最坏情况下，你看到的是与已安装版本捆绑的列表。
 

@@ -17,7 +17,7 @@ Use when a fetch fails: 403/429, paywall, WAF, bot wall.
 | Source | Bundled (installed by default) |
 | Path | `skills/web/blocked-page-recovery` |
 | Version | `1.0.0` |
-| Author | Hermes Agent |
+| Author | Shards Agent |
 | License | MIT |
 | Platforms | linux, macos, windows |
 | Tags | `Research`, `Archives`, `Wayback`, `Paywall`, `WAF`, `Fallback` |

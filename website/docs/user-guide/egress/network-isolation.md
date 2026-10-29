@@ -32,7 +32,7 @@ explicitly allowlisted set.
 │  Docker Network: internal (no internet)     │
 │                                             │
 │   ┌──────────────┐   ┌──────────────────┐   │
-│   │ hermes-agent │   │ hermes-dashboard │   │
+│   │ shards-agent │   │ hermes-dashboard │   │
 │   └──────┬───────┘   └────────┬─────────┘   │
 │          │                    │              │
 │          ▼                    │              │

@@ -17,11 +17,11 @@ description: "将编码任务委托给 Claude Code CLI（功能、PR）"
 | 来源 | 内置（默认安装） |
 | 路径 | `skills/autonomous-ai-agents/claude-code` |
 | 版本 | `2.2.0` |
-| 作者 | Hermes Agent + Teknium |
+| 作者 | Shards Agent + Teknium |
 | 许可证 | MIT |
 | 平台 | linux, macos, windows |
 | 标签 | `Coding-Agent`, `Claude`, `Anthropic`, `Code-Review`, `Refactoring`, `PTY`, `Automation` |
-| 相关 skill | [`codex`](/user-guide/skills/bundled/autonomous-ai-agents/autonomous-ai-agents-codex), [`hermes-agent`](/user-guide/skills/bundled/autonomous-ai-agents/autonomous-ai-agents-hermes-agent), [`opencode`](/user-guide/skills/bundled/autonomous-ai-agents/autonomous-ai-agents-opencode) |
+| 相关 skill | [`codex`](/user-guide/skills/bundled/autonomous-ai-agents/autonomous-ai-agents-codex), [`shards-agent`](/user-guide/skills/bundled/autonomous-ai-agents/autonomous-ai-agents-shards-agent), [`opencode`](/user-guide/skills/bundled/autonomous-ai-agents/autonomous-ai-agents-opencode) |
 
 ## 参考：完整 SKILL.md
 
@@ -749,7 +749,7 @@ terminal(command="tmux capture-pane -t dev -p -S -10")
 11. **`--bare` 跳过 OAuth** — 需要 `ANTHROPIC_API_KEY` 环境变量或设置中的 `apiKeyHelper`。
 12. **上下文退化是真实存在的** — 上下文窗口使用率超过 70% 时，AI 输出质量会明显下降。使用 `/context` 监控并主动使用 `/compact`。
 
-## Hermes Agent 规则
+## Shards Agent 规则
 
 1. **单一任务优先使用 print 模式（`-p`）** — 更简洁，无需处理对话框，输出结构化
 2. **多轮交互工作使用 tmux** — 编排 TUI 的唯一可靠方式

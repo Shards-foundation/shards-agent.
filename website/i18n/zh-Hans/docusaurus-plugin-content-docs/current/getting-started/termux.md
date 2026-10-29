@@ -28,13 +28,13 @@ Hermes 的 Termux 软件包适用于 aarch64（arm64-v8a）设备，目前处于
    mkdir -p "$PREFIX/etc/apt/keyrings"
    curl -fsSL \
      https://hermes-assets.nousresearch.com/releases/termux/canary/key.asc \
-     -o "$PREFIX/etc/apt/keyrings/hermes-agent.asc"
+     -o "$PREFIX/etc/apt/keyrings/shards-agent.asc"
    ```
 
 3. 检查主密钥指纹：
 
    ```bash
-   gpg --show-keys --with-fingerprint "$PREFIX/etc/apt/keyrings/hermes-agent.asc"
+   gpg --show-keys --with-fingerprint "$PREFIX/etc/apt/keyrings/shards-agent.asc"
    ```
 
    预期指纹：
@@ -49,29 +49,29 @@ Hermes 的 Termux 软件包适用于 aarch64（arm64-v8a）设备，目前处于
 
    ```bash
    printf '%s\n' \
-     "deb [signed-by=$PREFIX/etc/apt/keyrings/hermes-agent.asc] https://hermes-assets.nousresearch.com/releases/termux/canary hermes-canary main" \
-     > "$PREFIX/etc/apt/sources.list.d/hermes-agent.list"
+     "deb [signed-by=$PREFIX/etc/apt/keyrings/shards-agent.asc] https://hermes-assets.nousresearch.com/releases/termux/canary hermes-canary main" \
+     > "$PREFIX/etc/apt/sources.list.d/shards-agent.list"
    ```
 
 5. 安装并配置：
 
    ```bash
    pkg update
-   pkg install hermes-agent
+   pkg install shards-agent
    hermes setup
    hermes --tui
    ```
 
 ## 数据、更新和卸载
 
-软件包位于 `$PREFIX/lib/hermes-agent/`。
-`$PREFIX/bin/` 中的 `hermes`、`hermes-agent` 和 `hermes-acp` 链接使用包内运行时。
+软件包位于 `$PREFIX/lib/shards-agent/`。
+`$PREFIX/bin/` 中的 `hermes`、`shards-agent` 和 `hermes-acp` 链接使用包内运行时。
 它们不依赖 Termux 的 Python 或 Node.js 软件包。
 数据位于 `~/.hermes/`，或所选 `HERMES_HOME`。
 
 ```bash
 pkg update
-pkg upgrade hermes-agent
+pkg upgrade shards-agent
 ```
 
 `hermes update` 拒绝修改 APT 所有的代码，改由包管理器更新。
@@ -80,7 +80,7 @@ Canary 版本带有 `~canary.TIMESTAMP`，排序低于对应的正式版本。
 卸载应用软件包：
 
 ```bash
-pkg uninstall hermes-agent
+pkg uninstall shards-agent
 ```
 
 APT 移除软件包和命令链接，但保留用户配置、会话、技能和记忆。

@@ -1,7 +1,7 @@
 ---
 sidebar_position: 11
 title: "ACP Host Integration"
-description: "Use Hermes Agent inside ACP-compatible editors and collaboration platforms"
+description: "Use Shards Agent inside ACP-compatible editors and collaboration platforms"
 ---
 
 # ACP Host Integration
@@ -10,7 +10,7 @@ Python dependency commands on this page use a
 [PM-prepared source checkout](../../reference/package-management.md#developer-workflow).
 After a dependency change, reactivate the checkout and restart Hermes.
 
-Hermes Agent can run as an ACP server, letting ACP-compatible hosts talk to
+Shards Agent can run as an ACP server, letting ACP-compatible hosts talk to
 Hermes over stdio. Editors can render:
 
 - chat messages
@@ -84,7 +84,7 @@ changing the server configuration. Commands and paths run on the gateway host.
 Install Hermes normally, then add the ACP extra from the install checkout:
 
 ```bash
-cd ~/.hermes/hermes-agent && python -c "import pm; pm.sync_venv(['acp'], explicit=True)"
+cd ~/.hermes/shards-agent && python -c "import pm; pm.sync_venv(['acp'], explicit=True)"
 ```
 
 This installs the `agent-client-protocol` dependency and enables:
@@ -147,7 +147,7 @@ for people and agents. Its `buzz-acp` harness connects Buzz channels to any ACP
 agent over stdio:
 
 ```text
-Buzz relay <-- WebSocket --> buzz-acp <-- ACP over stdio --> Hermes Agent
+Buzz relay <-- WebSocket --> buzz-acp <-- ACP over stdio --> Shards Agent
 ```
 
 This is a transport integration, not a second Hermes installation. The
@@ -221,7 +221,7 @@ Install the [ACP Client](https://marketplace.visualstudio.com/items?itemName=for
 To connect:
 
 1. Open the ACP Client panel from the Activity Bar.
-2. Select **Hermes Agent** from the built-in agent list.
+2. Select **Shards Agent** from the built-in agent list.
 3. Connect and start chatting.
 
 If you want to define Hermes manually, add it through VS Code settings under `acp.agents`:
@@ -229,7 +229,7 @@ If you want to define Hermes manually, add it through VS Code settings under `ac
 ```json
 {
   "acp.agents": {
-    "Hermes Agent": {
+    "Shards Agent": {
       "command": "hermes",
       "args": ["acp"]
     }
@@ -247,7 +247,7 @@ Configure Hermes as a custom agent server in Zed settings:
 ```json
 {
   "agent_servers": {
-    "hermes-agent": {
+    "shards-agent": {
       "type": "custom",
       "command": "hermes",
       "args": ["acp"]
@@ -268,7 +268,7 @@ Use an ACP-compatible plugin and point it at `hermes acp` or `hermes-acp`.
 
 ### Buzz Desktop
 
-[Buzz](https://github.com/block/buzz) ships Hermes Agent as a preset runtime.
+[Buzz](https://github.com/block/buzz) ships Shards Agent as a preset runtime.
 With Hermes installed the normal way, Buzz discovers it automatically —
 open **Settings → Runtimes** and Hermes appears under your runtimes.
 
@@ -422,7 +422,7 @@ Check:
 
 - For manual/local development, verify the host command points to `hermes acp`.
 - Hermes is installed and on your PATH.
-- The ACP extra is installed (`cd ~/.hermes/hermes-agent && python -c "import pm; pm.sync_venv(['acp'], explicit=True)"`).
+- The ACP extra is installed (`cd ~/.hermes/shards-agent && python -c "import pm; pm.sync_venv(['acp'], explicit=True)"`).
 
 ### ACP starts but immediately errors
 

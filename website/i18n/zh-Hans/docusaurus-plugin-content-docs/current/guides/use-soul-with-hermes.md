@@ -1,7 +1,7 @@
 ---
 sidebar_position: 7
 title: "在 Hermes 中使用 SOUL.md"
-description: "如何使用 SOUL.md 塑造 Hermes Agent 的默认风格，哪些内容应放在其中，以及它与 AGENTS.md 和 /personality 的区别"
+description: "如何使用 SOUL.md 塑造 Shards Agent 的默认风格，哪些内容应放在其中，以及它与 AGENTS.md 和 /personality 的区别"
 ---
 
 # 在 Hermes 中使用 SOUL.md

@@ -1,7 +1,7 @@
 ---
 sidebar_position: 10
 title: "模型提供商插件"
-description: "如何为 Hermes Agent 构建模型提供商（推理后端）插件"
+description: "如何为 Shards Agent 构建模型提供商（推理后端）插件"
 ---
 
 # 构建模型提供商插件

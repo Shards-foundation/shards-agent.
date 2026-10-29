@@ -1,7 +1,7 @@
 ---
 sidebar_position: 3
 title: "常见问题与故障排查"
-description: "Hermes Agent 常见问题解答及常见问题解决方案"
+description: "Shards Agent 常见问题解答及常见问题解决方案"
 ---
 
 # 常见问题与故障排查
@@ -17,7 +17,7 @@ description: "Hermes Agent 常见问题解答及常见问题解决方案"
 
 ### Hermes 支持哪些 LLM 提供商？
 
-Hermes Agent 可与任何兼容 OpenAI 的 API 配合使用。支持的提供商包括：
+Shards Agent 可与任何兼容 OpenAI 的 API 配合使用。支持的提供商包括：
 
 - **[OpenRouter](https://openrouter.ai/)** — 通过一个 API key 访问数百个模型（推荐，灵活性强）
 - **Nous Portal** — Nous Research 自有推理端点
@@ -33,7 +33,7 @@ Hermes Agent 可与任何兼容 OpenAI 的 API 配合使用。支持的提供商
 
 ### 支持 Windows 吗？
 
-**原生不支持。** Hermes Agent 需要类 Unix 环境。在 Windows 上，请安装 [WSL2](https://learn.microsoft.com/en-us/windows/wsl/install) 并在其中运行 Hermes。标准安装命令在 WSL2 中可完美运行：
+**原生不支持。** Shards Agent 需要类 Unix 环境。在 Windows 上，请安装 [WSL2](https://learn.microsoft.com/en-us/windows/wsl/install) 并在其中运行 Hermes。标准安装命令在 WSL2 中可完美运行：
 
 ```bash
 curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash
@@ -59,11 +59,11 @@ curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash
 
 ### 支持 Android 吗？
 
-aarch64 设备可使用预发布的 Termux APT 软件包。请参阅 [Termux 指南](../getting-started/termux.md)了解签名仓库、安装步骤和限制。请使用 `pkg upgrade hermes-agent` 更新，不要使用 `hermes update` 或桌面和服务器的安装脚本。
+aarch64 设备可使用预发布的 Termux APT 软件包。请参阅 [Termux 指南](../getting-started/termux.md)了解签名仓库、安装步骤和限制。请使用 `pkg upgrade shards-agent` 更新，不要使用 `hermes update` 或桌面和服务器的安装脚本。
 
 ### 我的数据会被发送到哪里？
 
-API 调用**仅发送至您配置的 LLM 提供商**（例如 OpenRouter、您本地的 Ollama 实例）。Hermes Agent 不收集遥测数据、使用数据或分析数据。您的对话、记忆和技能均存储在本地 `~/.hermes/` 目录中。
+API 调用**仅发送至您配置的 LLM 提供商**（例如 OpenRouter、您本地的 Ollama 实例）。Shards Agent 不收集遥测数据、使用数据或分析数据。您的对话、记忆和技能均存储在本地 `~/.hermes/` 目录中。
 
 ### 可以离线使用 / 使用本地模型吗？
 
@@ -101,11 +101,11 @@ Hermes 会自动检测本地端点并放宽流式传输超时（读取超时从 
 
 ### 费用是多少？
 
-Hermes Agent 本身**免费且开源**（MIT 许可证）。您只需为所选提供商的 LLM API 用量付费。本地模型完全免费运行。
+Shards Agent 本身**免费且开源**（MIT 许可证）。您只需为所选提供商的 LLM API 用量付费。本地模型完全免费运行。
 
 ### 多人可以使用同一个实例吗？
 
-可以。[消息网关](../user-guide/messaging/index.md)允许多个用户通过 Telegram、Discord、Slack、WhatsApp 或 Home Assistant 与同一个 Hermes Agent 实例交互。访问权限通过白名单（特定用户 ID）和私信配对（第一个发消息的用户获得访问权）来控制。
+可以。[消息网关](../user-guide/messaging/index.md)允许多个用户通过 Telegram、Discord、Slack、WhatsApp 或 Home Assistant 与同一个 Shards Agent 实例交互。访问权限通过白名单（特定用户 ID）和私信配对（第一个发消息的用户获得访问权）来控制。
 
 ### 记忆（memory）和技能（skills）有什么区别？
 
@@ -422,7 +422,7 @@ cat ~/.hermes/logs/gateway.log | tail -50
 **解决方案：**
 ```bash
 # 安装核心消息网关依赖项
-cd ~/.hermes/hermes-agent && python -c "import pm; pm.sync_venv(['messaging'], explicit=True)"  # Telegram、Discord、Slack 及共享网关依赖
+cd ~/.hermes/shards-agent && python -c "import pm; pm.sync_venv(['messaging'], explicit=True)"  # Telegram、Discord、Slack 及共享网关依赖
 
 # 检查端口冲突
 lsof -i :8080
@@ -542,7 +542,7 @@ hermes chat --continue
 **解决方案：**
 ```bash
 # 确保 MCP 依赖项已安装（标准安装中已包含）
-cd ~/.hermes/hermes-agent && python -c "import pm; pm.sync_venv(['mcp'], explicit=True)"
+cd ~/.hermes/shards-agent && python -c "import pm; pm.sync_venv(['mcp'], explicit=True)"
 
 # 对于基于 npm 的服务器，确保 Node.js 可用
 node --version
@@ -733,7 +733,7 @@ skills:
 
 **解决方案：**
 
-1. 在新机器上安装 Hermes Agent：
+1. 在新机器上安装 Shards Agent：
    ```bash
    curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash
    ```
@@ -798,7 +798,7 @@ hermes profile import ./work-backup.tar.gz work
 
 **手动备选方案（rsync）：** 如果您倾向于直接复制文件，请排除代码仓库：
 ```bash
-rsync -av --exclude='hermes-agent' ~/.hermes/ newmachine:~/.hermes/
+rsync -av --exclude='shards-agent' ~/.hermes/ newmachine:~/.hermes/
 ```
 
 :::tip

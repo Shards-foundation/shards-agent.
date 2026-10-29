@@ -16,7 +16,7 @@ Clone Hermes and prepare its source environment through PM. The Bash recipe is:
 
 ```bash
 git clone https://github.com/NousResearch/hermes-agent.git
-cd hermes-agent
+cd shards-agent
 source ./activate
 ```
 

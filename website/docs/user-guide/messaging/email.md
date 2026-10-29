@@ -1,7 +1,7 @@
 ---
 sidebar_position: 7
 title: "Email"
-description: "Set up Hermes Agent as an email assistant via IMAP/SMTP"
+description: "Set up Shards Agent as an email assistant via IMAP/SMTP"
 ---
 
 # Email Setup

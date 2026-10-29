@@ -1,13 +1,13 @@
 ---
 title: "Windows (WSL2) 指南"
-description: "通过 WSL2 在 Windows 上运行 Hermes Agent —— 安装配置、Windows 与 Linux 之间的文件系统访问、网络设置及常见问题"
+description: "通过 WSL2 在 Windows 上运行 Shards Agent —— 安装配置、Windows 与 Linux 之间的文件系统访问、网络设置及常见问题"
 sidebar_label: "Windows (WSL2)"
 sidebar_position: 2
 ---
 
 # Windows (WSL2) 指南
 
-Hermes Agent 现已同时支持原生 Windows 和 WSL2。本页介绍 WSL2 路径；如需原生 PowerShell 安装方式，请参阅专属的 **[Windows（原生）指南](./windows-native.md)**。
+Shards Agent 现已同时支持原生 Windows 和 WSL2。本页介绍 WSL2 路径；如需原生 PowerShell 安装方式，请参阅专属的 **[Windows（原生）指南](./windows-native.md)**。
 
 **何时选择 WSL2 而非原生：**
 - 你想使用 dashboard 内嵌终端（`/chat` 标签页）—— 该面板需要 POSIX PTY（伪终端），仅 WSL2 支持。

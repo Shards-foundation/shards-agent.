@@ -1,12 +1,12 @@
 ---
 sidebar_position: 1
 title: "Telegram"
-description: "将 Hermes Agent 设置为 Telegram 机器人"
+description: "将 Shards Agent 设置为 Telegram 机器人"
 ---
 
 # Telegram 设置
 
-Hermes Agent 与 Telegram 集成，作为功能完整的对话机器人。连接后，你可以从任何设备与 Agent 聊天、发送自动转录的语音备忘录、接收定时任务结果，并在群聊中使用 Agent。该集成基于 [python-telegram-bot](https://python-telegram-bot.org/) 构建，支持文本、语音、图片和文件附件。
+Shards Agent 与 Telegram 集成，作为功能完整的对话机器人。连接后，你可以从任何设备与 Agent 聊天、发送自动转录的语音备忘录、接收定时任务结果，并在群聊中使用 Agent。该集成基于 [python-telegram-bot](https://python-telegram-bot.org/) 构建，支持文本、语音、图片和文件附件。
 
 ## 第一步：通过 BotFather 创建机器人
 
@@ -14,7 +14,7 @@ Hermes Agent 与 Telegram 集成，作为功能完整的对话机器人。连接
 
 1. 打开 Telegram，搜索 **@BotFather**，或访问 [t.me/BotFather](https://t.me/BotFather)
 2. 发送 `/newbot`
-3. 选择一个**显示名称**（例如 "Hermes Agent"）——可以是任意名称
+3. 选择一个**显示名称**（例如 "Shards Agent"）——可以是任意名称
 4. 选择一个**用户名**——必须唯一且以 `bot` 结尾（例如 `my_hermes_bot`）
 5. BotFather 会回复你的 **API token**，格式如下：
 
@@ -103,7 +103,7 @@ TELEGRAM_OBSERVE_UNMENTIONED_GROUP_MESSAGES=true
 
 ## 第四步：获取你的用户 ID
 
-Hermes Agent 使用 Telegram 数字用户 ID 来控制访问权限。你的用户 ID **不是**你的用户名——它是一个类似 `123456789` 的数字。
+Shards Agent 使用 Telegram 数字用户 ID 来控制访问权限。你的用户 ID **不是**你的用户名——它是一个类似 `123456789` 的数字。
 
 **方法一（推荐）：** 向 [@userinfobot](https://t.me/userinfobot) 发送消息——它会立即回复你的用户 ID。
 
@@ -466,7 +466,7 @@ tail -f ~/.hermes/logs/gateway.log | grep -iE "telegram|cache"
 
 ## 群聊使用
 
-Hermes Agent 在 Telegram 群聊中工作时有几点注意事项：
+Shards Agent 在 Telegram 群聊中工作时有几点注意事项：
 
 - **隐私模式**决定机器人能看到哪些消息（见[第三步](#step-3-privacy-mode-critical-for-groups)）
 - `TELEGRAM_ALLOWED_USERS` 仍然适用——即使在群组中，也只有授权用户才能触发机器人

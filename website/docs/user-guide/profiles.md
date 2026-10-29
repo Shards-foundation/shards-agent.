@@ -24,7 +24,7 @@ These terms describe different parts of Hermes:
   It keeps the same state across conversations and restarts.
 
 - **Agent** is the running Hermes assistant that uses that configuration and
-  state. "Hermes Agent" also names the product.
+  state. "Shards Agent" also names the product.
 
 - **Bot Mode bot** is a profile presented as a named entry in the desktop's
   [Bot Mode](./bot-mode.md) roster, with an avatar and a persistent Bot Chat.

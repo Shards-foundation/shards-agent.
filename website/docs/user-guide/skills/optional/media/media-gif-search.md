@@ -17,7 +17,7 @@ Search/download GIFs from Tenor via curl + jq.
 | Source | Optional — install with `hermes skills install official/media/gif-search` |
 | Path | `optional-skills/media/gif-search` |
 | Version | `1.1.0` |
-| Author | Hermes Agent |
+| Author | Shards Agent |
 | License | MIT |
 | Platforms | linux, macos, windows |
 | Tags | `GIF`, `Media`, `Search`, `Tenor`, `API` |

@@ -32,12 +32,12 @@ display:
 
 | 皮肤 | 描述 | Agent 品牌 | 视觉特征 |
 |------|------|-----------|---------|
-| `default` | 经典 Hermes — 金色与 kawaii 风格 | `Hermes Agent` | 暖金色边框，cornsilk 文字，spinner 中的 kawaii 面孔。熟悉的双蛇杖横幅。简洁亲切。 |
+| `default` | 经典 Hermes — 金色与 kawaii 风格 | `Shards Agent` | 暖金色边框，cornsilk 文字，spinner 中的 kawaii 面孔。熟悉的双蛇杖横幅。简洁亲切。 |
 | `ares` | 战神主题 — 深红与青铜 | `Ares Agent` | 深红色边框配青铜点缀。激进的 spinner 动词（"forging"、"marching"、"tempering steel"）。自定义剑盾 ASCII 艺术横幅。 |
-| `mono` | 单色 — 简洁灰度 | `Hermes Agent` | 全灰色，无彩色。边框为 `#555555`，文字为 `#c9d1d9`。适合极简终端或录屏场景。 |
-| `slate` | 冷蓝色 — 面向开发者 | `Hermes Agent` | 皇家蓝边框（`#4169e1`），柔和蓝色文字。沉稳专业。无自定义 spinner，使用默认面孔。 |
-| `daylight` | 适用于亮色终端的浅色主题，深色文字配冷蓝点缀 | `Hermes Agent` | 专为白色或亮色终端设计。深石板色文字配蓝色边框，浅色状态面板，补全菜单在亮色终端配置下保持清晰可读。 |
-| `warm-lightmode` | 适用于浅色终端背景的暖棕/金色文字 | `Hermes Agent` | 适合浅色终端的暖羊皮纸色调。深棕色文字配马鞍棕点缀，奶油色状态面板。比 daylight 主题更温暖的大地色系选择。 |
+| `mono` | 单色 — 简洁灰度 | `Shards Agent` | 全灰色，无彩色。边框为 `#555555`，文字为 `#c9d1d9`。适合极简终端或录屏场景。 |
+| `slate` | 冷蓝色 — 面向开发者 | `Shards Agent` | 皇家蓝边框（`#4169e1`），柔和蓝色文字。沉稳专业。无自定义 spinner，使用默认面孔。 |
+| `daylight` | 适用于亮色终端的浅色主题，深色文字配冷蓝点缀 | `Shards Agent` | 专为白色或亮色终端设计。深石板色文字配蓝色边框，浅色状态面板，补全菜单在亮色终端配置下保持清晰可读。 |
+| `warm-lightmode` | 适用于浅色终端背景的暖棕/金色文字 | `Shards Agent` | 适合浅色终端的暖羊皮纸色调。深棕色文字配马鞍棕点缀，奶油色状态面板。比 daylight 主题更温暖的大地色系选择。 |
 | `poseidon` | 海神主题 — 深蓝与海沫绿 | `Poseidon Agent` | 深蓝到海沫绿渐变。海洋主题 spinner（"charting currents"、"sounding the depth"）。三叉戟 ASCII 艺术横幅。 |
 | `sisyphus` | 西西弗斯主题 — 朴素灰度，彰显坚韧 | `Sisyphus Agent` | 浅灰色配强烈对比。巨石主题 spinner（"pushing uphill"、"resetting the boulder"、"enduring the loop"）。巨石与山丘 ASCII 艺术横幅。 |
 | `charizard` | 火山主题 — 焦橙与余烬色 | `Charizard Agent` | 暖焦橙到余烬色渐变。火焰主题 spinner（"banking into the draft"、"measuring burn"）。龙剪影 ASCII 艺术横幅。 |
@@ -92,8 +92,8 @@ CLI 界面中使用的文字字符串。
 
 | 键 | 描述 | 默认值 |
 |----|------|--------|
-| `agent_name` | 横幅标题和状态显示中的名称 | `Hermes Agent` |
-| `welcome` | CLI 启动时显示的欢迎消息 | `Welcome to Hermes Agent! Type your message or /help for commands.` |
+| `agent_name` | 横幅标题和状态显示中的名称 | `Shards Agent` |
+| `welcome` | CLI 启动时显示的欢迎消息 | `Welcome to Shards Agent! Type your message or /help for commands.` |
 | `goodbye` | 退出时显示的消息 | `Goodbye! ☤` |
 | `response_label` | 响应框标题上的标签 | ` ☤ Hermes ` |
 | `prompt_symbol` | 用户输入 prompt 前的符号（裸 token，渲染器会在后面添加空格） | `❯` |

@@ -1,6 +1,6 @@
 ---
 title: "Windows（原生）指南"
-description: "在 Windows 10 / 11 上原生运行 Hermes Agent — 安装、功能矩阵、UTF-8 控制台、Git Bash、将 gateway 作为计划任务、编辑器处理、PATH、卸载及常见问题"
+description: "在 Windows 10 / 11 上原生运行 Shards Agent — 安装、功能矩阵、UTF-8 控制台、Git Bash、将 gateway 作为计划任务、编辑器处理、PATH、卸载及常见问题"
 sidebar_label: "Windows（原生）"
 sidebar_position: 3
 ---
@@ -52,7 +52,7 @@ Windows 10 源码安装支持不代表 MSIX 支持 Windows 10。
 打开 `.appinstaller` 文件，Windows 会安装签名包并记录更新源。
 软件包包含 Python、Node 和基础依赖，首次启动无需克隆或编译源码。
 
-执行别名提供 `hermes`、`hermes-agent` 和 `hermes-acp`。
+执行别名提供 `hermes`、`shards-agent` 和 `hermes-acp`。
 用 `Get-Command hermes -All` 检查是否被其他安装覆盖。
 在 Windows 的应用执行别名设置中管理这些入口。
 
@@ -194,7 +194,7 @@ hermes gateway uninstall   # 移除 schtasks 条目、Startup 快捷方式、pid
 
 | 路径 | 内容 |
 |---|---|
-| `%LOCALAPPDATA%\hermes\hermes-agent\` | 源码安装的 checkout；纯 MSIX 安装没有此目录。 |
+| `%LOCALAPPDATA%\hermes\shards-agent\` | 源码安装的 checkout；纯 MSIX 安装没有此目录。 |
 | `%LOCALAPPDATA%\hermes\tools\` | 可写工具存储；MSIX 基础工具保留在包内。 |
 | `%LOCALAPPDATA%\hermes\installs\` | 每个安装的环境选择、事务日志和 Python 代际。 |
 | `%LOCALAPPDATA%\hermes\bin\` | 源码安装启动器；MSIX 使用执行别名。 |

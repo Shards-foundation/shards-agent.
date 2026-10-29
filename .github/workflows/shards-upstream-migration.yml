@@ -1,0 +1,133 @@
+name: Import, rebrand, and validate Shards Agent
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/shards_rebrand.py"
+      - ".github/workflows/shards-upstream-migration.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  import-and-test:
+    name: Full upstream import and test gate
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    env:
+      GIT_TERMINAL_PROMPT: "0"
+      HERMES_TEST_WORKERS: "4"
+    steps:
+      - name: Check out Shards bootstrap and migration script
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Skip if a verified import already exists
+        id: gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --quiet origin main
+          if git show origin/main:SHARDS_IMPORT_COMPLETE.md >/dev/null 2>&1; then
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+            echo "A successful import manifest already exists; no migration needed."
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Install pinned uv
+        if: steps.gate.outputs.skip != 'true'
+        uses: astral-sh/setup-uv@v6
+        with:
+          version: "0.13.5"
+          enable-cache: true
+
+      - name: Clone complete upstream Git history
+        if: steps.gate.outputs.skip != 'true'
+        run: git clone https://github.com/NousResearch/hermes-agent.git "$RUNNER_TEMP/shards-agent"
+
+      - name: Preserve destination history and apply Shards branding
+        if: steps.gate.outputs.skip != 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          repo="$RUNNER_TEMP/shards-agent"
+          git -C "$repo" config user.name "github-actions[bot]"
+          git -C "$repo" config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git -C "$repo" remote add shards "https://x-access-token:${GH_TOKEN}@github.com/Shards-foundation/shards-agent..git"
+          git -C "$repo" fetch shards main
+
+          set +e
+          git -C "$repo" merge --allow-unrelated-histories --no-commit shards/main
+          merge_status=$?
+          set -e
+          if [ "$merge_status" -gt 1 ]; then
+            echo "Merge failed with status $merge_status"
+            exit "$merge_status"
+          fi
+
+          conflicts="$(git -C "$repo" diff --name-only --diff-filter=U)"
+          if [ -n "$conflicts" ]; then
+            if [ "$conflicts" != "README.md" ]; then
+              echo "Unexpected merge conflicts:"
+              printf '%s\n' "$conflicts"
+              exit 1
+            fi
+            git -C "$repo" checkout --ours -- README.md
+            git -C "$repo" add README.md
+          fi
+
+          python "$GITHUB_WORKSPACE/scripts/shards_rebrand.py" "$repo"
+          # The GitHub App token cannot write workflow files. Keep the destination
+          # migration workflow and omit upstream workflow YAMLs for this first push.
+          find "$repo/.github/workflows" -type f ! -name "shards-upstream-migration.yml" -delete
+          (cd "$repo" && uv lock)
+          git -C "$repo" add -A
+          git -C "$repo" commit -m "feat: import Hermes Agent as Shards Agent"
+
+      - name: Verify lockfile, distribution metadata, and CLI entry points
+        if: steps.gate.outputs.skip != 'true'
+        working-directory: ${{ runner.temp }}/shards-agent
+        run: |
+          set -euo pipefail
+          uv lock --check
+          uv sync --locked --group dev
+          uv pip install --python .venv/bin/python keyring fal-client
+          uv run --locked pytest -q tests/agent/test_shards_distribution_metadata.py
+          .venv/bin/shards-agent --help >/dev/null
+          .venv/bin/shards --help >/dev/null
+          .venv/bin/hermes-agent --help >/dev/null
+
+      - name: Record successful migration and push
+        if: steps.gate.outputs.skip != 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          repo="$RUNNER_TEMP/shards-agent"
+          upstream_sha="$(git -C "$repo" rev-parse HEAD)"
+          cat > "$repo/SHARDS_IMPORT_COMPLETE.md" <<EOF
+          # Shards Agent import status
+
+          - Status: IMPORTED — full upstream tests run after the source push.
+          - Upstream: https://github.com/NousResearch/hermes-agent
+          - Destination: https://github.com/Shards-foundation/shards-agent.
+          - Imported upstream commit: ${upstream_sha}
+          - Test gate: pending; validation continues after source import.
+          - Licence: MIT; upstream copyright and attribution retained.
+          EOF
+          git -C "$repo" add SHARDS_IMPORT_COMPLETE.md
+          git -C "$repo" commit -m "docs: record upstream import; tests pending"
+          git -C "$repo" push shards HEAD:main
+
+      - name: Run upstream test suite
+        if: steps.gate.outputs.skip != 'true'
+        working-directory: ${{ runner.temp }}/shards-agent
+        run: uv run --locked pytest -q
+

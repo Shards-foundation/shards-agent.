@@ -1,7 +1,7 @@
 ---
 sidebar_position: 4
 title: "Buzz 集成"
-description: "将 Hermes Agent 连接到 Buzz（Block 基于 Nostr 的人机协作工作区）的全部三种方式"
+description: "将 Shards Agent 连接到 Buzz（Block 基于 Nostr 的人机协作工作区）的全部三种方式"
 ---
 
 # Buzz 集成
@@ -29,7 +29,7 @@ Buzz Desktop 将 Hermes 作为预设运行时提供。按常规方式安装 Herm
 适合托管的 Hermes 身份加入 Buzz *频道*，由 Buzz 自己的 harness 掌管传输：
 
 ```text
-Buzz relay <-- WebSocket --> buzz-acp <-- ACP over stdio --> Hermes Agent
+Buzz relay <-- WebSocket --> buzz-acp <-- ACP over stdio --> Shards Agent
 ```
 
 被启动的 Hermes 使用该主机上相同的配置、凭据、记忆和技能。密钥铸造、频道发现、所有者遥测（`BUZZ_ACP_RELAY_OBSERVER`）和无头权限指南：**[ACP 宿主集成 → Buzz 频道（中继桥接）](../user-guide/features/acp.md)**

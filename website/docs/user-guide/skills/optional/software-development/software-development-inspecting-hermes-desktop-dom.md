@@ -1,12 +1,12 @@
 ---
-title: "Inspecting Hermes Desktop Dom — Read the live Hermes desktop DOM/CSS over CDP"
-sidebar_label: "Inspecting Hermes Desktop Dom"
+title: "Inspecting Shards Desktop Dom — Read the live Hermes desktop DOM/CSS over CDP"
+sidebar_label: "Inspecting Shards Desktop Dom"
 description: "Read the live Hermes desktop DOM/CSS over CDP"
 ---
 
 {/* This page is auto-generated from the skill's SKILL.md by website/scripts/generate-skill-docs.py. Edit the source SKILL.md, not this page. */}
 
-# Inspecting Hermes Desktop Dom
+# Inspecting Shards Desktop Dom
 
 Read the live Hermes desktop DOM/CSS over CDP.
 
@@ -17,7 +17,7 @@ Read the live Hermes desktop DOM/CSS over CDP.
 | Source | Optional — install with `hermes skills install official/software-development/inspecting-hermes-desktop-dom` |
 | Path | `optional-skills/software-development/inspecting-hermes-desktop-dom` |
 | Version | `1.0.0` |
-| Author | Hermes Agent |
+| Author | Shards Agent |
 | License | MIT |
 | Platforms | linux, macos, windows |
 | Tags | `desktop`, `electron`, `cdp`, `dom`, `ui-verification`, `self-inspection` |

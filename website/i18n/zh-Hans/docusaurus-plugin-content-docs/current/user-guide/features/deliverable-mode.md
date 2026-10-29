@@ -6,7 +6,7 @@ description: Agent 如何将生成的图表、PDF、电子表格及其他文件�
 
 # 可交付成果模式
 
-当 Hermes Agent 在消息 gateway（Slack、Discord、Telegram、WhatsApp、Signal 等）中运行时，它可以将生成的文件直接发送到聊天中——不是让用户自行复制路径，而是作为原生附件。
+当 Shards Agent 在消息 gateway（Slack、Discord、Telegram、WhatsApp、Signal 等）中运行时，它可以将生成的文件直接发送到聊天中——不是让用户自行复制路径，而是作为原生附件。
 
 图表以内联图片形式显示。PDF 报告以文件下载形式显示。电子表格以 `.xlsx` 格式上传。Agent 无需写入 `MEDIA:` 标签或进行任何特殊操作——只需生成文件并在回复中提及其绝对路径。Gateway 会从文本中提取路径，将其从可见消息中移除，并原生上传文件。
 
@@ -82,7 +82,7 @@ kanban_complete(
 
 ## 与 Perplexity Computer in Slack 的对比
 
-Perplexity Computer 的 Slack 集成基于相同理念：agent 生成可交付成果（图表、PDF、幻灯片），并将其作为原生附件发回线程。Hermes Agent 的可交付成果模式在本地提供相同的用户体验：
+Perplexity Computer 的 Slack 集成基于相同理念：agent 生成可交付成果（图表、PDF、幻灯片），并将其作为原生附件发回线程。Shards Agent 的可交付成果模式在本地提供相同的用户体验：
 
 - 生成在用户自己的 venv/沙箱中进行（无远程租户）。
 - 文件通过相同的 Slack `files.uploadV2` API 发送到聊天。

@@ -1,7 +1,7 @@
 ---
 sidebar_position: 3
 title: "Nix & NixOS Setup"
-description: "Install and deploy Hermes Agent with Nix — from quick `nix run` to fully declarative NixOS module with container mode"
+description: "Install and deploy Shards Agent with Nix — from quick `nix run` to fully declarative NixOS module with container mode"
 ---
 
 # Nix & NixOS Setup
@@ -12,7 +12,7 @@ Nix and NixOS are [Tier 2 platforms](./platform-support.md#tier-2). The flake an
 For a supported setup, use one of the standard [installation](./installation.md) paths - either Docker or an FHS environment.
 :::
 
-Hermes Agent ships a Nix flake, a NixOS module, and a Home Manager module.
+Shards Agent ships a Nix flake, a NixOS module, and a Home Manager module.
 
 | Level | Who it's for | What you get |
 |-------|-------------|--------------|
@@ -63,25 +63,25 @@ No clone needed. Nix fetches, builds, and runs everything:
 
 ```bash
 # Run the desktop app
-nix run github:NousResearch/hermes-agent#desktop
+nix run github:NousResearch/shards-agent#desktop
 
 # Or install persistently
-nix profile install github:NousResearch/hermes-agent#desktop
+nix profile install github:NousResearch/shards-agent#desktop
 
 # run the tui
-nix run github:NousResearch/hermes-agent -- setup
-nix run github:NousResearch/hermes-agent -- --tui
+nix run github:NousResearch/shards-agent -- setup
+nix run github:NousResearch/shards-agent -- --tui
 
 # or install it in your profile
-nix profile install github:NousResearch/hermes-agent
+nix profile install github:NousResearch/shards-agent
 hermes setup
 hermes --tui
 ```
 
-After `nix profile install`, `hermes`, `hermes-agent`, and `hermes-acp` are on your PATH. From here, the workflow is identical to the [standard installation](./installation.md) — `hermes setup` walks you through provider selection, `hermes gateway install` sets up a launchd (macOS) or systemd user service, and config lives in `~/.hermes/`.
+After `nix profile install`, `hermes`, `shards-agent`, and `hermes-acp` are on your PATH. From here, the workflow is identical to the [standard installation](./installation.md) — `hermes setup` walks you through provider selection, `hermes gateway install` sets up a launchd (macOS) or systemd user service, and config lives in `~/.hermes/`.
 
 :::warning Messaging platforms (Discord, Telegram, Slack)
-The default package includes ALL libraries hermes-agent might need. if you want a smaller variant, check the other flake outputs. 
+The default package includes ALL libraries shards-agent might need. if you want a smaller variant, check the other flake outputs. 
 
 The `default` package adds ~700 MB to the closure. If you only need messaging platforms, `#messaging` adds just ~33 MB.
 
@@ -92,7 +92,7 @@ The `default` package adds ~700 MB to the closure. If you only need messaging pl
 
 ```bash
 git clone https://github.com/NousResearch/hermes-agent.git
-cd hermes-agent
+cd shards-agent
 nix develop
 hermes setup
 ```
@@ -116,14 +116,14 @@ This module needs NixOS. Hermes is an agent for one person. If you want an agent
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    hermes-agent.url = "github:NousResearch/hermes-agent";
+    shards-agent.url = "github:NousResearch/shards-agent";
   };
 
-  outputs = { nixpkgs, hermes-agent, ... }: {
+  outputs = { nixpkgs, shards-agent, ... }: {
     nixosConfigurations.your-host = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
-        hermes-agent.nixosModules.default
+        shards-agent.nixosModules.default
         ./configuration.nix
       ];
     };
@@ -136,7 +136,7 @@ This module needs NixOS. Hermes is an agent for one person. If you want an agent
 ```nix
 # configuration.nix
 { config, ... }: {
-  services.hermes-agent = {
+  services.shards-agent = {
     enable = true;
     settings.model.default = "anthropic/claude-sonnet-4";
     environmentFiles = [ config.sops.secrets."hermes-env".path ];
@@ -155,7 +155,7 @@ echo "OPENROUTER_API_KEY=sk-or-your-key" | sudo install -m 0600 -o hermes /dev/s
 ```
 
 ```nix
-services.hermes-agent.environmentFiles = [ "/var/lib/hermes/env" ];
+services.shards-agent.environmentFiles = [ "/var/lib/hermes/env" ];
 ```
 :::
 
@@ -176,7 +176,7 @@ When `container.enable = true` and `addToSystemPackages = true`, **every** `herm
 Set `container.hostUsers` to create a `~/.hermes` symlink to the service state directory, so the host CLI and the container share sessions, config, and memories:
 
 ```nix
-services.hermes-agent = {
+services.shards-agent = {
   container.enable = true;
   container.hostUsers = [ "your-username" ];
   addToSystemPackages = true;
@@ -206,10 +206,10 @@ After `nixos-rebuild switch`, check that the service is running:
 
 ```bash
 # Check service status
-systemctl status hermes-agent
+systemctl status shards-agent
 
 # Watch logs (Ctrl+C to stop)
-journalctl -u hermes-agent -f
+journalctl -u shards-agent -f
 
 # If addToSystemPackages is true, test the CLI
 hermes --version
@@ -232,7 +232,7 @@ To enable container mode, add one line:
 
 ```nix
 {
-  services.hermes-agent = {
+  services.shards-agent = {
     enable = true;
     container.enable = true;
     # ... rest of config is identical
@@ -258,14 +258,14 @@ The `settings` option accepts an arbitrary attrset that is rendered as `config.y
 
 ```nix
 # base.nix
-services.hermes-agent.settings = {
+services.shards-agent.settings = {
   model.default = "anthropic/claude-sonnet-4";
   toolsets = [ "all" ];
   terminal = { backend = "local"; timeout = 180; };
 };
 
 # personality.nix
-services.hermes-agent.settings = {
+services.shards-agent.settings = {
   display = { compact = false; personality = "kawaii"; };
   memory = { memory_enabled = true; user_profile_enabled = true; };
 };
@@ -286,7 +286,7 @@ Run `nix build .#configKeys && cat result` to see every leaf config key extracte
 
 ```nix
 { config, ... }: {
-  services.hermes-agent = {
+  services.shards-agent = {
     enable = true;
     container.enable = true;
 
@@ -350,7 +350,7 @@ Run `nix build .#configKeys && cat result` to see every leaf config key extracte
 If you'd rather manage `config.yaml` entirely outside Nix, use `configFile`:
 
 ```nix
-services.hermes-agent.configFile = /etc/hermes/config.yaml;
+services.shards-agent.configFile = /etc/hermes/config.yaml;
 ```
 
 This bypasses `settings` entirely — no merge, no generation. The file is copied as-is to `$HERMES_HOME/config.yaml` on each activation.
@@ -375,7 +375,7 @@ Quick reference for the most common things Nix users want to customize:
 | Share state between host CLI and container | `container.hostUsers` | `[ "sidbin" ]` |
 | Make extra tools available to the agent | `extraPackages` | `[ pkgs.pandoc pkgs.imagemagick ]` |
 | Use a custom base image | `container.image` | `"ubuntu:24.04"` |
-| Override the hermes package | `package` | `inputs.hermes-agent.packages.${system}.default.override { ... }` |
+| Override the hermes package | `package` | `inputs.shards-agent.packages.${system}.default.override { ... }` |
 | Change state directory | `stateDir` | `"/opt/hermes"` |
 | Set the agent's working directory | `workingDirectory` | `"/home/user/projects"` |
 
@@ -387,7 +387,7 @@ Quick reference for the most common things Nix users want to customize:
 Values in Nix expressions end up in `/nix/store`, which is world-readable. Always use `environmentFiles` with a secrets manager.
 :::
 
-Both `environment` (non-secret vars) and `environmentFiles` (secret files) are merged into `$HERMES_HOME/.env` at activation time (`nixos-rebuild switch`). Hermes reads this file on every startup, so changes take effect with a `systemctl restart hermes-agent` — no container recreation needed.
+Both `environment` (non-secret vars) and `environmentFiles` (secret files) are merged into `$HERMES_HOME/.env` at activation time (`nixos-rebuild switch`). Hermes reads this file on every startup, so changes take effect with a `systemctl restart shards-agent` — no container recreation needed.
 
 ### sops-nix
 
@@ -399,7 +399,7 @@ Both `environment` (non-secret vars) and `environmentFiles` (secret files) are m
     secrets."hermes-env" = { format = "yaml"; };
   };
 
-  services.hermes-agent.environmentFiles = [
+  services.shards-agent.environmentFiles = [
     config.sops.secrets."hermes-env".path
   ];
 }
@@ -421,7 +421,7 @@ hermes-env: |
 {
   age.secrets.hermes-env.file = ./secrets/hermes-env.age;
 
-  services.hermes-agent.environmentFiles = [
+  services.shards-agent.environmentFiles = [
     config.age.secrets.hermes-env.path
   ];
 }
@@ -433,7 +433,7 @@ For platforms requiring OAuth (e.g., Discord), use `authFile` to seed credential
 
 ```nix
 {
-  services.hermes-agent = {
+  services.shards-agent = {
     authFile = config.sops.secrets."hermes/auth.json".path;
     # authFileForceOverwrite = true;  # overwrite on every activation
   };
@@ -452,7 +452,7 @@ Hermes reads files from two directories. Thus there are two options. Use the opt
 
 ```nix
 {
-  services.hermes-agent = {
+  services.shards-agent = {
     # documents needs this option. Read the note below.
     workingDirectory = "/var/lib/hermes/workspace";
     documents = {
@@ -475,7 +475,7 @@ the default is a correct selection, and it satisfies the rule.
 
 ```nix
 {
-  services.hermes-agent.hermesHomeFiles = {
+  services.shards-agent.hermesHomeFiles = {
     "SOUL.md" = "You are a helpful AI assistant.";
     "memories/USER.md" = ./documents/USER.md;
   };
@@ -496,7 +496,7 @@ The `mcpServers` option declaratively configures [MCP (Model Context Protocol)](
 
 ```nix
 {
-  services.hermes-agent.mcpServers = {
+  services.shards-agent.mcpServers = {
     filesystem = {
       command = "npx";
       args = [ "-y" "@modelcontextprotocol/server-filesystem" "/data/workspace" ];
@@ -518,7 +518,7 @@ Environment variables in `env` values are resolved from `$HERMES_HOME/.env` at r
 
 ```nix
 {
-  services.hermes-agent.mcpServers.remote-api = {
+  services.shards-agent.mcpServers.remote-api = {
     url = "https://mcp.example.com/v1/mcp";
     headers.Authorization = "Bearer \${MCP_REMOTE_API_KEY}";
     timeout = 180;
@@ -532,7 +532,7 @@ Set `auth = "oauth"` for servers using OAuth 2.1. Hermes implements the full PKC
 
 ```nix
 {
-  services.hermes-agent.mcpServers.my-oauth-server = {
+  services.shards-agent.mcpServers.my-oauth-server = {
     url = "https://mcp.example.com/mcp";
     auth = "oauth";
   };
@@ -550,7 +550,7 @@ The first OAuth authorization requires a browser-based consent flow. In a headle
 
 ```bash
 # Container mode
-docker exec -it hermes-agent \
+docker exec -it shards-agent \
   hermes mcp add my-oauth-server --url https://mcp.example.com/mcp --auth oauth
 
 # Native mode
@@ -577,7 +577,7 @@ Some MCP servers can request LLM completions from the agent:
 
 ```nix
 {
-  services.hermes-agent.mcpServers.analysis = {
+  services.shards-agent.mcpServers.analysis = {
     command = "npx";
     args = [ "-y" "analysis-server" ];
     sampling = {
@@ -608,7 +608,7 @@ When hermes runs via the NixOS module, the following CLI commands are **blocked*
 This prevents drift between what Nix declares and what's on disk. Detection uses two signals:
 
 1. **The `HERMES_MANAGED` environment variable.** The service sets it, and the gateway process reads it.
-2. **The `.managed` marker file** in `HERMES_HOME`. The activation script writes it, and an interactive shell reads it. Thus the CLI also blocks a command such as `docker exec -it hermes-agent hermes config set ...`.
+2. **The `.managed` marker file** in `HERMES_HOME`. The activation script writes it, and an interactive shell reads it. Thus the CLI also blocks a command such as `docker exec -it shards-agent hermes config set ...`.
 
 Both signals hold the name of the system that manages the install. Thus the refusal names the correct rebuild command. The NixOS module gives `sudo nixos-rebuild switch`. The Home Manager module gives `home-manager switch`.
 
@@ -618,15 +618,15 @@ Both signals hold the name of the system that manages the install. Thus the refu
 
 The flake also exports `homeManagerModules.default`. Hermes is an agent for one person. The credentials, the memory, the sessions and the cron jobs all belong to that person. Thus a user service is the correct shape on a personal machine. It runs on each distribution that Home Manager supports, and not only on NixOS.
 
-The option set is the same set that the NixOS module uses. It is `services.hermes-agent`, with the same `settings`, `environmentFiles`, `documents`, `mcpServers`, `extraPlugins` and `backend` options. Each example above works here without a change. Only the necessary parts are different:
+The option set is the same set that the NixOS module uses. It is `services.shards-agent`, with the same `settings`, `environmentFiles`, `documents`, `mcpServers`, `extraPlugins` and `backend` options. Each example above works here without a change. Only the necessary parts are different:
 
 | | NixOS module | Home Manager module |
 |---|---|---|
 | Runs as | a system user that you declare, with `user`, `group` and `createUser` | you |
 | State directory | `stateDir` and `/.hermes` | `hermesHome`, set directly. The default is `~/.hermes`. |
 | Service | `systemd.services` | `systemd.user.services` on Linux, `launchd.agents` on macOS |
-| CLI on the PATH | `addToSystemPackages`, which exports `HERMES_HOME` for the full system | `programs.hermes-agent.enable`, which exports it for your session only |
-| Desktop application | not supported, because a system service cannot own a user session | `programs.hermes-agent.desktop.enable` |
+| CLI on the PATH | `addToSystemPackages`, which exports `HERMES_HOME` for the full system | `programs.shards-agent.enable`, which exports it for your session only |
+| Desktop application | not supported, because a system service cannot own a user session | `programs.shards-agent.desktop.enable` |
 | Container mode | supported | not supported, because it needs root and the Docker socket |
 
 ### Add the Flake Input
@@ -637,7 +637,7 @@ The option set is the same set that the NixOS module uses. It is `services.herme
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    hermes-agent.url = "github:NousResearch/hermes-agent";
+    shards-agent.url = "github:NousResearch/shards-agent";
   };
 }
 ```
@@ -646,9 +646,9 @@ Then import the module into your Home Manager configuration. The configuration c
 
 ```nix
 {
-  imports = [ hermes-agent.homeManagerModules.default ];
+  imports = [ shards-agent.homeManagerModules.default ];
 
-  services.hermes-agent = {
+  services.shards-agent = {
     enable = true;
     gateway.enable = true;
     settings.model.default = "anthropic/claude-sonnet-4";
@@ -677,11 +677,11 @@ macOS has no equivalent option. A `launchd` agent with `RunAtLoad` starts at log
 
 ### Running the Desktop / Dashboard Backend
 
-`gateway.enable` runs the messaging gateway for Telegram, Discord, Slack and the other platforms. A Hermes Desktop **remote** connection and the web dashboard connect to a *different* process, which is `hermes serve` or `hermes dashboard`. (A Desktop running on the same host attaches to the gateway itself via `hermes gateway ensure`.) `backend.mode` runs that process with the gateway:
+`gateway.enable` runs the messaging gateway for Telegram, Discord, Slack and the other platforms. A Shards Desktop **remote** connection and the web dashboard connect to a *different* process, which is `hermes serve` or `hermes dashboard`. (A Desktop running on the same host attaches to the gateway itself via `hermes gateway ensure`.) `backend.mode` runs that process with the gateway:
 
 ```nix
 {
-  services.hermes-agent = {
+  services.shards-agent = {
     enable = true;
     gateway.enable = true;      # messaging platforms
     backend.mode = "dashboard"; # + the browser dashboard on 127.0.0.1:9119
@@ -690,7 +690,7 @@ macOS has no equivalent option. A `launchd` agent with `RunAtLoad` starts at log
 }
 ```
 
-`serve` runs without a user interface. It gives the `/api/ws` and `/api/pty` sockets that Hermes Desktop connects to, and it does not build the web application. `dashboard` gives all of that, and also serves the browser admin panel. Both processes use one `HERMES_HOME` with the gateway. Thus the sessions, the skills, the memory and the cron jobs are the same for all of them. `backend.mode` works in the same way on the NixOS module, but not in container mode.
+`serve` runs without a user interface. It gives the `/api/ws` and `/api/pty` sockets that Shards Desktop connects to, and it does not build the web application. `dashboard` gives all of that, and also serves the browser admin panel. Both processes use one `HERMES_HOME` with the gateway. Thus the sessions, the skills, the memory and the cron jobs are the same for all of them. `backend.mode` works in the same way on the NixOS module, but not in container mode.
 
 :::warning Binding to an address other than loopback
 The default address is `127.0.0.1`. Each other address starts the authentication gate of the dashboard. The server also refuses each request with a `Host` header that is different from the address that the server bound to. This is a defence against DNS rebinding. Bind to the name or the address that your client uses.
@@ -698,11 +698,11 @@ The default address is `127.0.0.1`. Each other address starts the authentication
 
 ### Running the Webapp
 
-The package ships the [Webapp](../user-guide/desktop.md#use-the-desktop-workspace-from-a-browser) (Hermes Desktop in a browser) prebuilt, so nothing is built at run time; the store is read-only. The gateway serves it when its settings turn it on (see [Configuration → Webapp](../user-guide/configuration.md#webapp)):
+The package ships the [Webapp](../user-guide/desktop.md#use-the-desktop-workspace-from-a-browser) (Shards Desktop in a browser) prebuilt, so nothing is built at run time; the store is read-only. The gateway serves it when its settings turn it on (see [Configuration → Webapp](../user-guide/configuration.md#webapp)):
 
 ```nix
 {
-  services.hermes-agent = {
+  services.shards-agent = {
     enable = true;
     gateway.enable = true;
     settings.webapp = {
@@ -720,12 +720,12 @@ Open it with `hermes webapp`. A non-loopback `host` or a `public_url` needs one 
 
 ```bash
 # Linux
-systemctl --user status hermes-agent
-journalctl --user -u hermes-agent -f
+systemctl --user status shards-agent
+journalctl --user -u shards-agent -f
 
 # macOS
 launchctl list | grep hermes
-tail -f ~/Library/Logs/hermes-agent.log
+tail -f ~/Library/Logs/shards-agent.log
 
 hermes --version
 hermes config     # shows the configuration that Nix wrote
@@ -744,7 +744,7 @@ When container mode is enabled, hermes runs inside a persistent Ubuntu container
 ```
 Host                                    Container
 ────                                    ─────────
-/nix/store/...-hermes-agent-0.1.0  ──►  /nix/store/... (ro)
+/nix/store/...-shards-agent-0.1.0  ──►  /nix/store/... (ro)
 ~/.hermes -> /var/lib/hermes/.hermes       (symlink bridge, per hostUsers)
 /var/lib/hermes/                    ──►  /data/          (rw)
   ├── current-package -> /nix/store/...    (symlink, updated each rebuild)
@@ -771,7 +771,7 @@ The Nix-built binary works inside the Ubuntu container because `/nix/store` is b
 
 | Event | Container recreated? | `/data` (state) | `/home/hermes` | Writable layer (`apt`/`pip`/`npm`) |
 |---|---|---|---|---|
-| `systemctl restart hermes-agent` | No | Persists | Persists | Persists |
+| `systemctl restart shards-agent` | No | Persists | Persists | Persists |
 | `nixos-rebuild switch` (code change) | No (symlink updated) | Persists | Persists | Persists |
 | Host reboot | No | Persists | Persists | Persists |
 | `nix-collect-garbage` | No (GC root) | Persists | Persists | Persists |
@@ -802,7 +802,7 @@ The NixOS module supports declarative plugin installation — no imperative `her
 For plugins that are just a source tree with `plugin.yaml` + `__init__.py` (e.g., [hermes-lcm](https://github.com/stephenschoettler/hermes-lcm)):
 
 ```nix
-services.hermes-agent.extraPlugins = [
+services.shards-agent.extraPlugins = [
   (pkgs.fetchFromGitHub {
     owner = "stephenschoettler";
     repo = "hermes-lcm";
@@ -819,8 +819,8 @@ Plugins are symlinked into `$HERMES_HOME/plugins/` at activation time. Hermes di
 For pip-packaged plugins that register via `[project.entry-points."hermes_agent.plugins"]` (e.g., [rtk-hermes](https://github.com/ogallotti/rtk-hermes)):
 
 ```nix
-services.hermes-agent.extraPythonPackages = [
-  (config.services.hermes-agent.package.python.pkgs.buildPythonPackage {
+services.shards-agent.extraPythonPackages = [
+  (config.services.shards-agent.package.python.pkgs.buildPythonPackage {
     pname = "rtk-hermes";
     version = "1.0.0";
     src = pkgs.fetchFromGitHub {
@@ -830,7 +830,7 @@ services.hermes-agent.extraPythonPackages = [
       hash = "sha256-...";
     };
     format = "pyproject";
-    build-system = [ config.services.hermes-agent.package.python.pkgs.setuptools ];
+    build-system = [ config.services.shards-agent.package.python.pkgs.setuptools ];
   })
 ];
 ```
@@ -839,14 +839,14 @@ The package's `site-packages` is added to PYTHONPATH in the hermes wrapper. `imp
 
 ### Optional Dependency Groups (`extraDependencyGroups`)
 
-For optional extras declared in hermes-agent's `pyproject.toml`, use `extraDependencyGroups` to include them in the sealed venv at build time. This is required for any extra the selected package does not already ship — on Nix, runtime installation into the read-only store is not possible.
+For optional extras declared in shards-agent's `pyproject.toml`, use `extraDependencyGroups` to include them in the sealed venv at build time. This is required for any extra the selected package does not already ship — on Nix, runtime installation into the read-only store is not possible.
 
 ```nix
 # Add Google Meet support on top of what the package ships
-services.hermes-agent.extraDependencyGroups = [ "google-meet" ];
+services.shards-agent.extraDependencyGroups = [ "google-meet" ];
 ```
 
-`extraDependencyGroups` and `extraPythonPackages` **add to** the groups the selected package ships; they never replace them. The `default` package already ships `messaging`, `voice`, `exa` and the other groups in the table below, so naming one of those changes nothing. The same holds for `pkgs.hermes-agent.override { extraDependencyGroups = [ ... ]; }`. For a smaller build, start from a smaller package: `package = inputs.hermes-agent.packages.${system}.minimal;` (or `#messaging`), or `.override { defaultDependencyGroups = [ ]; }` to drop the shipped groups and list only the ones you want.
+`extraDependencyGroups` and `extraPythonPackages` **add to** the groups the selected package ships; they never replace them. The `default` package already ships `messaging`, `voice`, `exa` and the other groups in the table below, so naming one of those changes nothing. The same holds for `pkgs.shards-agent.override { extraDependencyGroups = [ ... ]; }`. For a smaller build, start from a smaller package: `package = inputs.shards-agent.packages.${system}.minimal;` (or `#messaging`), or `.override { defaultDependencyGroups = [ ]; }` to drop the shipped groups and list only the ones you want.
 
 These groups join the core dependency resolution at build time. Conflicting
 requirements can still fail that resolution. The table lists common groups;
@@ -888,9 +888,9 @@ Or use the pre-built `#messaging` or `#full` flake packages instead of per-extra
 A directory plugin with third-party Python dependencies needs both options:
 
 ```nix
-services.hermes-agent = {
+services.shards-agent = {
   extraPlugins = [ my-plugin-src ];          # plugin source
-  extraPythonPackages = [ config.services.hermes-agent.package.python.pkgs.redis ];  # its Python dep
+  extraPythonPackages = [ config.services.shards-agent.package.python.pkgs.redis ];  # its Python dep
   extraPackages = [ pkgs.redis ];            # system binary it needs
 };
 ```
@@ -901,14 +901,14 @@ External flakes can override the package directly:
 
 ```nix
 {
-  inputs.hermes-agent.url = "github:NousResearch/hermes-agent";
-  outputs = { hermes-agent, nixpkgs, ... }: {
-    nixpkgs.overlays = [ hermes-agent.overlays.default ];
+  inputs.shards-agent.url = "github:NousResearch/shards-agent";
+  outputs = { shards-agent, nixpkgs, ... }: {
+    nixpkgs.overlays = [ shards-agent.overlays.default ];
     # Then:
-    #   pkgs.hermes-agent.override { extraPythonPackages = [...]; }
-    #   pkgs.hermes-agent.override { extraDependencyGroups = [ "google-meet" ]; }
+    #   pkgs.shards-agent.override { extraPythonPackages = [...]; }
+    #   pkgs.shards-agent.override { extraDependencyGroups = [ "google-meet" ]; }
     # Both add to the groups the default package ships. To drop those:
-    #   pkgs.hermes-agent.override { defaultDependencyGroups = [ ]; }
+    #   pkgs.shards-agent.override { defaultDependencyGroups = [ ]; }
   };
 }
 ```
@@ -918,7 +918,7 @@ External flakes can override the package directly:
 Plugins still need to be enabled in `config.yaml`. Add them via the declarative settings:
 
 ```nix
-services.hermes-agent.settings.plugins.enabled = [
+services.shards-agent.settings.plugins.enabled = [
   "hermes-lcm"
   "rtk-rewrite"
 ];
@@ -941,7 +941,7 @@ Python dependencies into a repository-local `.venv`. The shell also provides
 Node.js and runtime tools. Its npm hook refreshes JS workspaces when their inputs change.
 
 ```bash
-cd hermes-agent
+cd shards-agent
 nix develop
 "$HERMES_PYTHON" -c "import sys; print(sys.executable); print(sys.version)"
 hermes setup
@@ -953,7 +953,7 @@ hermes chat
 The included `.envrc` activates the dev shell automatically:
 
 ```bash
-cd hermes-agent
+cd shards-agent
 direnv allow    # one-time
 # Nix reuses its built Python environment; the npm hook checks JS inputs.
 ```
@@ -980,7 +980,7 @@ nix build .#checks.x86_64-linux.config-roundtrip    # merge script preserves use
 
 | Check | What it tests |
 |---|---|
-| `package-contents` | `hermes` and `hermes-agent` binaries exist and `hermes --version` runs |
+| `package-contents` | `hermes` and `shards-agent` binaries exist and `hermes --version` runs |
 | `entry-points-sync` | Every `[project.scripts]` entry in `pyproject.toml` has a wrapped binary in the Nix package |
 | `cli-commands` | `hermes --help` exposes `gateway` and `config` subcommands |
 | `managed-guard` | `HERMES_MANAGED=true hermes config set ...` prints the NixOS error |
@@ -997,8 +997,8 @@ nix build .#checks.x86_64-linux.config-roundtrip    # merge script preserves use
 
 | Option | Type | Default | Description |
 |---|---|---|---|
-| `enable` | `bool` | `false` | Enable the hermes-agent service |
-| `package` | `package` | `hermes-agent` | The hermes-agent package to use |
+| `enable` | `bool` | `false` | Enable the shards-agent service |
+| `package` | `package` | `shards-agent` | The shards-agent package to use |
 | `user` | `str` | `"hermes"` | System user |
 | `group` | `str` | `"hermes"` | System group |
 | `createUser` | `bool` | `true` | Auto-create user/group |
@@ -1060,7 +1060,7 @@ nix build .#checks.x86_64-linux.config-roundtrip    # merge script preserves use
 
 ### Backend (`hermes serve` / `hermes dashboard`)
 
-This option runs the process that a remote Hermes Desktop connection and the web dashboard connect to, with the gateway. You cannot use it with `container.enable`.
+This option runs the process that a remote Shards Desktop connection and the web dashboard connect to, with the gateway. You cannot use it with `container.enable`.
 
 | Option | Type | Default | Description |
 |---|---|---|---|
@@ -1076,27 +1076,27 @@ This option runs the process that a remote Hermes Desktop connection and the web
 | `hermesHome` | `str` | `"${config.home.homeDirectory}/.hermes"` | `HERMES_HOME` directly. The NixOS module builds it from `stateDir`. |
 | `gateway.enable` | `bool` | `false` | Run the messaging gateway. On the NixOS module the gateway is the service, so that module has no such option. |
 
-### `programs.hermes-agent` (Home Manager only)
+### `programs.shards-agent` (Home Manager only)
 
 Home Manager separates "install this application for me" from "run this
-daemon". `services.hermes-agent` keeps the state, the configuration and the
-daemons. `programs.hermes-agent` installs what you use, and reads
+daemon". `services.shards-agent` keeps the state, the configuration and the
+daemons. `programs.shards-agent` installs what you use, and reads
 `hermesHome` and the backend address from the services.
 
 | Option | Type | Default | Description |
 |---|---|---|---|
 | `enable` | `bool` | `false` | Add the `hermes` CLI to `home.packages`, and export `HERMES_HOME` for your shells |
-| `package` | `package` | `services.hermes-agent.package` | The package to install. The default applies `extraPythonPackages` and `extraDependencyGroups` from the services, so both are one build. |
-| `desktop.enable` | `bool` | `false` | Add the Hermes Desktop application, with a launcher entry on Linux |
+| `package` | `package` | `services.shards-agent.package` | The package to install. The default applies `extraPythonPackages` and `extraDependencyGroups` from the services, so both are one build. |
+| `desktop.enable` | `bool` | `false` | Add the Shards Desktop application, with a launcher entry on Linux |
 | `desktop.package` | `package` | `package.hermesDesktop` | The desktop package. The default follows `package`, so the application and the services run one Hermes runtime. |
 
 ```nix
-programs.hermes-agent = {
+programs.shards-agent = {
   enable = true;
   desktop.enable = true;
 };
 
-services.hermes-agent = {
+services.shards-agent = {
   enable = true;
   backend.mode = "serve";
   backend.sessionTokenFile = config.sops.secrets."hermes/desktop-token".path;
@@ -1104,7 +1104,7 @@ services.hermes-agent = {
 ```
 
 The launcher carries `HERMES_HOME` itself. A desktop menu reads no shell
-profile, so the value that `programs.hermes-agent.enable` exports with
+profile, so the value that `programs.shards-agent.enable` exports with
 `home.sessionVariables` reaches an interactive shell only. Without the
 value in the launcher, the application opens `~/.hermes` while the
 services use `hermesHome`, and you see no sessions and no keys.
@@ -1114,7 +1114,7 @@ of the service instead of starting one of its own. Both sides read the
 file at start time, so the token enters no Nix store path. Without the
 option, each side runs its own backend.
 
-`services.hermes-agent.installPackage` was removed by this split. A
+`services.shards-agent.installPackage` was removed by this split. A
 configuration that still sets it gets an error that names the
 replacement.
 
@@ -1190,7 +1190,7 @@ Same layout, mounted into the container:
 
 ```bash
 # Update the flake input (run from the directory containing flake.nix)
-cd /etc/nixos && nix flake update hermes-agent
+cd /etc/nixos && nix flake update shards-agent
 
 # Rebuild
 sudo nixos-rebuild switch          # for the NixOS module
@@ -1211,21 +1211,21 @@ All `docker` commands below work the same with `podman`. Substitute accordingly 
 
 ```bash
 # Both modes use the same systemd unit
-journalctl -u hermes-agent -f
+journalctl -u shards-agent -f
 
 # Container mode: also available directly
-docker logs -f hermes-agent
+docker logs -f shards-agent
 ```
 
 ### Container Inspection
 
 ```bash
-systemctl status hermes-agent
-docker ps -a --filter name=hermes-agent
-docker inspect hermes-agent --format='{{.State.Status}}'
-docker exec -it hermes-agent bash
-docker exec hermes-agent readlink /data/current-package
-docker exec hermes-agent cat /data/.container-identity
+systemctl status shards-agent
+docker ps -a --filter name=shards-agent
+docker inspect shards-agent --format='{{.State.Status}}'
+docker exec -it shards-agent bash
+docker exec shards-agent readlink /data/current-package
+docker exec shards-agent cat /data/.container-identity
 ```
 
 ### Force Container Recreation
@@ -1233,10 +1233,10 @@ docker exec hermes-agent cat /data/.container-identity
 If you need to reset the writable layer (fresh Ubuntu):
 
 ```bash
-sudo systemctl stop hermes-agent
-docker rm -f hermes-agent
+sudo systemctl stop shards-agent
+docker rm -f shards-agent
 sudo rm /var/lib/hermes/.container-identity
-sudo systemctl start hermes-agent
+sudo systemctl start shards-agent
 ```
 
 ### Verify Secrets Are Loaded
@@ -1248,13 +1248,13 @@ If the agent starts but can't authenticate with the LLM provider, check that the
 sudo -u hermes cat /var/lib/hermes/.hermes/.env
 
 # Container mode
-docker exec hermes-agent cat /data/.hermes/.env
+docker exec shards-agent cat /data/.hermes/.env
 ```
 
 ### GC Root Verification
 
 ```bash
-nix-store --query --roots $(docker exec hermes-agent readlink /data/current-package)
+nix-store --query --roots $(docker exec shards-agent readlink /data/current-package)
 ```
 
 ### Common Issues
@@ -1262,11 +1262,11 @@ nix-store --query --roots $(docker exec hermes-agent readlink /data/current-pack
 | Symptom | Cause | Fix |
 |---|---|---|
 | `Cannot save configuration: managed by NixOS` | CLI guards active | Edit `configuration.nix` and `nixos-rebuild switch` |
-| `No adapter available for discord` (or telegram/slack) | Messaging deps missing from the sealed Nix venv | Install `#messaging` variant: `nix profile install ...#messaging`. For NixOS module: `extraDependencyGroups = [ "messaging" ]`. Read `journalctl -u hermes-agent` for `InstallError` or `requirements not met` and the underlying cause. |
+| `No adapter available for discord` (or telegram/slack) | Messaging deps missing from the sealed Nix venv | Install `#messaging` variant: `nix profile install ...#messaging`. For NixOS module: `extraDependencyGroups = [ "messaging" ]`. Read `journalctl -u shards-agent` for `InstallError` or `requirements not met` and the underlying cause. |
 | Container recreated unexpectedly | `extraVolumes`, `extraOptions`, or `image` changed | Expected — writable layer resets. Reinstall packages or use a custom image |
-| `hermes --version` shows old version | Container not restarted | `systemctl restart hermes-agent` |
+| `hermes --version` shows old version | Container not restarted | `systemctl restart shards-agent` |
 | Permission denied on `/var/lib/hermes` | State dir is `0750 hermes:hermes` | Use `docker exec` or `sudo -u hermes` |
 | `nix-collect-garbage` removed hermes | GC root missing | Restart the service (preStart recreates the GC root) |
-| `no container with name or ID "hermes-agent"` (Podman) | Podman rootful container not visible to regular user | Add passwordless sudo for podman (see [Container Mode](#container-mode) section) |
+| `no container with name or ID "shards-agent"` (Podman) | Podman rootful container not visible to regular user | Add passwordless sudo for podman (see [Container Mode](#container-mode) section) |
 | `unable to find user hermes` | Container still starting (entrypoint hasn't created user yet) | Wait a few seconds and retry — the CLI retries automatically |
-| Tool added via `extraPackages` not found in terminal | Requires `nixos-rebuild switch` to update the per-user profile | Rebuild and restart: `nixos-rebuild switch && systemctl restart hermes-agent` |
+| Tool added via `extraPackages` not found in terminal | Requires `nixos-rebuild switch` to update the per-user profile | Rebuild and restart: `nixos-rebuild switch && systemctl restart shards-agent` |

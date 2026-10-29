@@ -171,7 +171,7 @@ TUI 的状态栏实时跟踪 agent 状态：
 
 状态栏还显示：
 
-- **工作目录及 git 分支** — `~/projects/hermes-agent (docs/two-week-gap-sweep)`。在旁边的终端执行 `git checkout` 时，分支后缀会更新（mtime 缓存），TUI 反映的是实际活跃分支，而非启动时的分支。
+- **工作目录及 git 分支** — `~/projects/shards-agent (docs/two-week-gap-sweep)`。在旁边的终端执行 `git checkout` 时，分支后缀会更新（mtime 缓存），TUI 反映的是实际活跃分支，而非启动时的分支。
 - **每条 prompt 的耗时** — 轮次运行时显示 `⏱ 12s/3m 45s`（实时），轮次完成后冻结为 `⏲ 32s / 3m 45s`。第一个数字是自上次用户消息以来的时间；第二个是会话总时长。每次新 prompt 时重置。
 - **`🗜️ N`** — 当前会话被自动压缩的次数。首次压缩触发后显示。
 - **`▶ N`** — 当前会话中正在运行的 `/bg` 任务数量。至少有一个任务在执行时显示。

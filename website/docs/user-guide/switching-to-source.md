@@ -45,7 +45,7 @@ writing the same home while either version performs migrations.
 
 ```bash
 git clone https://github.com/NousResearch/hermes-agent.git
-cd hermes-agent
+cd shards-agent
 ```
 
 For development, clone your fork instead and add the canonical repository as
@@ -124,7 +124,7 @@ For a named volume or Docker Desktop VM storage, stop the old gateway first.
 Then export/import a backup or copy data through a controlled mount.
 Check ownership and permissions on the destination.
 
-A local `docker build -t hermes-agent .` produces another image-managed install.
+A local `docker build -t shards-agent .` produces another image-managed install.
 It does not turn the running container into a self-updating source checkout.
 Recreate the container to use that image. See [Docker](./docker.md).
 

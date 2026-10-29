@@ -1,12 +1,12 @@
 ---
 sidebar_position: 2
 title: "安装"
-description: "在 Linux、macOS、WSL2 或原生 Windows 上安装 Hermes Agent"
+description: "在 Linux、macOS、WSL2 或原生 Windows 上安装 Shards Agent"
 ---
 
 # 安装
 
-使用一行安装命令，两分钟内即可启动并运行 Hermes Agent。
+使用一行安装命令，两分钟内即可启动并运行 Shards Agent。
 
 ## 快速安装
 
@@ -43,7 +43,7 @@ macOS 的 DMG 包含应用；将它复制到 Applications 后启动。
 
 ### Android / Termux
 
-aarch64 Android 设备可通过 Termux 安装预发布的 APT 软件包。软件包包含 Python、Node.js 和 TUI，无需在手机上编译核心依赖。请按照 [Termux 指南](./termux.md)配置签名仓库，然后运行 `pkg install hermes-agent`。桌面和服务器的安装脚本不支持 Termux。
+aarch64 Android 设备可通过 Termux 安装预发布的 APT 软件包。软件包包含 Python、Node.js 和 TUI，无需在手机上编译核心依赖。请按照 [Termux 指南](./termux.md)配置签名仓库，然后运行 `pkg install shards-agent`。桌面和服务器的安装脚本不支持 Termux。
 
 ### 功能与安装目录
 
@@ -53,11 +53,11 @@ Dashboard 终端使用 `pywinpty`/ConPTY，不再是尚未实现的 POSIX-only �
 
 | 安装方式 | 代码 | 命令入口 | 默认数据目录 |
 |---|---|---|---|
-| POSIX 源码脚本 | `~/.hermes/hermes-agent/` | `~/.local/bin/hermes` 包装器 | `~/.hermes/` |
-| Windows 源码脚本 | `%LOCALAPPDATA%\hermes\hermes-agent\` | `%LOCALAPPDATA%\hermes\bin\` | `%LOCALAPPDATA%\hermes\` |
+| POSIX 源码脚本 | `~/.hermes/shards-agent/` | `~/.local/bin/hermes` 包装器 | `~/.hermes/` |
+| Windows 源码脚本 | `%LOCALAPPDATA%\hermes\shards-agent\` | `%LOCALAPPDATA%\hermes\bin\` | `%LOCALAPPDATA%\hermes\` |
 | 桌面软件包 | 应用包内部 | 包内启动器；Windows 执行别名 | 平台默认数据目录 |
 | Docker | `/opt/hermes/` | 镜像入口和 `hermes` | 挂载的 `/opt/data/` |
-| Termux APT | `$PREFIX/lib/hermes-agent/` | `$PREFIX/bin/` 符号链接 | `~/.hermes/` |
+| Termux APT | `$PREFIX/lib/shards-agent/` | `$PREFIX/bin/` 符号链接 | `~/.hermes/` |
 
 `HERMES_HOME` 选择数据目录。POSIX 的 `--dir` 单独选择源码目录。
 以 root 身份运行不再自动选择 `/usr/local/lib` 的 FHS 布局。
@@ -137,4 +137,4 @@ Linux 用户服务需要在注销后继续运行时，由管理员为该用户�
 
 ## 安装方式自动检测
 
-Hermes 会自动检测安装方式（git 安装程序、Docker 或 NixOS），`hermes update` 会打印对应路径的更新命令。无需设置任何环境变量——检测基于安装目录结构（`~/.hermes/hermes-agent/` 检出、Docker 镜像标记或 Nix store 路径）。`hermes doctor` 也会在其环境摘要中显示检测到的安装方式。
+Hermes 会自动检测安装方式（git 安装程序、Docker 或 NixOS），`hermes update` 会打印对应路径的更新命令。无需设置任何环境变量——检测基于安装目录结构（`~/.hermes/shards-agent/` 检出、Docker 镜像标记或 Nix store 路径）。`hermes doctor` 也会在其环境摘要中显示检测到的安装方式。

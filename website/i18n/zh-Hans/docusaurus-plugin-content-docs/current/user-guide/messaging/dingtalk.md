@@ -1,7 +1,7 @@
 ---
 sidebar_position: 10
 title: "DingTalk"
-description: "将 Hermes Agent 设置为钉钉聊天机器人"
+description: "将 Shards Agent 设置为钉钉聊天机器人"
 ---
 
 # 钉钉设置
@@ -9,7 +9,7 @@ description: "将 Hermes Agent 设置为钉钉聊天机器人"
 本页的 Python 依赖命令使用 [PM 准备的源码环境](../../reference/package-management.md#developer-workflow)。
 依赖变更后，请重新激活该 checkout 并重启 Hermes。
 
-Hermes Agent 可作为聊天机器人集成到钉钉（DingTalk），让你通过单聊或群聊与 AI 助手对话。机器人通过钉钉的 Stream Mode（流模式）连接——一种长连接 WebSocket，无需公网 URL 或 webhook 服务器——并通过钉钉的 session webhook API 以 markdown 格式回复消息。
+Shards Agent 可作为聊天机器人集成到钉钉（DingTalk），让你通过单聊或群聊与 AI 助手对话。机器人通过钉钉的 Stream Mode（流模式）连接——一种长连接 WebSocket，无需公网 URL 或 webhook 服务器——并通过钉钉的 session webhook API 以 markdown 格式回复消息。
 
 在开始设置之前，先了解大多数人最关心的内容：Hermes 进入你的钉钉工作空间后的行为方式。
 
@@ -47,7 +47,7 @@ group_sessions_per_user: false
 安装所需的 Python 包：
 
 ```bash
-cd ~/.hermes/hermes-agent && python -c "import pm; pm.sync_venv(['dingtalk'], explicit=True)"
+cd ~/.hermes/shards-agent && python -c "import pm; pm.sync_venv(['dingtalk'], explicit=True)"
 ```
 
 或单独安装：
@@ -66,7 +66,7 @@ python -c "import pm; pm.sync_venv(['dingtalk'], explicit=True)"
 2. 使用钉钉管理员账号登录。
 3. 点击**应用开发** → **自建应用** → **创建 H5 微应用**（或根据控制台版本选择**机器人**）。
 4. 填写：
-   - **应用名称**：例如 `Hermes Agent`
+   - **应用名称**：例如 `Shards Agent`
    - **描述**：可选
 5. 创建完成后，进入**凭证与基础信息**，找到你的 **Client ID**（AppKey）和 **Client Secret**（AppSecret），复制两者。
 
@@ -86,14 +86,14 @@ Stream Mode 是推荐的设置方式。它使用从你的机器发起的长连�
 
 ## 第三步：找到你的钉钉用户 ID
 
-Hermes Agent 使用你的钉钉用户 ID 来控制谁可以与机器人交互。钉钉用户 ID 是由组织管理员设置的字母数字字符串。
+Shards Agent 使用你的钉钉用户 ID 来控制谁可以与机器人交互。钉钉用户 ID 是由组织管理员设置的字母数字字符串。
 
 查找方式：
 
 1. 询问你的钉钉组织管理员——用户 ID 在钉钉管理后台的**通讯录** → **成员**中配置。
 2. 或者，机器人会在日志中记录每条传入消息的 `sender_id`。启动 gateway，向机器人发送一条消息，然后在日志中查找你的 ID。
 
-## 第四步：配置 Hermes Agent
+## 第四步：配置 Shards Agent
 
 ### 方式 A：交互式设置（推荐）
 
@@ -272,7 +272,7 @@ python -c "import pm; pm.sync_venv(['dingtalk'], explicit=True)"
 务必设置 `DINGTALK_ALLOWED_USERS` 以限制可与机器人交互的用户。若未设置，gateway 默认拒绝所有用户作为安全措施。只添加你信任的人的用户 ID——已授权用户对 agent 的全部能力拥有完整访问权限，包括工具使用和系统访问。
 :::
 
-有关保护 Hermes Agent 部署的更多信息，请参阅[安全指南](../security.md)。
+有关保护 Shards Agent 部署的更多信息，请参阅[安全指南](../security.md)。
 
 ## 注意事项
 

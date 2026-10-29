@@ -6,7 +6,7 @@ sidebar_position: 1
 
 # AI 提供商
 
-本页介绍如何为 Hermes Agent 配置推理提供商——从 OpenRouter、Anthropic 等云端 API，到 Ollama、vLLM 等自托管端点，再到高级路由与故障转移配置。使用 Hermes 至少需要配置一个提供商。
+本页介绍如何为 Shards Agent 配置推理提供商——从 OpenRouter、Anthropic 等云端 API，到 Ollama、vLLM 等自托管端点，再到高级路由与故障转移配置。使用 Hermes 至少需要配置一个提供商。
 
 ## 推理提供商
 
@@ -51,7 +51,7 @@ sidebar_position: 1
 
 ### Nous Portal
 
-[Nous Portal](https://portal.nousresearch.com) 是 Nous Research 的统一订阅网关，也是**运行 Hermes Agent 的推荐方式**。一次 OAuth 登录即可访问 300+ 前沿智能体模型（Claude、GPT、Gemini、DeepSeek、Qwen、Kimi、GLM、MiniMax、Grok 等）以及 [Tool Gateway](../user-guide/features/tool-gateway.md)（网页搜索、图像生成、TTS、浏览器自动化）——费用从你的 Nous 订阅中扣除，无需单独管理各提供商账户。
+[Nous Portal](https://portal.nousresearch.com) 是 Nous Research 的统一订阅网关，也是**运行 Shards Agent 的推荐方式**。一次 OAuth 登录即可访问 300+ 前沿智能体模型（Claude、GPT、Gemini、DeepSeek、Qwen、Kimi、GLM、MiniMax、Grok 等）以及 [Tool Gateway](../user-guide/features/tool-gateway.md)（网页搜索、图像生成、TTS、浏览器自动化）——费用从你的 Nous 订阅中扣除，无需单独管理各提供商账户。
 
 ```bash
 hermes setup --portal     # 全新安装——一条命令完成 OAuth + 提供商 + 网关配置
@@ -61,7 +61,7 @@ hermes portal info        # 随时查看登录状态和路由信息
 
 还没有订阅？前往 [portal.nousresearch.com/manage-subscription](https://portal.nousresearch.com/manage-subscription) 购买。
 
-**完整详情：** 参见专属的 [Nous Portal 集成页面](./nous-portal.md)（订阅内容、模型目录、故障排查）以及分步指南[使用 Nous Portal 运行 Hermes Agent](../guides/run-hermes-with-nous-portal.md)。
+**完整详情：** 参见专属的 [Nous Portal 集成页面](./nous-portal.md)（订阅内容、模型目录、故障排查）以及分步指南[使用 Nous Portal 运行 Shards Agent](../guides/run-hermes-with-nous-portal.md)。
 
 
 :::info Codex 说明
@@ -476,7 +476,7 @@ model:
 
 ## 自定义与自托管 LLM 提供商
 
-Hermes Agent 可与**任何 OpenAI 兼容 API 端点**配合使用。只要服务器实现了 `/v1/chat/completions`，就可以将 Hermes 指向它。这意味着你可以使用本地模型、GPU 推理服务器、多提供商路由器或任何第三方 API。
+Shards Agent 可与**任何 OpenAI 兼容 API 端点**配合使用。只要服务器实现了 `/v1/chat/completions`，就可以将 Hermes 指向它。这意味着你可以使用本地模型、GPU 推理服务器、多提供商路由器或任何第三方 API。
 
 ### 通用配置
 
@@ -773,7 +773,7 @@ Hermes 会自动以 64K 上下文长度加载 LM Studio 模型。
 
 ### WSL2 网络（Windows 用户） {#wsl2-networking-windows-users}
 
-由于 Hermes Agent 需要 Unix 环境，Windows 用户在 WSL2 内运行它。如果你的模型服务器（Ollama、LM Studio 等）运行在 **Windows 主机**上，需要桥接网络——WSL2 使用具有独立子网的虚拟网络适配器，因此 WSL2 内的 `localhost` 指向 Linux 虚拟机，**而非** Windows 主机。
+由于 Shards Agent 需要 Unix 环境，Windows 用户在 WSL2 内运行它。如果你的模型服务器（Ollama、LM Studio 等）运行在 **Windows 主机**上，需要桥接网络——WSL2 使用具有独立子网的虚拟网络适配器，因此 WSL2 内的 `localhost` 指向 Linux 虚拟机，**而非** Windows 主机。
 
 :::tip 都在 WSL2 内？没问题。
 如果你的模型服务器也在 WSL2 内运行（vLLM、SGLang 和 llama-server 的常见情况），`localhost` 可以正常工作——它们共享同一网络命名空间。跳过本节。

@@ -1,12 +1,12 @@
 ---
 sidebar_position: 2
 title: "Installation"
-description: "Install Hermes Agent with desktop bundles, source installers, Docker, Nix, or the Termux APT package"
+description: "Install Shards Agent with desktop bundles, source installers, Docker, Nix, or the Termux APT package"
 ---
 
 # Installation
 
-Get Hermes Agent up and running in under two minutes!
+Get Shards Agent up and running in under two minutes!
 
 :::tip Platform Support
 For the full platform support matrix (which OSes, distribution methods, and
@@ -30,7 +30,7 @@ interfaces. First launch does not build that base runtime. Provider access and
 optional integrations can still require network access.
 
 A `Hermes-Setup` bootstrap installer is different: it downloads a source
-installation and builds the desktop app. See [Hermes Desktop](../user-guide/desktop.md).
+installation and builds the desktop app. See [Shards Desktop](../user-guide/desktop.md).
 
 There is no separate remote-only Desktop download. To use Desktop with a Hermes
 backend on another machine, install one of the packages above and connect it
@@ -41,8 +41,8 @@ from **Settings → Gateways**; see
 The macOS installer is **Apple Silicon only**. macOS on x86 (Intel) processors is [not a supported platform](./platform-support.md#unsupported).
 :::
 
-### Without Hermes Desktop:
-For a command-line only install without Hermes Desktop, run:
+### Without Shards Desktop:
+For a command-line only install without Shards Desktop, run:
 
 #### Linux / macOS / WSL2
 ```bash
@@ -56,7 +56,7 @@ Run in powershell:
 iex (irm https://hermes-agent.nousresearch.com/install.ps1) 
 ```
 
-If you want to install & run Hermes Desktop after a command-line only install, simply run
+If you want to install & run Shards Desktop after a command-line only install, simply run
 ```bash
 hermes desktop
 ```
@@ -64,7 +64,7 @@ hermes desktop
 ### Android / Termux
 
 Use the [Termux APT package](./termux.md) on aarch64 Android devices.
-Configure its signed repository before running `pkg install hermes-agent`.
+Configure its signed repository before running `pkg install shards-agent`.
 The desktop/server scripts are not the Termux installation path.
 
 ### What the source installer does
@@ -108,11 +108,11 @@ directory; a failed step prints its last lines and the log path. CI (`CI` or
 
 | Method | Code | CLI entry point | Default user data |
 |---|---|---|---|
-| POSIX source script | `~/.hermes/hermes-agent/` | `~/.local/bin/hermes` wrapper | `~/.hermes/` |
-| Windows source script | `%LOCALAPPDATA%\hermes\hermes-agent\` | `%LOCALAPPDATA%\hermes\bin\` | `%LOCALAPPDATA%\hermes\` |
+| POSIX source script | `~/.hermes/shards-agent/` | `~/.local/bin/hermes` wrapper | `~/.hermes/` |
+| Windows source script | `%LOCALAPPDATA%\hermes\shards-agent\` | `%LOCALAPPDATA%\hermes\bin\` | `%LOCALAPPDATA%\hermes\` |
 | Desktop bundle | Inside the installed app package | Packaged launchers; Windows execution aliases | Platform default Hermes data directory |
 | Docker | `/opt/hermes/` | Image entrypoint and `hermes` shim | Mounted `/opt/data/` |
-| Termux APT | `$PREFIX/lib/hermes-agent/` | Symlinks in `$PREFIX/bin/` | `~/.hermes/` |
+| Termux APT | `$PREFIX/lib/shards-agent/` | Symlinks in `$PREFIX/bin/` | `~/.hermes/` |
 
 `HERMES_HOME` selects user data. The POSIX script's `--dir` selects its source
 checkout independently. Windows provides `-HermesHome` and `-InstallDir`.

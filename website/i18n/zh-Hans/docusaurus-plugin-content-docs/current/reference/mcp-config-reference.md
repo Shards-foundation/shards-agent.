@@ -1,7 +1,7 @@
 ---
 sidebar_position: 8
 title: "MCP 配置参考"
-description: "Hermes Agent MCP 配置键、过滤语义及工具策略参考"
+description: "Shards Agent MCP 配置键、过滤语义及工具策略参考"
 ---
 
 # MCP 配置参考

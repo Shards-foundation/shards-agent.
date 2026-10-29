@@ -17,7 +17,7 @@ Exploratory QA of web apps: find bugs, evidence, reports.
 | Source | Bundled (installed by default) |
 | Path | `skills/software-development/dogfood` |
 | Version | `1.0.0` |
-| Author | Teknium (teknium1), Hermes Agent |
+| Author | Teknium (teknium1), Shards Agent |
 | License | MIT |
 | Platforms | linux, macos, windows |
 | Tags | `qa`, `testing`, `browser`, `web`, `dogfood` |

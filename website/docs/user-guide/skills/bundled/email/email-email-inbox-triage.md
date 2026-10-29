@@ -17,7 +17,7 @@ Triage an inbox: prioritize threads, draft replies safely.
 | Source | Bundled (installed by default) |
 | Path | `skills/email/email-inbox-triage` |
 | Version | `0.2.0` |
-| Author | Ben Barclay (benbarclay), Hermes Agent |
+| Author | Ben Barclay (benbarclay), Shards Agent |
 | License | MIT |
 | Platforms | linux, macos, windows |
 | Tags | `Email`, `Inbox`, `Triage`, `Replies`, `Productivity` |

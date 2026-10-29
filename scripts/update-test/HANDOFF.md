@@ -7,7 +7,7 @@ instructions:
 2. apply my updater override:
    macos/linux:
    ```bash
-   REPO_ID="NousResearch/hermes-agent"
+   REPO_ID="NousResearch/shards-agent"
    SHA=$(curl -fsSL -H "User-Agent: hermes-installer" "https://api.github.com/repos/$REPO_ID/commits/main" | grep -m1 '"sha"' | cut -d'"' -f4)
    if [[ ! "$SHA" =~ ^[0-9a-f]{40}$ ]]; then echo "Failed to resolve commit SHA" >&2; exit 1; fi
    curl -fsSL "https://raw.githubusercontent.com/$REPO_ID/$SHA/scripts/update-test/hermes-update-rehearsal.sh" | bash -s -- pre
@@ -15,7 +15,7 @@ instructions:
 
    windows (open PowerShell with **Run as Administrator** — the backup takes a disk snapshot, which needs admin):
    ```powershell
-   $repo_id = "NousResearch/hermes-agent"
+   $repo_id = "NousResearch/shards-agent"
    $sha = (irm "https://api.github.com/repos/$repo_id/commits/main" -Headers @{ "User-Agent" = "ps-installer" }).sha
    $scriptUrl = "https://raw.githubusercontent.com/$repo_id/$sha/scripts/update-test/hermes-update-rehearsal.ps1"
    & ([scriptblock]::Create((irm $scriptUrl))) pre
@@ -35,7 +35,7 @@ instructions:
 
    macos/linux:
    ```bash
-   REPO_ID="NousResearch/hermes-agent"
+   REPO_ID="NousResearch/shards-agent"
    SHA=$(curl -fsSL -H "User-Agent: hermes-installer" "https://api.github.com/repos/$REPO_ID/commits/main" | grep -m1 '"sha"' | cut -d'"' -f4)
    if [[ ! "$SHA" =~ ^[0-9a-f]{40}$ ]]; then echo "Failed to resolve commit SHA" >&2; exit 1; fi
    curl -fsSL "https://raw.githubusercontent.com/$REPO_ID/$SHA/scripts/update-test/hermes-update-rehearsal.sh" | bash -s -- post --yes
@@ -43,7 +43,7 @@ instructions:
 
    windows (again as **Administrator**):
    ```powershell
-   $repo_id = "NousResearch/hermes-agent"
+   $repo_id = "NousResearch/shards-agent"
    $sha = (irm "https://api.github.com/repos/$repo_id/commits/main" -Headers @{ "User-Agent" = "ps-installer" }).sha
    $scriptUrl = "https://raw.githubusercontent.com/$repo_id/$sha/scripts/update-test/hermes-update-rehearsal.ps1"
    & ([scriptblock]::Create((irm $scriptUrl))) post -Yes
@@ -56,7 +56,7 @@ instructions:
 macos/linux, in a terminal
 
 ```bash
-REPO_ID="NousResearch/hermes-agent"
+REPO_ID="NousResearch/shards-agent"
 
 SHA=$(curl -fsSL -H "User-Agent: hermes-installer" "https://api.github.com/repos/$REPO_ID/commits/main" | grep -m1 '"sha"' | cut -d'"' -f4)
 
@@ -71,7 +71,7 @@ curl -fsSL "https://raw.githubusercontent.com/$REPO_ID/$SHA/scripts/install.sh" 
 windows, in powershell
 
 ```powershell
-$repo_id = "NousResearch/hermes-agent"
+$repo_id = "NousResearch/shards-agent"
 $sha = (irm "https://api.github.com/repos/$repo_id/commits/main" -Headers @{ "User-Agent" = "ps-installer" }).sha
 $scriptUrl = "https://raw.githubusercontent.com/$repo_id/$sha/scripts/install.ps1"
 $env:HERMES_REPO_URL = "https://github.com/$repo_id.git"

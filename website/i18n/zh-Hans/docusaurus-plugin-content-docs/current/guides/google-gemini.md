@@ -1,12 +1,12 @@
 ---
 sidebar_position: 16
 title: "Google Gemini"
-description: "将 Hermes Agent 与 Google Gemini 配合使用——原生 AI Studio API、API 密钥配置、工具调用、流式传输及配额说明"
+description: "将 Shards Agent 与 Google Gemini 配合使用——原生 AI Studio API、API 密钥配置、工具调用、流式传输及配额说明"
 ---
 
 # Google Gemini
 
-Hermes Agent 通过 **Google AI Studio / Gemini API** 原生支持 Google Gemini——而非 OpenAI 兼容端点。这使 Hermes 能够将其内部 OpenAI 格式的消息和工具循环转换为 Gemini 原生的 `generateContent` API，同时保留工具调用、流式传输、多模态输入以及 Gemini 特有的响应元数据。
+Shards Agent 通过 **Google AI Studio / Gemini API** 原生支持 Google Gemini——而非 OpenAI 兼容端点。这使 Hermes 能够将其内部 OpenAI 格式的消息和工具循环转换为 Gemini 原生的 `generateContent` API，同时保留工具调用、流式传输、多模态输入以及 Gemini 特有的响应元数据。
 
 ## 前提条件
 
@@ -90,7 +90,7 @@ Google 还提供了 OpenAI 兼容端点：
 https://generativelanguage.googleapis.com/v1beta/openai/
 ```
 
-对于 Hermes Agent 会话，请优先使用上述原生 Gemini 端点。Hermes 内置原生 Gemini 适配器，可将多轮工具调用、工具调用结果、流式传输、多模态输入以及 Gemini 响应元数据直接映射到 Gemini 的 `generateContent` API。OpenAI 兼容端点在你明确需要 OpenAI API 兼容性时仍然有用。
+对于 Shards Agent 会话，请优先使用上述原生 Gemini 端点。Hermes 内置原生 Gemini 适配器，可将多轮工具调用、工具调用结果、流式传输、多模态输入以及 Gemini 响应元数据直接映射到 Gemini 的 `generateContent` API。OpenAI 兼容端点在你明确需要 OpenAI API 兼容性时仍然有用。
 
 如果你之前将 `GEMINI_BASE_URL` 设置为 `/openai` URL，请将其删除或修改：
 
@@ -144,7 +144,7 @@ Google 也通过 Gemini API 提供 Gemma 模型。Hermes 将这些模型识别�
 | Gemma 4 31B IT | `gemma-4-31b-it` | 较大的 Gemma 模型；适用于兼容性和质量评估 |
 | Gemma 4 26B A4B IT | `gemma-4-26b-a4b-it` | 可用时的较小活跃参数变体 |
 
-这些模型最适合作为 Gemini API 密钥的评估选项。Google 的 Gemma API 定价仅限免费层级，与生产级 Gemini 模型相比使用上限较低，因此持续的 Hermes Agent 使用通常应切换到付费 Gemini 模型、自托管部署或具有适当配额的其他 provider。
+这些模型最适合作为 Gemini API 密钥的评估选项。Google 的 Gemma API 定价仅限免费层级，与生产级 Gemini 模型相比使用上限较低，因此持续的 Shards Agent 使用通常应切换到付费 Gemini 模型、自托管部署或具有适当配额的其他 provider。
 
 如需使用选择器中隐藏的 Gemma 模型，请直接在配置中指定：
 

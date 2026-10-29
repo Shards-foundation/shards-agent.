@@ -1,7 +1,7 @@
 ---
 sidebar_position: 12
 title: "网页搜索提供商插件"
-description: "如何为 Hermes Agent 构建网页搜索/提取/爬取后端插件"
+description: "如何为 Shards Agent 构建网页搜索/提取/爬取后端插件"
 ---
 
 # 构建网页搜索提供商插件

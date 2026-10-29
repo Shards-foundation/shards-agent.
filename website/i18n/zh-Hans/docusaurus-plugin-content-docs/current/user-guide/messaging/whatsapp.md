@@ -1,7 +1,7 @@
 ---
 sidebar_position: 5
 title: "WhatsApp"
-description: "通过内置 Baileys 桥接将 Hermes Agent 设置为 WhatsApp 机器人"
+description: "通过内置 Baileys 桥接将 Shards Agent 设置为 WhatsApp 机器人"
 ---
 
 # WhatsApp 配置
@@ -160,7 +160,7 @@ Hermes 支持 WhatsApp 上的语音功能：
 
 - **接收：** 语音消息（`.ogg` opus 格式）会使用已配置的 STT 提供商自动转录：本地 `faster-whisper`、Groq Whisper（`GROQ_API_KEY`）或 OpenAI Whisper（`VOICE_TOOLS_OPENAI_KEY`）
 - **发送：** TTS 响应以 MP3 音频文件附件形式发送
-- Agent 响应默认以"☤ **Hermes Agent**"为前缀。可在 `config.yaml` 中自定义或禁用：
+- Agent 响应默认以"☤ **Shards Agent**"为前缀。可在 `config.yaml` 中自定义或禁用：
 
 ```yaml
 # ~/.hermes/config.yaml

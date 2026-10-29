@@ -237,7 +237,7 @@ Codex 有三个内置权限配置文件：
 default_permissions = ":read-only"
 ```
 
-（只要你的覆盖配置位于 `# managed by hermes-agent` 标记之外，Hermes 在重新迁移时会保留它。）
+（只要你的覆盖配置位于 `# managed by shards-agent` 标记之外，Hermes 在重新迁移时会保留它。）
 
 ## 辅助任务与 ChatGPT 订阅 token 消耗
 
@@ -270,13 +270,13 @@ auxiliary:
 Hermes 将其管理的所有内容包裹在两个标记注释之间：
 
 ```toml
-# managed by hermes-agent — `hermes codex-runtime migrate` regenerates this section
+# managed by shards-agent — `hermes codex-runtime migrate` regenerates this section
 default_permissions = ":workspace"
 [mcp_servers.filesystem]
 ...
 [plugins."github@openai-curated"]
 ...
-# end hermes-agent managed section
+# end shards-agent managed section
 ```
 
 该块**之外**的内容归你所有。重新运行迁移（通过 `/codex-runtime codex_app_server` 或每次切换运行时时）会原地替换管理块，但完整保留其上下方的用户内容。这意味着你可以：
@@ -372,7 +372,7 @@ tool_timeout_sec = 600.0
 
 ## 限制
 
-此运行时为**可选启用的 beta 功能**。以下功能在 Hermes Agent 2026.5 + Codex CLI 0.130.0 上已验证可用：
+此运行时为**可选启用的 beta 功能**。以下功能在 Shards Agent 2026.5 + Codex CLI 0.130.0 上已验证可用：
 
 - 多轮对话
 - 通过 Hermes UI 进行 `commandExecution` 和 `fileChange`（apply_patch）审批

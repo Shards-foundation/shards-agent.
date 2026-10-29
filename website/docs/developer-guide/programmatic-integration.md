@@ -1,7 +1,7 @@
 ---
 sidebar_position: 8
 title: "Programmatic Integration"
-description: "Three protocols for driving hermes-agent from external programs: ACP, the TUI gateway JSON-RPC, and the OpenAI-compatible HTTP API"
+description: "Three protocols for driving shards-agent from external programs: ACP, the TUI gateway JSON-RPC, and the OpenAI-compatible HTTP API"
 ---
 
 # Programmatic Integration
@@ -141,7 +141,7 @@ POST /v1/runs/{id}/steer         Inject mid-run guidance at the next tool bounda
 POST /v1/runs/{id}/resolve-unknown Acknowledge an exact restart-unknown admission
 POST /v1/runs/{id}/stop          Interrupt the run
 GET  /v1/capabilities            Machine-readable feature flags
-GET  /v1/models                  Lists hermes-agent
+GET  /v1/models                  Lists shards-agent
 GET  /api/model/options          Provider-aware picker inventory
 GET  /health, /health/detailed
 ```

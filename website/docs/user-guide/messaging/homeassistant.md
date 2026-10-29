@@ -1,13 +1,13 @@
 ---
 title: Home Assistant
-description: Control your smart home with Hermes Agent via the Home Assistant plugin from the plugin catalog.
+description: Control your smart home with Shards Agent via the Home Assistant plugin from the plugin catalog.
 sidebar_label: Home Assistant
 sidebar_position: 5
 ---
 
 # Home Assistant Integration
 
-Hermes Agent integrates with [Home Assistant](https://www.home-assistant.io/) through the official **`homeassistant` plugin** from the [plugin catalog](../features/plugins.md). The plugin is maintained by Nous Research in [NousResearch/hermes-official-plugins](https://github.com/NousResearch/hermes-official-plugins/tree/main/homeassistant) and is not part of Hermes core. It provides two things:
+Shards Agent integrates with [Home Assistant](https://www.home-assistant.io/) through the official **`homeassistant` plugin** from the [plugin catalog](../features/plugins.md). The plugin is maintained by Nous Research in [NousResearch/hermes-official-plugins](https://github.com/NousResearch/hermes-official-plugins/tree/main/homeassistant) and is not part of Hermes core. It provides two things:
 
 1. **Gateway platform** — subscribes to real-time state changes via WebSocket and responds to events
 2. **Smart home tools** — four LLM-callable tools (the `homeassistant` toolset) for querying and controlling devices via the REST API
@@ -24,7 +24,7 @@ Plugins are installed per profile. To use Home Assistant in another profile, ins
 hermes -p <profile> plugins install homeassistant
 ```
 
-The plugin declares its own Python dependency (`aiohttp`), so there is no pip extra to install. The old `hermes-agent[homeassistant]` extra has been removed.
+The plugin declares its own Python dependency (`aiohttp`), so there is no pip extra to install. The old `shards-agent[homeassistant]` extra has been removed.
 
 :::info Upgrading from a release that bundled Home Assistant
 Nothing to do. Every profile that was already using Home Assistant — `HASS_TOKEN` in its `.env`, `platforms.homeassistant` enabled (or given a `token`) in `config.yaml`, or the `homeassistant` toolset listed in `platform_toolsets` — gets the plugin installed automatically from the catalog by `hermes update` (for all profiles sharing the install). If that step could not run, Hermes installs it the first time the profile starts (agent or gateway start; this honours `security.allow_lazy_installs`). After a failed attempt (offline, catalog unreachable) starts retry at most once an hour; `hermes update` always retries. The outcome is reported in the terminal, the Desktop app and chat. This happens once per profile: if you later remove the plugin (`hermes plugins remove homeassistant`), it stays removed.
@@ -39,7 +39,7 @@ Your configuration carries over unchanged: the same `HASS_TOKEN` / `HASS_URL` va
 1. Open your Home Assistant instance
 2. Go to your **Profile** (click your name in the sidebar)
 3. Scroll to **Long-Lived Access Tokens**
-4. Click **Create Token**, give it a name like "Hermes Agent"
+4. Click **Create Token**, give it a name like "Shards Agent"
 5. Copy the token
 
 ### 2. Configure Environment Variables
@@ -203,7 +203,7 @@ State changes are formatted as human-readable messages based on domain:
 
 ### Agent Responses
 
-Outbound messages from the agent are delivered as **Home Assistant persistent notifications** (via `persistent_notification.create`). These appear in the HA notification panel with the title "Hermes Agent".
+Outbound messages from the agent are delivered as **Home Assistant persistent notifications** (via `persistent_notification.create`). These appear in the HA notification panel with the title "Shards Agent".
 
 The platform uses the `minimal` display defaults (no tool-progress or streaming chatter in notifications). Override them under `display.platforms.homeassistant` in `config.yaml` if you want more.
 

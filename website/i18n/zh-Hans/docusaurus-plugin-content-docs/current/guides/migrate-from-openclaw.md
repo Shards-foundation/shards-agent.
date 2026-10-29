@@ -1,7 +1,7 @@
 ---
 sidebar_position: 10
 title: "从 OpenClaw 迁移"
-description: "将 OpenClaw / Clawdbot 配置迁移到 Hermes Agent 的完整指南——包括迁移内容、配置键映射及迁移后的检查事项。"
+description: "将 OpenClaw / Clawdbot 配置迁移到 Shards Agent 的完整指南——包括迁移内容、配置键映射及迁移后的检查事项。"
 ---
 
 # 从 OpenClaw 迁移

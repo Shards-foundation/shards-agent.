@@ -17,7 +17,7 @@ ASCII art: pyfiglet, cowsay, boxes, image-to-ascii.
 | Source | Optional — install with `hermes skills install official/creative/ascii-art` |
 | Path | `optional-skills/creative/ascii-art` |
 | Version | `4.0.0` |
-| Author | 0xbyt4, Hermes Agent |
+| Author | 0xbyt4, Shards Agent |
 | License | MIT |
 | Platforms | linux, macos, windows |
 | Tags | `ASCII`, `Art`, `Banners`, `Creative`, `Unicode`, `Text-Art`, `pyfiglet`, `figlet`, `cowsay`, `boxes` |

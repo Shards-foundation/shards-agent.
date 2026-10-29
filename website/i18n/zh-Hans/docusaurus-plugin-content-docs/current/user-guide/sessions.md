@@ -6,7 +6,7 @@ description: "会话持久化、恢复、搜索、管理及各平台会话跟踪
 
 # Sessions（会话）
 
-Hermes Agent 自动将每次对话保存为一个 session。Session 支持对话恢复、跨 session 搜索以及完整的对话历史管理。
+Shards Agent 自动将每次对话保存为一个 session。Session 支持对话恢复、跨 session 搜索以及完整的对话历史管理。
 
 ## Session 的工作原理
 

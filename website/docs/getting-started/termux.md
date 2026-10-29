@@ -1,7 +1,7 @@
 ---
 sidebar_position: 3
 title: "Android / Termux"
-description: "Install Hermes Agent on Android from its signed Termux APT repository"
+description: "Install Shards Agent on Android from its signed Termux APT repository"
 ---
 
 # Hermes on Android with Termux
@@ -52,13 +52,13 @@ Do not use the desktop/server `install.sh` or a glibc Linux archive on this targ
    mkdir -p "$PREFIX/etc/apt/keyrings"
    curl -fsSL \
      https://hermes-assets.nousresearch.com/releases/termux/stable/key.asc \
-     -o "$PREFIX/etc/apt/keyrings/hermes-agent.asc"
+     -o "$PREFIX/etc/apt/keyrings/shards-agent.asc"
    ```
 
 3. Verify its primary fingerprint:
 
    ```bash
-   gpg --show-keys --with-fingerprint "$PREFIX/etc/apt/keyrings/hermes-agent.asc"
+   gpg --show-keys --with-fingerprint "$PREFIX/etc/apt/keyrings/shards-agent.asc"
    ```
 
    The repository key fingerprint is:
@@ -73,15 +73,15 @@ Do not use the desktop/server `install.sh` or a glibc Linux archive on this targ
 
    ```bash
    printf '%s\n' \
-     "deb [signed-by=$PREFIX/etc/apt/keyrings/hermes-agent.asc] https://hermes-assets.nousresearch.com/releases/termux/stable hermes-stable main" \
-     > "$PREFIX/etc/apt/sources.list.d/hermes-agent.list"
+     "deb [signed-by=$PREFIX/etc/apt/keyrings/shards-agent.asc] https://hermes-assets.nousresearch.com/releases/termux/stable hermes-stable main" \
+     > "$PREFIX/etc/apt/sources.list.d/shards-agent.list"
    ```
 
 5. Install Hermes:
 
    ```bash
    pkg update
-   pkg install hermes-agent
+   pkg install shards-agent
    ```
 
 6. Configure a provider, then start the TUI:
@@ -91,30 +91,30 @@ Do not use the desktop/server `install.sh` or a glibc Linux archive on this targ
    hermes --tui
    ```
 
-The `hermes`, `hermes-agent`, and `hermes-acp` commands use the packaged runtimes.
+The `hermes`, `shards-agent`, and `hermes-acp` commands use the packaged runtimes.
 They do not require Termux's `python` or `nodejs` packages.
 
 ## Files and updates
 
 | Contents | Location |
 | --- | --- |
-| Package files | `$PREFIX/lib/hermes-agent/` |
-| Command symlinks | `$PREFIX/bin/hermes`, `$PREFIX/bin/hermes-agent`, `$PREFIX/bin/hermes-acp` |
+| Package files | `$PREFIX/lib/shards-agent/` |
+| Command symlinks | `$PREFIX/bin/hermes`, `$PREFIX/bin/shards-agent`, `$PREFIX/bin/hermes-acp` |
 | Configuration and user data | `~/.hermes/`, or the selected `HERMES_HOME` |
 
 Update through APT:
 
 ```bash
 pkg update
-pkg upgrade hermes-agent
+pkg upgrade shards-agent
 ```
 
 `hermes update` refuses to modify an APT-owned installation.
 It prints the package-manager command instead.
 Canary versions contain `~canary.<timestamp>` and sort before the corresponding
 stable version. Each suite only lists its own channel's packages; to move
-between channels, edit the channel path and suite in `hermes-agent.list`, then
-`pkg update && pkg upgrade hermes-agent`.
+between channels, edit the channel path and suite in `shards-agent.list`, then
+`pkg update && pkg upgrade shards-agent`.
 
 ## Gateway
 
@@ -159,7 +159,7 @@ or skill gated only to `linux` is not automatically available on Android.
 ## Uninstall
 
 ```bash
-pkg uninstall hermes-agent
+pkg uninstall shards-agent
 ```
 
 APT removes the package and its command symlinks. It preserves your configuration, sessions, skills, and memories.

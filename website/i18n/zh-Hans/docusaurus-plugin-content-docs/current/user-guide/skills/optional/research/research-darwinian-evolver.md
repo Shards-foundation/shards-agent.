@@ -17,7 +17,7 @@ description: "使用 Imbue 的进化循环来优化 prompt/正则/SQL/代码"
 | 来源 | 可选 — 通过 `hermes skills install official/research/darwinian-evolver` 安装 |
 | 路径 | `optional-skills/research/darwinian-evolver` |
 | 版本 | `0.1.0` |
-| 作者 | Bihruze (Asahi0x), Hermes Agent |
+| 作者 | Bihruze (Asahi0x), Shards Agent |
 | 许可证 | MIT |
 | 平台 | linux, macos |
 | 标签 | `evolution`, `optimization`, `prompt-engineering`, `research` |

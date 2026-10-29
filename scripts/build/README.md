@@ -333,7 +333,7 @@ All supplied filesystem input paths must be absolute and exist. `repo` and
 |---|---|---|
 | `project` | Yes | `pyproject.toml` with static project metadata and `[project.scripts]` |
 | `code` | Yes | Prepared source tree, or installed code root for reference placement |
-| `repo` | Yes | Code/resource location beneath `OUT`, such as `hermes-agent`, `.`, or `share/hermes-agent` |
+| `repo` | Yes | Code/resource location beneath `OUT`, such as `shards-agent`, `.`, or `share/shards-agent` |
 | `placement` | Yes | `contained`, `fixed`, or `references` |
 | `target` | Yes | `linux-x64`, `linux-arm64`, `darwin-x64`, `darwin-arm64`, `win32-x64`, `win32-arm64`, or `linux-arm64-bionic` |
 | `python` | Yes | Prepared target interpreter file |
@@ -374,7 +374,7 @@ match the supplied PM runtime. The assembler does not create that environment.
   from this map.
 
 Source-layout placement writes project distribution metadata without building
-a Hermes wheel. It also writes `site_packages/hermes-agent.pth` with a relative
+a Hermes wheel. It also writes `site_packages/shards-agent.pth` with a relative
 code path. Source-layout placement therefore requires an output-owned dependency
 directory, including in `fixed` mode. Reference placement does not write this file.
 

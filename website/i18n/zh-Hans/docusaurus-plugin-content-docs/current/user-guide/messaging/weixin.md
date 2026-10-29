@@ -1,7 +1,7 @@
 ---
 sidebar_position: 15
 title: "微信（Weixin）"
-description: "通过 iLink Bot API 将 Hermes Agent 连接到个人微信账号"
+description: "通过 iLink Bot API 将 Shards Agent 连接到个人微信账号"
 ---
 
 # 微信（Weixin / WeChat）
@@ -37,7 +37,7 @@ description: "通过 iLink Bot API 将 Hermes Agent 连接到个人微信账号"
 ```bash
 python -c "import pm; pm.sync_venv(['messaging'], explicit=True)"
 # 可选：用于终端二维码显示
-cd ~/.hermes/hermes-agent && python -c "import pm; pm.sync_venv(['messaging'], explicit=True)"
+cd ~/.hermes/shards-agent && python -c "import pm; pm.sync_venv(['messaging'], explicit=True)"
 ```
 
 ## 配置步骤
@@ -313,4 +313,4 @@ iLink Bot API 要求在每条出站消息中回传 `context_token`（针对特�
 | 语音消息显示为文本 | 若微信提供了转录文本，适配器会使用文本内容，这是预期行为 |
 | 消息出现重复 | 适配器通过消息 ID 去重。若仍出现重复，检查是否有多个网关实例在运行 |
 | `iLink POST ... HTTP 4xx/5xx` | iLink 服务返回 API 错误。检查 token 有效性和网络连通性 |
-| 终端二维码无法渲染 | 使用 messaging 扩展重新安装：`cd ~/.hermes/hermes-agent && python -c "import pm; pm.sync_venv(['messaging'], explicit=True)"`。或者，打开二维码上方打印的 URL |
+| 终端二维码无法渲染 | 使用 messaging 扩展重新安装：`cd ~/.hermes/shards-agent && python -c "import pm; pm.sync_venv(['messaging'], explicit=True)"`。或者，打开二维码上方打印的 URL |

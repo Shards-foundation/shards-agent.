@@ -6,7 +6,7 @@ sidebar_position: 0
 
 # 集成
 
-Hermes Agent 可连接外部系统，用于 AI 推理、工具服务器、IDE 工作流、程序化访问等。这些集成扩展了 Hermes 的能力边界与运行环境。
+Shards Agent 可连接外部系统，用于 AI 推理、工具服务器、IDE 工作流、程序化访问等。这些集成扩展了 Hermes 的能力边界与运行环境。
 
 ## AI 提供商与路由
 
@@ -69,7 +69,7 @@ Camofox 反检测浏览器以目录插件形式提供：`hermes plugins install 
 
 ## IDE 与编辑器集成
 
-- **[IDE 集成（ACP）](../user-guide/features/acp.md)** — 在兼容 ACP 的编辑器（如 VS Code、Zed 和 JetBrains）中使用 Hermes Agent。Hermes 作为 ACP 服务器运行，在编辑器内渲染聊天消息、工具活动、文件差异和终端命令。
+- **[IDE 集成（ACP）](../user-guide/features/acp.md)** — 在兼容 ACP 的编辑器（如 VS Code、Zed 和 JetBrains）中使用 Shards Agent。Hermes 作为 ACP 服务器运行，在编辑器内渲染聊天消息、工具活动、文件差异和终端命令。
 
 ## 程序化访问
 

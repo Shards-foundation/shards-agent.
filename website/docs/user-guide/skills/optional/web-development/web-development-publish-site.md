@@ -17,7 +17,7 @@ Versioned site deploys to GitHub/Cloudflare/Netlify Pages.
 | Source | Optional — install with `hermes skills install official/web-development/publish-site` |
 | Path | `optional-skills/web-development/publish-site` |
 | Version | `1.0.0` |
-| Author | Hermes Agent (Nous Research) |
+| Author | Shards Agent (Nous Research) |
 | License | MIT |
 | Platforms | linux, macos, windows |
 | Tags | `publish`, `deploy`, `hosting`, `github-pages`, `cloudflare-pages`, `netlify`, `static-site`, `versioning`, `rollback`, `web-development` |

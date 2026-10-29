@@ -40,7 +40,7 @@ same reviewed commit this page describes.
 
 Each catalog entry is a small YAML file in the
 [`plugin-catalog/`](https://github.com/NousResearch/hermes-agent/tree/main/plugin-catalog)
-directory of the hermes-agent repository, declaring:
+directory of the shards-agent repository, declaring:
 
 | Field | Meaning |
 |---|---|

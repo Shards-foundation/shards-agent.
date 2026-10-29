@@ -7,7 +7,7 @@ description: "将 Hermes 连接到 GitHub，使其自动获取 PR diff、审查�
 
 # 使用 Webhook 自动发布 GitHub PR 评论
 
-本指南介绍如何将 Hermes Agent 连接到 GitHub，使其自动获取 pull request 的 diff、分析代码变更并发布评论——由 webhook 事件触发，无需手动 prompt（提示词）。
+本指南介绍如何将 Shards Agent 连接到 GitHub，使其自动获取 pull request 的 diff、分析代码变更并发布评论——由 webhook 事件触发，无需手动 prompt（提示词）。
 
 当 PR 被打开或更新时，GitHub 会向你的 Hermes 实例发送一个 webhook POST 请求。Hermes 使用一个 prompt 运行 agent，该 prompt 指示其通过 `gh` CLI 获取 diff，并将响应发布回 PR 线程。
 
@@ -27,7 +27,7 @@ Webhook payload 包含攻击者可控的数据——PR 标题、commit 消息和
 
 ## 前提条件
 
-- Hermes Agent 已安装并运行（`hermes gateway`）
+- Shards Agent 已安装并运行（`hermes gateway`）
 - [`gh` CLI](https://cli.github.com/) 已安装并在 gateway 主机上完成认证（`gh auth login`）
 - 你的 Hermes 实例有一个可公网访问的 URL（如果在本地运行，请参阅[使用 ngrok 进行本地测试](#local-testing-with-ngrok)）
 - 对 GitHub 仓库的管理员权限（管理 webhook 所需）

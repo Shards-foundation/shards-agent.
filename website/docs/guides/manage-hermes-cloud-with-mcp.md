@@ -1,7 +1,7 @@
 ---
 sidebar_position: 16
 title: "Manage Hermes Cloud with MCP"
-description: "Connect Hermes Agent to the Nous Portal MCP server so your local agent can list, start, stop, and manage your Hermes Cloud instances conversationally"
+description: "Connect Shards Agent to the Nous Portal MCP server so your local agent can list, start, stop, and manage your Hermes Cloud instances conversationally"
 ---
 
 # Manage Hermes Cloud with MCP
@@ -10,7 +10,7 @@ Python dependency commands on this page use a
 [PM-prepared source checkout](../reference/package-management.md#developer-workflow).
 After a dependency change, reactivate the checkout and restart Hermes.
 
-[Hermes Cloud](https://portal.nousresearch.com/cloud) runs hosted Hermes Agent instances for you. Normally you manage them from the `/agents` page in the [Nous Portal](../integrations/nous-portal.md). This guide connects your **local** Hermes Agent to the Portal's MCP server so you can manage those cloud instances by just asking — "list my cloud agents", "restart the stopped one", "what's it costing me" — without leaving your terminal.
+[Hermes Cloud](https://portal.nousresearch.com/cloud) runs hosted Shards Agent instances for you. Normally you manage them from the `/agents` page in the [Nous Portal](../integrations/nous-portal.md). This guide connects your **local** Shards Agent to the Portal's MCP server so you can manage those cloud instances by just asking — "list my cloud agents", "restart the stopped one", "what's it costing me" — without leaving your terminal.
 
 It's a standard [MCP](../user-guide/features/mcp.md) server hosted by Nous Research, gated by the same OAuth login you already use for the Portal. Once connected, Hermes gets two tools it can call on your behalf.
 
@@ -36,7 +36,7 @@ Every call runs against **your** org with your Portal identity, and membership i
 - MCP support installed. If you used the standard install script it's already there; otherwise:
 
   ```bash
-  cd ~/.hermes/hermes-agent
+  cd ~/.hermes/shards-agent
   python -c "import pm; pm.sync_venv(['mcp'], explicit=True)"
   ```
 

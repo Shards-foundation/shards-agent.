@@ -110,7 +110,7 @@ mining, per-epoch anchor windows) before default flip.
    gold: `~60GB`
 3. **Which specific Electron setting is suspected of causing the Windows occlusion freeze in issue #83420?**  
    gold: `backgroundThrottling`
-4. **What exact error message is returned when 'gh pr merge --auto' is attempted on the NousResearch/hermes-agent repository?**  
+4. **What exact error message is returned when 'gh pr merge --auto' is attempted on the NousResearch/shards-agent repository?**  
    gold: `Auto merge is not allowed for this repository (enablePullRequestAutoMerge)`
 5. **What is the specified 'Rule 0' that must be included in a subagent brief?**  
    gold: `load the skill first`
@@ -158,7 +158,7 @@ mining, per-epoch anchor windows) before default flip.
 9. **Which two properties shape almost every design decision in Hermes according to the Development Guide?**  
    gold: `Per-conversation prompt caching is sacred and The core is a narrow waist; capability lives at the edges.`
 10. **What error message does the live-checkout git guard display when blocking a history-rewriting command?**  
-   gold: `Blocked: `git <op>` would rewrite Hermes's live source checkout (/home/teknium/.hermes/hermes-agent) and can mix module `
+   gold: `Blocked: `git <op>` would rewrite Hermes's live source checkout (/home/teknium/.hermes/shards-agent) and can mix module `
 11. **What happened to the Desktop cluster's 'npm ci' command that resulted in an error writing to /tmp/ccH06T4r.s?**  
    gold: `No space left on device`
 12. **What was the GraphQL API rate limit remaining for the user when the 'API rate limit already exceeded' error first occurred?**  
@@ -181,7 +181,7 @@ mining, per-epoch anchor windows) before default flip.
 
 <details><summary>15 exam questions (questions-36d3d87e0b.json)</summary>
 
-1. **What is the PR number for the authored fix addressing mid-turn message ordering bugs in Hermes Desktop?**  
+1. **What is the PR number for the authored fix addressing mid-turn message ordering bugs in Shards Desktop?**  
    gold: `#86617`
 2. **According to the contribution rubric in AGENTS.md, which type of config belongs in '.env' and which belongs in 'config.yaml'?**  
    gold: `.env is for secrets only (API keys, tokens, passwords). All behavioral settings... go in config.yaml.`
@@ -315,7 +315,7 @@ mining, per-epoch anchor windows) before default flip.
 5. **What is the mandatory line limit for PR reviews requested by Teknium?**  
    gold: `<= 15 lines`
 6. **What exact error message did the agent receive when attempting to checkout a worktree while in the live source directory?**  
-   gold: `Blocked: `git checkout` would rewrite Hermes's live source checkout (/home/teknium/.hermes/hermes-agent) and can mix mod`
+   gold: `Blocked: `git checkout` would rewrite Hermes's live source checkout (/home/teknium/.hermes/shards-agent) and can mix mod`
 7. **Why was PR #74658 necessary to fix Slack 'broken on main'?**  
    gold: `SlackResponse isn't a dict subclass, so every gate is always False.`
 8. **What was the final merge commit SHA for the Slack SDK response fix on main?**  

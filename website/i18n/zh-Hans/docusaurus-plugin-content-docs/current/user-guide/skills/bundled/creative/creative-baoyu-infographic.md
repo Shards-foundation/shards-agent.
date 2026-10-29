@@ -30,7 +30,7 @@ description: "信息图：21种布局 × 21种风格（信息图, 可视化）"
 
 # 信息图生成器
 
-改编自 [baoyu-infographic](https://github.com/JimLiu/baoyu-skills)，适配 Hermes Agent 的工具生态系统。
+改编自 [baoyu-infographic](https://github.com/JimLiu/baoyu-skills)，适配 Shards Agent 的工具生态系统。
 
 两个维度：**布局**（信息结构）× **风格**（视觉美学）。可自由组合任意布局与风格。
 

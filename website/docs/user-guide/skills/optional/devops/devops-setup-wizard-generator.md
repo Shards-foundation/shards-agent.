@@ -17,7 +17,7 @@ Generate a bash wizard guiding a human through manual setup.
 | Source | Optional — install with `hermes skills install official/devops/setup-wizard-generator` |
 | Path | `optional-skills/devops/setup-wizard-generator` |
 | Version | `1.0.0` |
-| Author | Matt Pocock (mattpocock/skills, wizard) + Hermes Agent |
+| Author | Matt Pocock (mattpocock/skills, wizard) + Shards Agent |
 | License | MIT |
 | Platforms | linux, macos |
 | Tags | `wizard`, `setup`, `onboarding`, `credentials`, `secrets`, `migration`, `bash`, `human-in-the-loop` |

@@ -17,7 +17,7 @@ description: "通过 SearXNG 免费元搜索 — 聚合 70+ 搜索引擎的结�
 | 来源 | 可选 — 使用 `hermes skills install official/research/searxng-search` 安装 |
 | 路径 | `optional-skills/research/searxng-search` |
 | 版本 | `1.0.0` |
-| 作者 | hermes-agent |
+| 作者 | shards-agent |
 | 许可证 | MIT |
 | 平台 | linux, macos |
 | 标签 | `search`, `searxng`, `meta-search`, `self-hosted`, `free`, `fallback` |

@@ -17,7 +17,7 @@ description: "在构建前验证想法的一次性实验"
 | 来源 | 内置（默认安装） |
 | 路径 | `skills/software-development/spike` |
 | 版本 | `1.0.0` |
-| 作者 | Hermes Agent（改编自 gsd-build/get-shit-done） |
+| 作者 | Shards Agent（改编自 gsd-build/get-shit-done） |
 | 许可证 | MIT |
 | 平台 | linux, macos, windows |
 | 标签 | `spike`, `prototype`, `experiment`, `feasibility`, `throwaway`, `exploration`, `research`, `planning`, `mvp`, `proof-of-concept` |

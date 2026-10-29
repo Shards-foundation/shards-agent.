@@ -133,7 +133,7 @@ the recorded git or an absolute `PATH` entry, never the current directory) and
 verified the same way. Then: stdlib plus the copy only, the same restore claim
 and checkout lock (a live writer gets `Not repairing the checkout now` and exit
 1, no traceback), then a relaunch from the restored tree. Limits: other entry
-points (`python -m hermes_cli.main`, the `hermes-agent` hook) have no such
+points (`python -m hermes_cli.main`, the `shards-agent` hook) have no such
 fallback; a launcher minted before this fallback existed has none, so a kill
 during the first update onto this code (run under the old launcher) is not
 covered; a `pre` whose tree lacks the checkout lock or custody runner is not

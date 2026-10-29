@@ -1,7 +1,7 @@
 ---
 sidebar_position: 5
 title: "Microsoft Teams"
-description: "Set up Hermes Agent as a Microsoft Teams bot"
+description: "Set up Shards Agent as a Microsoft Teams bot"
 ---
 
 # Microsoft Teams Setup
@@ -10,7 +10,7 @@ Python dependency commands on this page use a
 [PM-prepared source checkout](../../reference/package-management.md#developer-workflow).
 After a dependency change, reactivate the checkout and restart Hermes.
 
-Connect Hermes Agent to Microsoft Teams as a bot. Unlike Slack's Socket Mode, Teams delivers messages by calling a **public HTTPS webhook**, so your instance needs a publicly reachable endpoint — either a dev tunnel (local dev) or a real domain (production).
+Connect Shards Agent to Microsoft Teams as a bot. Unlike Slack's Socket Mode, Teams delivers messages by calling a **public HTTPS webhook**, so your instance needs a publicly reachable endpoint — either a dev tunnel (local dev) or a real domain (production).
 
 Need meeting summaries from Microsoft Graph events rather than normal bot conversations? Use the dedicated setup page: [Teams Meetings](./teams-meetings.md).
 
@@ -110,14 +110,14 @@ TEAMS_ALLOWED_USERS=<your-aad-object-id>
 
 ## Step 5: Start the Gateway
 
-**Docker** (must run from the directory that contains `docker-compose.yml` — usually your cloned `hermes-agent` repo, not `~`):
+**Docker** (must run from the directory that contains `docker-compose.yml` — usually your cloned `shards-agent` repo, not `~`):
 
 ```bash
-cd /path/to/hermes-agent
+cd /path/to/shards-agent
 HERMES_UID=$(id -u) HERMES_GID=$(id -g) docker compose up -d gateway
 ```
 
-**Native / systemd install** (typical `hermes` one-liner installer under `~/.hermes/hermes-agent`):
+**Native / systemd install** (typical `hermes` one-liner installer under `~/.hermes/shards-agent`):
 
 ```bash
 hermes gateway restart
