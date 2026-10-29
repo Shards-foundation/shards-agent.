@@ -6,8 +6,6 @@ on:
     paths:
       - "scripts/shards_rebrand.py"
       - ".github/workflows/shards-upstream-migration.yml"
-  schedule:
-    - cron: "*/5 * * * *"
   workflow_dispatch:
 
 permissions:
@@ -36,7 +34,6 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          # A run may start from an older queued SHA; inspect the current default branch.
           git fetch --quiet origin main
           if git show origin/main:SHARDS_IMPORT_COMPLETE.md >/dev/null 2>&1; then
             echo "skip=true" >> "$GITHUB_OUTPUT"
@@ -85,7 +82,6 @@ jobs:
               printf '%s\n' "$conflicts"
               exit 1
             fi
-            # Keep upstream README as the base, then rebrand it in the next step.
             git -C "$repo" checkout --ours -- README.md
             git -C "$repo" add README.md
           fi
@@ -95,119 +91,16 @@ jobs:
           git -C "$repo" add -A
           git -C "$repo" commit -m "feat: import Hermes Agent as Shards Agent"
 
-      - name: Verify lockfile and Shards distribution contract
+      - name: Verify lockfile, distribution metadata, and CLI entry points
         if: steps.gate.outputs.skip != 'true'
         working-directory: ${{ runner.temp }}/shards-agent
         run: |
+          set -euo pipefail
           uv lock --check
           uv sync --locked --group dev
           uv run --locked pytest -q tests/shards/test_distribution_metadata.py
           .venv/bin/shards-agent --help >/dev/null
-          .venv/bin/hermes-agent --help >/dev/null
-
-      - name: Run complete upstream test suite
-        if: steps.gate.outputs.skip != 'true'
-        working-directory: ${{ runner.temp }}/shards-agent
-        run: scripts/run_tests.sh
-
-      - name: Record successful migration and push
-        if: steps.gate.outputs.skip != 'true'
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        shell: bash
-        run: |
-          set -euo pipefail
-          repo="$RUNNER_TEMP/shards-agent"
-          # This bootstrap workflow only needs to poll until a verified import exists.
-          # Remove the 5-minute schedule in the final tested commit to avoid recurring
-          # Actions usage after the migration has completed.
-          python - "$repo/.github/workflows/shards-upstream-migration.yml" <<'PY'
-          import sys
-          from pathlib import Path
-          path = Path(sys.argv[1])
-          text = path.read_text()
-          text = text.replace('  schedule:\\n    - cron: "*/5 * * * *"\\n', "", 1)
-          path.write_text(text)
-          PY
-          upstream_sha="$(git -C "$repo" rev-parse HEAD)"
-          cat > "$repo/SHARDS_IMPORT_COMPLETE.md" <<EOF
-          # Shards Agent import status
-
-          - Status: COMPLETE — full upstream test runner exited successfully.
-          - Upstream: https://github.com/NousResearch/hermes-agent
-          - Destination: https://github.com/Shards-foundation/shards-agent.
-          - Imported upstream commit before this manifest: `$upstream_sha`
-          - Test gate: `scripts/run_tests.sh` — passed.
-          - Licence: MIT; upstream copyright and attribution retained.
-          EOF
-          git -C "$repo" add SHARDS_IMPORT_COMPLETE.md .github/workflows/shards-upstream-migration.yml
-          git -C "$repo" commit -m "docs: record successful upstream import and test gate"
-          git -C "$repo" push shards HEAD:main
-; then
-            echo "skip=true" >> "$GITHUB_OUTPUT"
-            echo "The Shards Agent source tree is already imported; no duplicate migration needed."
-          else
-            echo "skip=false" >> "$GITHUB_OUTPUT"
-          fi
-
-      - name: Install pinned uv
-        if: steps.gate.outputs.skip != 'true'
-        uses: astral-sh/setup-uv@v6
-        with:
-          version: "0.13.5"
-          enable-cache: true
-
-      - name: Clone complete upstream Git history
-        if: steps.gate.outputs.skip != 'true'
-        run: git clone https://github.com/NousResearch/hermes-agent.git "$RUNNER_TEMP/shards-agent"
-
-      - name: Preserve destination history and apply Shards branding
-        if: steps.gate.outputs.skip != 'true'
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        shell: bash
-        run: |
-          set -euo pipefail
-          repo="$RUNNER_TEMP/shards-agent"
-          git -C "$repo" config user.name "github-actions[bot]"
-          git -C "$repo" config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git -C "$repo" remote add shards "https://x-access-token:${GH_TOKEN}@github.com/Shards-foundation/shards-agent..git"
-          git -C "$repo" fetch shards main
-
-          set +e
-          git -C "$repo" merge --allow-unrelated-histories --no-commit shards/main
-          merge_status=$?
-          set -e
-          if [ "$merge_status" -gt 1 ]; then
-            echo "Merge failed with status $merge_status"
-            exit "$merge_status"
-          fi
-
-          conflicts="$(git -C "$repo" diff --name-only --diff-filter=U)"
-          if [ -n "$conflicts" ]; then
-            if [ "$conflicts" != "README.md" ]; then
-              echo "Unexpected merge conflicts:"
-              printf '%s\n' "$conflicts"
-              exit 1
-            fi
-            # Keep upstream README as the base, then rebrand it in the next step.
-            git -C "$repo" checkout --ours -- README.md
-            git -C "$repo" add README.md
-          fi
-
-          python "$GITHUB_WORKSPACE/scripts/shards_rebrand.py" "$repo"
-          (cd "$repo" && uv lock)
-          git -C "$repo" add -A
-          git -C "$repo" commit -m "feat: import Hermes Agent as Shards Agent"
-
-      - name: Verify lockfile and Shards distribution contract
-        if: steps.gate.outputs.skip != 'true'
-        working-directory: ${{ runner.temp }}/shards-agent
-        run: |
-          uv lock --check
-          uv sync --locked --group dev
-          uv run --locked pytest -q tests/shards/test_distribution_metadata.py
-          .venv/bin/shards-agent --help >/dev/null
+          .venv/bin/shards --help >/dev/null
           .venv/bin/hermes-agent --help >/dev/null
 
       - name: Run complete upstream test suite
