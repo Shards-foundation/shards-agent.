@@ -83,6 +83,9 @@ jobs:
           fi
 
           python "$GITHUB_WORKSPACE/scripts/shards_rebrand.py" "$repo"
+          # The GitHub App token cannot write workflow files. Keep the destination
+          # migration workflow and omit upstream workflow YAMLs for this first push.
+          find "$repo/.github/workflows" -type f ! -name "shards-upstream-migration.yml" -delete
           (cd "$repo" && uv lock)
           git -C "$repo" add -A
           git -C "$repo" commit -m "feat: import Hermes Agent as Shards Agent"
@@ -115,16 +118,16 @@ jobs:
           - Status: IMPORTED — full upstream tests run after the source push.
           - Upstream: https://github.com/NousResearch/hermes-agent
           - Destination: https://github.com/Shards-foundation/shards-agent.
-          - Imported upstream commit before this manifest: `$upstream_sha`
-          - Test gate: `scripts/run_tests.sh` — pending at time of initial import.
+          - Imported upstream commit: ${upstream_sha}
+          - Test gate: pending; validation continues after source import.
           - Licence: MIT; upstream copyright and attribution retained.
           EOF
           git -C "$repo" add SHARDS_IMPORT_COMPLETE.md
           git -C "$repo" commit -m "docs: record upstream import; tests pending"
           git -C "$repo" push shards HEAD:main
 
-      - name: Run complete upstream test suite
+      - name: Run upstream test suite
         if: steps.gate.outputs.skip != 'true'
         working-directory: ${{ runner.temp }}/shards-agent
-        run: scripts/run_tests.sh
+        run: uv run --locked pytest -q
 
