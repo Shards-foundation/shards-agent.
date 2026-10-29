@@ -10,6 +10,7 @@ from __future__ import annotations
 import json
 import re
 import sys
+import subprocess
 from pathlib import Path
 
 ROOT = Path(sys.argv[1]).resolve() if len(sys.argv) > 1 else Path.cwd()
@@ -75,6 +76,12 @@ text = replace_once(
     'hermes-agent = "agent.legacy_cli:main"',
     'shards-agent = "agent.legacy_cli:main"\nhermes-agent = "agent.legacy_cli:main"  # Compatibility alias for existing users.',
 )
+if 'shards = "hermes_cli.main:main"' not in text:
+    text = replace_once(
+        text,
+        'hermes = "hermes_cli.main:main"',
+        'shards = "hermes_cli.main:main"\nhermes = "hermes_cli.main:main"  # Compatibility alias for existing users.',
+    )
 text = text.replace(
     "Building wheels or sdists for hermes-agent is not supported.",
     "Building wheels or sdists for shards-agent is not supported.",
@@ -139,6 +146,7 @@ def test_python_distribution_uses_shards_agent_name():
 
 def test_shards_cli_entrypoint_exists_with_upstream_compatibility_alias():
     scripts = tomllib.loads((ROOT / "pyproject.toml").read_text())["project"]["scripts"]
+    assert scripts["shards"] == "hermes_cli.main:main"
     assert scripts["shards-agent"] == "agent.legacy_cli:main"
     assert scripts["hermes-agent"] == "agent.legacy_cli:main"
 
@@ -155,4 +163,77 @@ def test_shards_branding_assets_and_readme_are_present():
     assert (ROOT / "assets" / "shards-banner.svg").is_file()
     assert "Shards Agent" in (ROOT / "README.md").read_text()
 ''')
+
+# Rebrand user-visible product names throughout tracked text files while
+# retaining the upstream MIT licence, explicit origin attribution, and URLs
+# for services/repos operated by Nous Research.
+tracked = subprocess.run(
+    ["git", "ls-files", "-z"],
+    cwd=ROOT,
+    check=True,
+    stdout=subprocess.PIPE,
+).stdout.split(b"\0")
+text_suffixes = {
+    ".md", ".rst", ".txt", ".py", ".sh", ".ps1", ".cmd", ".bat",
+    ".toml", ".yaml", ".yml", ".json", ".ts", ".tsx", ".js", ".jsx",
+    ".html", ".css", ".xml", ".ini", ".cfg", ".env", ".properties",
+}
+skip_paths = {
+    "LICENSE",
+    "SHARDS_BRANDING.md",
+    "scripts/shards_rebrand.py",
+    "pyproject.toml",
+    "package.json",
+    "uv.lock",
+    "flake.lock",
+    ".github/workflows/shards-upstream-migration.yml",
+    "tests/shards/test_distribution_metadata.py",
+}
+for raw_path in tracked:
+    if not raw_path:
+        continue
+    rel = raw_path.decode("utf-8", errors="surrogateescape")
+    if rel in skip_paths or rel.endswith("package-lock.json"):
+        continue
+    path = ROOT / rel
+    if not path.is_file() or path.suffix.lower() not in text_suffixes:
+        continue
+    try:
+        original = path.read_text(encoding="utf-8")
+    except (UnicodeDecodeError, OSError):
+        continue
+    if "\0" in original:
+        continue
+
+    if rel == "README.md":
+        lines = []
+        for line in original.splitlines(keepends=True):
+            # Preserve the one explicit sentence crediting the original project.
+            if "originally created by [Nous Research]" not in line:
+                line = line.replace("Hermes Agent", "Shards Agent")
+                line = line.replace("Hermes Desktop", "Shards Desktop")
+            lines.append(line)
+        updated = "".join(lines)
+    else:
+        updated = original.replace("Hermes Agent", "Shards Agent")
+        updated = updated.replace("Hermes Desktop", "Shards Desktop")
+
+    # Documentation commands are rebranded, but upstream repository and service
+    # URLs remain untouched so attribution links never point to a fake endpoint.
+    if path.suffix.lower() in {".md", ".rst", ".txt"}:
+        doc_lines = []
+        for line in updated.splitlines(keepends=True):
+            if (
+                "github.com/NousResearch/hermes-agent" not in line
+                and "hermes-agent.nousresearch.com" not in line
+            ):
+                line = re.sub(r"\bhermes-agent\b", "shards-agent", line)
+            doc_lines.append(line)
+        updated = "".join(doc_lines)
+
+    if rel == ".github/CODEOWNERS":
+        updated = updated.replace("@NousResearch/hermes-agent-core", "@Shards-inc")
+    if updated != original:
+        path.write_text(updated, encoding="utf-8")
+
 print(f"Applied Shards branding to {ROOT}")
