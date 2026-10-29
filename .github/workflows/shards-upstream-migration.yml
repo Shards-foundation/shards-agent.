@@ -118,6 +118,17 @@ jobs:
         run: |
           set -euo pipefail
           repo="$RUNNER_TEMP/shards-agent"
+          # This bootstrap workflow only needs to poll until a verified import exists.
+          # Remove the 5-minute schedule in the final tested commit to avoid recurring
+          # Actions usage after the migration has completed.
+          python - "$repo/.github/workflows/shards-upstream-migration.yml" <<'PY'
+          import sys
+          from pathlib import Path
+          path = Path(sys.argv[1])
+          text = path.read_text()
+          text = text.replace('  schedule:\\n    - cron: "*/5 * * * *"\\n', "", 1)
+          path.write_text(text)
+          PY
           upstream_sha="$(git -C "$repo" rev-parse HEAD)"
           cat > "$repo/SHARDS_IMPORT_COMPLETE.md" <<EOF
           # Shards Agent import status
@@ -129,7 +140,7 @@ jobs:
           - Test gate: `scripts/run_tests.sh` — passed.
           - Licence: MIT; upstream copyright and attribution retained.
           EOF
-          git -C "$repo" add SHARDS_IMPORT_COMPLETE.md
+          git -C "$repo" add SHARDS_IMPORT_COMPLETE.md .github/workflows/shards-upstream-migration.yml
           git -C "$repo" commit -m "docs: record successful upstream import and test gate"
           git -C "$repo" push shards HEAD:main
 ; then
