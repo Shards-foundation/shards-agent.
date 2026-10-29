@@ -6,6 +6,8 @@ on:
     paths:
       - "scripts/shards_rebrand.py"
       - ".github/workflows/shards-upstream-migration.yml"
+  schedule:
+    - cron: "*/5 * * * *"
   workflow_dispatch:
 
 permissions:
@@ -29,16 +31,30 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Skip if a verified import already exists
+        id: gate
+        shell: bash
+        run: |
+          if [ -f SHARDS_IMPORT_COMPLETE.md ]; then
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+            echo "A successful import manifest already exists; no migration needed."
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Install pinned uv
+        if: steps.gate.outputs.skip != 'true'
         uses: astral-sh/setup-uv@v6
         with:
           version: "0.13.5"
           enable-cache: true
 
       - name: Clone complete upstream Git history
+        if: steps.gate.outputs.skip != 'true'
         run: git clone https://github.com/NousResearch/hermes-agent.git "$RUNNER_TEMP/shards-agent"
 
       - name: Preserve destination history and apply Shards branding
+        if: steps.gate.outputs.skip != 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         shell: bash
@@ -77,6 +93,7 @@ jobs:
           git -C "$repo" commit -m "feat: import Hermes Agent as Shards Agent"
 
       - name: Verify lockfile and Shards distribution contract
+        if: steps.gate.outputs.skip != 'true'
         working-directory: ${{ runner.temp }}/shards-agent
         run: |
           uv lock --check
@@ -86,13 +103,29 @@ jobs:
           .venv/bin/hermes-agent --help >/dev/null
 
       - name: Run complete upstream test suite
+        if: steps.gate.outputs.skip != 'true'
         working-directory: ${{ runner.temp }}/shards-agent
         run: scripts/run_tests.sh
 
-      - name: Push only after the test gate succeeds
+      - name: Record successful migration and push
+        if: steps.gate.outputs.skip != 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         shell: bash
         run: |
           set -euo pipefail
-          git -C "$RUNNER_TEMP/shards-agent" push shards HEAD:main
+          repo="$RUNNER_TEMP/shards-agent"
+          upstream_sha="$(git -C "$repo" rev-parse HEAD)"
+          cat > "$repo/SHARDS_IMPORT_COMPLETE.md" <<EOF
+          # Shards Agent import status
+
+          - Status: COMPLETE — full upstream test runner exited successfully.
+          - Upstream: https://github.com/NousResearch/hermes-agent
+          - Destination: https://github.com/Shards-foundation/shards-agent.
+          - Imported upstream commit before this manifest: `$upstream_sha`
+          - Test gate: `scripts/run_tests.sh` — passed.
+          - Licence: MIT; upstream copyright and attribution retained.
+          EOF
+          git -C "$repo" add SHARDS_IMPORT_COMPLETE.md
+          git -C "$repo" commit -m "docs: record successful upstream import and test gate"
+          git -C "$repo" push shards HEAD:main
