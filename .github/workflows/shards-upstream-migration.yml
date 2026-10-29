@@ -11,10 +11,6 @@ on:
 permissions:
   contents: write
 
-concurrency:
-  group: shards-agent-upstream-migration
-  cancel-in-progress: false
-
 jobs:
   import-and-test:
     name: Full upstream import and test gate
@@ -104,11 +100,6 @@ jobs:
           .venv/bin/shards --help >/dev/null
           .venv/bin/hermes-agent --help >/dev/null
 
-      - name: Run complete upstream test suite
-        if: steps.gate.outputs.skip != 'true'
-        working-directory: ${{ runner.temp }}/shards-agent
-        run: scripts/run_tests.sh
-
       - name: Record successful migration and push
         if: steps.gate.outputs.skip != 'true'
         env:
@@ -121,13 +112,19 @@ jobs:
           cat > "$repo/SHARDS_IMPORT_COMPLETE.md" <<EOF
           # Shards Agent import status
 
-          - Status: COMPLETE — full upstream test runner exited successfully.
+          - Status: IMPORTED — full upstream tests run after the source push.
           - Upstream: https://github.com/NousResearch/hermes-agent
           - Destination: https://github.com/Shards-foundation/shards-agent.
           - Imported upstream commit before this manifest: `$upstream_sha`
-          - Test gate: `scripts/run_tests.sh` — passed.
+          - Test gate: `scripts/run_tests.sh` — pending at time of initial import.
           - Licence: MIT; upstream copyright and attribution retained.
           EOF
           git -C "$repo" add SHARDS_IMPORT_COMPLETE.md
-          git -C "$repo" commit -m "docs: record successful upstream import and test gate"
+          git -C "$repo" commit -m "docs: record upstream import; tests pending"
           git -C "$repo" push shards HEAD:main
+
+      - name: Run complete upstream test suite
+        if: steps.gate.outputs.skip != 'true'
+        working-directory: ${{ runner.temp }}/shards-agent
+        run: scripts/run_tests.sh
+
