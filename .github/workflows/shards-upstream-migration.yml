@@ -36,13 +36,14 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          # The triggering SHA can be older than a migration that finished while this
-          # run was queued, so inspect the current default branch as well.
+          # A run may start from an older queued SHA; inspect the current default branch.
           git fetch --quiet origin main
           if git show origin/main:SHARDS_IMPORT_COMPLETE.md >/dev/null 2>&1; then
             echo "skip=true" >> "$GITHUB_OUTPUT"
             echo "A successful import manifest already exists; no migration needed."
-          elif git show origin/main:pyproject.toml 2>/dev/null | grep -q '^name = "shards-agent"
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
 
       - name: Install pinned uv
         if: steps.gate.outputs.skip != 'true'
