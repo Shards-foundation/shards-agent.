@@ -130,7 +130,7 @@ banner.write_text("""<svg xmlns="http://www.w3.org/2000/svg" width="1600" height
 </svg>
 """)
 
-test = ROOT / "tests" / "shards" / "test_distribution_metadata.py"
+test = ROOT / "tests" / "agent" / "test_shards_distribution_metadata.py"
 test.parent.mkdir(parents=True, exist_ok=True)
 test.write_text('''"""Contract tests for the Shards Agent distribution metadata."""
 from pathlib import Path
@@ -173,11 +173,10 @@ tracked = subprocess.run(
     check=True,
     stdout=subprocess.PIPE,
 ).stdout.split(b"\0")
-text_suffixes = {
-    ".md", ".rst", ".txt", ".py", ".sh", ".ps1", ".cmd", ".bat",
-    ".toml", ".yaml", ".yml", ".json", ".ts", ".tsx", ".js", ".jsx",
-    ".html", ".css", ".xml", ".ini", ".cfg", ".env", ".properties",
-}
+# Only rewrite human-facing documentation here. Rewriting source code, tests,
+# skill identifiers, prompt fixtures, or machine-readable configuration can
+# silently change behaviour and invalidate upstream contracts.
+text_suffixes = {".md", ".rst", ".txt"}
 skip_paths = {
     "LICENSE",
     "SHARDS_BRANDING.md",
@@ -194,6 +193,8 @@ for raw_path in tracked:
         continue
     rel = raw_path.decode("utf-8", errors="surrogateescape")
     if rel in skip_paths or rel.endswith("package-lock.json"):
+        continue
+    if rel.startswith(("tests/", "skills/", "optional-skills/")):
         continue
     path = ROOT / rel
     if not path.is_file() or path.suffix.lower() not in text_suffixes:
@@ -231,8 +232,6 @@ for raw_path in tracked:
             doc_lines.append(line)
         updated = "".join(doc_lines)
 
-    if rel == ".github/CODEOWNERS":
-        updated = updated.replace("@NousResearch/hermes-agent-core", "@Shards-inc")
     if updated != original:
         path.write_text(updated, encoding="utf-8")
 
