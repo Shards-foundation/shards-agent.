@@ -31,9 +31,9 @@ jobs:
         run: |
           set -euo pipefail
           git fetch --quiet origin main
-          if git show origin/main:SHARDS_IMPORT_COMPLETE.md >/dev/null 2>&1; then
+          if git show origin/main:SHARDS_IMPORT_COMPLETE.md 2>/dev/null | grep -q "Status: COMPLETE — test gate passed"; then
             echo "skip=true" >> "$GITHUB_OUTPUT"
-            echo "A successful import manifest already exists; no migration needed."
+            echo "Verified import and test gate already completed."
           else
             echo "skip=false" >> "$GITHUB_OUTPUT"
           fi
@@ -126,8 +126,33 @@ jobs:
           git -C "$repo" commit -m "docs: record upstream import; tests pending"
           git -C "$repo" push shards HEAD:main
 
+      - name: Install upstream CI test dependencies
+        if: steps.gate.outputs.skip != 'true'
+        working-directory: ${{ runner.temp }}/shards-agent
+        run: >-
+          uv sync --locked --group dev --group test
+          --extra all --extra anthropic --extra bedrock --extra mistral
+          --extra fal --extra modal --extra daytona --extra parallel-web --extra keychain
+
       - name: Run upstream test suite
         if: steps.gate.outputs.skip != 'true'
         working-directory: ${{ runner.temp }}/shards-agent
-        run: uv run --locked pytest -q
+        env:
+          OPENROUTER_API_KEY: ""
+          OPENAI_API_KEY: ""
+          NOUS_API_KEY: ""
+        run: scripts/run_tests.sh
+
+      - name: Mark test gate complete
+        if: success() && steps.gate.outputs.skip != 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          repo="$RUNNER_TEMP/shards-agent"
+          sed -i 's/Status: IMPORTED — full upstream tests run after the source push./Status: COMPLETE — test gate passed/' "$repo/SHARDS_IMPORT_COMPLETE.md"
+          git -C "$repo" add SHARDS_IMPORT_COMPLETE.md
+          git -C "$repo" commit -m "test: mark Shards Agent validation complete"
+          git -C "$repo" push shards HEAD:main
 
