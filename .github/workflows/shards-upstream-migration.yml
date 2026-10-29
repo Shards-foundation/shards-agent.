@@ -98,7 +98,8 @@ jobs:
           set -euo pipefail
           uv lock --check
           uv sync --locked --group dev
-          uv run --locked pytest -q tests/shards/test_distribution_metadata.py
+          uv pip install --python .venv/bin/python keyring fal-client
+          uv run --locked pytest -q tests/agent/test_shards_distribution_metadata.py
           .venv/bin/shards-agent --help >/dev/null
           .venv/bin/shards --help >/dev/null
           .venv/bin/hermes-agent --help >/dev/null
