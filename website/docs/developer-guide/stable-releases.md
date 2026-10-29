@@ -419,7 +419,7 @@ channel's name, icon and package ID, so the build installs over the official
 app, shares its desktop settings, and later updates follow the channel. Branding is fixed when the channel is
 created; repeat the flag on every dispatch of that channel and use a new channel
 name to change it. `--branding` needs `--channel`, since a plain one-off commit
-build always carries its `Hermes Agent <sha>` identity.
+build always carries its `Shards Agent <sha>` identity.
 
 ```sh
 python scripts/release.py --channel my-commit --branding stable --build-commit SHA --remote origin --publish

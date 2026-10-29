@@ -36,7 +36,7 @@ Then create `~/.config/himalaya/config.toml` with the account's IMAP/SMTP settin
 [accounts.agent]
 default = true
 email = "my-agent@example.com"
-display-name = "My Hermes Agent"
+display-name = "My Shards Agent"
 
 backend.type = "imap"
 backend.host = "imap.example.com"

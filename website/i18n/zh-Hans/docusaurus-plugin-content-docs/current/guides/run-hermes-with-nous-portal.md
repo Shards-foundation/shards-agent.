@@ -1,16 +1,16 @@
 ---
 sidebar_position: 1
-title: "通过 Nous Portal 运行 Hermes Agent"
+title: "通过 Nous Portal 运行 Shards Agent"
 description: "完整操作指南：订阅、配置、切换模型、启用 gateway 工具并验证路由"
 ---
 
-# 通过 Nous Portal 运行 Hermes Agent
+# 通过 Nous Portal 运行 Shards Agent
 
-本指南带你从头到尾完成在 [Nous Portal](https://portal.nousresearch.com) 订阅下运行 Hermes Agent 的全过程——从注册账号到验证每个工具的路由是否正确。如果你只想了解 Portal 的概述及订阅内容，请参阅 [Nous Portal 集成页面](../integrations/nous-portal.md)。本页是操作步骤脚本。
+本指南带你从头到尾完成在 [Nous Portal](https://portal.nousresearch.com) 订阅下运行 Shards Agent 的全过程——从注册账号到验证每个工具的路由是否正确。如果你只想了解 Portal 的概述及订阅内容，请参阅 [Nous Portal 集成页面](../integrations/nous-portal.md)。本页是操作步骤脚本。
 
 ## 前提条件
 
-- 已安装 Hermes Agent（[快速入门](../getting-started/quickstart.md)）
+- 已安装 Shards Agent（[快速入门](../getting-started/quickstart.md)）
 - 在你正在配置的机器上有可用的浏览器（或 SSH 端口转发——参见 [OAuth over SSH](./oauth-over-ssh.md)）
 - 约 5 分钟时间
 
@@ -88,7 +88,7 @@ hermes chat
 尝试一个同时调用模型和 Tool Gateway 的请求：
 
 ```
-Hey, search the web for "Hermes Agent release notes" and summarize the top 3 hits.
+Hey, search the web for "Shards Agent release notes" and summarize the top 3 hits.
 ```
 
 你应该看到 Hermes 调用 `web_search`（通过 gateway）并返回摘要。如果搜索正常执行且响应内容合理，说明配置完成——Portal 已端到端连通。
@@ -120,7 +120,7 @@ hermes config set model.default anthropic/claude-sonnet-4.6
 
 ### 不要在 agent 任务中使用 Hermes-4
 
-Hermes-4-70B 和 Hermes-4-405B 在 Portal 上以大幅折扣提供，但它们是**对话/推理模型**，并非针对工具调用优化的模型。它们在多步骤 agent 循环中表现不佳。请通过[订阅代理](../user-guide/features/subscription-proxy.md)从非 agent 工具中将它们用于对话或研究工作。对于 Hermes Agent 本身，请坚持使用上述前沿 agentic 模型。
+Hermes-4-70B 和 Hermes-4-405B 在 Portal 上以大幅折扣提供，但它们是**对话/推理模型**，并非针对工具调用优化的模型。它们在多步骤 agent 循环中表现不佳。请通过[订阅代理](../user-guide/features/subscription-proxy.md)从非 agent 工具中将它们用于对话或研究工作。对于 Shards Agent 本身，请坚持使用上述前沿 agentic 模型。
 
 Portal 的[信息页面](https://portal.nousresearch.com/info)也有此说明——这是 Nous 官方指导，并非仅代表 Hermes 一方的意见。
 

@@ -17,7 +17,7 @@ description: "4阶段根因调试：先理解缺陷再修复"
 | 来源 | 内置（默认安装） |
 | 路径 | `skills/software-development/systematic-debugging` |
 | 版本 | `1.1.0` |
-| 作者 | Hermes Agent（改编自 obra/superpowers） |
+| 作者 | Shards Agent（改编自 obra/superpowers） |
 | 许可证 | MIT |
 | 平台 | linux, macos, windows |
 | 标签 | `debugging`, `troubleshooting`, `problem-solving`, `root-cause`, `investigation` |
@@ -333,7 +333,7 @@ pytest tests/ -q
 | **3. 假设** | 形成理论、最小化测试、每次一个变量 | 已确认或形成新假设 |
 | **4. 实施** | 创建回归测试、修复根因、验证 | 缺陷已解决，所有测试通过 |
 
-## Hermes Agent 集成
+## Shards Agent 集成
 
 ### 调查工具
 

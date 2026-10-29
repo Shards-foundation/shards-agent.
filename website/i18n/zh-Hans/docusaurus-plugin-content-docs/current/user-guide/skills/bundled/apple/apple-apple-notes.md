@@ -17,7 +17,7 @@ description: "通过 memo CLI 管理 Apple Notes：创建、搜索、编辑"
 | 来源 | 内置（默认安装） |
 | 路径 | `skills/apple/apple-notes` |
 | 版本 | `1.0.0` |
-| 作者 | Hermes Agent |
+| 作者 | Shards Agent |
 | 许可证 | MIT |
 | 平台 | macos |
 | 标签 | `Notes`, `Apple`, `macOS`, `note-taking` |

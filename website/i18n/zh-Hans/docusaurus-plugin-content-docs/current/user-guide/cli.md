@@ -1,12 +1,12 @@
 ---
 sidebar_position: 1
 title: "CLI 界面"
-description: "掌握 Hermes Agent 终端界面——命令、快捷键、人格设定等"
+description: "掌握 Shards Agent 终端界面——命令、快捷键、人格设定等"
 ---
 
 # CLI 界面
 
-Hermes Agent 的 CLI 是一个完整的终端用户界面（TUI），而非 Web UI。它支持多行编辑、斜杠命令自动补全、对话历史、中断并重定向，以及流式工具输出。专为常驻终端的用户而生。
+Shards Agent 的 CLI 是一个完整的终端用户界面（TUI），而非 Web UI。它支持多行编辑、斜杠命令自动补全、对话历史、中断并重定向，以及流式工具输出。专为常驻终端的用户而生。
 
 :::tip
 Hermes 还提供了一个现代 TUI，支持模态覆盖层、鼠标选择和非阻塞输入。使用 `hermes --tui` 启动——参见 [TUI](tui.md) 指南。
@@ -32,7 +32,7 @@ hermes chat --provider openrouter  # 强制使用 OpenRouter
 hermes chat --toolsets "web,terminal,skills"
 
 # 启动时预加载一个或多个 skill
-hermes -s hermes-agent-dev,github-auth
+hermes -s shards-agent-dev,github-auth
 hermes chat -s github-pr-workflow -q "open a draft PR"
 
 # 恢复之前的会话
@@ -151,7 +151,7 @@ hermes -w -z "Fix issue #123"     # 在 worktree 中以单次查询模式运行
 quick_commands:
   status:
     type: exec
-    command: systemctl status hermes-agent
+    command: systemctl status shards-agent
   gpu:
     type: exec
     command: nvidia-smi --query-gpu=utilization.gpu,memory.used --format=csv,noheader
@@ -167,7 +167,7 @@ quick_commands:
 如果你已知道本次会话需要哪些 skill，可在启动时传入：
 
 ```bash
-hermes -s hermes-agent-dev,github-auth
+hermes -s shards-agent-dev,github-auth
 hermes chat -s github-pr-workflow -s github-auth
 ```
 
@@ -287,7 +287,7 @@ display:
 在 Unix 系统上，按 **`Ctrl+Z`** 将 Hermes 挂起到后台——与任何终端进程一样。shell 会打印确认信息：
 
 ```
-Hermes Agent has been suspended. Run `fg` to bring Hermes Agent back.
+Shards Agent has been suspended. Run `fg` to bring Shards Agent back.
 ```
 
 在 shell 中输入 `fg` 即可从中断处恢复会话。Windows 不支持此功能。

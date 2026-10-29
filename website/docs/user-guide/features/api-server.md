@@ -1,12 +1,12 @@
 ---
 sidebar_position: 14
 title: "API Server"
-description: "Expose hermes-agent as an OpenAI-compatible API for any frontend"
+description: "Expose shards-agent as an OpenAI-compatible API for any frontend"
 ---
 
 # API Server
 
-The API server exposes hermes-agent as an OpenAI-compatible HTTP endpoint. Any frontend that speaks the OpenAI format — Open WebUI, LobeChat, LibreChat, NextChat, ChatBox, and hundreds more — can connect to hermes-agent and use it as a backend.
+The API server exposes shards-agent as an OpenAI-compatible HTTP endpoint. Any frontend that speaks the OpenAI format — Open WebUI, LobeChat, LibreChat, NextChat, ChatBox, and hundreds more — can connect to shards-agent and use it as a backend.
 
 Your agent handles requests with its full toolset (terminal, file operations, web search, memory, skills) and returns the final response. When streaming, tool progress indicators appear inline so frontends can show what the agent is doing.
 
@@ -48,7 +48,7 @@ Point any OpenAI-compatible client at `http://localhost:8642/v1`:
 curl http://localhost:8642/v1/chat/completions \
   -H "Authorization: Bearer change-me-local-dev" \
   -H "Content-Type: application/json" \
-  -d '{"model": "hermes-agent", "messages": [{"role": "user", "content": "Hello!"}]}'
+  -d '{"model": "shards-agent", "messages": [{"role": "user", "content": "Hello!"}]}'
 ```
 
 Or connect Open WebUI, LobeChat, or any other frontend — see the [Open WebUI integration guide](../messaging/open-webui.md) for step-by-step instructions.
@@ -167,7 +167,7 @@ Standard OpenAI Chat Completions format. Stateless — the full conversation is 
 **Request:**
 ```json
 {
-  "model": "hermes-agent",
+  "model": "shards-agent",
   "messages": [
     {"role": "system", "content": "You are a Python expert."},
     {"role": "user", "content": "Write a fibonacci function"}
@@ -182,7 +182,7 @@ Standard OpenAI Chat Completions format. Stateless — the full conversation is 
   "id": "chatcmpl-abc123",
   "object": "chat.completion",
   "created": 1710000000,
-  "model": "hermes-agent",
+  "model": "shards-agent",
   "choices": [{
     "index": 0,
     "message": {"role": "assistant", "content": "Here's a fibonacci function..."},
@@ -196,7 +196,7 @@ Standard OpenAI Chat Completions format. Stateless — the full conversation is 
 
 ```json
 {
-  "model": "hermes-agent",
+  "model": "shards-agent",
   "messages": [
     {
       "role": "user",
@@ -233,7 +233,7 @@ OpenAI Responses API format. Supports server-side conversation state via `previo
 **Request:**
 ```json
 {
-  "model": "hermes-agent",
+  "model": "shards-agent",
   "input": "What files are in my project?",
   "instructions": "You are a helpful coding assistant.",
   "store": true
@@ -246,7 +246,7 @@ OpenAI Responses API format. Supports server-side conversation state via `previo
   "id": "resp_abc123",
   "object": "response",
   "status": "completed",
-  "model": "hermes-agent",
+  "model": "shards-agent",
   "output": [
     {"type": "function_call", "status": "completed", "name": "terminal", "arguments": "{\"command\": \"ls\"}", "call_id": "call_1"},
     {"type": "function_call_output", "status": "completed", "call_id": "call_1", "output": "README.md src/ tests/"},
@@ -264,7 +264,7 @@ With `"stream": true`, mid-turn assistant commentary (the `openai-codex` backend
 
 ```json
 {
-  "model": "hermes-agent",
+  "model": "shards-agent",
   "input": [
     {
       "role": "user",
@@ -316,7 +316,7 @@ Delete a stored response.
 
 ### GET /v1/models
 
-Lists the agent as an available model. The advertised model name defaults to the [profile](../profiles.md) name (or `hermes-agent` for the default profile). Required by most frontends for model discovery.
+Lists the agent as an available model. The advertised model name defaults to the [profile](../profiles.md) name (or `shards-agent` for the default profile). Required by most frontends for model discovery.
 
 `/v1/models` is intentionally the cheap OpenAI-compat surface. It does **not**
 enumerate every authenticated provider/model combination Hermes can route to,
@@ -361,8 +361,8 @@ Returns a machine-readable description of the API server's stable surface for ex
 ```json
 {
   "object": "hermes.api_server.capabilities",
-  "platform": "hermes-agent",
-  "model": "hermes-agent",
+  "platform": "shards-agent",
+  "model": "shards-agent",
   "auth": {"type": "bearer", "required": true},
   "features": {
     "chat_completions": true,
@@ -521,7 +521,7 @@ Poll the current run state. This is useful for dashboards that need status witho
   "run_id": "run_abc123",
   "status": "completed",
   "session_id": "space-session",
-  "model": "hermes-agent",
+  "model": "shards-agent",
   "output": "Done.",
   "usage": {"input_tokens": 50, "output_tokens": 200, "total_tokens": 250, "cache_read_tokens": 40, "cache_write_tokens": 0},
   "runtime": {"provider": "openai", "model": "gpt-5", "route_source": "global"}
@@ -776,7 +776,7 @@ Automatic recall follows the **transcript**: the memory provider is initialised 
 
 ## System Prompt Handling
 
-When a frontend sends a `system` message (Chat Completions) or `instructions` field (Responses API), hermes-agent **layers it on top** of its core system prompt. Your agent keeps all its tools, memory, and skills — the frontend's system prompt adds extra instructions.
+When a frontend sends a `system` message (Chat Completions) or `instructions` field (Responses API), shards-agent **layers it on top** of its core system prompt. Your agent keeps all its tools, memory, and skills — the frontend's system prompt adds extra instructions.
 
 This means you can customize behavior per-frontend without losing capabilities:
 - Open WebUI system prompt: "You are a Python expert. Always include type hints."
@@ -818,7 +818,7 @@ default keys on named prefixes now return `401`.
 :::
 
 :::warning Security
-The API server gives full access to hermes-agent's toolset, **including terminal commands**. `API_SERVER_KEY` is **required for every deployment**, including the default loopback bind on `127.0.0.1`. Keep `API_SERVER_CORS_ORIGINS` narrow to control browser access when you explicitly allow browser callers.
+The API server gives full access to shards-agent's toolset, **including terminal commands**. `API_SERVER_KEY` is **required for every deployment**, including the default loopback bind on `127.0.0.1`. Keep `API_SERVER_CORS_ORIGINS` narrow to control browser access when you explicitly allow browser callers.
 :::
 
 ## Configuration
@@ -832,7 +832,7 @@ The API server gives full access to hermes-agent's toolset, **including terminal
 | `API_SERVER_HOST` | `127.0.0.1` | Bind address (localhost only by default) |
 | `API_SERVER_KEY` | _(required)_ | Bearer token for auth |
 | `API_SERVER_CORS_ORIGINS` | _(none)_ | Comma-separated allowed browser origins |
-| `API_SERVER_MODEL_NAME` | _(profile name)_ | Model name on `/v1/models`. Defaults to profile name, or `hermes-agent` for default profile. |
+| `API_SERVER_MODEL_NAME` | _(profile name)_ | Model name on `/v1/models`. Defaults to profile name, or `shards-agent` for default profile. |
 
 ### config.yaml
 
@@ -943,7 +943,7 @@ In Open WebUI, add each as a separate connection. The model dropdown shows `alic
 - **Response storage** — stored responses (for `previous_response_id`) are persisted in SQLite and survive gateway restarts. Max 100 stored responses (LRU eviction).
 - **No file upload** — inline images are supported on both `/v1/chat/completions` and `/v1/responses`, but uploaded files (`file`, `input_file`, `file_id`) and non-image document inputs are not supported through the API.
 - **Simple OpenAI clients still see an alias** — `/v1/models` advertises the
-  stable Hermes alias (`hermes-agent` or the active profile name). Richer
+  stable Hermes alias (`shards-agent` or the active profile name). Richer
   clients can send explicit `provider` / `model_options` overrides on requests.
 
 ## Proxy Mode

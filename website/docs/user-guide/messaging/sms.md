@@ -2,7 +2,7 @@
 sidebar_position: 8
 sidebar_label: "SMS (Twilio)"
 title: "SMS (Twilio)"
-description: "Set up Hermes Agent as an SMS chatbot via Twilio"
+description: "Set up Shards Agent as an SMS chatbot via Twilio"
 ---
 
 # SMS Setup (Twilio)
@@ -24,7 +24,7 @@ The SMS gateway shares credentials with the optional [telephony skill](../../ref
 - **Twilio account** — [Sign up at twilio.com](https://www.twilio.com/try-twilio) (free trial available)
 - **A Twilio phone number** with SMS capability
 - **A publicly accessible server** — Twilio sends webhooks to your server when SMS arrives
-- **aiohttp** — `cd ~/.hermes/hermes-agent && python -c "import pm; pm.sync_venv(['sms'], explicit=True)"`
+- **aiohttp** — `cd ~/.hermes/shards-agent && python -c "import pm; pm.sync_venv(['sms'], explicit=True)"`
 
 ---
 

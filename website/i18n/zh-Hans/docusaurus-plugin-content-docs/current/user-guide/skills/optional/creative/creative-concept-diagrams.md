@@ -17,7 +17,7 @@ description: "以统一的教育视觉语言生成扁平、简约、支持明暗
 | 来源 | 可选 — 通过 `hermes skills install official/creative/concept-diagrams` 安装 |
 | 路径 | `optional-skills/creative/concept-diagrams` |
 | 版本 | `0.1.0` |
-| 作者 | v1k22（原始 PR），移植至 hermes-agent |
+| 作者 | v1k22（原始 PR），移植至 shards-agent |
 | 许可证 | MIT |
 | 平台 | linux, macos, windows |
 | 标签 | `diagrams`, `svg`, `visualization`, `education`, `physics`, `chemistry`, `engineering` |

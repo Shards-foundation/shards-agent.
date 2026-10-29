@@ -17,7 +17,7 @@ Turn meeting notes into cited decisions, owners, tickets.
 | Source | Bundled (installed by default) |
 | Path | `skills/productivity/meeting-action-items` |
 | Version | `0.1.0` |
-| Author | Ben Barclay (benbarclay), Hermes Agent |
+| Author | Ben Barclay (benbarclay), Shards Agent |
 | License | MIT |
 | Platforms | linux, macos, windows |
 | Tags | `Meetings`, `Action-Items`, `Follow-Up`, `Productivity` |

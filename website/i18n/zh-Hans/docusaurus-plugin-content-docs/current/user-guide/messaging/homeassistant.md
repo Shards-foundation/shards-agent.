@@ -1,13 +1,13 @@
 ---
 title: Home Assistant
-description: 通过插件目录中的 Home Assistant 插件，使用 Hermes Agent 控制您的智能家居。
+description: 通过插件目录中的 Home Assistant 插件，使用 Shards Agent 控制您的智能家居。
 sidebar_label: Home Assistant
 sidebar_position: 5
 ---
 
 # Home Assistant 集成
 
-Hermes Agent 通过[插件目录](../features/plugins.md)中的官方 **`homeassistant` 插件**与 [Home Assistant](https://www.home-assistant.io/) 集成。该插件由 Nous Research 在 [NousResearch/hermes-official-plugins](https://github.com/NousResearch/hermes-official-plugins/tree/main/homeassistant) 中维护，不再属于 Hermes 核心。它提供两部分功能：
+Shards Agent 通过[插件目录](../features/plugins.md)中的官方 **`homeassistant` 插件**与 [Home Assistant](https://www.home-assistant.io/) 集成。该插件由 Nous Research 在 [NousResearch/hermes-official-plugins](https://github.com/NousResearch/hermes-official-plugins/tree/main/homeassistant) 中维护，不再属于 Hermes 核心。它提供两部分功能：
 
 1. **Gateway 平台** — 通过 WebSocket 订阅实时状态变更并响应事件
 2. **智能家居工具** — 四个可供 LLM 调用的工具（`homeassistant` 工具集），通过 REST API 查询和控制设备
@@ -24,7 +24,7 @@ hermes plugins install homeassistant
 hermes -p <profile> plugins install homeassistant
 ```
 
-插件自行声明其 Python 依赖（`aiohttp`），因此无需安装 pip extra。旧的 `hermes-agent[homeassistant]` extra 已被移除。
+插件自行声明其 Python 依赖（`aiohttp`），因此无需安装 pip extra。旧的 `shards-agent[homeassistant]` extra 已被移除。
 
 :::info 从内置 Home Assistant 的版本升级
 无需任何操作。每个已在使用 Home Assistant 的 profile（`.env` 中有 `HASS_TOKEN`、`config.yaml` 中启用了 `platforms.homeassistant`（或为其设置了 `token`），或 `platform_toolsets` 中列出了 `homeassistant` 工具集）都会在 `hermes update` 时自动从插件目录安装该插件（覆盖共享同一安装的所有 profile）。若该步骤未能执行，Hermes 会在该 profile 首次启动时（agent 启动或 gateway 启动）安装插件，此行为遵循 `security.allow_lazy_installs`。若某次尝试失败（离线、插件目录不可达），启动时最多每小时重试一次；`hermes update` 总会重试。安装结果会显示在终端、Desktop 应用和聊天中。每个 profile 只会自动安装一次：之后若你移除插件（`hermes plugins remove homeassistant`），它将保持移除状态。
@@ -39,7 +39,7 @@ hermes -p <profile> plugins install homeassistant
 1. 打开您的 Home Assistant 实例
 2. 进入**个人资料**（点击侧边栏中的用户名）
 3. 滚动至**长期访问令牌**
-4. 点击**创建令牌**，命名为"Hermes Agent"
+4. 点击**创建令牌**，命名为"Shards Agent"
 5. 复制令牌
 
 ### 2. 配置环境变量
@@ -203,7 +203,7 @@ platforms:
 
 ### Agent 响应
 
-Agent 发出的消息将以 **Home Assistant 持久通知**的形式推送（通过 `persistent_notification.create`），标题为"Hermes Agent"，显示在 HA 通知面板中。
+Agent 发出的消息将以 **Home Assistant 持久通知**的形式推送（通过 `persistent_notification.create`），标题为"Shards Agent"，显示在 HA 通知面板中。
 
 该平台使用 `minimal` 显示默认值（通知中不包含工具进度或流式输出）。如需更多输出，可在 `config.yaml` 的 `display.platforms.homeassistant` 下覆盖。
 

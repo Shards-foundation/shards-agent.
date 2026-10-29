@@ -686,7 +686,7 @@ When both exist the `pyproject.toml` wins. What Hermes does with them:
   its new generation. There is no post-update pip reinstall. `hermes plugins update` prepares
   active replacements before swapping their code and dependency generation together.
 - **Requirement hygiene** — malformed PEP 508 requirements are refused. Environment markers
-  remain intact for the target interpreter to evaluate. `hermes-agent` self-dependencies are
+  remain intact for the target interpreter to evaluate. `shards-agent` self-dependencies are
   omitted because the checkout supplies Hermes. Direct-URL requirements are not managed;
   use a plugin-owned external runtime for them.
 - **`--no-deps`** downloads a new plugin without dependency consent and leaves it disabled,
@@ -1565,7 +1565,7 @@ This is the only hook whose return value matters. When a `pre_llm_call` callback
 
 ```python
 # Dict with context key
-return {"context": "Recalled memories:\n- User prefers dark mode\n- Last project: hermes-agent"}
+return {"context": "Recalled memories:\n- User prefers dark mode\n- Last project: shards-agent"}
 
 # Plain string (equivalent to the dict form above)
 return "Recalled memories:\n- User prefers dark mode"
@@ -2530,8 +2530,8 @@ NixOS users can install your plugin declaratively if you provide a `pyproject.to
 **Entry-point plugins** (recommended for distribution):
 ```nix
 # User's configuration.nix
-services.hermes-agent.extraPythonPackages = [
-  (config.services.hermes-agent.package.python.pkgs.buildPythonPackage {
+services.shards-agent.extraPythonPackages = [
+  (config.services.shards-agent.package.python.pkgs.buildPythonPackage {
     pname = "my-plugin";
     version = "1.0.0";
     src = pkgs.fetchFromGitHub {
@@ -2541,14 +2541,14 @@ services.hermes-agent.extraPythonPackages = [
       hash = "sha256-...";  # nix-prefetch-url --unpack
     };
     format = "pyproject";
-    build-system = [ config.services.hermes-agent.package.python.pkgs.setuptools ];
+    build-system = [ config.services.shards-agent.package.python.pkgs.setuptools ];
   })
 ];
 ```
 
 **Directory plugins** (no `pyproject.toml` needed):
 ```nix
-services.hermes-agent.extraPlugins = [
+services.shards-agent.extraPlugins = [
   (pkgs.fetchFromGitHub {
     owner = "you";
     repo = "hermes-my-plugin";

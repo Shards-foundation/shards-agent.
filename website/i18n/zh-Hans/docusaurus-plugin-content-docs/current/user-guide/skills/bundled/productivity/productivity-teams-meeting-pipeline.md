@@ -17,7 +17,7 @@ description: "通过 Hermes CLI 操作 Teams 会议摘要流水线 — 总结会
 | 来源 | 内置（默认安装） |
 | 路径 | `skills/productivity/teams-meeting-pipeline` |
 | 版本 | `1.1.0` |
-| 作者 | Hermes Agent + Teknium |
+| 作者 | Shards Agent + Teknium |
 | 许可证 | MIT |
 | 标签 | `Teams`, `Microsoft Graph`, `Meetings`, `Productivity`, `Operations` |
 

@@ -7,7 +7,7 @@ description: "使用影子 git 仓库和自动快照为破坏性操作提供文�
 
 # 检查点与 `/rollback`
 
-Hermes Agent 可以在**破坏性操作**之前自动为你的项目创建快照，并通过单条命令恢复。检查点在 v2 中为**按需启用**——大多数用户从不使用 `/rollback`，且影子存储（shadow-store）随时间增长不可忽视，因此默认关闭。
+Shards Agent 可以在**破坏性操作**之前自动为你的项目创建快照，并通过单条命令恢复。检查点在 v2 中为**按需启用**——大多数用户从不使用 `/rollback`，且影子存储（shadow-store）随时间增长不可忽视，因此默认关闭。
 
 在会话中通过 `--checkpoints` 启用检查点：
 
@@ -153,7 +153,7 @@ Total size:      142.3 MB
 Projects:        12
 
   WORKDIR                                                       COMMITS    LAST TOUCH  STATE
-  /home/you/code/hermes-agent                                        20       2h ago  live
+  /home/you/code/shards-agent                                        20       2h ago  live
   /home/you/code/experiments/rl-runner                                8       1d ago  live
   /home/you/code/old-prototype                                        3       9d ago  orphan
   ...

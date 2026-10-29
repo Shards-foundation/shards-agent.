@@ -1,7 +1,7 @@
 ---
 sidebar_position: 11
 title: "ACP 宿主集成"
-description: "在兼容 ACP 的编辑器和协作平台中使用 Hermes Agent"
+description: "在兼容 ACP 的编辑器和协作平台中使用 Shards Agent"
 ---
 
 # ACP 宿主集成
@@ -9,7 +9,7 @@ description: "在兼容 ACP 的编辑器和协作平台中使用 Hermes Agent"
 本页的 Python 依赖命令使用 [PM 准备的源码环境](../../reference/package-management.md#developer-workflow)。
 依赖变更后，请重新激活该 checkout 并重启 Hermes。
 
-Hermes Agent 可作为 ACP 服务器运行，让兼容 ACP 的编辑器通过 stdio 与 Hermes 通信并渲染：
+Shards Agent 可作为 ACP 服务器运行，让兼容 ACP 的编辑器通过 stdio 与 Hermes 通信并渲染：
 
 - 聊天消息
 - 工具活动
@@ -39,7 +39,7 @@ Hermes 使用专为编辑器工作流设计的精选 `hermes-acp` 工具集运�
 正常安装 Hermes 后，从安装检出目录添加 ACP 扩展：
 
 ```bash
-cd ~/.hermes/hermes-agent && python -c "import pm; pm.sync_venv(['acp'], explicit=True)"
+cd ~/.hermes/shards-agent && python -c "import pm; pm.sync_venv(['acp'], explicit=True)"
 ```
 
 这将安装 `agent-client-protocol` 依赖并启用：
@@ -99,7 +99,7 @@ hermes acp --setup-browser --yes     # 非交互式接受下载
 其 `buzz-acp` harness 通过 stdio 将 Buzz 频道连接到任意 ACP agent：
 
 ```text
-Buzz relay <-- WebSocket --> buzz-acp <-- ACP over stdio --> Hermes Agent
+Buzz relay <-- WebSocket --> buzz-acp <-- ACP over stdio --> Shards Agent
 ```
 
 这是一种传输层集成，不是第二个 Hermes 安装。由 `buzz-acp` 启动的子进程使用该主机上
@@ -165,7 +165,7 @@ Desktop 会在该 agent 的 **Activity log** 中实时渲染生命周期、工�
 连接步骤：
 
 1. 从活动栏打开 ACP Client 面板。
-2. 从内置 agent 列表中选择 **Hermes Agent**。
+2. 从内置 agent 列表中选择 **Shards Agent**。
 3. 连接并开始聊天。
 
 如需手动定义 Hermes，通过 VS Code 设置在 `acp.agents` 下添加：
@@ -173,7 +173,7 @@ Desktop 会在该 agent 的 **Activity log** 中实时渲染生命周期、工�
 ```json
 {
   "acp.agents": {
-    "Hermes Agent": {
+    "Shards Agent": {
       "command": "hermes",
       "args": ["acp"]
     }
@@ -191,7 +191,7 @@ Desktop 会在该 agent 的 **Activity log** 中实时渲染生命周期、工�
 ```json
 {
   "agent_servers": {
-    "hermes-agent": {
+    "shards-agent": {
       "type": "custom",
       "command": "hermes",
       "args": ["acp"]
@@ -212,7 +212,7 @@ Desktop 会在该 agent 的 **Activity log** 中实时渲染生命周期、工�
 
 ### Buzz Desktop
 
-[Buzz](https://github.com/block/buzz) 将 Hermes Agent 作为预设运行时提供。
+[Buzz](https://github.com/block/buzz) 将 Shards Agent 作为预设运行时提供。
 按常规方式安装 Hermes 后，Buzz 会自动发现它 —— 打开 **Settings → Runtimes**，
 Hermes 就会出现在你的运行时列表中。
 
@@ -313,7 +313,7 @@ ACP 桥接将这些选项映射到 Hermes 的内部审批语义——`allow_alwa
 
 - 对于手动/本地开发，验证自定义 `agent_servers` 命令是否指向 `hermes acp`。
 - Hermes 已安装且在 PATH 中。
-- ACP 扩展已安装（`cd ~/.hermes/hermes-agent && python -c "import pm; pm.sync_venv(['acp'], explicit=True)"`）。
+- ACP 扩展已安装（`cd ~/.hermes/shards-agent && python -c "import pm; pm.sync_venv(['acp'], explicit=True)"`）。
 
 ### ACP 启动后立即报错
 

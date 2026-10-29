@@ -1,7 +1,7 @@
 ---
 sidebar_position: 1
 title: "Tools & Toolsets"
-description: "Overview of Hermes Agent's tools — what's available, how toolsets work, and terminal backends"
+description: "Overview of Shards Agent's tools — what's available, how toolsets work, and terminal backends"
 ---
 
 # Tools & Toolsets

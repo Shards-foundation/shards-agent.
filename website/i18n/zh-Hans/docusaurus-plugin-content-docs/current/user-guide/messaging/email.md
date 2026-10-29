@@ -1,7 +1,7 @@
 ---
 sidebar_position: 7
 title: "电子邮件"
-description: "通过 IMAP/SMTP 将 Hermes Agent 设置为电子邮件助手"
+description: "通过 IMAP/SMTP 将 Shards Agent 设置为电子邮件助手"
 ---
 
 # 电子邮件设置
@@ -16,7 +16,7 @@ Email 适配器使用 Python 内置的 `imaplib`、`smtplib` 和 `email` 模块�
 
 ## 前提条件
 
-- **为 Hermes Agent 准备一个专用邮箱账户**（不要使用个人邮箱）
+- **为 Shards Agent 准备一个专用邮箱账户**（不要使用个人邮箱）
 - **在该邮箱账户上启用 IMAP**
 - **如果使用 Gmail 或其他开启了双重验证的服务商，需要准备应用专用密码**
 

@@ -1,7 +1,7 @@
 ---
 sidebar_position: 2
 title: "配置"
-description: "配置 Hermes Agent — config.yaml、providers、模型、API 密钥等"
+description: "配置 Shards Agent — config.yaml、providers、模型、API 密钥等"
 ---
 
 # 配置
@@ -295,7 +295,7 @@ terminal:
 
 **镜像处理：** Docker URL（`docker://...`）自动转换为 SIF 文件并缓存。现有 `.sif` 文件直接使用。
 
-**临时目录：** 按顺序解析：`TERMINAL_SCRATCH_DIR` → `TERMINAL_SANDBOX_DIR/singularity` → `/scratch/$USER/hermes-agent`（HPC 惯例）→ `~/.hermes/sandboxes/singularity`。
+**临时目录：** 按顺序解析：`TERMINAL_SCRATCH_DIR` → `TERMINAL_SANDBOX_DIR/singularity` → `/scratch/$USER/shards-agent`（HPC 惯例）→ `~/.hermes/sandboxes/singularity`。
 
 **隔离：** 使用 `--containall --no-home` 实现完全命名空间隔离，不挂载宿主 home 目录。
 
@@ -822,7 +822,7 @@ $ hermes model
 <div style={{position: 'relative', width: '100%', aspectRatio: '16 / 9', marginBottom: '1.5rem'}}>
   <iframe
     src="https://www.youtube.com/embed/NoF-YajElIM"
-    title="Hermes Agent — Auxiliary Models Tutorial"
+    title="Shards Agent — Auxiliary Models Tutorial"
     style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', border: 0}}
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
     allowFullScreen
@@ -1452,7 +1452,7 @@ whatsapp:
 quick_commands:
   status:
     type: exec
-    command: systemctl status hermes-agent
+    command: systemctl status shards-agent
   disk:
     type: exec
     command: df -h /

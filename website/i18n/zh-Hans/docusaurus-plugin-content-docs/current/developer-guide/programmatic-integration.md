@@ -1,7 +1,7 @@
 ---
 sidebar_position: 8
 title: "程序化集成"
-description: "从外部程序驱动 hermes-agent 的三种协议：ACP、TUI gateway JSON-RPC 以及兼容 OpenAI 的 HTTP API"
+description: "从外部程序驱动 shards-agent 的三种协议：ACP、TUI gateway JSON-RPC 以及兼容 OpenAI 的 HTTP API"
 ---
 
 # 程序化集成
@@ -91,7 +91,7 @@ GET  /v1/runs/{id}/events        生命周期事件的 SSE 流
 POST /v1/runs/{id}/approval      解决待处理的审批
 POST /v1/runs/{id}/stop          中断运行
 GET  /v1/capabilities            机器可读的功能标志
-GET  /v1/models                  列出 hermes-agent
+GET  /v1/models                  列出 shards-agent
 GET  /health, /health/detailed
 ```
 

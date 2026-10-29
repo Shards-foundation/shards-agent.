@@ -1,12 +1,12 @@
 ---
 sidebar_position: 12
 title: "Google Chat"
-description: "使用 Cloud Pub/Sub 将 Hermes Agent 设置为 Google Chat 机器人"
+description: "使用 Cloud Pub/Sub 将 Shards Agent 设置为 Google Chat 机器人"
 ---
 
 # Google Chat 设置
 
-将 Hermes Agent 作为机器人接入 Google Chat。该集成使用 Cloud Pub/Sub 拉取订阅接收入站事件，使用 Chat REST API 发送出站消息。与 Slack Socket Mode 或 Telegram 长轮询的使用体验相当：Hermes 进程无需公网 URL、隧道或 TLS 证书。它直接连接、认证并监听订阅——就像 Telegram 机器人通过 token 监听一样。
+将 Shards Agent 作为机器人接入 Google Chat。该集成使用 Cloud Pub/Sub 拉取订阅接收入站事件，使用 Chat REST API 发送出站消息。与 Slack Socket Mode 或 Telegram 长轮询的使用体验相当：Hermes 进程无需公网 URL、隧道或 TLS 证书。它直接连接、认证并监听订阅——就像 Telegram 机器人通过 token 监听一样。
 
 :::note Workspace 版本
 Google Chat 是 Google Workspace 的一部分。你可以在个人 Workspace（通过 Google 注册的 `@yourdomain.com`）或拥有管理员权限可发布应用的企业 Workspace 中使用此集成。仅有 Gmail 账号的用户无法托管 Chat 应用。

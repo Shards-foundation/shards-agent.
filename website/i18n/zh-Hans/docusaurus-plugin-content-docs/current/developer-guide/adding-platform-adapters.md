@@ -332,7 +332,7 @@ label: My Platform
 kind: platform
 version: 1.0.0
 description: >
-  My Platform gateway adapter for Hermes Agent.
+  My Platform gateway adapter for Shards Agent.
 author: Your Name
 requires_env:
   - name: MY_PLATFORM_TOKEN

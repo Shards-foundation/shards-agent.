@@ -3,9 +3,9 @@
 
 
 [project]
-name = "hermes-agent"
+name = "shards-agent"
 version = "0.0.0"
-description = "The self-improving AI agent — creates skills from experience, improves them during use, and runs anywhere"
+description = "Shards Agent — Shards Foundation distribution of the self-improving AI agent"
 readme = "README.md"
 # 3.14 is the newest python we know we have wheels for.
 # we *only* support 3.14, BUT we need to allow old hermes installs on <3.14
@@ -13,7 +13,8 @@ readme = "README.md"
 # Shortly after they do, we update to our latest python.
 # See tests/compat/README.md for the updater contract this keeps.
 requires-python = ">=3.11,<3.15"
-authors = [{ name = "Nous Research" }]
+authors = [{ name = "Shards Foundation" }]
+# Derived from Hermes Agent by Nous Research; see LICENSE and upstream attribution.
 license = "MIT"
 license-files = ["LICENSE"]
 dependencies = [
@@ -466,20 +467,20 @@ azure-identity = ["azure-identity==1.26.0"]
 termux = [
   # Baseline Android / Termux path for reliable fresh installs.
   "python-telegram-bot[webhooks]==22.8",
-  "hermes-agent[cron]",
-  "hermes-agent[mcp]",
-  "hermes-agent[acp]",
+  "shards-agent[cron]",
+  "shards-agent[mcp]",
+  "shards-agent[acp]",
 ]
 termux-all = [
   # Best-effort "install all" profile for Termux. Same policy as [all]:
   # only includes extras that are not prepared on demand by PM.
   # Backends like telegram/slack/dingtalk/feishu lazy-install at
   # first use, so they're no longer eager-installed here.
-  "hermes-agent[termux]",
-  "hermes-agent[google]",
-  "hermes-agent[sms]",
-  "hermes-agent[web]",
-  "hermes-agent[pty]",
+  "shards-agent[termux]",
+  "shards-agent[google]",
+  "shards-agent[sms]",
+  "shards-agent[web]",
+  "shards-agent[pty]",
 ]
 dingtalk = [
   "dingtalk-stream==0.24.3",
@@ -543,15 +544,15 @@ all = [
   # [all], `uv sync --locked` on Windows tried to build it from sdist
   # and failed on `make`. Lazy-install routes that build to first use,
   # where the user is expected to have a toolchain available.
-  "hermes-agent[cron]",
-  "hermes-agent[pty]",
-  "hermes-agent[mcp]",
-  "hermes-agent[uvloop]",
-  "hermes-agent[sms]",
-  "hermes-agent[acp]",
-  "hermes-agent[google]",
-  "hermes-agent[web]",
-  "hermes-agent[youtube]",
+  "shards-agent[cron]",
+  "shards-agent[pty]",
+  "shards-agent[mcp]",
+  "shards-agent[uvloop]",
+  "shards-agent[sms]",
+  "shards-agent[acp]",
+  "shards-agent[google]",
+  "shards-agent[web]",
+  "shards-agent[youtube]",
 ]
 
 [dependency-groups]
@@ -584,8 +585,10 @@ requires = ["setuptools==83.0.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project.scripts]
-hermes = "hermes_cli.main:main"
-hermes-agent = "agent.legacy_cli:main"
+shards = "hermes_cli.main:main"
+hermes = "hermes_cli.main:main"  # Compatibility alias for existing users.
+shards-agent = "agent.legacy_cli:main"
+hermes-agent = "agent.legacy_cli:main"  # Compatibility alias for existing users.
 hermes-acp = "acp_adapter.entry:main"
 
 [tool.hermes]

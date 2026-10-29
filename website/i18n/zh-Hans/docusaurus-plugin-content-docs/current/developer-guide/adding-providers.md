@@ -1,7 +1,7 @@
 ---
 sidebar_position: 5
 title: "添加 Provider"
-description: "如何向 Hermes Agent 添加新的推理 provider——认证、运行时解析、CLI 流程、适配器、测试与文档"
+description: "如何向 Shards Agent 添加新的推理 provider——认证、运行时解析、CLI 流程、适配器、测试与文档"
 ---
 
 # 添加 Provider

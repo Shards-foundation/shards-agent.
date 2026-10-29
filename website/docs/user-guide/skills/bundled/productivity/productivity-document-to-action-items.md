@@ -17,7 +17,7 @@ Extract cited obligations, deadlines, tasks from documents.
 | Source | Bundled (installed by default) |
 | Path | `skills/productivity/document-to-action-items` |
 | Version | `0.1.0` |
-| Author | Ben Barclay (benbarclay), Hermes Agent |
+| Author | Ben Barclay (benbarclay), Shards Agent |
 | License | MIT |
 | Platforms | linux, macos, windows |
 | Tags | `Documents`, `OCR`, `Action-Items`, `Deadlines`, `Extraction` |

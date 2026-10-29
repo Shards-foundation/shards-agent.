@@ -17,7 +17,7 @@ description: "54 个真实设计系统（Stripe、Linear、Vercel）的 HTML/CSS
 | 来源 | 内置（默认安装） |
 | 路径 | `skills/creative/popular-web-designs` |
 | 版本 | `1.0.0` |
-| 作者 | Hermes Agent + Teknium（设计系统来源：VoltAgent/awesome-design-md） |
+| 作者 | Shards Agent + Teknium（设计系统来源：VoltAgent/awesome-design-md） |
 | 许可证 | MIT |
 | 平台 | linux, macos, windows |
 

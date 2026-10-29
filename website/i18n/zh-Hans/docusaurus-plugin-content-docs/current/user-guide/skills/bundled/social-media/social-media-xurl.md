@@ -17,7 +17,7 @@ description: "通过 xurl CLI 使用 X/Twitter：发帖、搜索、私信、媒�
 | 来源 | 内置（默认安装） |
 | 路径 | `skills/social-media/xurl` |
 | 版本 | `1.1.1` |
-| 作者 | xdevplatform + openclaw + Hermes Agent |
+| 作者 | xdevplatform + openclaw + Shards Agent |
 | 许可证 | MIT |
 | 平台 | linux, macos |
 | 标签 | `twitter`, `x`, `social-media`, `xurl`, `official-api` |

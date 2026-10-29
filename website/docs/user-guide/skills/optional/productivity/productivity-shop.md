@@ -17,7 +17,7 @@ Shop catalog search, checkout, order tracking, returns.
 | Source | Optional — install with `hermes skills install official/productivity/shop` |
 | Path | `optional-skills/productivity/shop` |
 | Version | `1.0.1` |
-| Author | Joe Rinaldi Johnson (joerj123), Hermes Agent |
+| Author | Joe Rinaldi Johnson (joerj123), Shards Agent |
 | License | MIT |
 | Platforms | linux, macos, windows |
 | Tags | `Shopping`, `E-commerce`, `Shop`, `Products`, `Orders`, `Returns`, `Checkout`, `Reorder` |
@@ -172,7 +172,7 @@ Options: available in 4 colors.
 | WhatsApp | Image as a media message, then an interactive message with the product info. No markdown links. |
 | iMessage | Plain text only, no markdown. Never put CDN/image URLs in text. Send two messages per product: (1) image, (2) info. |
 | Telegram (Openclaw) | One single media message per product, no alt text. Inline "View Product" URL button if supported, else the template link; on send failure, fall back to text. |
-| Telegram (Hermes Agent + all other agents) | Do **not** send an image. Send separate messages — never one combined message. |
+| Telegram (Shards Agent + all other agents) | Do **not** send an image. Send separate messages — never one combined message. |
 
 ## Visualization
 When the item is visual (clothing, shoes, accessories, furniture, decor, art) **and** you have image-generation capability, offer it — e.g. "Send a photo and I'll show you how it could look. Also if you like it can save it locally on your device."

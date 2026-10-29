@@ -1,7 +1,7 @@
 ---
 sidebar_position: 6
 title: "Use MCP with Hermes"
-description: "A practical guide to connecting MCP servers to Hermes Agent, filtering their tools, and using them safely in real workflows"
+description: "A practical guide to connecting MCP servers to Shards Agent, filtering their tools, and using them safely in real workflows"
 ---
 
 # Use MCP with Hermes
@@ -10,7 +10,7 @@ Python dependency commands on this page use a
 [PM-prepared source checkout](../reference/package-management.md#developer-workflow).
 After a dependency change, reactivate the checkout and restart Hermes.
 
-This guide shows how to actually use MCP with Hermes Agent in day-to-day workflows.
+This guide shows how to actually use MCP with Shards Agent in day-to-day workflows.
 
 If the feature page explains what MCP is, this guide is about how to get value from it quickly and safely.
 
@@ -46,7 +46,7 @@ If you installed Hermes with the standard install script, MCP support is already
 If you installed without extras and need to add MCP separately:
 
 ```bash
-cd ~/.hermes/hermes-agent
+cd ~/.hermes/shards-agent
 python -c "import pm; pm.sync_venv(['mcp'], explicit=True)"
 ```
 

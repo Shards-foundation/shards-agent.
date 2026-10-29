@@ -17,7 +17,7 @@ X/Twitter via xurl CLI: raw post search, posting, DM, media.
 | Source | Bundled (installed by default) |
 | Path | `skills/social-media/xurl` |
 | Version | `1.1.3` |
-| Author | xdevplatform + openclaw + Hermes Agent |
+| Author | xdevplatform + openclaw + Shards Agent |
 | License | MIT |
 | Platforms | linux, macos |
 | Tags | `twitter`, `x`, `social-media`, `xurl`, `official-api` |

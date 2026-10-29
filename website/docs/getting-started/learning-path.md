@@ -1,15 +1,15 @@
 ---
 sidebar_position: 3
 title: 'Learning Path'
-description: 'Choose your learning path through the Hermes Agent documentation based on your experience level and goals.'
+description: 'Choose your learning path through the Shards Agent documentation based on your experience level and goals.'
 ---
 
 # Learning Path
 
-Hermes Agent can do a lot — CLI assistant, Telegram/Discord bot, task automation, RL training, and more. This page helps you figure out where to start and what to read based on your experience level and what you're trying to accomplish.
+Shards Agent can do a lot — CLI assistant, Telegram/Discord bot, task automation, RL training, and more. This page helps you figure out where to start and what to read based on your experience level and what you're trying to accomplish.
 
 :::tip Start Here
-If you haven't installed Hermes Agent yet, begin with the [Installation guide](./installation.md) and then run through the [Quickstart](./quickstart.md). Everything below assumes you have a working installation.
+If you haven't installed Shards Agent yet, begin with the [Installation guide](./installation.md) and then run through the [Quickstart](./quickstart.md). Everything below assumes you have a working installation.
 :::
 
 :::tip First-time provider setup
@@ -20,7 +20,7 @@ First-time users almost always want `hermes setup --portal` — one OAuth covers
 
 - **Know your level?** Jump to the [experience-level table](#by-experience-level) and follow the reading order for your tier.
 - **Have a specific goal?** Skip to [By Use Case](#by-use-case) and find the scenario that matches.
-- **Just browsing?** Check the [Key Features](#key-features-at-a-glance) table for a quick overview of everything Hermes Agent can do.
+- **Just browsing?** Check the [Key Features](#key-features-at-a-glance) table for a quick overview of everything Shards Agent can do.
 
 ## By Experience Level
 
@@ -36,7 +36,7 @@ Pick the scenario that matches what you want to do. Each one links you to the re
 
 ### "I want a CLI coding assistant"
 
-Use Hermes Agent as an interactive terminal assistant for writing, reviewing, and running code.
+Use Shards Agent as an interactive terminal assistant for writing, reviewing, and running code.
 
 1. [Installation](./installation.md)
 2. [Quickstart](./quickstart.md)
@@ -46,12 +46,12 @@ Use Hermes Agent as an interactive terminal assistant for writing, reviewing, an
 6. [Tips & Tricks](../guides/tips.md)
 
 :::tip
-Pass files directly into your conversation with context files. Hermes Agent can read, edit, and run code in your projects.
+Pass files directly into your conversation with context files. Shards Agent can read, edit, and run code in your projects.
 :::
 
 ### "I want a Telegram/Discord bot"
 
-Deploy Hermes Agent as a bot on your favorite messaging platform.
+Deploy Shards Agent as a bot on your favorite messaging platform.
 
 1. [Installation](./installation.md)
 2. [Configuration](../user-guide/configuration.md)
@@ -77,7 +77,7 @@ Schedule recurring tasks, run batch jobs, or chain agent actions together.
 5. [Hooks](../user-guide/features/hooks.md)
 
 :::tip
-Cron jobs let Hermes Agent run tasks on a schedule — daily summaries, periodic checks, automated reports — without you being present.
+Cron jobs let Shards Agent run tasks on a schedule — daily summaries, periodic checks, automated reports — without you being present.
 :::
 
 ### "I want a team of specialist Bots"
@@ -92,7 +92,7 @@ Create named Bots with their own model, memory, skills, routines, and chats, the
 
 ### "I want to build custom tools/skills"
 
-Extend Hermes Agent with your own tools and reusable skill packages.
+Extend Shards Agent with your own tools and reusable skill packages.
 
 1. [Plugins](../user-guide/features/plugins.md)
 2. [Build a Hermes Plugin](../developer-guide/plugins/index.md)
@@ -110,7 +110,7 @@ page is for built-in Hermes core development, not the usual user/custom-tool pat
 
 ### "I want to train models"
 
-Use reinforcement learning to fine-tune model behavior with Hermes Agent's RL training pipeline (powered by [Atropos](https://github.com/NousResearch/atropos)).
+Use reinforcement learning to fine-tune model behavior with Shards Agent's RL training pipeline (powered by [Atropos](https://github.com/NousResearch/atropos)).
 
 1. [Quickstart](./quickstart.md)
 2. [Configuration](../user-guide/configuration.md)
@@ -119,12 +119,12 @@ Use reinforcement learning to fine-tune model behavior with Hermes Agent's RL tr
 5. [Architecture](../developer-guide/architecture.md)
 
 :::tip
-RL training works best when you already understand the basics of how Hermes Agent handles conversations and tool calls. Run through the Beginner path first if you're new.
+RL training works best when you already understand the basics of how Shards Agent handles conversations and tool calls. Run through the Beginner path first if you're new.
 :::
 
 ### "I want to use it as a Python library"
 
-Integrate Hermes Agent into your own Python applications programmatically.
+Integrate Shards Agent into your own Python applications programmatically.
 
 1. [Installation](./installation.md)
 2. [Quickstart](./quickstart.md)

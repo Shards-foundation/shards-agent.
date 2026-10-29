@@ -7,7 +7,7 @@ sidebar_position: 17
 
 On a headless Linux gateway host (a server, a cloud VM, Hermes Cloud) each bot
 gets its **own desktop**: an Xfce screen the bot's `computer_use` and headed
-browser act on, streamed live into Hermes Desktop. Watch what the bot does,
+browser act on, streamed live into Shards Desktop. Watch what the bot does,
 **take over** when it hits a login, 2FA prompt, CAPTCHA or payment step, then
 **hand control back** and let it continue with the session you just signed in
 to. The bot keeps working after you close the app or turn off your laptop; the
@@ -47,7 +47,7 @@ reverse proxy's access log may record an already-spent ticket.
   display; the pane is not offered there.
 - TigerVNC's `Xvnc` and the Xfce core components are installed on the host.
   Nothing installs them silently: `hermes update` and fresh installs leave every
-  machine as it is. When they are missing the Screen pane in Hermes Desktop shows
+  machine as it is. When they are missing the Screen pane in Shards Desktop shows
   **Install on host** — one click runs the package manager on the gateway host
   (it asks for that host's sudo password in a masked card; the password goes to
   that host only and is never stored) and streams the log. When Hermes itself
@@ -55,7 +55,7 @@ reverse proxy's access log may record an already-spent ticket.
   manager directly, with no sudo and no password card. When it is not root and
   the host has no `sudo` at all, the pane and the CLI print the exact install
   command for you to run on the host instead of showing a card. The official
-  Docker image (`nousresearch/hermes-agent`, which also powers Hermes Cloud) is
+  Docker image (`nousresearch/shards-agent`, which also powers Hermes Cloud) is
   that second case: the gateway runs as an unprivileged user and the image has no
   `sudo`, so the pane shows the `apt-get` line and an operator runs it once as
   root in the container (`docker exec -u 0 <container> apt-get install -y …`).
@@ -114,7 +114,7 @@ Build your own only if you want the packages in a custom image. The official
 `docker build .` stays lean:
 
 ```bash
-docker build --build-arg HERMES_BOT_DESKTOP=1 -t hermes-agent:screen .
+docker build --build-arg HERMES_BOT_DESKTOP=1 -t shards-agent:screen .
 ```
 
 It adds TigerVNC, the Xfce components and the distro `chromium` (the sandbox
@@ -127,7 +127,7 @@ screen is started.
 
 ## Using it
 
-Every bot's computer is one click away in three places of Hermes Desktop:
+Every bot's computer is one click away in three places of Shards Desktop:
 
 - **Bots → a bot → Scheduled Jobs**: the bot's screen is the hero at the very
   top of the pane, above the title and the routines: a live preview of the
@@ -365,7 +365,7 @@ Xauthority, launcher log, per-profile xfconf).
 - **Xfce** starts component-wise (`xfsettingsd`, `xfwm4 --compositor=off`,
   `xfdesktop`, `xfce4-panel`) under a private D-Bus session, without
   `xfce4-session`, so nothing tries to lock the screen or reach `logind`.
-- **Hermes Desktop** bundles noVNC. It asks the gateway for a single-use ticket
+- **Shards Desktop** bundles noVNC. It asks the gateway for a single-use ticket
   (`display.observe`) over its normal authenticated connection and opens a
   sibling WebSocket to `/api/display/ws`; the gateway splices the RFB stream
   through. Nothing new is exposed; the pane works over local, SSH, URL+token
@@ -387,7 +387,7 @@ Xauthority, launcher log, per-profile xfconf).
 
 - **"Screen packages missing"** — click **Install on host** in the pane, or run
   the printed install line on the gateway host (not on the machine running
-  Hermes Desktop). The pane refuses a second install while one is running.
+  Shards Desktop). The pane refuses a second install while one is running.
 - **Screen starts then stops** — read `<HERMES_HOME>/bot-desktop/launcher.log`.
 - **Typing produces wrong characters during a takeover** — the screen runs a
   US keymap so RFB keysyms and cua-driver agree, and noVNC sends raw keycodes

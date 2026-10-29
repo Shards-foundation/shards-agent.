@@ -1,12 +1,12 @@
 ---
 sidebar_position: 1
 title: "技巧与最佳实践"
-description: "充分发挥 Hermes Agent 潜力的实用建议——prompt 技巧、CLI 快捷键、上下文文件、记忆、成本优化与安全"
+description: "充分发挥 Shards Agent 潜力的实用建议——prompt 技巧、CLI 快捷键、上下文文件、记忆、成本优化与安全"
 ---
 
 # 技巧与最佳实践
 
-一份实用技巧速查集，帮助你立即提升使用 Hermes Agent 的效率。每个章节针对不同方面——扫描标题，直接跳到相关内容。
+一份实用技巧速查集，帮助你立即提升使用 Shards Agent 的效率。每个章节针对不同方面——扫描标题，直接跳到相关内容。
 
 ---
 

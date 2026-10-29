@@ -17,7 +17,7 @@ Jailbreak LLMs: Parseltongue, GODMODE, ULTRAPLINIAN.
 | Source | Optional — install with `hermes skills install official/security/godmode` |
 | Path | `optional-skills/security/godmode` |
 | Version | `1.0.0` |
-| Author | Hermes Agent + Teknium |
+| Author | Shards Agent + Teknium |
 | License | MIT |
 | Platforms | linux, macos, windows |
 | Tags | `jailbreak`, `red-teaming`, `G0DM0D3`, `Parseltongue`, `GODMODE`, `uncensoring`, `safety-bypass`, `prompt-engineering`, `L1B3RT4S` |

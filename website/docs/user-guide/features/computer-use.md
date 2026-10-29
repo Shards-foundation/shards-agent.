@@ -5,7 +5,7 @@ sidebar_position: 16
 
 # Computer Use
 
-Hermes Agent can drive your desktop — clicking, typing, scrolling,
+Shards Agent can drive your desktop — clicking, typing, scrolling,
 dragging — in the **background** on **macOS, Windows, and Linux**. Your
 cursor doesn't move, keyboard focus doesn't change, and your virtual
 desktops / Spaces don't switch on you. You and the agent co-work on the
@@ -42,7 +42,7 @@ no-foreground invariant, click-dispatch internals — see
 ## Which machine it drives
 
 `computer_use` acts on the same machine the bot's screen lives on, never on
-the machine running Hermes Desktop. On a gateway with `terminal.backend:
+the machine running Shards Desktop. On a gateway with `terminal.backend:
 local` that is the gateway host. With a sandboxed terminal (`docker`, `ssh`,
 or a plugin backend that declares `supports_streams`, such as `singularity`) the
 driver runs **inside the sandbox** on the sandbox's own
@@ -469,7 +469,7 @@ of screenshot context, not ~600K.
     has the recipe.
   - **Linux** requires a reachable display server. Headless servers
     get one from [Bot Screen](./bot-screen.md): a per-profile Xfce
-    desktop over TigerVNC, streamed into Hermes Desktop, where you can
+    desktop over TigerVNC, streamed into Shards Desktop, where you can
     take over for logins and 2FA. You start it from the Desktop's
     Screen pane or `hermes computer-use screen start`; it starts on
     first use (the first `computer_use` call or headed browser use) only

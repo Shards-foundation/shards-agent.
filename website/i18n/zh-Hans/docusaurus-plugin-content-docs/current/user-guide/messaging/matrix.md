@@ -1,7 +1,7 @@
 ---
 sidebar_position: 9
 title: "Matrix"
-description: "将 Hermes Agent 设置为 Matrix 机器人"
+description: "将 Shards Agent 设置为 Matrix 机器人"
 ---
 
 # Matrix 设置
@@ -9,7 +9,7 @@ description: "将 Hermes Agent 设置为 Matrix 机器人"
 本页的 Python 依赖命令使用 [PM 准备的源码环境](../../reference/package-management.md#developer-workflow)。
 依赖变更后，请重新激活该 checkout 并重启 Hermes。
 
-Hermes Agent 与 Matrix 集成，Matrix 是一种开放的联邦消息协议。Matrix 允许你运行自己的 homeserver，也可以使用 matrix.org 等公共 homeserver——无论哪种方式，你都保持对通信的控制权。机器人通过 `mautrix` Python SDK 连接，通过 Hermes Agent 管道（包括工具调用、记忆和推理）处理消息，并实时响应。它支持文本、文件附件、图片、音频、视频，以及可选的端对端加密（E2EE）。
+Shards Agent 与 Matrix 集成，Matrix 是一种开放的联邦消息协议。Matrix 允许你运行自己的 homeserver，也可以使用 matrix.org 等公共 homeserver——无论哪种方式，你都保持对通信的控制权。机器人通过 `mautrix` Python SDK 连接，通过 Shards Agent 管道（包括工具调用、记忆和推理）处理消息，并实时响应。它支持文本、文件附件、图片、音频、视频，以及可选的端对端加密（E2EE）。
 
 Hermes 兼容任何 Matrix homeserver——Synapse、Conduit、Dendrite 或 matrix.org。
 
@@ -158,7 +158,7 @@ MATRIX_PASSWORD=your-password
 
 ## 第三步：找到你的 Matrix 用户 ID
 
-Hermes Agent 使用你的 Matrix 用户 ID 来控制谁可以与机器人交互。Matrix 用户 ID 的格式为 `@username:server`。
+Shards Agent 使用你的 Matrix 用户 ID 来控制谁可以与机器人交互。Matrix 用户 ID 的格式为 `@username:server`。
 
 查找方式：
 
@@ -170,7 +170,7 @@ Hermes Agent 使用你的 Matrix 用户 ID 来控制谁可以与机器人交互�
 Matrix 用户 ID 始终以 `@` 开头，并包含 `:` 后跟服务器名称。例如：`@alice:matrix.org`、`@bob:your-server.com`。
 :::
 
-## 第四步：配置 Hermes Agent
+## 第四步：配置 Shards Agent
 
 ### 方式 A：交互式设置（推荐）
 
@@ -250,7 +250,7 @@ E2EE 需要带有加密扩展的 `mautrix` 库以及 `libolm` C 库：
 python -c "import pm; pm.sync_venv(['matrix'], explicit=True)"
 
 # 或通过 hermes extras 安装
-cd ~/.hermes/hermes-agent && python -c "import pm; pm.sync_venv(['matrix'], explicit=True)"
+cd ~/.hermes/shards-agent && python -c "import pm; pm.sync_venv(['matrix'], explicit=True)"
 ```
 
 你还需要在系统上安装 `libolm`：
@@ -431,7 +431,7 @@ python -c "import pm; pm.sync_venv(['matrix'], explicit=True)"
 或通过 Hermes extras：
 
 ```bash
-cd ~/.hermes/hermes-agent && python -c "import pm; pm.sync_venv(['matrix'], explicit=True)"
+cd ~/.hermes/shards-agent && python -c "import pm; pm.sync_venv(['matrix'], explicit=True)"
 ```
 
 ### 加密错误/"无法解密事件"
@@ -467,7 +467,7 @@ cd ~/.hermes/hermes-agent && python -c "import pm; pm.sync_venv(['matrix'], expl
        "type": "m.login.password",
        "identifier": {"type": "m.id.user", "user": "@hermes:your-server.org"},
        "password": "***",
-       "initial_device_display_name": "Hermes Agent"
+       "initial_device_display_name": "Shards Agent"
      }'
    ```
 
@@ -512,7 +512,7 @@ cd ~/.hermes/hermes-agent && python -c "import pm; pm.sync_venv(['matrix'], expl
 
 ## 代理模式（macOS 上的 E2EE）
 
-Matrix E2EE 需要 `libolm`，而该库无法在 macOS ARM64（Apple Silicon）上编译。`hermes-agent[matrix]` extra 仅限 Linux。如果你在 macOS 上，代理模式允许你在 Linux 虚拟机的 Docker 容器中运行 E2EE，而实际的 agent 在 macOS 上原生运行，可完整访问你的本地文件、记忆和技能。
+Matrix E2EE 需要 `libolm`，而该库无法在 macOS ARM64（Apple Silicon）上编译。`shards-agent[matrix]` extra 仅限 Linux。如果你在 macOS 上，代理模式允许你在 Linux 虚拟机的 Docker 容器中运行 E2EE，而实际的 agent 在 macOS 上原生运行，可完整访问你的本地文件、记忆和技能。
 
 ### 工作原理
 
@@ -659,7 +659,7 @@ services:
 始终设置 `MATRIX_ALLOWED_USERS` 以限制可与机器人交互的用户。若不设置，gateway 默认拒绝所有用户作为安全措施。只添加你信任的人的用户 ID——授权用户可完整访问 agent 的所有功能，包括工具调用和系统访问。
 :::
 
-有关保护 Hermes Agent 部署的更多信息，请参阅[安全指南](../security.md)。
+有关保护 Shards Agent 部署的更多信息，请参阅[安全指南](../security.md)。
 
 ## 注意事项
 

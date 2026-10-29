@@ -17,7 +17,7 @@ Apple Reminders via remindctl: add, list, complete.
 | Source | Bundled (installed by default) |
 | Path | `skills/apple/apple-reminders` |
 | Version | `1.0.0` |
-| Author | Hermes Agent |
+| Author | Shards Agent |
 | License | MIT |
 | Platforms | macos |
 | Tags | `Reminders`, `tasks`, `todo`, `macOS`, `Apple` |

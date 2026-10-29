@@ -1,12 +1,12 @@
 ---
 sidebar_position: 3
 title: "创建 Skill"
-description: "如何为 Hermes Agent 创建 skill——SKILL.md 格式、规范与发布"
+description: "如何为 Shards Agent 创建 skill——SKILL.md 格式、规范与发布"
 ---
 
 # 创建 Skill
 
-Skill 是为 Hermes Agent 添加新能力的首选方式。与 tool 相比，skill 更易于创建，无需修改 agent 代码，且可与社区共享。
+Skill 是为 Shards Agent 添加新能力的首选方式。与 tool 相比，skill 更易于创建，无需修改 agent 代码，且可与社区共享。
 
 ## 应该创建 Skill 还是 Tool？
 

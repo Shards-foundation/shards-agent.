@@ -1,7 +1,7 @@
 ---
 sidebar_position: 16
 title: "Yuanbao"
-description: "Connect Hermes Agent to the Yuanbao enterprise messaging platform via WebSocket gateway"
+description: "Connect Shards Agent to the Yuanbao enterprise messaging platform via WebSocket gateway"
 ---
 
 # Yuanbao

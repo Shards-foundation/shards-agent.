@@ -19,7 +19,7 @@ Nothing to do. Every profile that was already using Spotify (a Spotify login in 
 ## Prerequisites
 
 - A Spotify account. **Free** works for search, playlist, library, and activity tools. **Premium** is required for playback control (play, pause, skip, seek, volume, queue add, transfer).
-- Hermes Agent installed and running, with the `spotify` plugin installed.
+- Shards Agent installed and running, with the `spotify` plugin installed.
 - For playback tools: an **active Spotify Connect device** — the Spotify app must be open on at least one device (phone, desktop, web player, speaker) so the Web API has something to control. If nothing is active you'll get a `403 Forbidden` with a "no active device" message; open Spotify on any device and retry.
 
 ## Setup
@@ -56,7 +56,7 @@ When the dashboard opens, click **Create app** and fill in:
 
 | Field | Value |
 |-------|-------|
-| App name | anything (e.g. `hermes-agent`) |
+| App name | anything (e.g. `shards-agent`) |
 | App description | anything (e.g. `personal Hermes integration`) |
 | Website | leave blank |
 | Redirect URI | `http://127.0.0.1:43827/spotify/callback` |

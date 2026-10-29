@@ -1,7 +1,7 @@
 ---
 sidebar_position: 9
 title: "使用 Ollama 在本地运行 Hermes — 零 API 费用"
-description: "使用 Ollama 和 Gemma 4 等开放权重模型在本机完整运行 Hermes Agent 的分步指南，无需云端 API 密钥或付费订阅"
+description: "使用 Ollama 和 Gemma 4 等开放权重模型在本机完整运行 Shards Agent 的分步指南，无需云端 API 密钥或付费订阅"
 ---
 
 # 使用 Ollama 在本地运行 Hermes — 零 API 费用
@@ -12,7 +12,7 @@ description: "使用 Ollama 和 Gemma 4 等开放权重模型在本机完整运�
 
 ## 本指南解决什么
 
-你将在自己的硬件上完整运行 Hermes Agent，使用 [Ollama](https://ollama.com) 作为模型后端。无需 API 密钥，无需订阅，数据不会离开你的机器。配置完成后，Hermes 的使用体验与 OpenRouter 或 Anthropic 完全一致——终端命令、文件编辑、网页浏览、任务委派——只是模型在本地运行。
+你将在自己的硬件上完整运行 Shards Agent，使用 [Ollama](https://ollama.com) 作为模型后端。无需 API 密钥，无需订阅，数据不会离开你的机器。配置完成后，Hermes 的使用体验与 OpenRouter 或 Anthropic 完全一致——终端命令、文件编辑、网页浏览、任务委派——只是模型在本地运行。
 
 完成后，你将拥有：
 

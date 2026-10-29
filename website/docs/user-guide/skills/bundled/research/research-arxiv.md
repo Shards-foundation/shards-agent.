@@ -17,7 +17,7 @@ Search arXiv papers by keyword, author, category, or ID.
 | Source | Bundled (installed by default) |
 | Path | `skills/research/arxiv` |
 | Version | `1.0.0` |
-| Author | Hermes Agent |
+| Author | Shards Agent |
 | License | MIT |
 | Platforms | linux, macos, windows |
 | Tags | `Research`, `Arxiv`, `Papers`, `Academic`, `Science`, `API` |

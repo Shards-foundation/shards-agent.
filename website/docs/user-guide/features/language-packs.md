@@ -57,7 +57,7 @@ hermes-lang-pl/
   locales/
     pl.yaml            # core: Python-side strings (approval.*, gateway.*, cli.*, display.*, slash.*, tips.*, ...)
     pl.tui.yaml        # optional: hermes --tui strings
-    pl.desktop.yaml    # optional: Hermes Desktop strings
+    pl.desktop.yaml    # optional: Shards Desktop strings
 ```
 
 `plugin.yaml`:

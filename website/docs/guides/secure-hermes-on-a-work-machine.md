@@ -1,7 +1,7 @@
 ---
 sidebar_position: 26
 title: "Running Hermes on a Personal or Work Machine"
-description: "A security-posture walkthrough for running Hermes Agent on the machine you live on — what the defaults protect, how to tighten further, and how to undo mistakes"
+description: "A security-posture walkthrough for running Shards Agent on the machine you live on — what the defaults protect, how to tighten further, and how to undo mistakes"
 ---
 
 # Running Hermes on a Personal or Work Machine
@@ -24,7 +24,7 @@ Fresh install, no configuration — these protections are active:
 
 **Secrets are redacted from output.** `security.redact_secrets` is on by default: patterns that look like API keys, tokens, and passwords in tool output are redacted before they enter the conversation context and logs.
 
-**Your data goes only where you point it.** API calls go **only to the LLM provider you configure**. Hermes Agent does not collect telemetry, usage data, or analytics. Your conversations, memory, and skills are stored locally in `~/.hermes/`. See the [FAQ](../reference/faq.md#is-my-data-sent-anywhere).
+**Your data goes only where you point it.** API calls go **only to the LLM provider you configure**. Shards Agent does not collect telemetry, usage data, or analytics. Your conversations, memory, and skills are stored locally in `~/.hermes/`. See the [FAQ](../reference/faq.md#is-my-data-sent-anywhere).
 
 :::info
 There's more below the surface — SSRF protection on all URL-capable tools, filtered environments for MCP subprocesses, prompt-injection scanning of context files. The [Security](../user-guide/security.md) page documents every layer.

@@ -17,7 +17,7 @@ description: "可选的供应商技能，用于 Parallel CLI — 面向 agent �
 | 来源 | 可选 — 使用 `hermes skills install official/research/parallel-cli` 安装 |
 | 路径 | `optional-skills/research/parallel-cli` |
 | 版本 | `1.1.0` |
-| 作者 | Hermes Agent |
+| 作者 | Shards Agent |
 | 许可证 | MIT |
 | 平台 | linux, macos, windows |
 | 标签 | `Research`, `Web`, `Search`, `Deep-Research`, `Enrichment`, `CLI` |

@@ -1,7 +1,7 @@
 ---
 sidebar_position: 4
 title: "Buzz Integration"
-description: "All three ways to connect Hermes Agent to Buzz — Block's Nostr-based human+agent workspace"
+description: "All three ways to connect Shards Agent to Buzz — Block's Nostr-based human+agent workspace"
 ---
 
 # Buzz Integration
@@ -29,7 +29,7 @@ Full setup, troubleshooting, and the security posture (Buzz auto-approves tool p
 For a hosted Hermes identity that joins Buzz *channels* while Buzz's own harness owns the transport:
 
 ```text
-Buzz relay <-- WebSocket --> buzz-acp <-- ACP over stdio --> Hermes Agent
+Buzz relay <-- WebSocket --> buzz-acp <-- ACP over stdio --> Shards Agent
 ```
 
 The spawned Hermes uses the same config, credentials, memory, and skills as `hermes` on that host. Key minting, channel discovery, owner-only telemetry (`BUZZ_ACP_RELAY_OBSERVER`), and headless-permission guidance: **[ACP Host Integration → Buzz channels (relay bridge)](../user-guide/features/acp.md#buzz-channels-relay-bridge)**

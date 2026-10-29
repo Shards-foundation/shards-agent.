@@ -17,11 +17,11 @@ Plan-in-code fan-outs, adversarial verification, waves.
 | Source | Optional — install with `hermes skills install official/autonomous-ai-agents/dynamic-workflow` |
 | Path | `optional-skills/autonomous-ai-agents/dynamic-workflow` |
 | Version | `2.0.0` |
-| Author | Teknium + Hermes Agent |
+| Author | Teknium + Shards Agent |
 | License | MIT |
 | Platforms | linux, macos, windows |
 | Tags | `orchestration`, `fan-out`, `subagents`, `delegation`, `verification`, `migration`, `audit`, `research`, `campaign` |
-| Related skills | [`hermes-agent`](../../bundled/autonomous-ai-agents/autonomous-ai-agents-hermes-agent.md), [`simplify-code`](../../bundled/software-development/software-development-simplify-code.md) |
+| Related skills | [`shards-agent`](../../bundled/autonomous-ai-agents/autonomous-ai-agents-shards-agent.md), [`simplify-code`](../../bundled/software-development/software-development-simplify-code.md) |
 
 ## Reference: full SKILL.md
 
@@ -41,8 +41,8 @@ make `delegate_task` durable across restarts; that is the kanban swarm's job.
 
 Reach for it when the unit of work is clear (a file, an endpoint, a record) and
 there are more units than one context can hold. Skip it for under ~10 units or
-for serial chains. For a refactor or fix campaign on hermes-agent itself, load
-`hermes-agent` (the dev workflow) alongside; this skill owns the fan-out shape.
+for serial chains. For a refactor or fix campaign on shards-agent itself, load
+`shards-agent` (the dev workflow) alongside; this skill owns the fan-out shape.
 
 ## Prerequisites
 

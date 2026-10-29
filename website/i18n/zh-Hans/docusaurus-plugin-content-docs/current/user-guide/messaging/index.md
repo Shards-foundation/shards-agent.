@@ -167,7 +167,7 @@ hermes gateway status --system         # 仅 Linux：显式检查系统服务
 | `/bg <prompt>` | 在独立后台会话中运行 prompt（提示词） |
 | `/btw <question>` | 在不打断当前对话的情况下，就当前对话提出顺带问题 |
 | `/reload-mcp` | 从配置重新加载 MCP 服务器 |
-| `/update` | 将 Hermes Agent 更新至最新版本 |
+| `/update` | 将 Shards Agent 更新至最新版本 |
 | `/help` | 显示可用命令 |
 | `/<skill-name>` | 调用任意已安装的技能 |
 

@@ -106,7 +106,7 @@ Hermes 有两个斜杠命令入口，均由 `hermes_cli/commands.py` 中的中�
 | 命令 | 描述 |
 |---------|-------------|
 | `/help` | 显示帮助信息 |
-| `/version` | 显示 Hermes Agent 版本、构建及环境信息。 |
+| `/version` | 显示 Shards Agent 版本、构建及环境信息。 |
 | `/usage` | 显示 token 用量、费用明细、会话时长，以及——当活动提供商支持时——从提供商 API 实时拉取的**账户限额**部分，包含剩余配额/积分/套餐用量。 |
 | `/credits` | 显示你的 Nous 积分余额和充值跳转链接。 |
 | `/billing` | Nous 的 CLI 终端计费流程——查看余额、购买积分并管理自动充值 / 月度限额。 |
@@ -139,7 +139,7 @@ Hermes 有两个斜杠命令入口，均由 `hermes_cli/commands.py` 中的中�
 quick_commands:
   status:
     type: exec
-    command: systemctl status hermes-agent
+    command: systemctl status shards-agent
   deploy:
     type: exec
     command: scripts/deploy.sh
@@ -240,7 +240,7 @@ hermes config set model.aliases.grok x-ai/grok-4
 | `/commands [page]` | 浏览所有命令和 skill（分页）。 |
 | `/approve [session\|always]` | 审批并执行待处理的危险命令。`session` 仅为本次会话审批；`always` 添加到永久白名单。 |
 | `/deny` | 拒绝待处理的危险命令。 |
-| `/update` | 将 Hermes Agent 更新到最新版本。 |
+| `/update` | 将 Shards Agent 更新到最新版本。 |
 | `/restart` | 在排空活动运行后优雅重启 gateway。gateway 重新上线后，会向请求者的聊天/线程发送确认消息。 |
 | `/debug` | 上传调试报告（系统信息 + 日志）并获取可分享链接。 |
 | `/help` | 显示消息平台帮助。 |

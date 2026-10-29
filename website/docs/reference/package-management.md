@@ -242,7 +242,7 @@ Clone the repository and select your branch before preparing dependencies:
 
 ```bash
 git clone https://github.com/NousResearch/hermes-agent.git
-cd hermes-agent
+cd shards-agent
 ```
 
 For isolated development, select a separate data home before the first PM

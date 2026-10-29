@@ -6,7 +6,7 @@ description: "SOUL.md vs USER.md vs MEMORY.md vs AGENTS.md — a one-page map of
 
 # Which File Does What?
 
-"I told my agent something and it forgot." "Which file is my agent's brain?" "I edited SOUL.md — why doesn't it know my name?" These questions all come down to the same thing: Hermes Agent is shaped by several markdown files, and each one has a different job. This page maps them all in one place. For depth on any of them, follow the links to [Persistent Memory](./features/memory.md), [Personality & SOUL.md](./features/personality.md), and [Context Files](./features/context-files.md).
+"I told my agent something and it forgot." "Which file is my agent's brain?" "I edited SOUL.md — why doesn't it know my name?" These questions all come down to the same thing: Shards Agent is shaped by several markdown files, and each one has a different job. This page maps them all in one place. For depth on any of them, follow the links to [Persistent Memory](./features/memory.md), [Personality & SOUL.md](./features/personality.md), and [Context Files](./features/context-files.md).
 
 ## The Master Table
 

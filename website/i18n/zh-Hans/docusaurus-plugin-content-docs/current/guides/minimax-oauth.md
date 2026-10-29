@@ -1,12 +1,12 @@
 ---
 sidebar_position: 15
 title: "MiniMax OAuth"
-description: "通过浏览器 OAuth 登录 MiniMax，在 Hermes Agent 中使用 MiniMax-M2.7 模型——无需 API 密钥"
+description: "通过浏览器 OAuth 登录 MiniMax，在 Shards Agent 中使用 MiniMax-M2.7 模型——无需 API 密钥"
 ---
 
 # MiniMax OAuth
 
-Hermes Agent 通过基于浏览器的 OAuth 登录流程支持 **MiniMax**，使用与 [MiniMax 门户](https://www.minimax.io) 相同的凭据。无需 API 密钥或信用卡——登录一次，Hermes 即可自动刷新您的会话。
+Shards Agent 通过基于浏览器的 OAuth 登录流程支持 **MiniMax**，使用与 [MiniMax 门户](https://www.minimax.io) 相同的凭据。无需 API 密钥或信用卡——登录一次，Hermes 即可自动刷新您的会话。
 
 该传输层复用了 `anthropic_messages` 适配器（MiniMax 在 `/anthropic` 路径暴露了一个兼容 Anthropic Messages 的端点），因此所有现有的工具调用、流式传输和上下文功能无需任何适配器改动即可正常使用。
 
@@ -26,7 +26,7 @@ Hermes Agent 通过基于浏览器的 OAuth 登录流程支持 **MiniMax**，使
 ## 前提条件
 
 - Python 3.9+
-- 已安装 Hermes Agent
+- 已安装 Shards Agent
 - 在 [minimax.io](https://www.minimax.io)（全球）或 [minimaxi.com](https://www.minimaxi.com)（中国）注册的 MiniMax 账户
 - 本地机器上可用的浏览器（远程会话请使用 `--no-browser`）
 

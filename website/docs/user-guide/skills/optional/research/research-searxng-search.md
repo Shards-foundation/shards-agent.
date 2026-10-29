@@ -17,7 +17,7 @@ Free keyless meta-search aggregating 70+ engines.
 | Source | Optional — install with `hermes skills install official/research/searxng-search` |
 | Path | `optional-skills/research/searxng-search` |
 | Version | `1.0.1` |
-| Author | hermes-agent |
+| Author | shards-agent |
 | License | MIT |
 | Platforms | linux, macos |
 | Tags | `search`, `searxng`, `meta-search`, `self-hosted`, `free`, `fallback` |

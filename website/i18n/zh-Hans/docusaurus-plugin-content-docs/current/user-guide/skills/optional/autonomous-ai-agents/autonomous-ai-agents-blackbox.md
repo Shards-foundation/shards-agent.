@@ -17,11 +17,11 @@ description: "将编码任务委托给 Blackbox AI CLI 代理"
 | 来源 | 可选 — 通过 `hermes skills install official/autonomous-ai-agents/blackbox` 安装 |
 | 路径 | `optional-skills/autonomous-ai-agents/blackbox` |
 | 版本 | `1.0.0` |
-| 作者 | Hermes Agent (Nous Research) |
+| 作者 | Shards Agent (Nous Research) |
 | 许可证 | MIT |
 | 平台 | linux, macos, windows |
 | 标签 | `Coding-Agent`, `Blackbox`, `Multi-Agent`, `Judge`, `Multi-Model` |
-| 相关 skill | [`claude-code`](/user-guide/skills/bundled/autonomous-ai-agents/autonomous-ai-agents-claude-code), [`codex`](/user-guide/skills/bundled/autonomous-ai-agents/autonomous-ai-agents-codex), [`hermes-agent`](/user-guide/skills/bundled/autonomous-ai-agents/autonomous-ai-agents-hermes-agent) |
+| 相关 skill | [`claude-code`](/user-guide/skills/bundled/autonomous-ai-agents/autonomous-ai-agents-claude-code), [`codex`](/user-guide/skills/bundled/autonomous-ai-agents/autonomous-ai-agents-codex), [`shards-agent`](/user-guide/skills/bundled/autonomous-ai-agents/autonomous-ai-agents-shards-agent) |
 
 ## 参考：完整 SKILL.md
 

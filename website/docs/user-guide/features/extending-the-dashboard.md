@@ -762,7 +762,7 @@ delays only that profile's hosted plugin requests, and one with no answer after 
 
 #### Accessing Hermes internals
 
-Backend routes run inside the dashboard process, so they can import from the hermes-agent codebase directly:
+Backend routes run inside the dashboard process, so they can import from the shards-agent codebase directly:
 
 ```python
 from fastapi import APIRouter
