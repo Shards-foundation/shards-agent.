@@ -1,7 +1,7 @@
 ---
 sidebar_position: 4
 title: "MCP (Model Context Protocol)"
-description: "Connect Hermes Agent to external tool servers via MCP — and control exactly which MCP tools Hermes loads"
+description: "Connect Shards Agent to external tool servers via MCP — and control exactly which MCP tools Hermes loads"
 ---
 
 # MCP (Model Context Protocol)
@@ -10,7 +10,7 @@ Python dependency commands on this page use a
 [PM-prepared source checkout](../../reference/package-management.md#developer-workflow).
 After a dependency change, reactivate the checkout and restart Hermes.
 
-MCP lets Hermes Agent connect to external tool servers so the agent can use tools that live outside Hermes itself — GitHub, databases, file systems, browser stacks, internal APIs, and more.
+MCP lets Shards Agent connect to external tool servers so the agent can use tools that live outside Hermes itself — GitHub, databases, file systems, browser stacks, internal APIs, and more.
 
 If you have ever wanted Hermes to use a tool that already exists somewhere else, MCP is usually the cleanest way to do it.
 
@@ -105,7 +105,7 @@ github       installed (disabled)   GitHub repo + PR tools
 
 Hit `Enter` on a row to install (and walk through any required credentials),
 enable, disable, or uninstall. Catalog entries are stored under
-`optional-mcps/` in the hermes-agent repo — presence in that directory means
+`optional-mcps/` in the shards-agent repo — presence in that directory means
 Nous approval. There is no community submission tier; entries are added by
 merging a PR.
 
@@ -194,7 +194,7 @@ reachable to refine.
 Installing a catalog entry runs whatever the manifest specifies — `git clone`,
 the entry's `bootstrap` commands (`pip install`, `npm install`, etc.), and
 ultimately the MCP server's own code. Manifests are gated by PR review into
-the hermes-agent repo, so Nous has reviewed each entry before it shipped —
+the shards-agent repo, so Nous has reviewed each entry before it shipped —
 **but you should still read the manifest before installing**, especially the
 `source:` field's repository, the `install.bootstrap:` commands, and any
 `transport.command:` invocation.
@@ -354,7 +354,7 @@ Most hosted MCP servers (Cloudflare, Linear, Sentry, Atlassian, Asana, Figma, St
 Hermes identifies itself with a [Client ID Metadata Document](../../reference/mcp-config-reference.md#client-identification-cimd-and-dcr) on servers that support one, and falls back to Dynamic Client Registration on those that don't. Both are automatic; there is nothing to configure.
 
 :::tip Figma remote MCP
-Figma's hosted endpoint (`https://mcp.figma.com/mcp`) allowlists Dynamic Client Registration by **exact `client_name`** — bare `"Hermes Agent"` 403s, while `"Claude Code"` and `"Codex"` succeed. Hermes auto-sets `oauth.client_name: "Claude Code"` for `mcp.figma.com` so install/login works without a special trick:
+Figma's hosted endpoint (`https://mcp.figma.com/mcp`) allowlists Dynamic Client Registration by **exact `client_name`** — bare `"Shards Agent"` 403s, while `"Claude Code"` and `"Codex"` succeed. Hermes auto-sets `oauth.client_name: "Claude Code"` for `mcp.figma.com` so install/login works without a special trick:
 
 ```yaml
 mcp_servers:
@@ -385,7 +385,7 @@ The authorization server's metadata document must name the server the resource a
 
 **Remote / headless hosts.** When Hermes runs on a different machine than your browser, the loopback callback can't reach your laptop. Ways to complete the flow:
 
-- **Hermes Desktop (automatic):** when you run the OAuth sign-in from the Desktop app's MCP setup UI against a remote backend, Desktop hosts the callback listener on *your* machine and relays the authorization back to the gateway automatically — no tunnel, paste, or proxy needed. Requires both the Desktop app and the backend to be up to date.
+- **Shards Desktop (automatic):** when you run the OAuth sign-in from the Desktop app's MCP setup UI against a remote backend, Desktop hosts the callback listener on *your* machine and relays the authorization back to the gateway automatically — no tunnel, paste, or proxy needed. Requires both the Desktop app and the backend to be up to date.
 - **Paste-back (no setup):** on an interactive terminal Hermes prints "Or paste the redirect URL here…" alongside the authorize URL. Open the URL in your browser, approve, copy the full URL the browser ends up on (the redirect will show a connection error — that's expected), paste it at the prompt. Bare `?code=…&state=…` query strings work too.
 - **Device-code login (no callback at all):** if the server's authorization server advertises a device authorization endpoint, run `hermes mcp login <server> --flow device` on the machine running Hermes. It prints a verification URL and a short code; open the URL on any device, enter the code, and Hermes polls for approval. No browser is launched on the host and no callback listener is needed. Set `oauth.flow: device` on the server to make `login` and `reauth` use it by default. Details: [Device-code login](../../reference/mcp-config-reference.md#device-code-login-rfc-8628).
 - **SSH port forward:** `ssh -N -L <port>:127.0.0.1:<port> user@host` in a separate terminal, then let the redirect flow normally.
@@ -878,7 +878,7 @@ Check:
 
 ```bash
 # Verify MCP deps are installed (already included in standard install)
-cd ~/.hermes/hermes-agent && python -c "import pm; pm.sync_venv(['mcp'], explicit=True)"
+cd ~/.hermes/shards-agent && python -c "import pm; pm.sync_venv(['mcp'], explicit=True)"
 
 node --version
 npx --version

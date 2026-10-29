@@ -122,7 +122,7 @@ def register(ctx):
 | 用户 | `~/.hermes/plugins/` | 个人插件 |
 | 项目 | `.hermes/plugins/` | 项目专属插件（需要 `HERMES_ENABLE_PROJECT_PLUGINS=true`） |
 | pip | `hermes_agent.plugins` entry_points | 分发包 |
-| Nix | `services.hermes-agent.extraPlugins` / `extraPythonPackages` | NixOS 声明式安装 — 参见 [Nix Setup](../../getting-started/nix-setup.md#插件) |
+| Nix | `services.shards-agent.extraPlugins` / `extraPythonPackages` | NixOS 声明式安装 — 参见 [Nix Setup](../../getting-started/nix-setup.md#插件) |
 
 名称冲突时，后面的来源会覆盖前面的，因此与内置插件同名的用户插件会替换它。
 
@@ -246,11 +246,11 @@ Memory provider 和 context engine 是 **provider 插件** — 每种类型同�
 在 NixOS 上，插件可通过模块选项声明式安装 — 无需 `hermes plugins install`。完整详情请参见 **[Nix Setup 指南](../../getting-started/nix-setup.md#插件)**。
 
 ```nix
-services.hermes-agent = {
+services.shards-agent = {
   # 目录插件（包含 plugin.yaml 的源码树）
   extraPlugins = [ (pkgs.fetchFromGitHub { ... }) ];
   # 入口点插件（pip 包）
-  extraPythonPackages = [ (config.services.hermes-agent.package.python.pkgs.buildPythonPackage { ... }) ];
+  extraPythonPackages = [ (config.services.shards-agent.package.python.pkgs.buildPythonPackage { ... }) ];
   # 在 config 中启用
   settings.plugins.enabled = [ "my-plugin" ];
 };

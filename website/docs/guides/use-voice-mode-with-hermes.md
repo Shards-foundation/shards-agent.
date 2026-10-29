@@ -65,19 +65,19 @@ If that is not solid yet, fix text mode first.
 ### CLI microphone + playback
 
 ```bash
-cd ~/.hermes/hermes-agent && python -c "import pm; pm.sync_venv(['voice'], explicit=True)"
+cd ~/.hermes/shards-agent && python -c "import pm; pm.sync_venv(['voice'], explicit=True)"
 ```
 
 ### Messaging platforms
 
 ```bash
-cd ~/.hermes/hermes-agent && python -c "import pm; pm.sync_venv(['messaging'], explicit=True)"
+cd ~/.hermes/shards-agent && python -c "import pm; pm.sync_venv(['messaging'], explicit=True)"
 ```
 
 ### Premium ElevenLabs TTS
 
 ```bash
-cd ~/.hermes/hermes-agent && python -c "import pm; pm.sync_venv(['tts-premium'], explicit=True)"
+cd ~/.hermes/shards-agent && python -c "import pm; pm.sync_venv(['tts-premium'], explicit=True)"
 ```
 
 ### Local NeuTTS (optional)

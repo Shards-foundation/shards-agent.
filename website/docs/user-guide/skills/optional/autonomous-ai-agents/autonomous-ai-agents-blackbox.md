@@ -17,11 +17,11 @@ Delegate coding tasks to the Blackbox AI multi-model CLI.
 | Source | Optional — install with `hermes skills install official/autonomous-ai-agents/blackbox` |
 | Path | `optional-skills/autonomous-ai-agents/blackbox` |
 | Version | `1.0.1` |
-| Author | Hermes Agent (Nous Research) |
+| Author | Shards Agent (Nous Research) |
 | License | MIT |
 | Platforms | linux, macos, windows |
 | Tags | `Coding-Agent`, `Blackbox`, `Multi-Agent`, `Judge`, `Multi-Model` |
-| Related skills | [`claude-code`](../../bundled/autonomous-ai-agents/autonomous-ai-agents-claude-code.md), [`codex`](../../bundled/autonomous-ai-agents/autonomous-ai-agents-codex.md), [`hermes-agent`](../../bundled/autonomous-ai-agents/autonomous-ai-agents-hermes-agent.md) |
+| Related skills | [`claude-code`](../../bundled/autonomous-ai-agents/autonomous-ai-agents-claude-code.md), [`codex`](../../bundled/autonomous-ai-agents/autonomous-ai-agents-codex.md), [`shards-agent`](../../bundled/autonomous-ai-agents/autonomous-ai-agents-shards-agent.md) |
 
 ## Reference: full SKILL.md
 

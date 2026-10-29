@@ -6,7 +6,7 @@ description: "项目上下文文件 — .hermes.md、AGENTS.md、CLAUDE.md、全
 
 # 上下文文件
 
-Hermes Agent 会自动发现并加载上下文文件，以塑造其行为方式。部分文件属于项目本地文件，从工作目录中发现。`SOUL.md` 现在对整个 Hermes 实例全局生效，仅从 `HERMES_HOME` 加载。
+Shards Agent 会自动发现并加载上下文文件，以塑造其行为方式。部分文件属于项目本地文件，从工作目录中发现。`SOUL.md` 现在对整个 Hermes 实例全局生效，仅从 `HERMES_HOME` 加载。
 
 ## 支持的上下文文件
 

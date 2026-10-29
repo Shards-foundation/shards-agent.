@@ -20,7 +20,7 @@ See also:
 ## Install from the website
 
 Each installable card on the public [Skills Hub](/skills) has an **Install in Hermes**
-button. It opens Hermes Desktop with a URL-encoded, source-qualified skill target:
+button. It opens Shards Desktop with a URL-encoded, source-qualified skill target:
 `official/...` for optional skills, `clawhub/...` for ClawHub, and an explicit
 repository path for bundled skills rather than an ambiguous bare name. The card's
 CLI command uses the same target:
@@ -1072,7 +1072,7 @@ On each sync, Hermes recomputes the hash of your local copy and compares it to t
 
 Generated runtime caches inside a skill (`__pycache__/`, `.pytest_cache/`, `.mypy_cache/`, `.ruff_cache/`, and a `.pyc` sitting next to its `.py`) are not part of the hash, so running a skill's helper script never marks it user-modified or hides it from `hermes skills list-modified` / `diff`.
 
-The protection is good, but it has one sharp edge. If you edit a bundled skill and then later want to abandon your changes and go back to the bundled version by just copy-pasting from `~/.hermes/hermes-agent/skills/`, the manifest still holds the *old* origin hash from whenever the last successful sync ran. Your fresh copy-paste contents (current bundled hash) won't match that stale origin hash, so sync keeps flagging it as user-modified.
+The protection is good, but it has one sharp edge. If you edit a bundled skill and then later want to abandon your changes and go back to the bundled version by just copy-pasting from `~/.hermes/shards-agent/skills/`, the manifest still holds the *old* origin hash from whenever the last successful sync ran. Your fresh copy-paste contents (current bundled hash) won't match that stale origin hash, so sync keeps flagging it as user-modified.
 
 `hermes skills reset` is the escape hatch:
 

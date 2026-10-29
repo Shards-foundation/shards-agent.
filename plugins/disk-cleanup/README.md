@@ -1,6 +1,6 @@
 # disk-cleanup
 
-Auto-tracks and cleans up ephemeral files created during Hermes Agent
+Auto-tracks and cleans up ephemeral files created during Shards Agent
 sessions — test scripts, temp outputs, cron logs, stale chrome profiles.
 <!-- no-tmp: ok — documents the legacy scratch scope this plugin cleans up -->
 Scoped strictly to `$HERMES_HOME` and `/tmp/hermes-*`.

@@ -1,7 +1,7 @@
 ---
 sidebar_position: 3
 title: "更新与卸载"
-description: "如何将 Hermes Agent 更新至最新版本或将其卸载"
+description: "如何将 Shards Agent 更新至最新版本或将其卸载"
 ---
 
 # 更新与卸载
@@ -67,7 +67,7 @@ updates:
 
 ### Windows：另一个 `hermes.exe` 正在运行
 
-在 Windows 上，如果 `hermes update` 检测到另一个 `hermes.exe` 进程持有 venv 入口点可执行文件的句柄，它将拒绝运行 — 最常见的情况是 Hermes Desktop 应用启动的后端进程、另一个终端中打开的 `hermes` REPL，或正在运行的 gateway：
+在 Windows 上，如果 `hermes update` 检测到另一个 `hermes.exe` 进程持有 venv 入口点可执行文件的句柄，它将拒绝运行 — 最常见的情况是 Shards Desktop 应用启动的后端进程、另一个终端中打开的 `hermes` REPL，或正在运行的 gateway：
 
 ```
 $ hermes update
@@ -77,7 +77,7 @@ $ hermes update
   Updating now would fail to overwrite ...\venv\Scripts\hermes.exe because
   Windows blocks REPLACE on a running executable.
 
-  Close Hermes Desktop, exit any open `hermes` REPLs, and
+  Close Shards Desktop, exit any open `hermes` REPLs, and
   stop the gateway (`hermes gateway stop`) before retrying.
   Override with `hermes update --force` if you've already
   confirmed those processes will not write to the venv.
@@ -89,7 +89,7 @@ $ hermes update
 
 ```
 $ hermes update
-Updating Hermes Agent...
+Updating Shards Agent...
 📥 Pulling latest code...
 Already up to date.  (or: Updating abc1234..def5678)
 📦 Updating dependencies...
@@ -98,7 +98,7 @@ Already up to date.  (or: Updating abc1234..def5678)
 ✅ Config is up to date  (or: Found 2 new options — running migration...)
 🔄 Restarting gateways...
 ✅ Gateway restarted
-✅ Hermes Agent updated successfully!
+✅ Shards Agent updated successfully!
 ```
 
 ### 更新后建议的验证步骤
@@ -153,7 +153,7 @@ hermes --version
 如果你是手动安装的（未使用快速安装脚本）：
 
 ```bash
-cd /path/to/hermes-agent
+cd /path/to/shards-agent
 export VIRTUAL_ENV="$(pwd)/venv"
 
 # Pull latest code
@@ -172,7 +172,7 @@ hermes config migrate   # Interactively add any missing options
 如果更新引入了问题，可以回滚到之前的版本：
 
 ```bash
-cd /path/to/hermes-agent
+cd /path/to/shards-agent
 
 # List recent versions
 git log --oneline -10
@@ -202,10 +202,10 @@ python -m pm.cli install
 
 ```bash
 # Update the flake input
-nix flake update hermes-agent
+nix flake update shards-agent
 
 # Or rebuild with the latest
-nix profile upgrade hermes-agent
+nix profile upgrade shards-agent
 ```
 
 Nix 安装是不可变的 — 回滚由 Nix 的 generation 系统处理：
@@ -230,7 +230,7 @@ hermes uninstall
 
 ```bash
 rm -f ~/.local/bin/hermes
-rm -rf /path/to/hermes-agent
+rm -rf /path/to/shards-agent
 rm -rf ~/.hermes            # 可选 — 如计划重新安装则保留
 ```
 

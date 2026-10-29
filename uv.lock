@@ -2293,508 +2293,6 @@ wheels = [
 ]
 
 [[package]]
-name = "hermes-agent"
-version = "0.0.0"
-source = { editable = "." }
-default-groups = []
-dependencies = [
-    { name = "browser-harness" },
-    { name = "certifi" },
-    { name = "concurrent-log-handler", marker = "sys_platform == 'win32'" },
-    { name = "croniter" },
-    { name = "cryptography" },
-    { name = "fastapi" },
-    { name = "fire" },
-    { name = "firecrawl-anydoc" },
-    { name = "httptools" },
-    { name = "httpx", extra = ["socks"] },
-    { name = "jinja2" },
-    { name = "markdown" },
-    { name = "nemo-relay", marker = "(platform_machine == 'aarch64' and 'android' not in platform_release and sys_platform == 'linux') or (platform_machine == 'x86_64' and 'android' not in platform_release and sys_platform == 'linux') or (platform_machine == 'arm64' and sys_platform == 'darwin') or (platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine == 'ARM64' and sys_platform == 'win32')" },
-    { name = "openai" },
-    { name = "packaging" },
-    { name = "pathspec" },
-    { name = "pillow" },
-    { name = "pillow-heif" },
-    { name = "prompt-toolkit" },
-    { name = "psutil", version = "7.2.2", source = { registry = "https://pypi.org/simple" }, marker = "sys_platform != 'android'" },
-    { name = "psutil", version = "8.0.0", source = { git = "https://github.com/giampaolo/psutil.git?rev=380bd2b59c67b0e1b04bbf3a90b11744f4f96644#380bd2b59c67b0e1b04bbf3a90b11744f4f96644" }, marker = "sys_platform == 'android'" },
-    { name = "ptyprocess", marker = "sys_platform != 'win32'" },
-    { name = "pydantic" },
-    { name = "pyjwt", extra = ["crypto"] },
-    { name = "python-dotenv" },
-    { name = "python-multipart" },
-    { name = "pywin32", marker = "sys_platform == 'win32'" },
-    { name = "pywinpty", marker = "sys_platform == 'win32'" },
-    { name = "requests" },
-    { name = "resvg-py" },
-    { name = "rich" },
-    { name = "ruamel-yaml" },
-    { name = "ruamel-yaml-clib", marker = "(platform_machine in 'x86_64 aarch64 i686' and platform_python_implementation == 'CPython' and sys_platform == 'linux') or (platform_machine in 'AMD64 x86' and platform_python_implementation == 'CPython' and sys_platform == 'win32') or (platform_python_implementation == 'CPython' and sys_platform == 'darwin')" },
-    { name = "snowballstemmer" },
-    { name = "tenacity" },
-    { name = "tomli-w" },
-    { name = "truststore" },
-    { name = "tzdata", marker = "sys_platform == 'win32'" },
-    { name = "urllib3" },
-    { name = "uvicorn" },
-    { name = "watchfiles" },
-    { name = "websockets" },
-    { name = "winrt-windows-applicationmodel", marker = "sys_platform == 'win32'" },
-    { name = "winrt-windows-foundation", marker = "sys_platform == 'win32'" },
-    { name = "winrt-windows-foundation-collections", marker = "sys_platform == 'win32'" },
-    { name = "winrt-windows-services-store", marker = "sys_platform == 'win32'" },
-]
-
-[package.optional-dependencies]
-acp = [
-    { name = "agent-client-protocol" },
-]
-all = [
-    { name = "agent-client-protocol" },
-    { name = "aiohttp" },
-    { name = "fastapi" },
-    { name = "google-api-python-client" },
-    { name = "google-auth" },
-    { name = "google-auth-httplib2" },
-    { name = "google-auth-oauthlib" },
-    { name = "httplib2" },
-    { name = "httpx2" },
-    { name = "mcp" },
-    { name = "pyasn1" },
-    { name = "python-multipart" },
-    { name = "starlette" },
-    { name = "uvicorn" },
-    { name = "uvloop", marker = "platform_python_implementation != 'PyPy' and sys_platform != 'android' and sys_platform != 'cygwin' and sys_platform != 'win32'" },
-    { name = "youtube-transcript-api" },
-]
-anthropic = [
-    { name = "anthropic" },
-]
-audio-io = [
-    { name = "numpy" },
-    { name = "sounddevice" },
-]
-azure-identity = [
-    { name = "azure-identity" },
-]
-bedrock = [
-    { name = "boto3" },
-]
-computer-use = [
-    { name = "httpx2" },
-    { name = "mcp" },
-    { name = "starlette" },
-]
-daytona = [
-    { name = "daytona" },
-]
-ddgs = [
-    { name = "ddgs" },
-]
-dingtalk = [
-    { name = "alibabacloud-dingtalk" },
-    { name = "dingtalk-stream" },
-    { name = "qrcode" },
-]
-discord = [
-    { name = "discord-py", extra = ["voice"] },
-]
-doc-extract = [
-    { name = "firecrawl-anydoc" },
-]
-documents = [
-    { name = "openpyxl" },
-    { name = "pypdf" },
-    { name = "python-docx" },
-    { name = "python-pptx" },
-    { name = "reportlab" },
-]
-documents-pdf = [
-    { name = "pdfplumber" },
-    { name = "pypdfium2" },
-]
-edge-tts = [
-    { name = "edge-tts" },
-]
-exa = [
-    { name = "exa-py" },
-]
-fal = [
-    { name = "fal-client" },
-]
-feishu = [
-    { name = "lark-oapi" },
-    { name = "qrcode" },
-]
-firecrawl = [
-    { name = "firecrawl-py" },
-]
-google = [
-    { name = "google-api-python-client" },
-    { name = "google-auth" },
-    { name = "google-auth-httplib2" },
-    { name = "google-auth-oauthlib" },
-    { name = "httplib2" },
-    { name = "pyasn1" },
-]
-google-chat = [
-    { name = "google-cloud-pubsub", marker = "platform_machine != 'ARM64' or sys_platform != 'win32'" },
-]
-google-meet = [
-    { name = "playwright", marker = "sys_platform != 'android'" },
-    { name = "websockets", marker = "sys_platform != 'android'" },
-]
-keychain = [
-    { name = "keyring" },
-]
-kittentts = [
-    { name = "kittentts", marker = "(platform_machine != 'x86_64' and sys_platform == 'darwin') or (platform_machine != 'ARM64' and sys_platform == 'win32') or (sys_platform != 'android' and sys_platform != 'darwin' and sys_platform != 'win32')" },
-    { name = "misaki", extra = ["en"], marker = "(platform_machine != 'x86_64' and sys_platform == 'darwin') or (platform_machine != 'ARM64' and sys_platform == 'win32') or (sys_platform != 'android' and sys_platform != 'darwin' and sys_platform != 'win32')" },
-    { name = "soundfile", marker = "(platform_machine != 'x86_64' and sys_platform == 'darwin') or (platform_machine != 'ARM64' and sys_platform == 'win32') or (sys_platform != 'android' and sys_platform != 'darwin' and sys_platform != 'win32')" },
-]
-matrix = [
-    { name = "aiohttp", marker = "sys_platform == 'linux'" },
-    { name = "aiohttp-socks", marker = "sys_platform == 'linux'" },
-    { name = "aiosqlite", marker = "sys_platform == 'linux'" },
-    { name = "asyncpg", marker = "sys_platform == 'linux'" },
-    { name = "mautrix", extra = ["encryption"], marker = "sys_platform == 'linux'" },
-]
-mcp = [
-    { name = "httpx2" },
-    { name = "mcp" },
-    { name = "starlette" },
-]
-messaging = [
-    { name = "aiohttp" },
-    { name = "brotlicffi" },
-    { name = "discord-py", extra = ["voice"] },
-    { name = "python-telegram-bot", extra = ["webhooks"] },
-    { name = "qrcode" },
-    { name = "slack-bolt" },
-    { name = "slack-sdk" },
-]
-mistral = [
-    { name = "mistralai" },
-]
-modal = [
-    { name = "modal" },
-]
-otlp = [
-    { name = "opentelemetry-exporter-otlp-proto-http" },
-    { name = "opentelemetry-sdk" },
-]
-parallel-web = [
-    { name = "parallel-web" },
-]
-piper = [
-    { name = "piper-tts", marker = "(platform_machine != 'x86_64' and sys_platform == 'darwin') or (platform_machine != 'ARM64' and sys_platform == 'win32') or (sys_platform != 'android' and sys_platform != 'darwin' and sys_platform != 'win32')" },
-]
-silk = [
-    { name = "pilk" },
-]
-slack = [
-    { name = "aiohttp" },
-    { name = "slack-bolt" },
-    { name = "slack-sdk" },
-]
-sms = [
-    { name = "aiohttp" },
-]
-stt-whisper = [
-    { name = "faster-whisper", marker = "(platform_machine != 'x86_64' and sys_platform == 'darwin') or (platform_machine != 'ARM64' and sys_platform == 'win32') or (sys_platform != 'android' and sys_platform != 'darwin' and sys_platform != 'win32')" },
-]
-teams = [
-    { name = "aiohttp" },
-    { name = "microsoft-teams-apps" },
-]
-telegram = [
-    { name = "python-telegram-bot", extra = ["webhooks"] },
-]
-termux = [
-    { name = "agent-client-protocol" },
-    { name = "httpx2" },
-    { name = "mcp" },
-    { name = "python-telegram-bot", extra = ["webhooks"] },
-    { name = "starlette" },
-]
-termux-all = [
-    { name = "agent-client-protocol" },
-    { name = "aiohttp" },
-    { name = "fastapi" },
-    { name = "google-api-python-client" },
-    { name = "google-auth" },
-    { name = "google-auth-httplib2" },
-    { name = "google-auth-oauthlib" },
-    { name = "httplib2" },
-    { name = "httpx2" },
-    { name = "mcp" },
-    { name = "pyasn1" },
-    { name = "python-multipart" },
-    { name = "python-telegram-bot", extra = ["webhooks"] },
-    { name = "starlette" },
-    { name = "uvicorn" },
-]
-trace-upload = [
-    { name = "huggingface-hub" },
-]
-tts-premium = [
-    { name = "elevenlabs" },
-]
-uvloop = [
-    { name = "uvloop", marker = "platform_python_implementation != 'PyPy' and sys_platform != 'android' and sys_platform != 'cygwin' and sys_platform != 'win32'" },
-]
-vercel = [
-    { name = "vercel" },
-]
-vertex = [
-    { name = "google-auth" },
-]
-voice = [
-    { name = "faster-whisper", marker = "(platform_machine != 'x86_64' and sys_platform == 'darwin') or (platform_machine != 'ARM64' and sys_platform == 'win32') or (sys_platform != 'android' and sys_platform != 'darwin' and sys_platform != 'win32')" },
-    { name = "numpy" },
-    { name = "sounddevice" },
-]
-wake = [
-    { name = "numpy" },
-    { name = "pvporcupine" },
-    { name = "pyopen-wakeword", marker = "(platform_machine != 'ARM64' and platform_machine != 'x86_64') or (platform_machine == 'ARM64' and sys_platform == 'darwin') or (platform_machine == 'x86_64' and sys_platform == 'win32') or (sys_platform != 'darwin' and sys_platform != 'win32')" },
-    { name = "pypinyin" },
-    { name = "sentencepiece" },
-    { name = "sherpa-onnx" },
-    { name = "sherpa-onnx-core" },
-    { name = "sounddevice" },
-]
-wake-openwakeword = [
-    { name = "pyopen-wakeword", marker = "(platform_machine != 'ARM64' and platform_machine != 'x86_64') or (platform_machine == 'ARM64' and sys_platform == 'darwin') or (platform_machine == 'x86_64' and sys_platform == 'win32') or (sys_platform != 'darwin' and sys_platform != 'win32')" },
-]
-wake-porcupine = [
-    { name = "pvporcupine" },
-]
-wake-sherpa = [
-    { name = "pypinyin" },
-    { name = "sentencepiece" },
-    { name = "sherpa-onnx" },
-    { name = "sherpa-onnx-core" },
-]
-web = [
-    { name = "fastapi" },
-    { name = "python-multipart" },
-    { name = "starlette" },
-    { name = "uvicorn" },
-]
-wecom = [
-    { name = "defusedxml" },
-]
-youtube = [
-    { name = "youtube-transcript-api" },
-]
-
-[package.dev-dependencies]
-dev = [
-    { name = "debugpy" },
-    { name = "httpx2" },
-    { name = "mcp" },
-    { name = "pytest" },
-    { name = "pytest-asyncio" },
-    { name = "ruff" },
-    { name = "setuptools" },
-    { name = "starlette" },
-    { name = "ty" },
-]
-test = [
-    { name = "anthropic" },
-    { name = "distlib", marker = "sys_platform == 'win32'" },
-]
-
-[package.metadata]
-requires-dist = [
-    { name = "agent-client-protocol", marker = "extra == 'acp'", specifier = "==0.9.0" },
-    { name = "aiohttp", marker = "sys_platform == 'linux' and extra == 'matrix'", specifier = "==3.14.5" },
-    { name = "aiohttp", marker = "extra == 'messaging'", specifier = "==3.14.5" },
-    { name = "aiohttp", marker = "extra == 'slack'", specifier = "==3.14.5" },
-    { name = "aiohttp", marker = "extra == 'sms'", specifier = "==3.14.5" },
-    { name = "aiohttp", marker = "extra == 'teams'", specifier = "==3.14.5" },
-    { name = "aiohttp-socks", marker = "sys_platform == 'linux' and extra == 'matrix'", specifier = "==0.12.0" },
-    { name = "aiosqlite", marker = "sys_platform == 'linux' and extra == 'matrix'", specifier = "==0.22.1" },
-    { name = "alibabacloud-dingtalk", marker = "extra == 'dingtalk'", specifier = "==2.2.65" },
-    { name = "anthropic", marker = "extra == 'anthropic'", specifier = "==0.125.0" },
-    { name = "asyncpg", marker = "sys_platform == 'linux' and extra == 'matrix'", specifier = "==0.32.0" },
-    { name = "azure-identity", marker = "extra == 'azure-identity'", specifier = "==1.26.0" },
-    { name = "boto3", marker = "extra == 'bedrock'", specifier = "==1.43.115" },
-    { name = "brotlicffi", marker = "extra == 'messaging'", specifier = "==1.2.1.0" },
-    { name = "browser-harness", marker = "python_full_version >= '3.14'", specifier = "==0.1.13" },
-    { name = "certifi", marker = "python_full_version >= '3.14'", specifier = "==2026.10.19" },
-    { name = "concurrent-log-handler", marker = "python_full_version >= '3.14' and sys_platform == 'win32'", specifier = "==0.9.30" },
-    { name = "croniter", marker = "python_full_version >= '3.14'", specifier = "==6.2.4" },
-    { name = "cryptography", marker = "python_full_version >= '3.14'", specifier = "==50.0.2" },
-    { name = "daytona", marker = "extra == 'daytona'", specifier = "==0.225.0" },
-    { name = "ddgs", marker = "extra == 'ddgs'", specifier = "==9.16.0" },
-    { name = "defusedxml", marker = "extra == 'wecom'", specifier = "==0.7.1" },
-    { name = "dingtalk-stream", marker = "extra == 'dingtalk'", specifier = "==0.24.3" },
-    { name = "discord-py", extras = ["voice"], marker = "extra == 'discord'", specifier = "==2.7.1" },
-    { name = "discord-py", extras = ["voice"], marker = "extra == 'messaging'", specifier = "==2.7.1" },
-    { name = "edge-tts", marker = "extra == 'edge-tts'", specifier = "==7.3.1" },
-    { name = "elevenlabs", marker = "extra == 'tts-premium'", specifier = "==1.59.0" },
-    { name = "exa-py", marker = "extra == 'exa'", specifier = "==2.26.0" },
-    { name = "fal-client", marker = "extra == 'fal'", specifier = "==0.14.1" },
-    { name = "fastapi", marker = "python_full_version >= '3.14'", specifier = ">=0.104.0,<1" },
-    { name = "fastapi", marker = "extra == 'web'", specifier = "==0.133.1" },
-    { name = "faster-whisper", marker = "(platform_machine != 'x86_64' and sys_platform == 'darwin' and extra == 'stt-whisper') or (platform_machine != 'ARM64' and sys_platform == 'win32' and extra == 'stt-whisper') or (sys_platform != 'android' and sys_platform != 'darwin' and sys_platform != 'win32' and extra == 'stt-whisper')", specifier = "==1.2.1" },
-    { name = "faster-whisper", marker = "(platform_machine != 'x86_64' and sys_platform == 'darwin' and extra == 'voice') or (platform_machine != 'ARM64' and sys_platform == 'win32' and extra == 'voice') or (sys_platform != 'android' and sys_platform != 'darwin' and sys_platform != 'win32' and extra == 'voice')", specifier = "==1.2.1" },
-    { name = "fire", marker = "python_full_version >= '3.14'", specifier = "==0.7.1" },
-    { name = "firecrawl-anydoc", marker = "python_full_version >= '3.14'", specifier = "==0.2.4" },
-    { name = "firecrawl-anydoc", marker = "extra == 'doc-extract'", specifier = "==0.2.4" },
-    { name = "firecrawl-py", marker = "extra == 'firecrawl'", specifier = "==4.53.2" },
-    { name = "google-api-python-client", marker = "extra == 'google'", specifier = "==2.201.0" },
-    { name = "google-auth", marker = "extra == 'google'", specifier = "==2.62.0" },
-    { name = "google-auth", marker = "extra == 'vertex'", specifier = "==2.62.0" },
-    { name = "google-auth-httplib2", marker = "extra == 'google'", specifier = "==0.4.4" },
-    { name = "google-auth-oauthlib", marker = "extra == 'google'", specifier = "==1.5.0" },
-    { name = "google-cloud-pubsub", marker = "(platform_machine != 'ARM64' and extra == 'google-chat') or (sys_platform != 'win32' and extra == 'google-chat')", specifier = "==2.43.0" },
-    { name = "hermes-agent", extras = ["acp"], marker = "extra == 'all'" },
-    { name = "hermes-agent", extras = ["acp"], marker = "extra == 'termux'" },
-    { name = "hermes-agent", extras = ["cron"], marker = "extra == 'all'" },
-    { name = "hermes-agent", extras = ["cron"], marker = "extra == 'termux'" },
-    { name = "hermes-agent", extras = ["google"], marker = "extra == 'all'" },
-    { name = "hermes-agent", extras = ["google"], marker = "extra == 'termux-all'" },
-    { name = "hermes-agent", extras = ["mcp"], marker = "extra == 'all'" },
-    { name = "hermes-agent", extras = ["mcp"], marker = "extra == 'termux'" },
-    { name = "hermes-agent", extras = ["pty"], marker = "extra == 'all'" },
-    { name = "hermes-agent", extras = ["pty"], marker = "extra == 'termux-all'" },
-    { name = "hermes-agent", extras = ["sms"], marker = "extra == 'all'" },
-    { name = "hermes-agent", extras = ["sms"], marker = "extra == 'termux-all'" },
-    { name = "hermes-agent", extras = ["termux"], marker = "extra == 'termux-all'" },
-    { name = "hermes-agent", extras = ["uvloop"], marker = "extra == 'all'" },
-    { name = "hermes-agent", extras = ["web"], marker = "extra == 'all'" },
-    { name = "hermes-agent", extras = ["web"], marker = "extra == 'termux-all'" },
-    { name = "hermes-agent", extras = ["youtube"], marker = "extra == 'all'" },
-    { name = "httplib2", marker = "extra == 'google'", specifier = "==0.32.0" },
-    { name = "httptools", marker = "python_full_version >= '3.14'", specifier = ">=0.6.3,<0.9" },
-    { name = "httpx", extras = ["socks"], marker = "python_full_version >= '3.14'", specifier = "==0.28.1" },
-    { name = "httpx2", marker = "extra == 'computer-use'", specifier = "==2.15.1" },
-    { name = "httpx2", marker = "extra == 'mcp'", specifier = "==2.15.1" },
-    { name = "huggingface-hub", marker = "extra == 'trace-upload'", specifier = "==1.33.0" },
-    { name = "jinja2", marker = "python_full_version >= '3.14'", specifier = "==3.1.6" },
-    { name = "keyring", marker = "extra == 'keychain'", specifier = "==25.7.0" },
-    { name = "kittentts", marker = "(platform_machine != 'x86_64' and sys_platform == 'darwin' and extra == 'kittentts') or (platform_machine != 'ARM64' and sys_platform == 'win32' and extra == 'kittentts') or (sys_platform != 'android' and sys_platform != 'darwin' and sys_platform != 'win32' and extra == 'kittentts')", url = "https://github.com/KittenML/KittenTTS/releases/download/0.8.1/kittentts-0.8.1-py3-none-any.whl" },
-    { name = "lark-oapi", marker = "extra == 'feishu'", specifier = "==1.7.5" },
-    { name = "markdown", marker = "python_full_version >= '3.14'", specifier = "==3.11.2" },
-    { name = "mautrix", extras = ["encryption"], marker = "sys_platform == 'linux' and extra == 'matrix'", specifier = "==0.21.1" },
-    { name = "mcp", marker = "extra == 'computer-use'", specifier = "==2.3.0" },
-    { name = "mcp", marker = "extra == 'mcp'", specifier = "==2.3.0" },
-    { name = "microsoft-teams-apps", marker = "extra == 'teams'", specifier = "==2.1.1" },
-    { name = "misaki", extras = ["en"], marker = "(platform_machine != 'x86_64' and sys_platform == 'darwin' and extra == 'kittentts') or (platform_machine != 'ARM64' and sys_platform == 'win32' and extra == 'kittentts') or (sys_platform != 'android' and sys_platform != 'darwin' and sys_platform != 'win32' and extra == 'kittentts')", git = "https://github.com/NousResearch/misaki.git?rev=f03fd2be7346952a83d3d4845c217fc7667f322d" },
-    { name = "mistralai", marker = "extra == 'mistral'", specifier = "==2.10.1" },
-    { name = "modal", marker = "extra == 'modal'", specifier = "==1.6.2" },
-    { name = "nemo-relay", marker = "(python_full_version >= '3.14' and platform_machine == 'aarch64' and 'android' not in platform_release and sys_platform == 'linux') or (python_full_version >= '3.14' and platform_machine == 'x86_64' and 'android' not in platform_release and sys_platform == 'linux') or (python_full_version >= '3.14' and platform_machine == 'arm64' and sys_platform == 'darwin') or (python_full_version >= '3.14' and platform_machine == 'AMD64' and sys_platform == 'win32') or (python_full_version >= '3.14' and platform_machine == 'ARM64' and sys_platform == 'win32')", specifier = ">=0.10,<0.11" },
-    { name = "neutts", extras = ["all"], marker = "python_full_version < '3.14' and extra == 'neutts'", specifier = "==1.4.1" },
-    { name = "numpy", marker = "extra == 'audio-io'", specifier = "==2.5.4" },
-    { name = "numpy", marker = "extra == 'voice'", specifier = "==2.5.4" },
-    { name = "numpy", marker = "extra == 'wake'", specifier = "==2.5.4" },
-    { name = "openai", marker = "python_full_version >= '3.14'", specifier = "==2.54.0" },
-    { name = "openpyxl", marker = "extra == 'documents'", specifier = "==3.1.5" },
-    { name = "opentelemetry-exporter-otlp-proto-http", marker = "extra == 'otlp'", specifier = "==1.45.1" },
-    { name = "opentelemetry-sdk", marker = "extra == 'otlp'", specifier = "==1.45.1" },
-    { name = "packaging", marker = "python_full_version >= '3.14'", specifier = "==26.3" },
-    { name = "parallel-web", marker = "extra == 'parallel-web'", specifier = "==0.6.0" },
-    { name = "pathspec", marker = "python_full_version >= '3.14'", specifier = "==1.1.1" },
-    { name = "pdfplumber", marker = "extra == 'documents-pdf'", specifier = "==0.11.10" },
-    { name = "pilk", marker = "extra == 'silk'", specifier = "==0.2.4" },
-    { name = "pillow", marker = "python_full_version >= '3.14'", specifier = "==13.0.0" },
-    { name = "pillow-heif", marker = "python_full_version >= '3.14'", specifier = ">=1.4.0,<2" },
-    { name = "piper-tts", marker = "(platform_machine != 'x86_64' and sys_platform == 'darwin' and extra == 'piper') or (platform_machine != 'ARM64' and sys_platform == 'win32' and extra == 'piper') or (sys_platform != 'android' and sys_platform != 'darwin' and sys_platform != 'win32' and extra == 'piper')", specifier = "==1.8.0" },
-    { name = "playwright", marker = "sys_platform != 'android' and extra == 'google-meet'", specifier = "==1.64.0" },
-    { name = "prompt-toolkit", marker = "python_full_version >= '3.14'", specifier = "==3.0.53" },
-    { name = "psutil", marker = "python_full_version >= '3.14' and sys_platform == 'android'", git = "https://github.com/giampaolo/psutil.git?rev=380bd2b59c67b0e1b04bbf3a90b11744f4f96644" },
-    { name = "psutil", marker = "python_full_version >= '3.14' and sys_platform != 'android'", specifier = "==7.2.2" },
-    { name = "ptyprocess", marker = "python_full_version >= '3.14' and sys_platform != 'win32'", specifier = ">=0.7.0,<1" },
-    { name = "pvporcupine", marker = "extra == 'wake'", specifier = "==4.0.3" },
-    { name = "pvporcupine", marker = "extra == 'wake-porcupine'", specifier = "==4.0.3" },
-    { name = "pyasn1", marker = "extra == 'google'", specifier = "==0.6.4" },
-    { name = "pydantic", marker = "python_full_version >= '3.14'", specifier = "==2.14.1" },
-    { name = "pyjwt", extras = ["crypto"], marker = "python_full_version >= '3.14'", specifier = "==2.15.1" },
-    { name = "pyopen-wakeword", marker = "(platform_machine != 'ARM64' and platform_machine != 'x86_64' and extra == 'wake') or (platform_machine == 'ARM64' and sys_platform == 'darwin' and extra == 'wake') or (platform_machine == 'x86_64' and sys_platform == 'win32' and extra == 'wake') or (sys_platform != 'darwin' and sys_platform != 'win32' and extra == 'wake')", specifier = "==1.1.0" },
-    { name = "pyopen-wakeword", marker = "(platform_machine != 'ARM64' and platform_machine != 'x86_64' and extra == 'wake-openwakeword') or (platform_machine == 'ARM64' and sys_platform == 'darwin' and extra == 'wake-openwakeword') or (platform_machine == 'x86_64' and sys_platform == 'win32' and extra == 'wake-openwakeword') or (sys_platform != 'darwin' and sys_platform != 'win32' and extra == 'wake-openwakeword')", specifier = "==1.1.0" },
-    { name = "pypdf", marker = "extra == 'documents'", specifier = "==6.21.2" },
-    { name = "pypdfium2", marker = "extra == 'documents-pdf'", specifier = "==5.14.0" },
-    { name = "pypinyin", marker = "extra == 'wake'", specifier = "==0.55.0" },
-    { name = "pypinyin", marker = "extra == 'wake-sherpa'", specifier = "==0.55.0" },
-    { name = "python-docx", marker = "extra == 'documents'", specifier = "==1.2.0" },
-    { name = "python-dotenv", marker = "python_full_version >= '3.14'", specifier = "==1.2.4" },
-    { name = "python-multipart", marker = "python_full_version >= '3.14'", specifier = ">=0.0.9,<1" },
-    { name = "python-multipart", marker = "extra == 'web'", specifier = "==0.0.32" },
-    { name = "python-pptx", marker = "extra == 'documents'", specifier = "==1.0.2" },
-    { name = "python-telegram-bot", extras = ["webhooks"], marker = "extra == 'messaging'", specifier = "==22.8" },
-    { name = "python-telegram-bot", extras = ["webhooks"], marker = "extra == 'telegram'", specifier = "==22.8" },
-    { name = "python-telegram-bot", extras = ["webhooks"], marker = "extra == 'termux'", specifier = "==22.8" },
-    { name = "pywin32", marker = "python_full_version >= '3.14' and sys_platform == 'win32'", specifier = ">=306,<312" },
-    { name = "pywinpty", marker = "python_full_version >= '3.14' and sys_platform == 'win32'", specifier = ">=3.0.5,<4" },
-    { name = "qrcode", marker = "extra == 'dingtalk'", specifier = "==7.4.2" },
-    { name = "qrcode", marker = "extra == 'feishu'", specifier = "==7.4.2" },
-    { name = "qrcode", marker = "extra == 'messaging'", specifier = "==7.4.2" },
-    { name = "reportlab", marker = "extra == 'documents'", specifier = "==5.1.0" },
-    { name = "requests", marker = "python_full_version >= '3.14'", specifier = "==2.34.2" },
-    { name = "resvg-py", marker = "python_full_version >= '3.14'", specifier = "==0.5.0" },
-    { name = "rich", marker = "python_full_version >= '3.14'", specifier = "==14.3.4" },
-    { name = "ruamel-yaml", marker = "python_full_version >= '3.14'", specifier = "==0.18.16" },
-    { name = "ruamel-yaml-clib", marker = "(python_full_version >= '3.14' and platform_machine in 'x86_64 aarch64 i686' and platform_python_implementation == 'CPython' and sys_platform == 'linux') or (python_full_version >= '3.14' and platform_machine in 'AMD64 x86' and platform_python_implementation == 'CPython' and sys_platform == 'win32') or (python_full_version >= '3.14' and platform_python_implementation == 'CPython' and sys_platform == 'darwin')", specifier = "==0.2.15" },
-    { name = "sentencepiece", marker = "extra == 'wake'", specifier = "==0.2.2" },
-    { name = "sentencepiece", marker = "extra == 'wake-sherpa'", specifier = "==0.2.2" },
-    { name = "sherpa-onnx", marker = "extra == 'wake'", specifier = "==1.13.8" },
-    { name = "sherpa-onnx", marker = "extra == 'wake-sherpa'", specifier = "==1.13.8" },
-    { name = "sherpa-onnx-core", marker = "extra == 'wake'", specifier = "==1.13.8" },
-    { name = "sherpa-onnx-core", marker = "extra == 'wake-sherpa'", specifier = "==1.13.8" },
-    { name = "slack-bolt", marker = "extra == 'messaging'", specifier = "==1.30.0" },
-    { name = "slack-bolt", marker = "extra == 'slack'", specifier = "==1.30.0" },
-    { name = "slack-sdk", marker = "extra == 'messaging'", specifier = "==3.45.0" },
-    { name = "slack-sdk", marker = "extra == 'slack'", specifier = "==3.45.0" },
-    { name = "snowballstemmer", marker = "python_full_version >= '3.14'", specifier = "==3.1.1" },
-    { name = "sounddevice", marker = "extra == 'audio-io'", specifier = "==0.5.6" },
-    { name = "sounddevice", marker = "extra == 'voice'", specifier = "==0.5.6" },
-    { name = "sounddevice", marker = "extra == 'wake'", specifier = "==0.5.6" },
-    { name = "soundfile", marker = "(platform_machine != 'x86_64' and sys_platform == 'darwin' and extra == 'kittentts') or (platform_machine != 'ARM64' and sys_platform == 'win32' and extra == 'kittentts') or (sys_platform != 'android' and sys_platform != 'darwin' and sys_platform != 'win32' and extra == 'kittentts')", specifier = "==0.14.0" },
-    { name = "starlette", marker = "extra == 'computer-use'", specifier = "==1.9.0" },
-    { name = "starlette", marker = "extra == 'mcp'", specifier = "==1.9.0" },
-    { name = "starlette", marker = "extra == 'web'", specifier = "==1.9.0" },
-    { name = "tenacity", marker = "python_full_version >= '3.14'", specifier = "==9.2.1" },
-    { name = "tomli-w", marker = "python_full_version >= '3.14'", specifier = "==1.2.0" },
-    { name = "truststore", marker = "python_full_version >= '3.14'", specifier = "==0.10.5" },
-    { name = "tzdata", marker = "python_full_version >= '3.14' and sys_platform == 'win32'", specifier = "==2025.3" },
-    { name = "urllib3", marker = "python_full_version >= '3.14'", specifier = ">=2.8.0,<3" },
-    { name = "uvicorn", marker = "python_full_version >= '3.14'", specifier = ">=0.31.0,<1" },
-    { name = "uvicorn", marker = "extra == 'web'", specifier = "==0.54.0" },
-    { name = "uvloop", marker = "platform_python_implementation != 'PyPy' and sys_platform != 'android' and sys_platform != 'cygwin' and sys_platform != 'win32' and extra == 'uvloop'", specifier = ">=0.15.1,<0.24" },
-    { name = "vercel", marker = "extra == 'vercel'", specifier = "==0.12.0" },
-    { name = "watchfiles", marker = "python_full_version >= '3.14'", specifier = ">=0.20,<2" },
-    { name = "websockets", marker = "python_full_version >= '3.14'", specifier = "==15.0.1" },
-    { name = "websockets", marker = "sys_platform != 'android' and extra == 'google-meet'", specifier = "==15.0.1" },
-    { name = "winrt-windows-applicationmodel", marker = "python_full_version >= '3.14' and sys_platform == 'win32'", specifier = ">=3.2.1,<4" },
-    { name = "winrt-windows-foundation", marker = "python_full_version >= '3.14' and sys_platform == 'win32'", specifier = ">=3.2.1,<4" },
-    { name = "winrt-windows-foundation-collections", marker = "python_full_version >= '3.14' and sys_platform == 'win32'", specifier = ">=3.2.1,<4" },
-    { name = "winrt-windows-services-store", marker = "python_full_version >= '3.14' and sys_platform == 'win32'", specifier = ">=3.2.1,<4" },
-    { name = "youtube-transcript-api", marker = "extra == 'youtube'", specifier = "==1.2.4" },
-]
-provides-extras = ["uvloop", "anthropic", "exa", "firecrawl", "parallel-web", "ddgs", "fal", "edge-tts", "neutts", "kittentts", "piper", "modal", "daytona", "vercel", "google-meet", "messaging", "cron", "slack", "matrix", "wecom", "keychain", "tts-premium", "voice", "wake", "telegram", "discord", "stt-whisper", "audio-io", "silk", "wake-openwakeword", "wake-sherpa", "wake-porcupine", "google-chat", "doc-extract", "documents", "documents-pdf", "trace-upload", "vision", "pty", "mcp", "nemo-relay", "sms", "teams", "computer-use", "acp", "mistral", "otlp", "bedrock", "vertex", "azure-identity", "termux", "termux-all", "dingtalk", "feishu", "google", "youtube", "web", "all"]
-
-[package.metadata.requires-dev]
-dev = [
-    { name = "debugpy", specifier = "==1.8.22" },
-    { name = "httpx2", specifier = "==2.15.1" },
-    { name = "mcp", specifier = "==2.3.0" },
-    { name = "pytest", specifier = "==9.1.1" },
-    { name = "pytest-asyncio", specifier = "==1.4.0" },
-    { name = "ruff", specifier = "==0.15.22" },
-    { name = "setuptools", specifier = "==83.0.0" },
-    { name = "starlette", specifier = "==1.9.0" },
-    { name = "ty", specifier = "==0.0.89" },
-]
-test = [
-    { name = "anthropic", specifier = "==0.125.0" },
-    { name = "distlib", marker = "sys_platform == 'win32'", specifier = "==0.4.4" },
-]
-
-[[package]]
 name = "hf-xet"
 version = "1.7.0"
 source = { registry = "https://pypi.org/simple" }
@@ -6295,6 +5793,508 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/34/26/f5d29e25ffdb535afef2d35cdb55b325298f96debd670da4c325e08d70f4/setuptools-83.0.0.tar.gz", hash = "sha256:025bccbbf0fa05b6192bc64ae1e7b16e001fd6d6d4d5de03c97b1c1ade523bef", size = 1154254, upload-time = "2026-07-04T15:31:22.699Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/5d/40/e1e72872c6354b306daef1703549e8e83b4d43cfea356311bf722a043752/setuptools-83.0.0-py3-none-any.whl", hash = "sha256:29b23c360f22f414dc7336bb39178cc7bcbf6021ed2733cde173f09dba19abb3", size = 1008090, upload-time = "2026-07-04T15:31:20.885Z" },
+]
+
+[[package]]
+name = "shards-agent"
+version = "0.0.0"
+source = { editable = "." }
+default-groups = []
+dependencies = [
+    { name = "browser-harness" },
+    { name = "certifi" },
+    { name = "concurrent-log-handler", marker = "sys_platform == 'win32'" },
+    { name = "croniter" },
+    { name = "cryptography" },
+    { name = "fastapi" },
+    { name = "fire" },
+    { name = "firecrawl-anydoc" },
+    { name = "httptools" },
+    { name = "httpx", extra = ["socks"] },
+    { name = "jinja2" },
+    { name = "markdown" },
+    { name = "nemo-relay", marker = "(platform_machine == 'aarch64' and 'android' not in platform_release and sys_platform == 'linux') or (platform_machine == 'x86_64' and 'android' not in platform_release and sys_platform == 'linux') or (platform_machine == 'arm64' and sys_platform == 'darwin') or (platform_machine == 'AMD64' and sys_platform == 'win32') or (platform_machine == 'ARM64' and sys_platform == 'win32')" },
+    { name = "openai" },
+    { name = "packaging" },
+    { name = "pathspec" },
+    { name = "pillow" },
+    { name = "pillow-heif" },
+    { name = "prompt-toolkit" },
+    { name = "psutil", version = "7.2.2", source = { registry = "https://pypi.org/simple" }, marker = "sys_platform != 'android'" },
+    { name = "psutil", version = "8.0.0", source = { git = "https://github.com/giampaolo/psutil.git?rev=380bd2b59c67b0e1b04bbf3a90b11744f4f96644#380bd2b59c67b0e1b04bbf3a90b11744f4f96644" }, marker = "sys_platform == 'android'" },
+    { name = "ptyprocess", marker = "sys_platform != 'win32'" },
+    { name = "pydantic" },
+    { name = "pyjwt", extra = ["crypto"] },
+    { name = "python-dotenv" },
+    { name = "python-multipart" },
+    { name = "pywin32", marker = "sys_platform == 'win32'" },
+    { name = "pywinpty", marker = "sys_platform == 'win32'" },
+    { name = "requests" },
+    { name = "resvg-py" },
+    { name = "rich" },
+    { name = "ruamel-yaml" },
+    { name = "ruamel-yaml-clib", marker = "(platform_machine in 'x86_64 aarch64 i686' and platform_python_implementation == 'CPython' and sys_platform == 'linux') or (platform_machine in 'AMD64 x86' and platform_python_implementation == 'CPython' and sys_platform == 'win32') or (platform_python_implementation == 'CPython' and sys_platform == 'darwin')" },
+    { name = "snowballstemmer" },
+    { name = "tenacity" },
+    { name = "tomli-w" },
+    { name = "truststore" },
+    { name = "tzdata", marker = "sys_platform == 'win32'" },
+    { name = "urllib3" },
+    { name = "uvicorn" },
+    { name = "watchfiles" },
+    { name = "websockets" },
+    { name = "winrt-windows-applicationmodel", marker = "sys_platform == 'win32'" },
+    { name = "winrt-windows-foundation", marker = "sys_platform == 'win32'" },
+    { name = "winrt-windows-foundation-collections", marker = "sys_platform == 'win32'" },
+    { name = "winrt-windows-services-store", marker = "sys_platform == 'win32'" },
+]
+
+[package.optional-dependencies]
+acp = [
+    { name = "agent-client-protocol" },
+]
+all = [
+    { name = "agent-client-protocol" },
+    { name = "aiohttp" },
+    { name = "fastapi" },
+    { name = "google-api-python-client" },
+    { name = "google-auth" },
+    { name = "google-auth-httplib2" },
+    { name = "google-auth-oauthlib" },
+    { name = "httplib2" },
+    { name = "httpx2" },
+    { name = "mcp" },
+    { name = "pyasn1" },
+    { name = "python-multipart" },
+    { name = "starlette" },
+    { name = "uvicorn" },
+    { name = "uvloop", marker = "platform_python_implementation != 'PyPy' and sys_platform != 'android' and sys_platform != 'cygwin' and sys_platform != 'win32'" },
+    { name = "youtube-transcript-api" },
+]
+anthropic = [
+    { name = "anthropic" },
+]
+audio-io = [
+    { name = "numpy" },
+    { name = "sounddevice" },
+]
+azure-identity = [
+    { name = "azure-identity" },
+]
+bedrock = [
+    { name = "boto3" },
+]
+computer-use = [
+    { name = "httpx2" },
+    { name = "mcp" },
+    { name = "starlette" },
+]
+daytona = [
+    { name = "daytona" },
+]
+ddgs = [
+    { name = "ddgs" },
+]
+dingtalk = [
+    { name = "alibabacloud-dingtalk" },
+    { name = "dingtalk-stream" },
+    { name = "qrcode" },
+]
+discord = [
+    { name = "discord-py", extra = ["voice"] },
+]
+doc-extract = [
+    { name = "firecrawl-anydoc" },
+]
+documents = [
+    { name = "openpyxl" },
+    { name = "pypdf" },
+    { name = "python-docx" },
+    { name = "python-pptx" },
+    { name = "reportlab" },
+]
+documents-pdf = [
+    { name = "pdfplumber" },
+    { name = "pypdfium2" },
+]
+edge-tts = [
+    { name = "edge-tts" },
+]
+exa = [
+    { name = "exa-py" },
+]
+fal = [
+    { name = "fal-client" },
+]
+feishu = [
+    { name = "lark-oapi" },
+    { name = "qrcode" },
+]
+firecrawl = [
+    { name = "firecrawl-py" },
+]
+google = [
+    { name = "google-api-python-client" },
+    { name = "google-auth" },
+    { name = "google-auth-httplib2" },
+    { name = "google-auth-oauthlib" },
+    { name = "httplib2" },
+    { name = "pyasn1" },
+]
+google-chat = [
+    { name = "google-cloud-pubsub", marker = "platform_machine != 'ARM64' or sys_platform != 'win32'" },
+]
+google-meet = [
+    { name = "playwright", marker = "sys_platform != 'android'" },
+    { name = "websockets", marker = "sys_platform != 'android'" },
+]
+keychain = [
+    { name = "keyring" },
+]
+kittentts = [
+    { name = "kittentts", marker = "(platform_machine != 'x86_64' and sys_platform == 'darwin') or (platform_machine != 'ARM64' and sys_platform == 'win32') or (sys_platform != 'android' and sys_platform != 'darwin' and sys_platform != 'win32')" },
+    { name = "misaki", extra = ["en"], marker = "(platform_machine != 'x86_64' and sys_platform == 'darwin') or (platform_machine != 'ARM64' and sys_platform == 'win32') or (sys_platform != 'android' and sys_platform != 'darwin' and sys_platform != 'win32')" },
+    { name = "soundfile", marker = "(platform_machine != 'x86_64' and sys_platform == 'darwin') or (platform_machine != 'ARM64' and sys_platform == 'win32') or (sys_platform != 'android' and sys_platform != 'darwin' and sys_platform != 'win32')" },
+]
+matrix = [
+    { name = "aiohttp", marker = "sys_platform == 'linux'" },
+    { name = "aiohttp-socks", marker = "sys_platform == 'linux'" },
+    { name = "aiosqlite", marker = "sys_platform == 'linux'" },
+    { name = "asyncpg", marker = "sys_platform == 'linux'" },
+    { name = "mautrix", extra = ["encryption"], marker = "sys_platform == 'linux'" },
+]
+mcp = [
+    { name = "httpx2" },
+    { name = "mcp" },
+    { name = "starlette" },
+]
+messaging = [
+    { name = "aiohttp" },
+    { name = "brotlicffi" },
+    { name = "discord-py", extra = ["voice"] },
+    { name = "python-telegram-bot", extra = ["webhooks"] },
+    { name = "qrcode" },
+    { name = "slack-bolt" },
+    { name = "slack-sdk" },
+]
+mistral = [
+    { name = "mistralai" },
+]
+modal = [
+    { name = "modal" },
+]
+otlp = [
+    { name = "opentelemetry-exporter-otlp-proto-http" },
+    { name = "opentelemetry-sdk" },
+]
+parallel-web = [
+    { name = "parallel-web" },
+]
+piper = [
+    { name = "piper-tts", marker = "(platform_machine != 'x86_64' and sys_platform == 'darwin') or (platform_machine != 'ARM64' and sys_platform == 'win32') or (sys_platform != 'android' and sys_platform != 'darwin' and sys_platform != 'win32')" },
+]
+silk = [
+    { name = "pilk" },
+]
+slack = [
+    { name = "aiohttp" },
+    { name = "slack-bolt" },
+    { name = "slack-sdk" },
+]
+sms = [
+    { name = "aiohttp" },
+]
+stt-whisper = [
+    { name = "faster-whisper", marker = "(platform_machine != 'x86_64' and sys_platform == 'darwin') or (platform_machine != 'ARM64' and sys_platform == 'win32') or (sys_platform != 'android' and sys_platform != 'darwin' and sys_platform != 'win32')" },
+]
+teams = [
+    { name = "aiohttp" },
+    { name = "microsoft-teams-apps" },
+]
+telegram = [
+    { name = "python-telegram-bot", extra = ["webhooks"] },
+]
+termux = [
+    { name = "agent-client-protocol" },
+    { name = "httpx2" },
+    { name = "mcp" },
+    { name = "python-telegram-bot", extra = ["webhooks"] },
+    { name = "starlette" },
+]
+termux-all = [
+    { name = "agent-client-protocol" },
+    { name = "aiohttp" },
+    { name = "fastapi" },
+    { name = "google-api-python-client" },
+    { name = "google-auth" },
+    { name = "google-auth-httplib2" },
+    { name = "google-auth-oauthlib" },
+    { name = "httplib2" },
+    { name = "httpx2" },
+    { name = "mcp" },
+    { name = "pyasn1" },
+    { name = "python-multipart" },
+    { name = "python-telegram-bot", extra = ["webhooks"] },
+    { name = "starlette" },
+    { name = "uvicorn" },
+]
+trace-upload = [
+    { name = "huggingface-hub" },
+]
+tts-premium = [
+    { name = "elevenlabs" },
+]
+uvloop = [
+    { name = "uvloop", marker = "platform_python_implementation != 'PyPy' and sys_platform != 'android' and sys_platform != 'cygwin' and sys_platform != 'win32'" },
+]
+vercel = [
+    { name = "vercel" },
+]
+vertex = [
+    { name = "google-auth" },
+]
+voice = [
+    { name = "faster-whisper", marker = "(platform_machine != 'x86_64' and sys_platform == 'darwin') or (platform_machine != 'ARM64' and sys_platform == 'win32') or (sys_platform != 'android' and sys_platform != 'darwin' and sys_platform != 'win32')" },
+    { name = "numpy" },
+    { name = "sounddevice" },
+]
+wake = [
+    { name = "numpy" },
+    { name = "pvporcupine" },
+    { name = "pyopen-wakeword", marker = "(platform_machine != 'ARM64' and platform_machine != 'x86_64') or (platform_machine == 'ARM64' and sys_platform == 'darwin') or (platform_machine == 'x86_64' and sys_platform == 'win32') or (sys_platform != 'darwin' and sys_platform != 'win32')" },
+    { name = "pypinyin" },
+    { name = "sentencepiece" },
+    { name = "sherpa-onnx" },
+    { name = "sherpa-onnx-core" },
+    { name = "sounddevice" },
+]
+wake-openwakeword = [
+    { name = "pyopen-wakeword", marker = "(platform_machine != 'ARM64' and platform_machine != 'x86_64') or (platform_machine == 'ARM64' and sys_platform == 'darwin') or (platform_machine == 'x86_64' and sys_platform == 'win32') or (sys_platform != 'darwin' and sys_platform != 'win32')" },
+]
+wake-porcupine = [
+    { name = "pvporcupine" },
+]
+wake-sherpa = [
+    { name = "pypinyin" },
+    { name = "sentencepiece" },
+    { name = "sherpa-onnx" },
+    { name = "sherpa-onnx-core" },
+]
+web = [
+    { name = "fastapi" },
+    { name = "python-multipart" },
+    { name = "starlette" },
+    { name = "uvicorn" },
+]
+wecom = [
+    { name = "defusedxml" },
+]
+youtube = [
+    { name = "youtube-transcript-api" },
+]
+
+[package.dev-dependencies]
+dev = [
+    { name = "debugpy" },
+    { name = "httpx2" },
+    { name = "mcp" },
+    { name = "pytest" },
+    { name = "pytest-asyncio" },
+    { name = "ruff" },
+    { name = "setuptools" },
+    { name = "starlette" },
+    { name = "ty" },
+]
+test = [
+    { name = "anthropic" },
+    { name = "distlib", marker = "sys_platform == 'win32'" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "agent-client-protocol", marker = "extra == 'acp'", specifier = "==0.9.0" },
+    { name = "aiohttp", marker = "sys_platform == 'linux' and extra == 'matrix'", specifier = "==3.14.5" },
+    { name = "aiohttp", marker = "extra == 'messaging'", specifier = "==3.14.5" },
+    { name = "aiohttp", marker = "extra == 'slack'", specifier = "==3.14.5" },
+    { name = "aiohttp", marker = "extra == 'sms'", specifier = "==3.14.5" },
+    { name = "aiohttp", marker = "extra == 'teams'", specifier = "==3.14.5" },
+    { name = "aiohttp-socks", marker = "sys_platform == 'linux' and extra == 'matrix'", specifier = "==0.12.0" },
+    { name = "aiosqlite", marker = "sys_platform == 'linux' and extra == 'matrix'", specifier = "==0.22.1" },
+    { name = "alibabacloud-dingtalk", marker = "extra == 'dingtalk'", specifier = "==2.2.65" },
+    { name = "anthropic", marker = "extra == 'anthropic'", specifier = "==0.125.0" },
+    { name = "asyncpg", marker = "sys_platform == 'linux' and extra == 'matrix'", specifier = "==0.32.0" },
+    { name = "azure-identity", marker = "extra == 'azure-identity'", specifier = "==1.26.0" },
+    { name = "boto3", marker = "extra == 'bedrock'", specifier = "==1.43.115" },
+    { name = "brotlicffi", marker = "extra == 'messaging'", specifier = "==1.2.1.0" },
+    { name = "browser-harness", marker = "python_full_version >= '3.14'", specifier = "==0.1.13" },
+    { name = "certifi", marker = "python_full_version >= '3.14'", specifier = "==2026.10.19" },
+    { name = "concurrent-log-handler", marker = "python_full_version >= '3.14' and sys_platform == 'win32'", specifier = "==0.9.30" },
+    { name = "croniter", marker = "python_full_version >= '3.14'", specifier = "==6.2.4" },
+    { name = "cryptography", marker = "python_full_version >= '3.14'", specifier = "==50.0.2" },
+    { name = "daytona", marker = "extra == 'daytona'", specifier = "==0.225.0" },
+    { name = "ddgs", marker = "extra == 'ddgs'", specifier = "==9.16.0" },
+    { name = "defusedxml", marker = "extra == 'wecom'", specifier = "==0.7.1" },
+    { name = "dingtalk-stream", marker = "extra == 'dingtalk'", specifier = "==0.24.3" },
+    { name = "discord-py", extras = ["voice"], marker = "extra == 'discord'", specifier = "==2.7.1" },
+    { name = "discord-py", extras = ["voice"], marker = "extra == 'messaging'", specifier = "==2.7.1" },
+    { name = "edge-tts", marker = "extra == 'edge-tts'", specifier = "==7.3.1" },
+    { name = "elevenlabs", marker = "extra == 'tts-premium'", specifier = "==1.59.0" },
+    { name = "exa-py", marker = "extra == 'exa'", specifier = "==2.26.0" },
+    { name = "fal-client", marker = "extra == 'fal'", specifier = "==0.14.1" },
+    { name = "fastapi", marker = "python_full_version >= '3.14'", specifier = ">=0.104.0,<1" },
+    { name = "fastapi", marker = "extra == 'web'", specifier = "==0.133.1" },
+    { name = "faster-whisper", marker = "(platform_machine != 'x86_64' and sys_platform == 'darwin' and extra == 'stt-whisper') or (platform_machine != 'ARM64' and sys_platform == 'win32' and extra == 'stt-whisper') or (sys_platform != 'android' and sys_platform != 'darwin' and sys_platform != 'win32' and extra == 'stt-whisper')", specifier = "==1.2.1" },
+    { name = "faster-whisper", marker = "(platform_machine != 'x86_64' and sys_platform == 'darwin' and extra == 'voice') or (platform_machine != 'ARM64' and sys_platform == 'win32' and extra == 'voice') or (sys_platform != 'android' and sys_platform != 'darwin' and sys_platform != 'win32' and extra == 'voice')", specifier = "==1.2.1" },
+    { name = "fire", marker = "python_full_version >= '3.14'", specifier = "==0.7.1" },
+    { name = "firecrawl-anydoc", marker = "python_full_version >= '3.14'", specifier = "==0.2.4" },
+    { name = "firecrawl-anydoc", marker = "extra == 'doc-extract'", specifier = "==0.2.4" },
+    { name = "firecrawl-py", marker = "extra == 'firecrawl'", specifier = "==4.53.2" },
+    { name = "google-api-python-client", marker = "extra == 'google'", specifier = "==2.201.0" },
+    { name = "google-auth", marker = "extra == 'google'", specifier = "==2.62.0" },
+    { name = "google-auth", marker = "extra == 'vertex'", specifier = "==2.62.0" },
+    { name = "google-auth-httplib2", marker = "extra == 'google'", specifier = "==0.4.4" },
+    { name = "google-auth-oauthlib", marker = "extra == 'google'", specifier = "==1.5.0" },
+    { name = "google-cloud-pubsub", marker = "(platform_machine != 'ARM64' and extra == 'google-chat') or (sys_platform != 'win32' and extra == 'google-chat')", specifier = "==2.43.0" },
+    { name = "httplib2", marker = "extra == 'google'", specifier = "==0.32.0" },
+    { name = "httptools", marker = "python_full_version >= '3.14'", specifier = ">=0.6.3,<0.9" },
+    { name = "httpx", extras = ["socks"], marker = "python_full_version >= '3.14'", specifier = "==0.28.1" },
+    { name = "httpx2", marker = "extra == 'computer-use'", specifier = "==2.15.1" },
+    { name = "httpx2", marker = "extra == 'mcp'", specifier = "==2.15.1" },
+    { name = "huggingface-hub", marker = "extra == 'trace-upload'", specifier = "==1.33.0" },
+    { name = "jinja2", marker = "python_full_version >= '3.14'", specifier = "==3.1.6" },
+    { name = "keyring", marker = "extra == 'keychain'", specifier = "==25.7.0" },
+    { name = "kittentts", marker = "(platform_machine != 'x86_64' and sys_platform == 'darwin' and extra == 'kittentts') or (platform_machine != 'ARM64' and sys_platform == 'win32' and extra == 'kittentts') or (sys_platform != 'android' and sys_platform != 'darwin' and sys_platform != 'win32' and extra == 'kittentts')", url = "https://github.com/KittenML/KittenTTS/releases/download/0.8.1/kittentts-0.8.1-py3-none-any.whl" },
+    { name = "lark-oapi", marker = "extra == 'feishu'", specifier = "==1.7.5" },
+    { name = "markdown", marker = "python_full_version >= '3.14'", specifier = "==3.11.2" },
+    { name = "mautrix", extras = ["encryption"], marker = "sys_platform == 'linux' and extra == 'matrix'", specifier = "==0.21.1" },
+    { name = "mcp", marker = "extra == 'computer-use'", specifier = "==2.3.0" },
+    { name = "mcp", marker = "extra == 'mcp'", specifier = "==2.3.0" },
+    { name = "microsoft-teams-apps", marker = "extra == 'teams'", specifier = "==2.1.1" },
+    { name = "misaki", extras = ["en"], marker = "(platform_machine != 'x86_64' and sys_platform == 'darwin' and extra == 'kittentts') or (platform_machine != 'ARM64' and sys_platform == 'win32' and extra == 'kittentts') or (sys_platform != 'android' and sys_platform != 'darwin' and sys_platform != 'win32' and extra == 'kittentts')", git = "https://github.com/NousResearch/misaki.git?rev=f03fd2be7346952a83d3d4845c217fc7667f322d" },
+    { name = "mistralai", marker = "extra == 'mistral'", specifier = "==2.10.1" },
+    { name = "modal", marker = "extra == 'modal'", specifier = "==1.6.2" },
+    { name = "nemo-relay", marker = "(python_full_version >= '3.14' and platform_machine == 'aarch64' and 'android' not in platform_release and sys_platform == 'linux') or (python_full_version >= '3.14' and platform_machine == 'x86_64' and 'android' not in platform_release and sys_platform == 'linux') or (python_full_version >= '3.14' and platform_machine == 'arm64' and sys_platform == 'darwin') or (python_full_version >= '3.14' and platform_machine == 'AMD64' and sys_platform == 'win32') or (python_full_version >= '3.14' and platform_machine == 'ARM64' and sys_platform == 'win32')", specifier = ">=0.10,<0.11" },
+    { name = "neutts", extras = ["all"], marker = "python_full_version < '3.14' and extra == 'neutts'", specifier = "==1.4.1" },
+    { name = "numpy", marker = "extra == 'audio-io'", specifier = "==2.5.4" },
+    { name = "numpy", marker = "extra == 'voice'", specifier = "==2.5.4" },
+    { name = "numpy", marker = "extra == 'wake'", specifier = "==2.5.4" },
+    { name = "openai", marker = "python_full_version >= '3.14'", specifier = "==2.54.0" },
+    { name = "openpyxl", marker = "extra == 'documents'", specifier = "==3.1.5" },
+    { name = "opentelemetry-exporter-otlp-proto-http", marker = "extra == 'otlp'", specifier = "==1.45.1" },
+    { name = "opentelemetry-sdk", marker = "extra == 'otlp'", specifier = "==1.45.1" },
+    { name = "packaging", marker = "python_full_version >= '3.14'", specifier = "==26.3" },
+    { name = "parallel-web", marker = "extra == 'parallel-web'", specifier = "==0.6.0" },
+    { name = "pathspec", marker = "python_full_version >= '3.14'", specifier = "==1.1.1" },
+    { name = "pdfplumber", marker = "extra == 'documents-pdf'", specifier = "==0.11.10" },
+    { name = "pilk", marker = "extra == 'silk'", specifier = "==0.2.4" },
+    { name = "pillow", marker = "python_full_version >= '3.14'", specifier = "==13.0.0" },
+    { name = "pillow-heif", marker = "python_full_version >= '3.14'", specifier = ">=1.4.0,<2" },
+    { name = "piper-tts", marker = "(platform_machine != 'x86_64' and sys_platform == 'darwin' and extra == 'piper') or (platform_machine != 'ARM64' and sys_platform == 'win32' and extra == 'piper') or (sys_platform != 'android' and sys_platform != 'darwin' and sys_platform != 'win32' and extra == 'piper')", specifier = "==1.8.0" },
+    { name = "playwright", marker = "sys_platform != 'android' and extra == 'google-meet'", specifier = "==1.64.0" },
+    { name = "prompt-toolkit", marker = "python_full_version >= '3.14'", specifier = "==3.0.53" },
+    { name = "psutil", marker = "python_full_version >= '3.14' and sys_platform == 'android'", git = "https://github.com/giampaolo/psutil.git?rev=380bd2b59c67b0e1b04bbf3a90b11744f4f96644" },
+    { name = "psutil", marker = "python_full_version >= '3.14' and sys_platform != 'android'", specifier = "==7.2.2" },
+    { name = "ptyprocess", marker = "python_full_version >= '3.14' and sys_platform != 'win32'", specifier = ">=0.7.0,<1" },
+    { name = "pvporcupine", marker = "extra == 'wake'", specifier = "==4.0.3" },
+    { name = "pvporcupine", marker = "extra == 'wake-porcupine'", specifier = "==4.0.3" },
+    { name = "pyasn1", marker = "extra == 'google'", specifier = "==0.6.4" },
+    { name = "pydantic", marker = "python_full_version >= '3.14'", specifier = "==2.14.1" },
+    { name = "pyjwt", extras = ["crypto"], marker = "python_full_version >= '3.14'", specifier = "==2.15.1" },
+    { name = "pyopen-wakeword", marker = "(platform_machine != 'ARM64' and platform_machine != 'x86_64' and extra == 'wake') or (platform_machine == 'ARM64' and sys_platform == 'darwin' and extra == 'wake') or (platform_machine == 'x86_64' and sys_platform == 'win32' and extra == 'wake') or (sys_platform != 'darwin' and sys_platform != 'win32' and extra == 'wake')", specifier = "==1.1.0" },
+    { name = "pyopen-wakeword", marker = "(platform_machine != 'ARM64' and platform_machine != 'x86_64' and extra == 'wake-openwakeword') or (platform_machine == 'ARM64' and sys_platform == 'darwin' and extra == 'wake-openwakeword') or (platform_machine == 'x86_64' and sys_platform == 'win32' and extra == 'wake-openwakeword') or (sys_platform != 'darwin' and sys_platform != 'win32' and extra == 'wake-openwakeword')", specifier = "==1.1.0" },
+    { name = "pypdf", marker = "extra == 'documents'", specifier = "==6.21.2" },
+    { name = "pypdfium2", marker = "extra == 'documents-pdf'", specifier = "==5.14.0" },
+    { name = "pypinyin", marker = "extra == 'wake'", specifier = "==0.55.0" },
+    { name = "pypinyin", marker = "extra == 'wake-sherpa'", specifier = "==0.55.0" },
+    { name = "python-docx", marker = "extra == 'documents'", specifier = "==1.2.0" },
+    { name = "python-dotenv", marker = "python_full_version >= '3.14'", specifier = "==1.2.4" },
+    { name = "python-multipart", marker = "python_full_version >= '3.14'", specifier = ">=0.0.9,<1" },
+    { name = "python-multipart", marker = "extra == 'web'", specifier = "==0.0.32" },
+    { name = "python-pptx", marker = "extra == 'documents'", specifier = "==1.0.2" },
+    { name = "python-telegram-bot", extras = ["webhooks"], marker = "extra == 'messaging'", specifier = "==22.8" },
+    { name = "python-telegram-bot", extras = ["webhooks"], marker = "extra == 'telegram'", specifier = "==22.8" },
+    { name = "python-telegram-bot", extras = ["webhooks"], marker = "extra == 'termux'", specifier = "==22.8" },
+    { name = "pywin32", marker = "python_full_version >= '3.14' and sys_platform == 'win32'", specifier = ">=306,<312" },
+    { name = "pywinpty", marker = "python_full_version >= '3.14' and sys_platform == 'win32'", specifier = ">=3.0.5,<4" },
+    { name = "qrcode", marker = "extra == 'dingtalk'", specifier = "==7.4.2" },
+    { name = "qrcode", marker = "extra == 'feishu'", specifier = "==7.4.2" },
+    { name = "qrcode", marker = "extra == 'messaging'", specifier = "==7.4.2" },
+    { name = "reportlab", marker = "extra == 'documents'", specifier = "==5.1.0" },
+    { name = "requests", marker = "python_full_version >= '3.14'", specifier = "==2.34.2" },
+    { name = "resvg-py", marker = "python_full_version >= '3.14'", specifier = "==0.5.0" },
+    { name = "rich", marker = "python_full_version >= '3.14'", specifier = "==14.3.4" },
+    { name = "ruamel-yaml", marker = "python_full_version >= '3.14'", specifier = "==0.18.16" },
+    { name = "ruamel-yaml-clib", marker = "(python_full_version >= '3.14' and platform_machine in 'x86_64 aarch64 i686' and platform_python_implementation == 'CPython' and sys_platform == 'linux') or (python_full_version >= '3.14' and platform_machine in 'AMD64 x86' and platform_python_implementation == 'CPython' and sys_platform == 'win32') or (python_full_version >= '3.14' and platform_python_implementation == 'CPython' and sys_platform == 'darwin')", specifier = "==0.2.15" },
+    { name = "sentencepiece", marker = "extra == 'wake'", specifier = "==0.2.2" },
+    { name = "sentencepiece", marker = "extra == 'wake-sherpa'", specifier = "==0.2.2" },
+    { name = "shards-agent", extras = ["acp"], marker = "extra == 'all'" },
+    { name = "shards-agent", extras = ["acp"], marker = "extra == 'termux'" },
+    { name = "shards-agent", extras = ["cron"], marker = "extra == 'all'" },
+    { name = "shards-agent", extras = ["cron"], marker = "extra == 'termux'" },
+    { name = "shards-agent", extras = ["google"], marker = "extra == 'all'" },
+    { name = "shards-agent", extras = ["google"], marker = "extra == 'termux-all'" },
+    { name = "shards-agent", extras = ["mcp"], marker = "extra == 'all'" },
+    { name = "shards-agent", extras = ["mcp"], marker = "extra == 'termux'" },
+    { name = "shards-agent", extras = ["pty"], marker = "extra == 'all'" },
+    { name = "shards-agent", extras = ["pty"], marker = "extra == 'termux-all'" },
+    { name = "shards-agent", extras = ["sms"], marker = "extra == 'all'" },
+    { name = "shards-agent", extras = ["sms"], marker = "extra == 'termux-all'" },
+    { name = "shards-agent", extras = ["termux"], marker = "extra == 'termux-all'" },
+    { name = "shards-agent", extras = ["uvloop"], marker = "extra == 'all'" },
+    { name = "shards-agent", extras = ["web"], marker = "extra == 'all'" },
+    { name = "shards-agent", extras = ["web"], marker = "extra == 'termux-all'" },
+    { name = "shards-agent", extras = ["youtube"], marker = "extra == 'all'" },
+    { name = "sherpa-onnx", marker = "extra == 'wake'", specifier = "==1.13.8" },
+    { name = "sherpa-onnx", marker = "extra == 'wake-sherpa'", specifier = "==1.13.8" },
+    { name = "sherpa-onnx-core", marker = "extra == 'wake'", specifier = "==1.13.8" },
+    { name = "sherpa-onnx-core", marker = "extra == 'wake-sherpa'", specifier = "==1.13.8" },
+    { name = "slack-bolt", marker = "extra == 'messaging'", specifier = "==1.30.0" },
+    { name = "slack-bolt", marker = "extra == 'slack'", specifier = "==1.30.0" },
+    { name = "slack-sdk", marker = "extra == 'messaging'", specifier = "==3.45.0" },
+    { name = "slack-sdk", marker = "extra == 'slack'", specifier = "==3.45.0" },
+    { name = "snowballstemmer", marker = "python_full_version >= '3.14'", specifier = "==3.1.1" },
+    { name = "sounddevice", marker = "extra == 'audio-io'", specifier = "==0.5.6" },
+    { name = "sounddevice", marker = "extra == 'voice'", specifier = "==0.5.6" },
+    { name = "sounddevice", marker = "extra == 'wake'", specifier = "==0.5.6" },
+    { name = "soundfile", marker = "(platform_machine != 'x86_64' and sys_platform == 'darwin' and extra == 'kittentts') or (platform_machine != 'ARM64' and sys_platform == 'win32' and extra == 'kittentts') or (sys_platform != 'android' and sys_platform != 'darwin' and sys_platform != 'win32' and extra == 'kittentts')", specifier = "==0.14.0" },
+    { name = "starlette", marker = "extra == 'computer-use'", specifier = "==1.9.0" },
+    { name = "starlette", marker = "extra == 'mcp'", specifier = "==1.9.0" },
+    { name = "starlette", marker = "extra == 'web'", specifier = "==1.9.0" },
+    { name = "tenacity", marker = "python_full_version >= '3.14'", specifier = "==9.2.1" },
+    { name = "tomli-w", marker = "python_full_version >= '3.14'", specifier = "==1.2.0" },
+    { name = "truststore", marker = "python_full_version >= '3.14'", specifier = "==0.10.5" },
+    { name = "tzdata", marker = "python_full_version >= '3.14' and sys_platform == 'win32'", specifier = "==2025.3" },
+    { name = "urllib3", marker = "python_full_version >= '3.14'", specifier = ">=2.8.0,<3" },
+    { name = "uvicorn", marker = "python_full_version >= '3.14'", specifier = ">=0.31.0,<1" },
+    { name = "uvicorn", marker = "extra == 'web'", specifier = "==0.54.0" },
+    { name = "uvloop", marker = "platform_python_implementation != 'PyPy' and sys_platform != 'android' and sys_platform != 'cygwin' and sys_platform != 'win32' and extra == 'uvloop'", specifier = ">=0.15.1,<0.24" },
+    { name = "vercel", marker = "extra == 'vercel'", specifier = "==0.12.0" },
+    { name = "watchfiles", marker = "python_full_version >= '3.14'", specifier = ">=0.20,<2" },
+    { name = "websockets", marker = "python_full_version >= '3.14'", specifier = "==15.0.1" },
+    { name = "websockets", marker = "sys_platform != 'android' and extra == 'google-meet'", specifier = "==15.0.1" },
+    { name = "winrt-windows-applicationmodel", marker = "python_full_version >= '3.14' and sys_platform == 'win32'", specifier = ">=3.2.1,<4" },
+    { name = "winrt-windows-foundation", marker = "python_full_version >= '3.14' and sys_platform == 'win32'", specifier = ">=3.2.1,<4" },
+    { name = "winrt-windows-foundation-collections", marker = "python_full_version >= '3.14' and sys_platform == 'win32'", specifier = ">=3.2.1,<4" },
+    { name = "winrt-windows-services-store", marker = "python_full_version >= '3.14' and sys_platform == 'win32'", specifier = ">=3.2.1,<4" },
+    { name = "youtube-transcript-api", marker = "extra == 'youtube'", specifier = "==1.2.4" },
+]
+provides-extras = ["uvloop", "anthropic", "exa", "firecrawl", "parallel-web", "ddgs", "fal", "edge-tts", "neutts", "kittentts", "piper", "modal", "daytona", "vercel", "google-meet", "messaging", "cron", "slack", "matrix", "wecom", "keychain", "tts-premium", "voice", "wake", "telegram", "discord", "stt-whisper", "audio-io", "silk", "wake-openwakeword", "wake-sherpa", "wake-porcupine", "google-chat", "doc-extract", "documents", "documents-pdf", "trace-upload", "vision", "pty", "mcp", "nemo-relay", "sms", "teams", "computer-use", "acp", "mistral", "otlp", "bedrock", "vertex", "azure-identity", "termux", "termux-all", "dingtalk", "feishu", "google", "youtube", "web", "all"]
+
+[package.metadata.requires-dev]
+dev = [
+    { name = "debugpy", specifier = "==1.8.22" },
+    { name = "httpx2", specifier = "==2.15.1" },
+    { name = "mcp", specifier = "==2.3.0" },
+    { name = "pytest", specifier = "==9.1.1" },
+    { name = "pytest-asyncio", specifier = "==1.4.0" },
+    { name = "ruff", specifier = "==0.15.22" },
+    { name = "setuptools", specifier = "==83.0.0" },
+    { name = "starlette", specifier = "==1.9.0" },
+    { name = "ty", specifier = "==0.0.89" },
+]
+test = [
+    { name = "anthropic", specifier = "==0.125.0" },
+    { name = "distlib", marker = "sys_platform == 'win32'", specifier = "==0.4.4" },
 ]
 
 [[package]]

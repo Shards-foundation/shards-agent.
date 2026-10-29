@@ -8,7 +8,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 # Sessions
 
-Hermes Agent automatically saves every conversation as a session. Sessions enable conversation resume, cross-session search, and full conversation history management.
+Shards Agent automatically saves every conversation as a session. Sessions enable conversation resume, cross-session search, and full conversation history management.
 
 ## How Sessions Work
 
@@ -232,7 +232,7 @@ Resuming an idle session picks up the profile's current config: toolsets, MCP se
 
 ```bash
 hermes sessions list --workspace my-project
-hermes sessions list --workspace ~/code/hermes-agent
+hermes sessions list --workspace ~/code/shards-agent
 ```
 
 ### Conversation Recap on Resume
@@ -937,7 +937,7 @@ the id plus a ready-to-paste `hermes --resume <id>` command.
 `--resume @claude` / `--resume @codex` show the same picker and drop you
 straight into the imported conversation.
 
-**Hermes Desktop** has the same importer in the command palette (**Import
+**Shards Desktop** has the same importer in the command palette (**Import
 session**). It lists the logs on the machine the
 connected backend runs on — not the computer running the app — shows a
 read-only preview, and **Continue in Hermes** copies the conversation into the

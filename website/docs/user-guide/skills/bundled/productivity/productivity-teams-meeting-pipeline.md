@@ -17,7 +17,7 @@ Teams meeting summaries, job replay, Graph subscriptions.
 | Source | Bundled (installed by default) |
 | Path | `skills/productivity/teams-meeting-pipeline` |
 | Version | `1.1.0` |
-| Author | Hermes Agent + Teknium |
+| Author | Shards Agent + Teknium |
 | License | MIT |
 | Platforms | linux, macos, windows |
 | Tags | `Teams`, `Microsoft Graph`, `Meetings`, `Productivity`, `Operations` |

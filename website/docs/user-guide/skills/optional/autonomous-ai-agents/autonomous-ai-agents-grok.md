@@ -17,11 +17,11 @@ Delegate coding to xAI Grok Build CLI (features, PRs).
 | Source | Optional — install with `hermes skills install official/autonomous-ai-agents/grok` |
 | Path | `optional-skills/autonomous-ai-agents/grok` |
 | Version | `0.1.1` |
-| Author | Matt Maximo (MattMaximo), Hermes Agent |
+| Author | Matt Maximo (MattMaximo), Shards Agent |
 | License | MIT |
 | Platforms | linux, macos, windows |
 | Tags | `Coding-Agent`, `Grok`, `xAI`, `Code-Review`, `Refactoring`, `Automation` |
-| Related skills | [`codex`](../../bundled/autonomous-ai-agents/autonomous-ai-agents-codex.md), [`claude-code`](../../bundled/autonomous-ai-agents/autonomous-ai-agents-claude-code.md), [`hermes-agent`](../../bundled/autonomous-ai-agents/autonomous-ai-agents-hermes-agent.md) |
+| Related skills | [`codex`](../../bundled/autonomous-ai-agents/autonomous-ai-agents-codex.md), [`claude-code`](../../bundled/autonomous-ai-agents/autonomous-ai-agents-claude-code.md), [`shards-agent`](../../bundled/autonomous-ai-agents/autonomous-ai-agents-shards-agent.md) |
 
 ## Reference: full SKILL.md
 
@@ -308,7 +308,7 @@ Put global preferences in `~/.grok/config.toml` (not project-scoped
    `mktemp -d && git init` for scratch commit tasks.
 9. **Clean up tmux sessions** with `tmux kill-session -t <name>` when done.
 
-## Rules for Hermes Agents
+## Rules for Shards Agents
 
 1. **Prefer headless `-p`** for single tasks — cleanest integration, structured
    output via `--output-format json`.

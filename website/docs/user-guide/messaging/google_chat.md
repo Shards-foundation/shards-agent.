@@ -1,12 +1,12 @@
 ---
 sidebar_position: 12
 title: "Google Chat"
-description: "Set up Hermes Agent as a Google Chat bot using Cloud Pub/Sub"
+description: "Set up Shards Agent as a Google Chat bot using Cloud Pub/Sub"
 ---
 
 # Google Chat Setup
 
-Connect Hermes Agent to Google Chat as a bot. The integration uses Cloud Pub/Sub
+Connect Shards Agent to Google Chat as a bot. The integration uses Cloud Pub/Sub
 pull subscriptions for inbound events and the Chat REST API for outbound messages.
 Equivalent ergonomics to Slack Socket Mode or Telegram long-polling: your Hermes
 process does not need a public URL, a tunnel, or a TLS certificate. It connects,

@@ -17,7 +17,7 @@ description: "通过 Yahoo 获取股票报价、历史、搜索、比较及加�
 | 来源 | 可选 — 使用 `hermes skills install official/finance/stocks` 安装 |
 | 路径 | `optional-skills/finance/stocks` |
 | 版本 | `0.1.0` |
-| 作者 | Mibay (Mibayy), Hermes Agent |
+| 作者 | Mibay (Mibayy), Shards Agent |
 | 许可证 | MIT |
 | 平台 | linux, macos, windows |
 | 标签 | `Stocks`, `Finance`, `Market`, `Crypto`, `Investing` |

@@ -17,7 +17,7 @@ Pre-commit review: security scan, quality gates, auto-fix.
 | Source | Bundled (installed by default) |
 | Path | `skills/software-development/requesting-code-review` |
 | Version | `2.1.0` |
-| Author | Hermes Agent (adapted from obra/superpowers + MorAlekss) |
+| Author | Shards Agent (adapted from obra/superpowers + MorAlekss) |
 | License | MIT |
 | Platforms | linux, macos, windows |
 | Tags | `code-review`, `security`, `verification`, `quality`, `pre-commit`, `auto-fix` |

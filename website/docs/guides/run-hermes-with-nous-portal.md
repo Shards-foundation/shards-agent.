@@ -1,16 +1,16 @@
 ---
 sidebar_position: 1
-title: "Run Hermes Agent with Nous Portal"
+title: "Run Shards Agent with Nous Portal"
 description: "Start-to-finish walkthrough: subscribe, set up, switch models, enable gateway tools, and verify routing"
 ---
 
-# Run Hermes Agent with Nous Portal
+# Run Shards Agent with Nous Portal
 
-This guide walks you through running Hermes Agent on a [Nous Portal](https://portal.nousresearch.com) subscription end to end — from signing up to verifying that every tool routes correctly. If you just want the overview of what the Portal is and what's in the subscription, see the [Nous Portal integration page](../integrations/nous-portal.md). This page is the task script.
+This guide walks you through running Shards Agent on a [Nous Portal](https://portal.nousresearch.com) subscription end to end — from signing up to verifying that every tool routes correctly. If you just want the overview of what the Portal is and what's in the subscription, see the [Nous Portal integration page](../integrations/nous-portal.md). This page is the task script.
 
 ## Prerequisites
 
-- Hermes Agent installed ([Quickstart](../getting-started/quickstart.md))
+- Shards Agent installed ([Quickstart](../getting-started/quickstart.md))
 - A web browser on the machine you're setting up (or SSH port forwarding — see [OAuth over SSH](./oauth-over-ssh.md))
 - About 5 minutes
 
@@ -88,7 +88,7 @@ hermes chat
 Try something that exercises both the model and the Tool Gateway:
 
 ```
-Hey, search the web for "Hermes Agent release notes" and summarize the top 3 hits.
+Hey, search the web for "Shards Agent release notes" and summarize the top 3 hits.
 ```
 
 You should see Hermes call `web_search` (through the gateway) and respond with a summary. If the search runs and the response makes sense, you're done — the Portal is wired up end to end.
@@ -120,7 +120,7 @@ hermes config set model.default anthropic/claude-sonnet-4.6
 
 ### Don't pick Hermes-4 for agent work
 
-Hermes-4-70B and Hermes-4-405B are available on the Portal at deep discounts, but they're **chat/reasoning models**, not tool-call-tuned. They will struggle with multi-step agent loops. Use them for conversation/research work through the [subscription proxy](../user-guide/features/subscription-proxy.md) from non-agent tools. For Hermes Agent itself, stick to the frontier agentic models above.
+Hermes-4-70B and Hermes-4-405B are available on the Portal at deep discounts, but they're **chat/reasoning models**, not tool-call-tuned. They will struggle with multi-step agent loops. Use them for conversation/research work through the [subscription proxy](../user-guide/features/subscription-proxy.md) from non-agent tools. For Shards Agent itself, stick to the frontier agentic models above.
 
 The Portal's own [info page](https://portal.nousresearch.com/info) carries this warning too — it's the official Nous guidance, not just a Hermes-side opinion.
 

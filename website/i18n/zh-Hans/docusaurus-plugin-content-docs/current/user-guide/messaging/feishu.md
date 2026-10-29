@@ -1,7 +1,7 @@
 ---
 sidebar_position: 11
 title: "飞书 / Lark"
-description: "将 Hermes Agent 配置为飞书或 Lark 机器人"
+description: "将 Shards Agent 配置为飞书或 Lark 机器人"
 ---
 
 # 飞书 / Lark 配置
@@ -9,7 +9,7 @@ description: "将 Hermes Agent 配置为飞书或 Lark 机器人"
 本页的 Python 依赖命令使用 [PM 准备的源码环境](../../reference/package-management.md#developer-workflow)。
 依赖变更后，请重新激活该 checkout 并重启 Hermes。
 
-Hermes Agent 可作为全功能机器人与飞书和 Lark 集成。连接后，你可以在私信或群聊中与 Agent 对话，在 home chat 中接收 cron job 结果，并通过标准 gateway 流程发送文本、图片、音频和文件附件。
+Shards Agent 可作为全功能机器人与飞书和 Lark 集成。连接后，你可以在私信或群聊中与 Agent 对话，在 home chat 中接收 cron job 结果，并通过标准 gateway 流程发送文本、图片、音频和文件附件。
 
 该集成支持两种连接模式：
 

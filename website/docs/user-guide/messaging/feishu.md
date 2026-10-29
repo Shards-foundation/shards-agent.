@@ -1,7 +1,7 @@
 ---
 sidebar_position: 11
 title: "Feishu / Lark"
-description: "Set up Hermes Agent as a Feishu or Lark bot"
+description: "Set up Shards Agent as a Feishu or Lark bot"
 ---
 
 # Feishu / Lark Setup
@@ -10,7 +10,7 @@ Python dependency commands on this page use a
 [PM-prepared source checkout](../../reference/package-management.md#developer-workflow).
 After a dependency change, reactivate the checkout and restart Hermes.
 
-Hermes Agent integrates with Feishu and Lark as a full-featured bot. Once connected, you can chat with the agent in direct messages or group chats, receive cron job results in a home chat, and send text, images, audio, and file attachments through the normal gateway flow.
+Shards Agent integrates with Feishu and Lark as a full-featured bot. Once connected, you can chat with the agent in direct messages or group chats, receive cron job results in a home chat, and send text, images, audio, and file attachments through the normal gateway flow.
 
 The integration supports both connection modes:
 

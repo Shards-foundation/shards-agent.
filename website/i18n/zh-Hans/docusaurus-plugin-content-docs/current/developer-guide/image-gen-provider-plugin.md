@@ -1,7 +1,7 @@
 ---
 sidebar_position: 11
 title: "图像生成 Provider 插件"
-description: "如何为 Hermes Agent 构建图像生成后端插件"
+description: "如何为 Shards Agent 构建图像生成后端插件"
 ---
 
 # 构建图像生成 Provider 插件

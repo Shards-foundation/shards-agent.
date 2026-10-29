@@ -17,7 +17,7 @@ Agent-native web search, deep research, and enrichment.
 | Source | Optional — install with `hermes skills install official/research/parallel-cli` |
 | Path | `optional-skills/research/parallel-cli` |
 | Version | `1.1.0` |
-| Author | Hermes Agent |
+| Author | Shards Agent |
 | License | MIT |
 | Platforms | linux, macos, windows |
 | Tags | `Research`, `Web`, `Search`, `Deep-Research`, `Enrichment`, `CLI` |

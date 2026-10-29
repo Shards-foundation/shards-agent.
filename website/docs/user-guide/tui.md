@@ -220,7 +220,7 @@ The per-skin status-bar colors and thresholds are shared with the classic CLI �
 
 The status line also shows:
 
-- **Working directory with git branch** — `~/projects/hermes-agent (docs/two-week-gap-sweep)`. The branch suffix updates when you `git checkout` in a side terminal (mtime-cached) so the TUI reflects your actual active branch, not whatever it was at launch.
+- **Working directory with git branch** — `~/projects/shards-agent (docs/two-week-gap-sweep)`. The branch suffix updates when you `git checkout` in a side terminal (mtime-cached) so the TUI reflects your actual active branch, not whatever it was at launch.
 - **Per-prompt elapsed time** — `⏱ 12s/3m 45s` while the turn is running (live), frozen to `⏲ 32s / 3m 45s` after the turn completes. First number is time since last user message; second is total session duration. Resets on every new prompt.
 - **`🗜️ N`** — number of times the running session has been auto-compressed. Appears once the first compression fires.
 - **`▶ N`** — number of `/bg` tasks currently running in this session. Appears whenever at least one task is in flight.

@@ -17,7 +17,7 @@ Rewrite text to ASD-STE100 Simplified Technical English.
 | Source | Optional — install with `hermes skills install official/creative/simple-english` |
 | Path | `optional-skills/creative/simple-english` |
 | Version | `1.2.0` |
-| Author | AminBlg (https://github.com/AminBlg/SimpleEnglish), ported by Hermes Agent |
+| Author | AminBlg (https://github.com/AminBlg/SimpleEnglish), ported by Shards Agent |
 | License | MIT |
 | Platforms | linux, macos, windows |
 | Tags | `writing`, `documentation`, `ste`, `asd-ste100`, `technical-writing`, `editing`, `anti-ai-slop` |

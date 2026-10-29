@@ -17,7 +17,7 @@ description: "将 alibaba/page-agent 嵌入你自己的 Web 应用——一个�
 | 来源 | 可选——通过 `hermes skills install official/web-development/page-agent` 安装 |
 | 路径 | `optional-skills/web-development/page-agent` |
 | 版本 | `1.0.0` |
-| 作者 | Hermes Agent |
+| 作者 | Shards Agent |
 | 许可证 | MIT |
 | 平台 | linux, macos, windows |
 | 标签 | `web`, `javascript`, `agent`, `browser`, `gui`, `alibaba`, `embed`, `copilot`, `saas` |

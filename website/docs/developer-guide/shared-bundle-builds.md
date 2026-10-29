@@ -240,13 +240,13 @@ admission, generation selection, and transaction state. Both paths use
 | Docker | Icons, TUI, web, agent | Agent at `/opt/hermes`, dependencies at `.venv`, PM at `pm-runtime`, generated commands at `libexec` |
 | Nix TUI | TUI | `$out/lib/hermes-tui/{dist/entry.js,package.json}` |
 | Nix web | Web | `$out/index.html` and assets |
-| Nix agent | Agent with TUI/web references | `$out/bin`, `$out/share/hermes-agent`, `$out/ui-tui`, `manifest.json`, and `command-map.json` |
+| Nix agent | Agent with TUI/web references | `$out/bin`, `$out/share/shards-agent`, `$out/ui-tui`, `manifest.json`, and `command-map.json` |
 | Nix desktop | Icons and desktop UI, with the Nix agent | `$out/share/hermes-desktop` and `$out/bin/hermes-desktop` |
-| Termux | TUI and agent | `OUT/hermes-agent_<version>_aarch64.deb`, installed at `$PREFIX/lib/hermes-agent/` |
+| Termux | TUI and agent | `OUT/hermes-agent_<version>_aarch64.deb`, installed at `$PREFIX/lib/shards-agent/` |
 
-Native payloads contain `hermes-agent`, `tools`, `venv`, `pm-runtime`, `bin`,
+Native payloads contain `shards-agent`, `tools`, `venv`, `pm-runtime`, `bin`,
 `uv-cache`, and their manifests/facts. Copied frontend assets live at
-`hermes-agent/hermes_cli/tui_dist/` and `hermes-agent/hermes_cli/web_dist/`.
+`shards-agent/hermes_cli/tui_dist/` and `shards-agent/hermes_cli/web_dist/`.
 The TUI asset directory contains `entry.js` and module-mode package metadata.
 
 Docker keeps its existing TUI product at `/opt/hermes/ui-tui` and web output

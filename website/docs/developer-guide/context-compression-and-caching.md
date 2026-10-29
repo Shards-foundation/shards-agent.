@@ -1,6 +1,6 @@
 # Context Compression and Caching
 
-Hermes Agent uses a dual compression system and Anthropic prompt caching to
+Shards Agent uses a dual compression system and Anthropic prompt caching to
 manage context window usage efficiently across long conversations.
 
 Source files: `agent/context_engine.py` (ABC), `agent/context_compressor.py` (default engine),

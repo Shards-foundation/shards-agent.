@@ -1,7 +1,7 @@
 ---
 sidebar_position: 6
 title: "WhatsApp Business (Cloud API)"
-description: "Set up Hermes Agent as a WhatsApp bot via Meta's official Business Cloud API"
+description: "Set up Shards Agent as a WhatsApp bot via Meta's official Business Cloud API"
 ---
 
 # WhatsApp Business Cloud API Setup

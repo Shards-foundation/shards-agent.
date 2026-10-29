@@ -131,20 +131,20 @@ Type `/` in the CLI to open the autocomplete menu. Built-in commands are case-in
 |---------|-------------|
 | `/help` | Show available commands, grouped by category. Core commands are shown by default with skill commands collapsed to a one-line count; `/help skills` lists all skill commands, and `/help <text>` filters commands (and matching skills) by substring. |
 | `/palette` | Open the fuzzy command palette (also **Ctrl+P**) — type to filter all commands + skills, ↑/↓ to move, Enter to insert the selected command into the composer (never auto-runs), Esc to cancel. Matching is ranked by command name first, so a short query stays precise. |
-| `/version` | Show Hermes Agent version, build, and environment info. |
+| `/version` | Show Shards Agent version, build, and environment info. |
 | `/whoami` | Show your slash command access level (admin / user). |
 | `/usage` | Show token usage, cost breakdown, session duration, and — when available from the active provider — an **Account limits** section with remaining quota / credits / plan usage pulled live from the provider's API. |
 | `/topup` | Show your Nous balance and manage billing on the portal (replaces the old `/credits` and `/billing` commands). |
 | `/subscription` (alias: `/upgrade`) | **CLI only.** View your Nous plan and change it in the browser. |
 | `/login` | Sign in with a Nous account. Runs off-turn: the consent link and code arrive in the session, and the sign-in settles when you approve it in the browser. |
 | `/insights` | Show usage insights and analytics (last 30 days) |
-| `/update` | Update Hermes Agent to the latest version. |
+| `/update` | Update Shards Agent to the latest version. |
 | `/platforms` (alias: `/gateway`) | Show gateway/messaging platform status (CLI-only summary view). |
 | `/paste` | Attach a clipboard image |
 | `/copy [number]` | Copy the last assistant response to clipboard (or the Nth-from-last with a number). CLI-only. |
 | `/image <path>` | Attach a local image file for your next prompt. |
 | `/debug` | Upload debug report (system info + logs) and get shareable links. Also available in messaging. |
-| `/update` | Update Hermes Agent to the latest version. |
+| `/update` | Update Shards Agent to the latest version. |
 | `/profile` | Show active profile name and home directory |
 
 ### Exit
@@ -168,7 +168,7 @@ User-defined quick commands map a short slash command to either a shell command 
 quick_commands:
   status:
     type: exec
-    command: systemctl status hermes-agent
+    command: systemctl status shards-agent
   deploy:
     type: exec
     command: scripts/deploy.sh
@@ -305,7 +305,7 @@ The messaging gateway supports the following built-in commands inside Telegram, 
 | `/commands [page]` | Browse all commands and skills (paginated). |
 | `/approve [session\|always]` | Approve and execute a pending dangerous command. `session` approves for this session only; `always` adds to permanent allowlist. |
 | `/deny` | Reject a pending dangerous command. |
-| `/update` | Update Hermes Agent to the latest version. |
+| `/update` | Update Shards Agent to the latest version. |
 | `/restart` | Gracefully restart the gateway after draining active runs. When the gateway comes back online, it sends a confirmation to the requester's chat/thread. |
 | `/debug` | Upload debug report (system info + logs) and get shareable links. |
 | `/help` | Show messaging help. |

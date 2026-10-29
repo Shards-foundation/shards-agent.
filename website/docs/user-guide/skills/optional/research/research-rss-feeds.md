@@ -17,7 +17,7 @@ Read RSS, Atom, JSON feeds; discover feeds behind a page.
 | Source | Optional — install with `hermes skills install official/research/rss-feeds` |
 | Path | `optional-skills/research/rss-feeds` |
 | Version | `1.0.0` |
-| Author | Teknium (teknium1), Hermes Agent |
+| Author | Teknium (teknium1), Shards Agent |
 | License | MIT |
 | Platforms | linux, macos, windows |
 | Tags | `RSS`, `Atom`, `Feeds`, `Monitoring`, `Research`, `Blogs`, `Releases` |

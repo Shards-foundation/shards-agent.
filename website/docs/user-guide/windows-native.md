@@ -1,6 +1,6 @@
 ---
 title: "Windows (Native) Guide"
-description: "Run Hermes Agent natively on Windows 10 / 11 — install, feature matrix, UTF-8 console, Git Bash, gateway as a Scheduled Task, editor handling, PATH, uninstall, and common pitfalls"
+description: "Run Shards Agent natively on Windows 10 / 11 — install, feature matrix, UTF-8 console, Git Bash, gateway as a Scheduled Task, editor handling, PATH, uninstall, and common pitfalls"
 sidebar_label: "Windows (Native)"
 sidebar_position: 3
 ---
@@ -20,7 +20,7 @@ If you prefer a POSIX environment for `fork` semantics or Linux-style file watch
 Open **PowerShell** (or Windows Terminal) and run:
 
 ```powershell
-iex (irm https://raw.githubusercontent.com/NousResearch/hermes-agent/main/scripts/install.ps1)
+iex (irm https://raw.githubusercontent.com/NousResearch/shards-agent/main/scripts/install.ps1)
 ```
 
 No admin rights required. The installer goes to `%LOCALAPPDATA%\hermes\` and adds `hermes` to your **User PATH** — open a new terminal after it finishes.
@@ -59,7 +59,7 @@ a signed universal bundle and records the update source. The package includes
 Python, Node, supported dependencies, and prebuilt interfaces. It does not clone
 a checkout or build the base runtime on first launch.
 
-The MSIX execution aliases expose `hermes`, `hermes-agent`, and `hermes-acp`.
+The MSIX execution aliases expose `hermes`, `shards-agent`, and `hermes-acp`.
 If another installation shadows an alias, inspect `Get-Command hermes -All`.
 Windows Settings → Apps → Advanced app settings → App execution aliases
 controls the aliases.
@@ -250,7 +250,7 @@ Services require admin rights to install and tie the gateway's lifecycle to mach
 
 | Path | Contents |
 |---|---|
-| `%LOCALAPPDATA%\hermes\hermes-agent\` | Source checkout for the script installation; absent from an MSIX-only install. |
+| `%LOCALAPPDATA%\hermes\shards-agent\` | Source checkout for the script installation; absent from an MSIX-only install. |
 | `%LOCALAPPDATA%\hermes\tools\` | Writable managed-tool store. MSIX base tools remain inside the package. |
 | `%LOCALAPPDATA%\hermes\installs\` | Per-install runtime selection, journals, and Python generations. |
 | `%LOCALAPPDATA%\hermes\bin\` | Source-install CLI launchers. MSIX instead provides execution aliases. |

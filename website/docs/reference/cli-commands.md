@@ -38,9 +38,9 @@ hermes [global-options] <command> [subcommand/options]
 | `--cli` | Force the classic prompt_toolkit REPL. Use this to override `display.interface: tui` for a single invocation. |
 | `--dev` | With `--tui`: run the TypeScript sources directly via `tsx` instead of the prebuilt bundle (for TUI contributors). |
 
-### `hermes-agent` (legacy single-query runner)
+### `shards-agent` (legacy single-query runner)
 
-The install also ships `hermes-agent`, a minimal runner that sends one query and exits: `hermes-agent --query "summarize README.md"` (or `hermes-agent "summarize README.md"`). `hermes-agent --help` lists its options (`--model`, `--base-url`, `--max-turns`, `--enabled-toolsets`, `--disabled-toolsets`, `--list-tools`, `--save-trajectories`, …) and `hermes-agent --version` prints the version; neither starts the agent. Run with no query, it prints the same help and exits. For anything else use `hermes` (`hermes -z <prompt>` is the scripted one-shot).
+The install also ships `shards-agent`, a minimal runner that sends one query and exits: `shards-agent --query "summarize README.md"` (or `shards-agent "summarize README.md"`). `shards-agent --help` lists its options (`--model`, `--base-url`, `--max-turns`, `--enabled-toolsets`, `--disabled-toolsets`, `--list-tools`, `--save-trajectories`, …) and `shards-agent --version` prints the version; neither starts the agent. Run with no query, it prints the same help and exits. For anything else use `hermes` (`hermes -z <prompt>` is the scripted one-shot).
 
 ## Top-level commands
 
@@ -95,7 +95,7 @@ The install also ships `hermes-agent`, a minimal runner that sends one query and
 | `hermes acp` | Run Hermes as an ACP server for editor integration. |
 | `hermes mcp` | Manage MCP server configurations. Running Hermes as an MCP server is the [mcp-serve plugin](../user-guide/features/mcp.md#running-hermes-as-an-mcp-server). |
 | `hermes connectors` | List, connect, rename and disconnect hosted connector accounts. |
-| `hermes plugins` | Manage Hermes Agent plugins (install, enable, disable, remove). |
+| `hermes plugins` | Manage Shards Agent plugins (install, enable, disable, remove). |
 | `hermes portal` | Nous Portal status, subscription link, and Tool Gateway routing. See [Tool Gateway](../user-guide/features/tool-gateway.md). |
 | `hermes tools` | Configure enabled tools per platform. |
 | `hermes computer-use` | Install or check the Computer Use (cua-driver) backend (macOS/Windows/Linux). |
@@ -1109,7 +1109,7 @@ hermes debug share --local      # Print report to terminal (no upload)
 hermes backup [options]
 ```
 
-Create a zip archive of your Hermes configuration, skills, sessions, and data. The backup excludes the hermes-agent codebase itself, and it does not nest earlier backup artifacts (`backups/`, `state-snapshots/`) — each of those already contains its own copy of `state.db`.
+Create a zip archive of your Hermes configuration, skills, sessions, and data. The backup excludes the shards-agent codebase itself, and it does not nest earlier backup artifacts (`backups/`, `state-snapshots/`) — each of those already contains its own copy of `state.db`.
 
 | Option | Description |
 |--------|-------------|
@@ -1130,7 +1130,7 @@ The backup uses SQLite's `backup()` API for safe copying, so it works correctly 
 - Browser profiles: `browser-profile/` (the real-profile snapshot — copied Cookies / Login Data), `browser-profiles/` (live CDP profiles) at any depth, and `browser_profiles/` (the Browser Use CLI backend's Chromium user-data dir, with its own Login Data / Cookies) at the root of `~/.hermes` and of each `profiles/<name>/`. Credential stores that must never enter an archive; all are regenerated on the next launch.
 - Regenerable entries of `cache/` at those same roots — model/plugin catalogs, stamps, browser profiles, tool-output spill. Durable artifacts stay in: `cache/images`, `cache/audio`, `cache/videos`, `cache/documents`, `cache/screenshots` (media delivered to or received from you) and `cache/citations` (the grounded-citations ledger). A deeper `cache/` (inside a skill) is kept whole.
 - Unix sockets, devices, and symlinks — a zip cannot hold them; before they were excluded, a stray `gateway.sock` made every full backup report `Backup incomplete`.
-- The `hermes-agent` code itself (this is a user-data backup, not a repo snapshot).
+- The `shards-agent` code itself (this is a user-data backup, not a repo snapshot).
 
 ### Examples
 
@@ -1606,7 +1606,7 @@ python -m acp_adapter
 Install support first:
 
 ```bash
-cd ~/.hermes/hermes-agent && python -c "import pm; pm.sync_venv(['acp'], explicit=True)"
+cd ~/.hermes/shards-agent && python -c "import pm; pm.sync_venv(['acp'], explicit=True)"
 ```
 
 See [ACP Editor Integration](../user-guide/features/acp.md) and [ACP Internals](../developer-guide/acp-internals.md).
@@ -1930,7 +1930,7 @@ worker dashboard
 hermes webapp [options]
 ```
 
-Open the Hermes Desktop workspace in a normal browser. The gateway serves it on its own listener when
+Open the Shards Desktop workspace in a normal browser. The gateway serves it on its own listener when
 `webapp.enabled` is `true` in the config ([Configuration → Webapp](../user-guide/configuration.md#webapp)).
 This command builds the Webapp bundle when it is out of date, starts the gateway if it is not running,
 and opens a one-use sign-in link. Chats run on that gateway, the same one the CLI, Desktop and messaging

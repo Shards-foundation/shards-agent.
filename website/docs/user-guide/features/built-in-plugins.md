@@ -2,7 +2,7 @@
 sidebar_position: 12
 sidebar_label: "Built-in Plugins"
 title: "Built-in Plugins"
-description: "Plugins shipped with Hermes Agent that run automatically via lifecycle hooks — disk-cleanup and friends"
+description: "Plugins shipped with Shards Agent that run automatically via lifecycle hooks — disk-cleanup and friends"
 ---
 
 # Built-in Plugins
@@ -185,7 +185,7 @@ mode = "append"
 
 [components.config.atif]
 enabled = true
-agent_name = "Hermes Agent"
+agent_name = "Shards Agent"
 model_name = "unknown"
 output_directory = "/home/you/.hermes/telemetry/nemo-relay/atif"
 filename_template = "trajectory-{session_id}.json"

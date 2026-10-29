@@ -10,7 +10,7 @@ Python dependency commands on this page use a
 [PM-prepared source checkout](../../reference/package-management.md#developer-workflow).
 After a dependency change, reactivate the checkout and restart Hermes.
 
-Hermes Agent supports both text-to-speech output and voice message transcription across all messaging platforms.
+Shards Agent supports both text-to-speech output and voice message transcription across all messaging platforms.
 
 :::tip Nous Subscribers
 If you have a paid [Nous Portal](https://portal.nousresearch.com) subscription, OpenAI TTS is available through the **[Tool Gateway](tool-gateway.md)** without a separate OpenAI API key. New installs can run `hermes setup --portal` to log in and turn on every gateway tool at once; existing installs can pick **Nous Subscription** for just TTS via `hermes model` or `hermes tools`.
@@ -551,7 +551,7 @@ HF_HUB_DISABLE_XET=1
 
 **OpenAI API** — Accepts `VOICE_TOOLS_OPENAI_KEY` first and falls back to `OPENAI_API_KEY`. Supports `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-transcribe`, and `gpt-transcribe`.
 
-**Mistral API (Voxtral Transcribe)** — Requires `MISTRAL_API_KEY`. Uses Mistral's [Voxtral Transcribe](https://docs.mistral.ai/capabilities/audio/speech_to_text/) models. Supports 13 languages, speaker diarization, and word-level timestamps. Install with `cd ~/.hermes/hermes-agent && python -c "import pm; pm.sync_venv(['mistral'], explicit=True)"`.
+**Mistral API (Voxtral Transcribe)** — Requires `MISTRAL_API_KEY`. Uses Mistral's [Voxtral Transcribe](https://docs.mistral.ai/capabilities/audio/speech_to_text/) models. Supports 13 languages, speaker diarization, and word-level timestamps. Install with `cd ~/.hermes/shards-agent && python -c "import pm; pm.sync_venv(['mistral'], explicit=True)"`.
 
 **xAI Grok STT** — Requires `XAI_API_KEY` (or xAI OAuth). Posts to `https://api.x.ai/v1/stt` as multipart/form-data and sends `model` (default `grok-voice-transcribe-2.0`; pin `grok-voice-transcribe-1.0` with `stt.xai.model` or `STT_XAI_MODEL`). Hermes always names the model, so a server-default change never silently switches what you run. With `stt.language: ""` (auto-detect) the `format` flag is dropped, since xAI requires a language for text formatting. Good choice if you're already using xAI for chat or TTS and want one API key for everything. Auto-detection order puts it after Mistral — explicitly set `stt.provider: xai` to force it.
 

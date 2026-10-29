@@ -1,7 +1,7 @@
 ---
 sidebar_position: 16
 title: "Yuanbao"
-description: "通过 WebSocket gateway 将 Hermes Agent 连接到元宝企业消息平台"
+description: "通过 WebSocket gateway 将 Shards Agent 连接到元宝企业消息平台"
 ---
 
 # Yuanbao

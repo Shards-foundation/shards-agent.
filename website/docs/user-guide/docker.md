@@ -1,12 +1,12 @@
 ---
 sidebar_position: 7
 title: "Hermes Docker Setup"
-description: "Running Hermes Agent in Docker and using Docker as a terminal backend"
+description: "Running Shards Agent in Docker and using Docker as a terminal backend"
 ---
 
 # Hermes Docker Setup
 
-There are two distinct ways Docker intersects with Hermes Agent:
+There are two distinct ways Docker intersects with Shards Agent:
 
 1. **Running Hermes IN Docker** — the agent itself runs inside a container (this page's primary focus)
 2. **Docker as a terminal backend** — the agent runs on your host but executes every command inside a single, persistent Docker sandbox container that survives across tool calls, `/new`, and subagents for the life of the Hermes process (see [Configuration → Docker Backend](./configuration.md#docker-backend))
@@ -31,7 +31,7 @@ Python 3.14). Its curated extras are not the native desktop bundle's
 
 ## Quick start
 
-If this is your first time running Hermes Agent, create a data directory on the host and start the container interactively to run the setup wizard:
+If this is your first time running Shards Agent, create a data directory on the host and start the container interactively to run the setup wizard:
 
 :::caution Avoid browser-based VPS consoles for the install commands
 Some VPS providers (Hetzner Cloud, and several others) offer a browser-based
@@ -50,7 +50,7 @@ result before hitting Enter.
 mkdir -p ~/.hermes
 docker run -it --rm \
   -v ~/.hermes:/opt/data \
-  nousresearch/hermes-agent setup
+  nousresearch/shards-agent setup
 ```
 
 This drops you into the setup wizard, which will prompt you for your API keys and write them to `~/.hermes/.env`. You only need to do this once. It is highly recommended to set up a chat system for the gateway to work with at this point.
@@ -69,7 +69,7 @@ docker run -d \
   --restart unless-stopped \
   -v ~/.hermes:/opt/data \
   -p 8642:8642 \
-  nousresearch/hermes-agent gateway run
+  nousresearch/shards-agent gateway run
 ```
 
 Port 8642 exposes the gateway's [OpenAI-compatible API server](./features/api-server.md) and health endpoint. It's optional if you only use chat platforms (Telegram, Discord, etc.), but required if you want the dashboard or external tools to reach the gateway.
@@ -109,7 +109,7 @@ docker run -d \
   -e API_SERVER_HOST=0.0.0.0 \
   -e API_SERVER_KEY="$(openssl rand -hex 32)" \
   -e API_SERVER_CORS_ORIGINS='*' \
-  nousresearch/hermes-agent gateway run
+  nousresearch/shards-agent gateway run
 ```
 
 Opening any port on an internet facing machine is a security risk. You should not do it unless you understand the risks.
@@ -126,7 +126,7 @@ docker run -d \
   -p 8642:8642 \
   -p 9119:9119 \
   -e HERMES_DASHBOARD=1 \
-  nousresearch/hermes-agent gateway run
+  nousresearch/shards-agent gateway run
 ```
 
 The dashboard is supervised by s6 — if it crashes, `s6-supervise` restarts it automatically after a short backoff. Dashboard stdout/stderr is forwarded to `docker logs <container>` (no prefix; the gateway's own output now lives in a per-profile s6-log file — see [Where the logs go](#where-the-logs-go) below — so the two streams don't clash).
@@ -181,7 +181,7 @@ Running the dashboard as a separate container **is** supported when that contain
 
 ## Running the Webapp
 
-The image ships the [Webapp](./desktop.md) (Hermes Desktop in a browser) prebuilt; the gateway serves it on its own port when the mounted `config.yaml` turns it on (see [Configuration → Webapp](./configuration.md#webapp)):
+The image ships the [Webapp](./desktop.md) (Shards Desktop in a browser) prebuilt; the gateway serves it on its own port when the mounted `config.yaml` turns it on (see [Configuration → Webapp](./configuration.md#webapp)):
 
 ```yaml
 webapp:
@@ -201,7 +201,7 @@ docker run -d \
   -p 9120:9120 \
   -e HERMES_DASHBOARD_BASIC_AUTH_USERNAME=admin \
   -e HERMES_DASHBOARD_BASIC_AUTH_PASSWORD="$(openssl rand -hex 16)" \
-  nousresearch/hermes-agent gateway run
+  nousresearch/shards-agent gateway run
 ```
 
 A non-loopback `host` needs one of the [dashboard's auth providers](#running-the-dashboard), and the listener refuses to start without one. Without `public_url`, links printed by `hermes webapp` inside the container use the container's own address, not the published one.
@@ -213,7 +213,7 @@ To open an interactive chat session against a running data directory:
 ```sh
 docker run -it --rm \
   -v ~/.hermes:/opt/data \
-  nousresearch/hermes-agent
+  nousresearch/shards-agent
 ```
 
 Or if you have already opened a terminal in your running container (via Docker Desktop for instance), just run:
@@ -306,7 +306,7 @@ Under the hood, `hermes gateway start/stop/restart` inside the container is inte
 
 Two different surfaces reach a profile's gateway from outside, and they behave differently — don't conflate them:
 
-**Hermes Desktop (and the web dashboard).** The Desktop app's **Remote Gateway** connection talks to a `hermes dashboard` backend (default **port 9119**, enabled by `HERMES_DASHBOARD=1`) — *not* the OpenAI API server. One dashboard backend serves **every** co-located profile: the app's profile switcher sends the target profile with each request and the backend opens that profile's `HERMES_HOME` on disk. So you do **not** need a second port — or a second connection — per profile for Desktop; one `:9119` connection covers them all through the switcher.
+**Shards Desktop (and the web dashboard).** The Desktop app's **Remote Gateway** connection talks to a `hermes dashboard` backend (default **port 9119**, enabled by `HERMES_DASHBOARD=1`) — *not* the OpenAI API server. One dashboard backend serves **every** co-located profile: the app's profile switcher sends the target profile with each request and the backend opens that profile's `HERMES_HOME` on disk. So you do **not** need a second port — or a second connection — per profile for Desktop; one `:9119` connection covers them all through the switcher.
 
 **OpenAI-compatible API clients (Open WebUI, LobeChat, `/v1/...`).** These talk to each profile's **API server**, which binds **port 8642 for every profile** (resolved from `API_SERVER_PORT` / `platforms.api_server.extra.port` — there is no auto-allocation and no `config.yaml`/`gateway.port` key). If you want a client to reach a *specific* second profile, give that profile a distinct `API_SERVER_PORT` in **its own** `.env`, otherwise its gateway tries to bind 8642 too and conflicts with the default profile:
 
@@ -354,7 +354,7 @@ In those cases, declare one service per profile with distinct `container_name`, 
 ```yaml
 services:
   hermes-work:
-    image: nousresearch/hermes-agent:latest
+    image: nousresearch/shards-agent:latest
     container_name: hermes-work
     restart: unless-stopped
     command: gateway run
@@ -364,7 +364,7 @@ services:
       - ~/.hermes-work:/opt/data
 
   hermes-personal:
-    image: nousresearch/hermes-agent:latest
+    image: nousresearch/shards-agent:latest
     container_name: hermes-personal
     restart: unless-stopped
     command: gateway run
@@ -405,7 +405,7 @@ docker run -it --rm \
   -v ~/.hermes:/opt/data \
   -e ANTHROPIC_API_KEY="sk-ant-..." \
   -e OPENAI_API_KEY="sk-..." \
-  nousresearch/hermes-agent
+  nousresearch/shards-agent
 ```
 
 Direct `-e` flags override values from `.env`. This is useful for CI/CD or secrets-manager integrations where you don't want keys on disk.
@@ -421,7 +421,7 @@ For persistent deployment with both the gateway and dashboard, a `docker-compose
 ```yaml
 services:
   hermes:
-    image: nousresearch/hermes-agent:latest
+    image: nousresearch/shards-agent:latest
     container_name: hermes
     restart: unless-stopped
     command: gateway run
@@ -476,7 +476,7 @@ ctl.!default {
 Then build a small derived image with the ALSA PulseAudio plugin installed:
 
 ```dockerfile title="Dockerfile.audio"
-FROM nousresearch/hermes-agent:latest
+FROM nousresearch/shards-agent:latest
 
 USER root
 RUN apt-get update \
@@ -492,7 +492,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.audio
-    image: hermes-agent-audio
+    image: shards-agent-audio
     container_name: hermes
     restart: unless-stopped
     command: gateway run
@@ -545,7 +545,7 @@ docker run -d \
   --restart unless-stopped \
   --memory=4g --cpus=2 \
   -v ~/.hermes:/opt/data \
-  nousresearch/hermes-agent gateway run
+  nousresearch/shards-agent gateway run
 ```
 
 ## What the Dockerfile does
@@ -618,7 +618,7 @@ If you must override the entrypoint, add Docker's init as PID 1 so orphans are r
 ```yaml
 services:
   hermes-dashboard:
-    image: nousresearch/hermes-agent:latest
+    image: nousresearch/shards-agent:latest
     init: true                                      # docker-init becomes PID 1 and reaps orphans
     entrypoint: ["/opt/hermes/.venv/bin/hermes"]
     command: ["dashboard", "--host", "0.0.0.0", "--port", "9119", "--no-open", "--skip-build"]
@@ -661,13 +661,13 @@ When a migration is needed, Hermes writes timestamped backups next to
 `config.yaml` and `.env` first.
 
 ```sh
-docker pull nousresearch/hermes-agent:latest
+docker pull nousresearch/shards-agent:latest
 docker rm -f hermes
 docker run -d \
   --name hermes \
   --restart unless-stopped \
   -v ~/.hermes:/opt/data \
-  nousresearch/hermes-agent gateway run
+  nousresearch/shards-agent gateway run
 ```
 
 Or with Docker Compose:
@@ -708,10 +708,10 @@ This is a good fit for tools that are quick to install and used occasionally. Fo
 
 ### Durable installs — build a derived image
 
-When a tool must be available immediately on every container start with no re-install delay, build a new image that inherits from `nousresearch/hermes-agent` and installs the tool in a layer:
+When a tool must be available immediately on every container start with no re-install delay, build a new image that inherits from `nousresearch/shards-agent` and installs the tool in a layer:
 
 ```dockerfile
-FROM nousresearch/hermes-agent:latest
+FROM nousresearch/shards-agent:latest
 
 USER root
 RUN apt-get update \
@@ -732,7 +732,7 @@ docker run -d \
   my-hermes:latest gateway run
 ```
 
-The entrypoint script and `/opt/data` semantics are inherited unchanged, so the rest of this page still applies. Remember to rebuild the image when pulling a newer upstream `nousresearch/hermes-agent`.
+The entrypoint script and `/opt/data` semantics are inherited unchanged, so the rest of this page still applies. Remember to rebuild the image when pulling a newer upstream `nousresearch/shards-agent`.
 
 ### Complex tools or multi-service stacks — run a sidecar container
 
@@ -741,7 +741,7 @@ For tools that bring their own service (a database, a web server, a queue, a hea
 ```yaml
 services:
   hermes:
-    image: nousresearch/hermes-agent:latest
+    image: nousresearch/shards-agent:latest
     container_name: hermes
     restart: unless-stopped
     command: gateway run
@@ -768,7 +768,7 @@ From inside the Hermes container, the sidecar is reachable at `http://my-tool:<p
 
 ### Broadly useful tools — open an issue or pull request
 
-If a tool is likely to be useful to most Hermes Agent users, consider contributing it upstream rather than carrying it in a private derived image. Open an issue or pull request on the [hermes-agent repository](https://github.com/NousResearch/hermes-agent) describing the tool and its use case. Tools that get bundled into the official image benefit every user and avoid the maintenance overhead of a downstream fork.
+If a tool is likely to be useful to most Shards Agent users, consider contributing it upstream rather than carrying it in a private derived image. Open an issue or pull request on the [hermes-agent repository](https://github.com/NousResearch/hermes-agent) describing the tool and its use case. Tools that get bundled into the official image benefit every user and avoid the maintenance overhead of a downstream fork.
 
 ## Connecting to local inference servers (vLLM, Ollama, etc.)
 
@@ -799,7 +799,7 @@ services:
             - capabilities: [gpu]
 
   hermes:
-    image: nousresearch/hermes-agent:latest
+    image: nousresearch/shards-agent:latest
     container_name: hermes
     restart: unless-stopped
     command: gateway run
@@ -843,7 +843,7 @@ docker run -d \
   --name hermes \
   -v ~/.hermes:/opt/data \
   -p 8642:8642 \
-  nousresearch/hermes-agent gateway run
+  nousresearch/shards-agent gateway run
 ```
 
 ```yaml
@@ -862,7 +862,7 @@ docker run -d \
   --name hermes \
   --network host \
   -v ~/.hermes:/opt/data \
-  nousresearch/hermes-agent gateway run
+  nousresearch/shards-agent gateway run
 ```
 
 ```yaml
@@ -925,7 +925,7 @@ docker run -d \
   --name hermes \
   -e PUID=1000 -e PGID=10 \
   -v /volume1/docker/hermes:/opt/data \
-  nousresearch/hermes-agent gateway run
+  nousresearch/shards-agent gateway run
 ```
 
 `docker exec hermes <cmd>` automatically drops to UID 10000 too — see [`docker exec` automatically drops to the `hermes` user](#docker-exec-automatically-drops-to-the-hermes-user) for details and the per-invocation opt-out.
@@ -957,7 +957,7 @@ docker run -d \
   --name hermes \
   --shm-size=1g \
   -v ~/.hermes:/opt/data \
-  nousresearch/hermes-agent gateway run
+  nousresearch/shards-agent gateway run
 ```
 
 ### Gateway not reconnecting after network issues
@@ -972,6 +972,6 @@ docker restart hermes
 
 ```sh
 docker logs --tail 50 hermes          # Recent logs
-docker run -it --rm nousresearch/hermes-agent:latest --version   # Verify version
+docker run -it --rm nousresearch/shards-agent:latest --version   # Verify version
 docker stats hermes                    # Resource usage
 ```

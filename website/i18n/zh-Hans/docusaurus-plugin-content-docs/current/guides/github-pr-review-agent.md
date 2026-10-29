@@ -15,7 +15,7 @@ description: "构建一个自动化 AI 代码审查器，监控你的仓库、�
 ```
 ┌───────────────────────────────────────────────────────────────────┐
 │                                                                   │
-│   Cron Timer  ──▶  Hermes Agent  ──▶  GitHub API  ──▶  Review     │
+│   Cron Timer  ──▶  Shards Agent  ──▶  GitHub API  ──▶  Review     │
 │   (every 2h)       + gh CLI           (PR diffs)       delivery   │
 │                    + skill                             (Telegram, │
 │                    + memory                            Discord,   │
@@ -34,7 +34,7 @@ description: "构建一个自动化 AI 代码审查器，监控你的仓库、�
 
 ## 前提条件
 
-- **已安装 Hermes Agent** — 参见[安装指南](../getting-started/installation.md)
+- **已安装 Shards Agent** — 参见[安装指南](../getting-started/installation.md)
 - **Gateway 已运行**（用于 cron 任务）：
   ```bash
   hermes gateway install   # Install as a service
@@ -69,7 +69,7 @@ hermes
 用一个简单命令测试：
 
 ```
-Run: gh pr list --repo NousResearch/hermes-agent --state open --limit 3
+Run: gh pr list --repo NousResearch/shards-agent --state open --limit 3
 ```
 
 你应该能看到一个开放 PR 的列表。如果成功，就可以继续了。
@@ -84,7 +84,7 @@ Run: gh pr list --repo NousResearch/hermes-agent --state open --limit 3
 Review this pull request. Read the diff, check for bugs, security issues,
 and code quality. Be specific about line numbers and quote problematic code.
 
-Run: gh pr diff 3888 --repo NousResearch/hermes-agent
+Run: gh pr diff 3888 --repo NousResearch/shards-agent
 ```
 
 Hermes 将会：

@@ -1,12 +1,12 @@
 ---
 sidebar_position: 3
 title: "Creating Skills"
-description: "How to create skills for Hermes Agent — SKILL.md format, guidelines, and publishing"
+description: "How to create skills for Shards Agent — SKILL.md format, guidelines, and publishing"
 ---
 
 # Creating Skills
 
-Skills are the preferred way to add new capabilities to Hermes Agent. They're easier to create than tools, require no code changes to the agent, and can be shared with the community.
+Skills are the preferred way to add new capabilities to Shards Agent. They're easier to create than tools, require no code changes to the agent, and can be shared with the community.
 
 ## Should it be a Skill or a Tool?
 

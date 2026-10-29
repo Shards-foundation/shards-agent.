@@ -1,12 +1,12 @@
 ---
 sidebar_position: 1
 title: "CLI Interface"
-description: "Master the Hermes Agent terminal interface — commands, keybindings, personalities, and more"
+description: "Master the Shards Agent terminal interface — commands, keybindings, personalities, and more"
 ---
 
 # CLI Interface
 
-Hermes Agent's CLI is a full terminal user interface (TUI) — not a web UI. It features multiline editing, slash-command autocomplete, conversation history, interrupt-and-redirect, and streaming tool output. Built for people who live in the terminal.
+Shards Agent's CLI is a full terminal user interface (TUI) — not a web UI. It features multiline editing, slash-command autocomplete, conversation history, interrupt-and-redirect, and streaming tool output. Built for people who live in the terminal.
 
 :::tip First-time setup
 One command — `hermes setup --portal` — and you're ready to `hermes chat`. See [Nous Portal](../integrations/nous-portal.md).
@@ -41,7 +41,7 @@ hermes chat --provider openrouter  # Force OpenRouter
 hermes chat --toolsets "web,terminal,skills"
 
 # Start with one or more skills preloaded (rendered once into the session's prompt)
-hermes chat -s hermes-agent-dev,github-auth
+hermes chat -s shards-agent-dev,github-auth
 
 # Resume previous sessions
 hermes --resume <session_id>  # Resume a specific session by ID (-r)
@@ -342,7 +342,7 @@ You can define custom commands that run shell commands instantly without invokin
 quick_commands:
   status:
     type: exec
-    command: systemctl status hermes-agent
+    command: systemctl status shards-agent
   gpu:
     type: exec
     command: nvidia-smi --query-gpu=utilization.gpu,memory.used --format=csv,noheader
@@ -358,7 +358,7 @@ Then type `/status`, `/gpu`, or `/restart` in any chat. See the [Configuration g
 If you already know which skills you want active for the session, pass them at launch time:
 
 ```bash
-hermes -s hermes-agent-dev,github-auth
+hermes -s shards-agent-dev,github-auth
 hermes chat -s github-pr-workflow -s github-auth
 ```
 
@@ -371,7 +371,7 @@ To have the same skills active at the start of **every** new session — CLI, TU
 ```yaml
 skills:
   auto_load:
-    - hermes-agent-dev
+    - shards-agent-dev
     - github-pr-workflow
 ```
 
@@ -507,7 +507,7 @@ The first time you press Enter while Hermes is working, Hermes prints a one-line
 On Unix systems, press **`Ctrl+Z`** to suspend Hermes to the background — just like any terminal process. The shell prints a confirmation:
 
 ```
-Hermes Agent has been suspended. Run `fg` to bring Hermes Agent back.
+Shards Agent has been suspended. Run `fg` to bring Shards Agent back.
 ```
 
 Type `fg` in your shell to resume the session exactly where you left off. This is not supported on Windows.

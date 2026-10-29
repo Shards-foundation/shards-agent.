@@ -1,7 +1,7 @@
 ---
 sidebar_position: 2
 title: "添加工具"
-description: "如何向 Hermes Agent 添加新工具——schema、handler、注册与 toolset"
+description: "如何向 Shards Agent 添加新工具——schema、handler、注册与 toolset"
 ---
 
 # 添加工具

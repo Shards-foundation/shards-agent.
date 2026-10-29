@@ -6,7 +6,7 @@ description: "外部记忆提供者插件 — Honcho、OpenViking、Mem0、Hinds
 
 # Memory Providers
 
-Hermes Agent 内置 8 个外部记忆提供者插件，为 Agent 提供跨会话的持久化知识，超越内置的 MEMORY.md 和 USER.md。同一时间只能激活**一个**外部提供者——内置记忆始终与其并行工作。
+Shards Agent 内置 8 个外部记忆提供者插件，为 Agent 提供跨会话的持久化知识，超越内置的 MEMORY.md 和 USER.md。同一时间只能激活**一个**外部提供者——内置记忆始终与其并行工作。
 
 ## 快速开始
 
@@ -370,7 +370,7 @@ echo "HINDSIGHT_API_KEY=your-key" >> ~/.hermes/.env
 | `auto_retain` | `true` | 自动保留对话轮次 |
 | `auto_recall` | `true` | 每轮对话前自动召回记忆 |
 | `retain_async` | `true` | 在服务器上异步处理保留操作 |
-| `retain_context` | `conversation between Hermes Agent and the User` | 保留记忆的上下文标签 |
+| `retain_context` | `conversation between Shards Agent and the User` | 保留记忆的上下文标签 |
 | `retain_tags` | — | 应用于保留记忆的默认标签；与每次工具调用的标签合并 |
 | `retain_source` | — | 附加到保留记忆的可选 `metadata.source` |
 | `retain_user_prefix` | `User` | 自动保留的对话记录中用户轮次前的标签 |

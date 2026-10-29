@@ -1,12 +1,12 @@
 ---
 sidebar_label: "Desktop Plugin SDK"
 title: "Desktop Plugin SDK (@hermes/plugin-sdk)"
-description: "Extend the native Hermes Desktop app — panes, pages, sidebar nav, status bar, palette commands, keybinds, themes, and a scoped backend namespace, with one import and no build step."
+description: "Extend the native Shards Desktop app — panes, pages, sidebar nav, status bar, palette commands, keybinds, themes, and a scoped backend namespace, with one import and no build step."
 ---
 
 # Desktop Plugin SDK
 
-The native [Hermes Desktop](../user-guide/desktop.md) app is contribution-driven: every
+The native [Shards Desktop](../user-guide/desktop.md) app is contribution-driven: every
 surface in the window — panes, routes, sidebar nav, status-bar items, palette
 entries, keybinds, themes — registers into one central registry. Core registers
 its surfaces exactly the way a plugin does, so the plugin story is the real one,
@@ -2261,7 +2261,7 @@ async def action(body: dict):
 
 Routes mount under `/api/plugins/<id>/` (`GET /api/plugins/<id>/board`, …).
 Backend code runs inside the gateway process, so it can import from the
-hermes-agent codebase directly (`hermes_state`, `hermes_cli.config`, …). See
+shards-agent codebase directly (`hermes_state`, `hermes_cli.config`, …). See
 [Extending the Dashboard → Backend API routes](../user-guide/features/extending-the-dashboard.md#backend-api-routes)
 for the full backend reference — the mount is identical.
 

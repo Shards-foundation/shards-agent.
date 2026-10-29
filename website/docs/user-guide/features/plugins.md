@@ -146,7 +146,7 @@ See [Register slash commands](../../developer-guide/plugins/index.md#register-sl
 | User | `~/.hermes/plugins/` | Personal plugins |
 | Project | `.hermes/plugins/` | Not loaded by the gateway that runs sessions; see [Project-local plugins](#project-local-plugins) |
 | pip | `hermes_agent.plugins` entry_points | Distributed packages |
-| Nix | `services.hermes-agent.extraPlugins` / `extraPythonPackages` | NixOS declarative installs — see [Nix Setup](../../getting-started/nix-setup.md#plugins) |
+| Nix | `services.shards-agent.extraPlugins` / `extraPythonPackages` | NixOS declarative installs — see [Nix Setup](../../getting-started/nix-setup.md#plugins) |
 
 Later sources override earlier ones on name collision, so a user plugin with the same name as a bundled plugin replaces it.
 
@@ -237,7 +237,7 @@ starts clean; to reset a plugin completely, `hermes plugins remove` it first. Th
 profile-local install metadata contains no config values, environment values,
 secrets, or capability grants.
 
-The same pin is available in Hermes Desktop: **Skills → Plugins → Install from
+The same pin is available in Shards Desktop: **Skills → Plugins → Install from
 Git** has a *Pin to commit* field that takes the full 40-character SHA, and the
 plugins list shows a `pinned @ <sha8>` badge on every pinned install so a team
 can confirm everyone is running the same commit. `hermes plugins list` prints
@@ -403,11 +403,11 @@ Not everything is a Python plugin. Some extension surfaces intentionally use **c
 On NixOS, plugins can be installed declaratively via the module options — no `hermes plugins install` needed. See the **[Nix Setup guide](../../getting-started/nix-setup.md#plugins)** for full details.
 
 ```nix
-services.hermes-agent = {
+services.shards-agent = {
   # Directory plugin (source tree with plugin.yaml)
   extraPlugins = [ (pkgs.fetchFromGitHub { ... }) ];
   # Entry-point plugin (pip package)
-  extraPythonPackages = [ (config.services.hermes-agent.package.python.pkgs.buildPythonPackage { ... }) ];
+  extraPythonPackages = [ (config.services.shards-agent.package.python.pkgs.buildPythonPackage { ... }) ];
   # Enable in config
   settings.plugins.enabled = [ "my-plugin" ];
 };
@@ -506,7 +506,7 @@ can change those files. See [Package management](../../reference/package-managem
 and the [plugin authoring guide](../../developer-guide/plugins/index.md#lazy-install-optional-python-dependencies).
 ### One-click install links (Desktop)
 
-Hermes Desktop registers the `hermes://` URL scheme, so a website, README, or
+Shards Desktop registers the `hermes://` URL scheme, so a website, README, or
 chat message can link straight to a plugin install:
 
 ```
@@ -517,7 +517,7 @@ hermes://plugin/install?repo=owner/repo&force=1    # replace an existing install
 hermes://plugin/install?catalog=<name>             # reviewed catalog entry at its pinned commit
 ```
 
-The `catalog=<name>` form is what the **Open in Hermes Desktop** button on
+The `catalog=<name>` form is what the **Open in Shards Desktop** button on
 every [Plugin Catalog](./plugin-catalog.md) card uses. Desktop resolves the
 name against the live catalog (the same feed the **Capabilities → Plugins**
 picker shows) and opens the same **reviewed catalog entry** dialog an in-app
@@ -668,7 +668,7 @@ separate design, and has not shipped.
 ### Discovering plugins — the Hermes plugin catalog
 
 `hermes plugins search <term>` searches the **Hermes plugin catalog** — the
-curated, SHA-pinned catalog maintained in the hermes-agent repository
+curated, SHA-pinned catalog maintained in the shards-agent repository
 (`plugin-catalog/`). Matching covers entry names, descriptions, and declared
 tools:
 
@@ -792,12 +792,12 @@ Three verdicts, matching Cowork's pass/warn/fail:
 replaces the installed copy, so a plugin that picks up risky code in an update
 is flagged before it runs. A caution verdict on a Git update asks
 `Update anyway? [y/N]`, and `hermes plugins update NAME --force` accepts it
-without the question. Hermes Desktop shows the same findings in a dialog with an
+without the question. Shards Desktop shows the same findings in a dialog with an
 **Update anyway** button. Catalog updates move to a reviewed pin, so a caution
 verdict there does not ask. In every case nothing changes until the update is
 accepted.
 
-Hermes Desktop shows an **Update** button on a Git-installed plugin when the
+Shards Desktop shows an **Update** button on a Git-installed plugin when the
 last update check found a newer commit. The gateway runs that check every
 `plugins.auto_update_check_hours` (default 24), and `hermes plugins check-updates`
 runs it on demand.

@@ -1,12 +1,12 @@
 ---
-title: "Hermes Agent Skill Authoring — Author in-repo SKILL.md files: frontmatter and structure"
-sidebar_label: "Hermes Agent Skill Authoring"
+title: "Shards Agent Skill Authoring — Author in-repo SKILL.md files: frontmatter and structure"
+sidebar_label: "Shards Agent Skill Authoring"
 description: "Author in-repo SKILL.md files: frontmatter and structure"
 ---
 
 {/* This page is auto-generated from the skill's SKILL.md by website/scripts/generate-skill-docs.py. Edit the source SKILL.md, not this page. */}
 
-# Hermes Agent Skill Authoring
+# Shards Agent Skill Authoring
 
 Author in-repo SKILL.md files: frontmatter and structure.
 
@@ -14,13 +14,13 @@ Author in-repo SKILL.md files: frontmatter and structure.
 
 | | |
 |---|---|
-| Source | Optional — install with `hermes skills install official/software-development/hermes-agent-skill-authoring` |
-| Path | `optional-skills/software-development/hermes-agent-skill-authoring` |
+| Source | Optional — install with `hermes skills install official/software-development/shards-agent-skill-authoring` |
+| Path | `optional-skills/software-development/shards-agent-skill-authoring` |
 | Version | `2.0.0` |
-| Author | Hermes Agent |
+| Author | Shards Agent |
 | License | MIT |
 | Platforms | linux, macos, windows |
-| Tags | `skills`, `authoring`, `hermes-agent`, `conventions`, `skill-md` |
+| Tags | `skills`, `authoring`, `shards-agent`, `conventions`, `skill-md` |
 | Related skills | [`requesting-code-review`](../../bundled/software-development/software-development-requesting-code-review.md) |
 
 ## Reference: full SKILL.md
@@ -36,14 +36,14 @@ The following is the complete skill definition that Hermes loads when this skill
 There are two places a SKILL.md can live:
 
 1. **User-local:** `~/.hermes/skills/<maybe-category>/<name>/SKILL.md` — personal, not shared. Created via `skill_manage(action='create')`.
-2. **In-repo (this skill is about this case):** `skills/<category>/<name>/SKILL.md` or `optional-skills/<category>/<name>/SKILL.md` inside the hermes-agent repo — committed, shipped with the package. Use `write_file` + `git add`. `skill_manage(action='create')` does NOT target this tree.
+2. **In-repo (this skill is about this case):** `skills/<category>/<name>/SKILL.md` or `optional-skills/<category>/<name>/SKILL.md` inside the shards-agent repo — committed, shipped with the package. Use `write_file` + `git add`. `skill_manage(action='create')` does NOT target this tree.
 
 In-repo skills must meet the repo's **hardline authoring standards** (see AGENTS.md, "Skill authoring standards (HARDLINE)" — that section is the source of truth; this skill is the operational walkthrough). Reviewers reject PRs that violate them, so meeting them up front is cheaper than a salvage pass later.
 
 ## When to Use
 
 - User asks you to add a skill "in this branch / repo / commit"
-- You're committing a reusable workflow that should ship with hermes-agent
+- You're committing a reusable workflow that should ship with shards-agent
 - You're editing an existing skill under `skills/` or `optional-skills/` (use `patch` for small edits, `write_file` for rewrites; `skill_manage` still works for patch on in-repo skills, but not for `create`)
 - Don't use for: personal skills in `~/.hermes/skills/` (just use `skill_manage`)
 
@@ -76,7 +76,7 @@ Repo-standard shape (all fields expected, even where the validator doesn't enfor
 name: my-skill-name               # lowercase, hyphens, ≤64 chars (MAX_NAME_LENGTH)
 description: Concise capability statement, under sixty chars.
 version: 0.1.0                    # semver; new skills start at 0.1.0
-author: Real Name (github-handle), Hermes Agent
+author: Real Name (github-handle), Shards Agent
 license: MIT
 platforms: [linux, macos, windows]   # audit, don't guess — see Platform Gating
 metadata:
@@ -99,9 +99,9 @@ Bad: `Use when a user asks to monitor named competitors or companies for product
 
 ### `author` rules
 
-- Credit the **human first**, then "Hermes Agent" as secondary collaborator: `Ben Barclay (benbarclay), Hermes Agent`.
-- Never `author: Hermes Agent` alone for contributed skills — credit the human, not the tool, even (especially) when an agent drafted the text.
-- Maintainer-authored skills: `Teknium (teknium1), Hermes Agent`.
+- Credit the **human first**, then "Shards Agent" as secondary collaborator: `Ben Barclay (benbarclay), Shards Agent`.
+- Never `author: Shards Agent` alone for contributed skills — credit the human, not the tool, even (especially) when an agent drafted the text.
+- Maintainer-authored skills: `Teknium (teknium1), Shards Agent`.
 
 ### `related_skills` rules
 
@@ -205,7 +205,7 @@ A skill exists to make the agent's process more predictable — the agent reliab
 
 1. **Using `skill_manage(action='create')` for an in-repo skill.** It writes to `~/.hermes/skills/`, not the repo tree. Use `write_file`.
 2. **Trusting the validator's limits as the standard.** The validator allows 1024-char descriptions; review rejects anything over 60. The validator doesn't check `platforms:`, author format, tests, or docs — review does.
-3. **`author: Hermes Agent` on a contributed skill.** Credit the human first.
+3. **`author: Shards Agent` on a contributed skill.** Credit the human first.
 4. **Leading whitespace before `---`.** Validation fails on any leading blank line or BOM.
 5. **Description too generic or trigger buried past char 57.**
 6. **`related_skills` pointing at skills that don't exist in-repo** (user-local, planned, or in a sibling PR).

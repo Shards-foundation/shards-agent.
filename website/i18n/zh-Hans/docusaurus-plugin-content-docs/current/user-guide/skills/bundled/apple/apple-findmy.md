@@ -17,7 +17,7 @@ description: "通过 FindMy 追踪 Apple 设备/AirTag"
 | 来源 | 内置（默认安装） |
 | 路径 | `skills/apple/findmy` |
 | 版本 | `1.0.0` |
-| 作者 | Hermes Agent |
+| 作者 | Shards Agent |
 | 许可证 | MIT |
 | 平台 | macos |
 | 标签 | `FindMy`, `AirTag`, `location`, `tracking`, `macOS`, `Apple` |

@@ -7,7 +7,7 @@ description: "Filesystem safety nets for destructive operations using shadow git
 
 # Checkpoints and `/rollback`
 
-Hermes Agent can automatically snapshot your project before **destructive operations** and restore it with a single command. Checkpoints are **opt-in** as of v2 — most users never use `/rollback`, and the shadow-store storage is non-trivial over time, so the default is off.
+Shards Agent can automatically snapshot your project before **destructive operations** and restore it with a single command. Checkpoints are **opt-in** as of v2 — most users never use `/rollback`, and the shadow-store storage is non-trivial over time, so the default is off.
 
 Enable checkpoints per-session with `--checkpoints`:
 
@@ -159,7 +159,7 @@ Total size:      142.3 MB
 Projects:        12
 
   WORKDIR                                                       COMMITS    LAST TOUCH  STATE
-  /home/you/code/hermes-agent                                        20       2h ago  live
+  /home/you/code/shards-agent                                        20       2h ago  live
   /home/you/code/experiments/rl-runner                                8       1d ago  live
   /home/you/code/old-prototype                                        3       9d ago  orphan
   ...

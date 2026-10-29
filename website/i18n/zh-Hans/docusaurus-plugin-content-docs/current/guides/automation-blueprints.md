@@ -34,9 +34,9 @@ description: "开箱即用的自动化蓝图——定时任务、GitHub 事件�
 
 ```bash
 hermes cron create "0 2 * * *" \
-  "You are a project manager triaging the NousResearch/hermes-agent GitHub repo.
+  "You are a project manager triaging the NousResearch/shards-agent GitHub repo.
 
-1. Run: gh issue list --repo NousResearch/hermes-agent --state open --json number,title,labels,author,createdAt --limit 30
+1. Run: gh issue list --repo NousResearch/shards-agent --state open --json number,title,labels,author,createdAt --limit 30
 2. Identify issues opened in the last 24 hours
 3. For each new issue:
    - Suggest a priority label (P0-critical, P1-high, P2-medium, P3-low)
@@ -116,9 +116,9 @@ platforms:
 
 ```bash
 hermes cron create "0 9 * * 1" \
-  "Scan the NousResearch/hermes-agent repo for documentation drift.
+  "Scan the NousResearch/shards-agent repo for documentation drift.
 
-1. Run: gh pr list --repo NousResearch/hermes-agent --state merged --json number,title,files,mergedAt --limit 30
+1. Run: gh pr list --repo NousResearch/shards-agent --state merged --json number,title,files,mergedAt --limit 30
 2. Filter to PRs merged in the last 7 days
 3. For each merged PR, check if it modified:
    - Tool schemas (tools/*.py) — may need docs/reference/tools-reference.md update
@@ -140,9 +140,9 @@ Report any gaps where code changed but docs didn't. If everything is in sync, re
 
 ```bash
 hermes cron create "0 6 * * *" \
-  "Run a dependency security audit on the hermes-agent project.
+  "Run a dependency security audit on the shards-agent project.
 
-1. Locate the hermes-agent checkout and its pyproject.toml and uv.lock. Do not activate or mutate Hermes's dependency environment.
+1. Locate the shards-agent checkout and its pyproject.toml and uv.lock. Do not activate or mutate Hermes's dependency environment.
 2. Scan uv.lock with an independently installed scanner that supports that lock format (check its --help). Preserve the complete findings and errors. If no scanner is available, report the blocker; do not install one into Hermes.
 3. Run: npm audit --json in website/ if it exists. Preserve stderr and distinguish findings from a failed scan.
 4. Check for any CVEs with CVSS score >= 7.0
@@ -336,7 +336,7 @@ Keep each item to 1-2 sentences. Include links. Total under 600 words." \
 
 ```bash
 hermes cron create "0 8 * * *" \
-  "Search arXiv for the 3 most interesting papers on 'language model reasoning' OR 'tool-use agents' from the past day. For each paper, create an Obsidian note with the title, authors, abstract summary, key contribution, and potential relevance to Hermes Agent development." \
+  "Search arXiv for the 3 most interesting papers on 'language model reasoning' OR 'tool-use agents' from the past day. For each paper, create an Obsidian note with the title, authors, abstract summary, key contribution, and potential relevance to Shards Agent development." \
   --skill arxiv --skill obsidian \
   --name "Paper digest" \
   --deliver local
@@ -503,7 +503,7 @@ Deliver as a clean, scannable message." \
 
 ```bash
 hermes cron create "0 3 * * 0" \
-  "Run a comprehensive security audit of the hermes-agent codebase.
+  "Run a comprehensive security audit of the shards-agent codebase.
 
 1. Check for dependency vulnerabilities (pip audit, npm audit)
 2. Search the codebase for common security anti-patterns:

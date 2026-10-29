@@ -1,12 +1,12 @@
 ---
 sidebar_position: 3
 title: "持久化记忆"
-description: "Hermes Agent 如何跨会话记忆——MEMORY.md、USER.md 与会话搜索"
+description: "Shards Agent 如何跨会话记忆——MEMORY.md、USER.md 与会话搜索"
 ---
 
 # 持久化记忆
 
-Hermes Agent 拥有有界、经过整理的记忆，可跨会话持久保存。这使它能够记住你的偏好、项目、环境以及已学到的内容。
+Shards Agent 拥有有界、经过整理的记忆，可跨会话持久保存。这使它能够记住你的偏好、项目、环境以及已学到的内容。
 
 ## 工作原理
 

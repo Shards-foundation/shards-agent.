@@ -1,7 +1,7 @@
 ---
 sidebar_position: 13
 title: "Browser Provider Plugins"
-description: "How to build a cloud browser backend plugin for Hermes Agent"
+description: "How to build a cloud browser backend plugin for Shards Agent"
 ---
 
 # Building a Browser Provider Plugin

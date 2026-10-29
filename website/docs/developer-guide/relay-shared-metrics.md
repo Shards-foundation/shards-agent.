@@ -11,7 +11,7 @@ into Hermes and does not require a Hermes observability plugin. Hermes remains
 importable without Relay on other native targets. Those targets use an
 explicit reduced-capability no-op host:
 Hermes execution remains available, while Relay scopes, middleware, plugins,
-and subscribers are unavailable. The `hermes-agent[nemo-relay]` extra remains
+and subscribers are unavailable. The `shards-agent[nemo-relay]` extra remains
 as a no-op compatibility alias for existing installation commands.
 
 > [!WARNING]
@@ -805,7 +805,7 @@ longer offered; a hand-edited config can still set it.
 | --- | --- |
 | `hermes setup` | At the end of every flow (Quick, Full, Blank Slate, Portal, `--quick`). |
 | `hermes` / `hermes --tui` | Once before an interactive chat starts. Skipped for `-q`, piped or JSON output, spawned actions and Desktop-hosted panes. |
-| Hermes Desktop | A strip above the composer, after first-run onboarding. It never blocks the composer or takes focus. |
+| Shards Desktop | A strip above the composer, after first-run onboarding. It never blocks the composer or takes focus. |
 | Web dashboard | A banner above every page, for the profile being managed. |
 
 "No thanks" is the default in the terminal, so pressing Enter never opts

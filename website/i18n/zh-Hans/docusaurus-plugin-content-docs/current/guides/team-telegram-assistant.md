@@ -6,7 +6,7 @@ description: "逐步指南：为整个团队搭建一个 Telegram 机器人，�
 
 # 搭建团队 Telegram 助手
 
-本教程将引导你搭建一个由 Hermes Agent 驱动的 Telegram 机器人，供多名团队成员使用。完成后，你的团队将拥有一个共享 AI 助手，可以向它发消息寻求代码、研究、系统管理等方面的帮助——并通过按用户授权保障安全。
+本教程将引导你搭建一个由 Shards Agent 驱动的 Telegram 机器人，供多名团队成员使用。完成后，你的团队将拥有一个共享 AI 助手，可以向它发消息寻求代码、研究、系统管理等方面的帮助——并通过按用户授权保障安全。
 
 ## 我们要构建什么
 
@@ -24,7 +24,7 @@ description: "逐步指南：为整个团队搭建一个 Telegram 机器人，�
 
 开始前，请确保你已具备：
 
-- **已在服务器或 VPS 上安装 Hermes Agent**（不是你的笔记本——机器人需要持续运行）。如尚未安装，请参阅[安装指南](../getting-started/installation.md)。
+- **已在服务器或 VPS 上安装 Shards Agent**（不是你的笔记本——机器人需要持续运行）。如尚未安装，请参阅[安装指南](../getting-started/installation.md)。
 - **一个 Telegram 账号**（机器人所有者）
 - **已配置 LLM 提供商**——至少在 `~/.hermes/.env` 中配置了 OpenAI、Anthropic 或其他受支持提供商的 API 密钥
 
@@ -57,7 +57,7 @@ description: "逐步指南：为整个团队搭建一个 Telegram 机器人，�
    ```
    选择你的机器人，然后输入类似内容：
    ```
-   Team AI assistant powered by Hermes Agent. DM me for help with code, research, debugging, and more.
+   Team AI assistant powered by Shards Agent. DM me for help with code, research, debugging, and more.
    ```
 
 5. **设置机器人命令**（可选——为用户提供命令菜单）：

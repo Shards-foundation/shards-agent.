@@ -1,10 +1,10 @@
 ---
 sidebar_position: 2
-title: "Hermes Agent Configuration"
-description: "Configure Hermes Agent — config.yaml, providers, models, API keys, and more"
+title: "Shards Agent Configuration"
+description: "Configure Shards Agent — config.yaml, providers, models, API keys, and more"
 ---
 
-# Hermes Agent Configuration
+# Shards Agent Configuration
 
 Python dependency commands on this page use a
 [PM-prepared source checkout](../reference/package-management.md#developer-workflow).
@@ -284,9 +284,9 @@ itself. `hermes doctor`
 reports the directory, its size and any such skipped entries, and
 warns about directories over 1 GB elsewhere under `cache/` that no pruner covers.
 
-`desktop.font_family` sets the font for chat and the rest of the Hermes Desktop interface (the terminal pane has its own key above). Give it one installed family name (for example, `OpenDyslexic` or `Atkinson Hyperlegible`) or a CSS font stack; Hermes keeps the active theme's own stack behind it so CJK and emoji glyphs still resolve, and an empty value uses the theme's font. Edit it in **Settings → Appearance → Chat Font**.
+`desktop.font_family` sets the font for chat and the rest of the Shards Desktop interface (the terminal pane has its own key above). Give it one installed family name (for example, `OpenDyslexic` or `Atkinson Hyperlegible`) or a CSS font stack; Hermes keeps the active theme's own stack behind it so CJK and emoji glyphs still resolve, and an empty value uses the theme's font. Edit it in **Settings → Appearance → Chat Font**.
 
-`terminal.font_family` controls the embedded terminal in Hermes Desktop. It accepts either one locally installed family name (for example, `MesloLGS NF`) or a CSS font stack. Hermes appends its bundled JetBrains Mono stack as a fallback, and an empty value keeps the default. You can edit the same profile-scoped setting in **Settings → Appearance → Terminal Font**; no Google Fonts download or system-font permission is required.
+`terminal.font_family` controls the embedded terminal in Shards Desktop. It accepts either one locally installed family name (for example, `MesloLGS NF`) or a CSS font stack. Hermes appends its bundled JetBrains Mono stack as a fallback, and an empty value keeps the default. You can edit the same profile-scoped setting in **Settings → Appearance → Terminal Font**; no Google Fonts download or system-font permission is required.
 
 For cloud sandboxes such as Modal, Daytona, and Vercel Sandbox, `container_persistent: true` means Hermes will try to preserve filesystem state across sandbox recreation. It does not promise that the same live sandbox, PID space, or background processes will still be running later.
 
@@ -425,7 +425,7 @@ terminal:
 
 Hermes-managed containers carry labels so subsequent processes (and the orphan reaper) can identify them:
 
-- `hermes-agent=1` — marks it as Hermes-managed
+- `shards-agent=1` — marks it as Hermes-managed
 - `hermes-task-id=<sanitized task_id>` — keys the per-task reuse probe
 - `hermes-profile=<sanitized profile name>` — scopes reuse and reaping to the active Hermes profile by default; when `docker_shared_container_key` is set, its sanitized value is used instead
 - `hermes-environment=<digest>` — for containers without an explicit shared key, scopes reuse to the requested image, mount arguments, and active `HERMES_HOME`; host paths and volume sources are hashed rather than exposed in this label. Per-process tempdir-sourced mounts (the symlink-safe skills copy) are hashed by their stable container path, not the random host tempdir, so they don't defeat reuse
@@ -625,7 +625,7 @@ terminal:
 
 **Image handling:** Docker URLs (`docker://...`) are automatically converted to SIF files and cached. Existing `.sif` files are used directly.
 
-**Scratch directory:** Resolved in order: `TERMINAL_SCRATCH_DIR` → `/scratch/$USER/hermes-agent` when `/scratch` is writable (HPC convention) → `TERMINAL_SANDBOX_DIR/singularity` (default `~/.hermes/sandboxes/singularity`).
+**Scratch directory:** Resolved in order: `TERMINAL_SCRATCH_DIR` → `/scratch/$USER/shards-agent` when `/scratch` is writable (HPC convention) → `TERMINAL_SANDBOX_DIR/singularity` (default `~/.hermes/sandboxes/singularity`).
 
 **Isolation:** Uses `--containall --no-home` for full namespace isolation without mounting the host home directory.
 
@@ -1503,7 +1503,7 @@ provider or `base_url`. A single-slot local server that receives the `json_schem
 request while decoding the reply can otherwise answer the reply with `{"title": ...}`,
 which is then stored and replayed as the assistant's turn.
 
-In Hermes Desktop, a plain-text paste over 3,000 characters becomes a generated `.txt`
+In Shards Desktop, a plain-text paste over 3,000 characters becomes a generated `.txt`
 attachment. The first ~1,000 characters of that paste are handed to the title stages as a
 title-only hint (the agent turn still sees only the attachment reference), so a "summarize
 this" plus a large paste is named after the pasted topic. Files you attach yourself are never
@@ -1532,7 +1532,7 @@ Matching auxiliary calls are sent with `stream=True` and the chunks (including t
 <div style={{position: 'relative', width: '100%', aspectRatio: '16 / 9', marginBottom: '1.5rem'}}>
   <iframe
     src="https://www.youtube.com/embed/NoF-YajElIM"
-    title="Hermes Agent — Auxiliary Models Tutorial"
+    title="Shards Agent — Auxiliary Models Tutorial"
     style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', border: 0}}
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
     allowFullScreen
@@ -2487,7 +2487,7 @@ Hashes are deterministic — the same user always maps to the same hash, so the 
 
 OpenAI requires third-party Codex harnesses to identify themselves.
 ChatGPT-authenticated requests to the official Codex endpoint automatically
-send `originator: hermes-agent` and `User-Agent: HermesAgent/<version>`.
+send `originator: shards-agent` and `User-Agent: HermesAgent/<version>`.
 The existing ChatGPT account header is preserved. No additional prompt content
 or telemetry request is sent.
 Direct OpenAI API requests and custom proxy endpoints are unchanged.
@@ -2752,7 +2752,7 @@ Define custom commands that either run shell commands without invoking the LLM, 
 quick_commands:
   status:
     type: exec
-    command: systemctl status hermes-agent
+    command: systemctl status shards-agent
   disk:
     type: exec
     command: df -h /

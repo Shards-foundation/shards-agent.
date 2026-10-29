@@ -1,7 +1,7 @@
 ---
 sidebar_position: 9
 title: "Run Hermes Locally with Ollama — Zero API Cost"
-description: "Step-by-step guide to running Hermes Agent entirely on your own machine with Ollama and open-weight models like Gemma 4, no cloud API keys or paid subscriptions needed"
+description: "Step-by-step guide to running Shards Agent entirely on your own machine with Ollama and open-weight models like Gemma 4, no cloud API keys or paid subscriptions needed"
 ---
 
 # Run Hermes Locally with Ollama — Zero API Cost
@@ -20,7 +20,7 @@ Cloud LLM APIs charge per token. A heavy coding session can cost $5–20. For pe
 
 ## What This Guide Solves
 
-You'll set up Hermes Agent running entirely on your own hardware, using [Ollama](https://ollama.com) as the model backend. No API keys, no subscriptions, no data leaving your machine. Once configured, Hermes works exactly like it does with OpenRouter or Anthropic — terminal commands, file editing, web browsing, delegation — but the model runs locally.
+You'll set up Shards Agent running entirely on your own hardware, using [Ollama](https://ollama.com) as the model backend. No API keys, no subscriptions, no data leaving your machine. Once configured, Hermes works exactly like it does with OpenRouter or Anthropic — terminal commands, file editing, web browsing, delegation — but the model runs locally.
 
 By the end, you'll have:
 

@@ -9,7 +9,7 @@ description: "基于浏览器的仪表板，用于管理配置、API 密钥、�
 本页的 Python 依赖命令使用 [PM 准备的源码环境](../../reference/package-management.md#developer-workflow)。
 依赖变更后，请重新激活该 checkout 并重启 Hermes。
 
-Web Dashboard 是一个基于浏览器的 UI，用于管理你的 Hermes Agent 安装。无需编辑 YAML 文件或运行 CLI 命令，即可通过简洁的 Web 界面配置设置、管理 API 密钥并监控会话。
+Web Dashboard 是一个基于浏览器的 UI，用于管理你的 Shards Agent 安装。无需编辑 YAML 文件或运行 CLI 命令，即可通过简洁的 Web 界面配置设置、管理 API 密钥并监控会话。
 
 ## 快速开始
 

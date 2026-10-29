@@ -12,7 +12,7 @@ meaningful:
 
 <!-- admission-rules:start (mirrored in website/docs/developer-guide/plugins/catalog-submission.md; tests/website/test_catalog_rules_mirror.py keeps them identical) -->
 1. **Human-merged gate.** Entries are added *only* via a PR to the
-   `hermes-agent` repository, reviewed and merged by a maintainer. There is
+   `shards-agent` repository, reviewed and merged by a maintainer. There is
    no self-serve registry, no automated ingestion.
 2. **Exact SHA pins are mandatory.** Every entry pins a full 40-character
    commit SHA. Branches, tags, and short SHAs are rejected by the loader.
@@ -130,7 +130,7 @@ meaningful:
    pinned code, and Python dependencies resolve under Hermes's core constraints
    (`hermes plugins validate --install-deps` is what CI runs).
 15. **No skins or forks of bundled plugins.** A change to a bundled plugin is a
-   PR against `hermes-agent`, not a competing listing, and vendor-lookalike skins
+   PR against `shards-agent`, not a competing listing, and vendor-lookalike skins
    are not listed under Nous branding.
 16. **One listing per plugin lineage.** A fork of a listed community plugin is
    listed only when it is materially different from the original: a different

@@ -1,24 +1,24 @@
 ---
 sidebar_position: 8
 title: "Open WebUI"
-description: "通过 OpenAI 兼容 API 服务器将 Open WebUI 连接到 Hermes Agent"
+description: "通过 OpenAI 兼容 API 服务器将 Open WebUI 连接到 Shards Agent"
 ---
 
 # Open WebUI 集成
 
-[Open WebUI](https://github.com/open-webui/open-webui)（126k★）是最受欢迎的自托管 AI 聊天界面。借助 Hermes Agent 内置的 API 服务器，你可以将 Open WebUI 用作 agent 的精美 Web 前端——完整支持对话管理、用户账户和现代聊天界面。
+[Open WebUI](https://github.com/open-webui/open-webui)（126k★）是最受欢迎的自托管 AI 聊天界面。借助 Shards Agent 内置的 API 服务器，你可以将 Open WebUI 用作 agent 的精美 Web 前端——完整支持对话管理、用户账户和现代聊天界面。
 
 ## 架构
 
 ```mermaid
 flowchart LR
     A["Open WebUI<br/>浏览器 UI<br/>端口 3000"]
-    B["hermes-agent<br/>gateway API 服务器<br/>端口 8642"]
+    B["shards-agent<br/>gateway API 服务器<br/>端口 8642"]
     A -->|POST /v1/chat/completions| B
     B -->|SSE 流式响应| A
 ```
 
-Open WebUI 连接 Hermes Agent 的 API 服务器，方式与连接 OpenAI 完全相同。Hermes 使用其完整工具集——终端、文件操作、网络搜索、记忆、技能——处理请求并返回最终响应。
+Open WebUI 连接 Shards Agent 的 API 服务器，方式与连接 OpenAI 完全相同。Hermes 使用其完整工具集——终端、文件操作、网络搜索、记忆、技能——处理请求并返回最终响应。
 
 :::important 运行时位置
 API 服务器是一个 **Hermes agent 运行时**，而非纯 LLM 代理。对于每个请求，Hermes 会在 API 服务器所在主机上创建一个服务端 `AIAgent`。工具调用在该 API 服务器运行的位置执行。
@@ -43,7 +43,7 @@ hermes config set API_SERVER_KEY your-secret-key
 hermes gateway stop && hermes gateway
 ```
 
-### 2. 启动 Hermes Agent gateway
+### 2. 启动 Shards Agent gateway
 
 ```bash
 hermes gateway
@@ -62,7 +62,7 @@ curl -s http://127.0.0.1:8642/health
 # {"status": "ok", ...}
 
 curl -s -H "Authorization: Bearer your-secret-key" http://127.0.0.1:8642/v1/models
-# {"object":"list","data":[{"id":"hermes-agent", ...}]}
+# {"object":"list","data":[{"id":"shards-agent", ...}]}
 ```
 
 如果 `/health` 失败，说明 gateway 未加载 `API_SERVER_ENABLED=true`——重启它。如果 `/v1/models` 返回 `401`，说明你的 `Authorization` 头与 `API_SERVER_KEY` 不匹配。
@@ -87,7 +87,7 @@ docker run -d -p 3000:8080 \
 
 ### 5. 打开 UI
 
-访问 **http://localhost:3000** 。创建管理员账户（第一个用户将成为管理员）。你应该能在模型下拉列表中看到你的 agent（以你的 profile 命名，默认 profile 则显示为 **hermes-agent**）。开始聊天吧！
+访问 **http://localhost:3000** 。创建管理员账户（第一个用户将成为管理员）。你应该能在模型下拉列表中看到你的 agent（以你的 profile 命名，默认 profile 则显示为 **shards-agent**）。开始聊天吧！
 
 ## Docker Compose 设置
 
@@ -134,7 +134,7 @@ docker compose up -d
 7. 点击**对勾**验证连接
 8. **保存**
 
-你的 agent 模型现在应出现在模型下拉列表中（以你的 profile 命名，默认 profile 则显示为 **hermes-agent**）。
+你的 agent 模型现在应出现在模型下拉列表中（以你的 profile 命名，默认 profile 则显示为 **shards-agent**）。
 
 :::warning
 环境变量仅在 Open WebUI **首次启动**时生效。此后，连接设置存储在其内部数据库中。如需后续修改，请使用管理员 UI，或删除 Docker 卷后重新启动。
@@ -151,18 +151,18 @@ Open WebUI 连接后端时支持两种 API 模式：
 
 ### 使用 Chat Completions（推荐）
 
-这是默认模式，无需额外配置。Open WebUI 发送标准 OpenAI 格式请求，Hermes Agent 相应响应。每个请求包含完整的对话历史。
+这是默认模式，无需额外配置。Open WebUI 发送标准 OpenAI 格式请求，Shards Agent 相应响应。每个请求包含完整的对话历史。
 
 ### 使用 Responses API
 
 启用 Responses API 模式：
 
 1. 进入 **Admin Settings** → **Connections** → **OpenAI** → **Manage**
-2. 编辑你的 hermes-agent 连接
+2. 编辑你的 shards-agent 连接
 3. 将 **API Type** 从 "Chat Completions" 改为 **"Responses (Experimental)"**
 4. 保存
 
-使用 Responses API 时，Open WebUI 以 Responses 格式发送请求（`input` 数组 + `instructions`），Hermes Agent 可通过 `previous_response_id` 在多轮对话中保留完整的工具调用历史。当 `stream: true` 时，Hermes 还会流式传输符合规范的 `function_call` 和 `function_call_output` 事件，这使得支持 Responses 事件渲染的客户端能够展示自定义结构化工具调用 UI。
+使用 Responses API 时，Open WebUI 以 Responses 格式发送请求（`input` 数组 + `instructions`），Shards Agent 可通过 `previous_response_id` 在多轮对话中保留完整的工具调用历史。当 `stream: true` 时，Hermes 还会流式传输符合规范的 `function_call` 和 `function_call_output` 事件，这使得支持 Responses 事件渲染的客户端能够展示自定义结构化工具调用 UI。
 
 :::note
 Open WebUI 目前即使在 Responses 模式下也在客户端管理对话历史——它在每个请求中发送完整的消息历史，而非使用 `previous_response_id`。Responses 模式目前的主要优势在于结构化事件流：文本增量、`function_call` 和 `function_call_output` 事件以 OpenAI Responses SSE 事件形式到达，而非 Chat Completions 分块。
@@ -173,7 +173,7 @@ Open WebUI 目前即使在 Responses 模式下也在客户端管理对话历史�
 当你在 Open WebUI 中发送消息时：
 
 1. Open WebUI 发送包含你的消息和对话历史的 `POST /v1/chat/completions` 请求
-2. Hermes Agent 使用 API 服务器的 profile、模型/提供商配置、记忆、技能和已配置的 API 服务器工具集，在服务端创建一个 `AIAgent` 实例
+2. Shards Agent 使用 API 服务器的 profile、模型/提供商配置、记忆、技能和已配置的 API 服务器工具集，在服务端创建一个 `AIAgent` 实例
 3. Agent 处理你的请求——它可能在 API 服务器主机上调用工具（终端、文件操作、网络搜索等）
 4. 工具执行时，**内联进度消息会流式传输到 UI**，让你实时看到 agent 的操作（例如 `` `💻 ls -la` ``、`` `🔍 Python 3.12 release` ``）
 5. Agent 的最终文本响应流式返回给 Open WebUI
@@ -189,7 +189,7 @@ Open WebUI 目前即使在 Responses 模式下也在客户端管理对话历史�
 
 ## 配置参考
 
-### Hermes Agent（API 服务器）
+### Shards Agent（API 服务器）
 
 | 变量 | 默认值 | 描述 |
 |----------|---------|-------------|
@@ -202,7 +202,7 @@ Open WebUI 目前即使在 Responses 模式下也在客户端管理对话历史�
 
 | 变量 | 描述 |
 |----------|-------------|
-| `OPENAI_API_BASE_URL` | Hermes Agent 的 API URL（包含 `/v1`） |
+| `OPENAI_API_BASE_URL` | Shards Agent 的 API URL（包含 `/v1`） |
 | `OPENAI_API_KEY` | 不能为空。需与你的 `API_SERVER_KEY` 匹配。 |
 
 ## 故障排查
@@ -211,7 +211,7 @@ Open WebUI 目前即使在 Responses 模式下也在客户端管理对话历史�
 
 - **检查 URL 是否有 `/v1` 后缀**：`http://host.docker.internal:8642/v1`（不只是 `:8642`）
 - **验证 gateway 是否运行**：`curl http://localhost:8642/health` 应返回 `{"status": "ok"}`
-- **检查模型列表**：`curl -H "Authorization: Bearer your-secret-key" http://localhost:8642/v1/models` 应返回包含 `hermes-agent` 的列表
+- **检查模型列表**：`curl -H "Authorization: Bearer your-secret-key" http://localhost:8642/v1/models` 应返回包含 `shards-agent` 的列表
 - **Docker 网络**：在 Docker 内部，`localhost` 指容器本身，而非你的主机。请使用 `host.docker.internal` 或 `--network=host`。
 - **空 Ollama 后端遮挡选择器**：如果你省略了 `ENABLE_OLLAMA_API=false`，Open WebUI 会在你的 Hermes 模型上方显示一个空的 Ollama 区域。请使用 `-e ENABLE_OLLAMA_API=false` 重启容器，或在 **Admin Settings → Connections** 中禁用 Ollama。
 
@@ -221,11 +221,11 @@ Open WebUI 目前即使在 Responses 模式下也在客户端管理对话历史�
 
 ### 响应耗时很长
 
-Hermes Agent 可能在生成最终响应之前执行了多次工具调用（读取文件、运行命令、搜索网络）。对于复杂查询，这是正常现象。响应会在 agent 完成后一次性出现。
+Shards Agent 可能在生成最终响应之前执行了多次工具调用（读取文件、运行命令、搜索网络）。对于复杂查询，这是正常现象。响应会在 agent 完成后一次性出现。
 
 ### "Invalid API key" 错误
 
-确保 Open WebUI 中的 `OPENAI_API_KEY` 与 Hermes Agent 中的 `API_SERVER_KEY` 匹配。
+确保 Open WebUI 中的 `OPENAI_API_KEY` 与 Shards Agent 中的 `API_SERVER_KEY` 匹配。
 
 :::warning
 Open WebUI 在首次启动后会将 OpenAI 兼容连接设置持久化到其自身数据库中。如果你在管理员 UI 中误保存了错误的密钥，仅修改环境变量是不够的——请在 **Admin Settings → Connections** 中更新或删除已保存的连接，或重置 Open WebUI 数据目录/数据库。

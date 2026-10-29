@@ -7,7 +7,7 @@ description: "Connect Hermes to GitHub so it automatically fetches PR diffs, rev
 
 # Automated GitHub PR Comments with Webhooks
 
-This guide walks you through connecting Hermes Agent to GitHub so it automatically fetches a pull request's diff, analyzes the code changes, and posts a comment — triggered by a webhook event with no manual prompting.
+This guide walks you through connecting Shards Agent to GitHub so it automatically fetches a pull request's diff, analyzes the code changes, and posts a comment — triggered by a webhook event with no manual prompting.
 
 When a PR is opened or updated, GitHub sends a webhook POST to your Hermes instance. Hermes runs the agent with a prompt that instructs it to retrieve the diff via the `gh` CLI, and the response is posted back to the PR thread.
 
@@ -27,7 +27,7 @@ Webhook payloads contain attacker-controlled data — PR titles, commit messages
 
 ## Prerequisites
 
-- Hermes Agent installed and running (`hermes gateway`)
+- Shards Agent installed and running (`hermes gateway`)
 - [`gh` CLI](https://cli.github.com/) installed and authenticated on the gateway host (`gh auth login`)
 - A publicly reachable URL for your Hermes instance (see [Local testing with ngrok](#local-testing-with-ngrok) if running locally)
 - Admin access to the GitHub repository (required to manage webhooks)

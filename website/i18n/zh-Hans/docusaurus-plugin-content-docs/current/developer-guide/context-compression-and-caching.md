@@ -1,11 +1,11 @@
 ---
 title: 上下文压缩与缓存
-description: Hermes Agent 如何通过双重压缩系统和 Anthropic prompt 缓存高效管理上下文窗口。
+description: Shards Agent 如何通过双重压缩系统和 Anthropic prompt 缓存高效管理上下文窗口。
 ---
 
 # 上下文压缩与缓存
 
-Hermes Agent 使用双重压缩系统和 Anthropic prompt（提示词）缓存，在长对话中高效管理上下文窗口用量。
+Shards Agent 使用双重压缩系统和 Anthropic prompt（提示词）缓存，在长对话中高效管理上下文窗口用量。
 
 源文件：`agent/context_engine.py`（ABC）、`agent/context_compressor.py`（默认引擎）、
 `agent/prompt_caching.py`、`gateway/run.py`（会话清理）、`run_agent.py`（搜索 `_compress_context`）

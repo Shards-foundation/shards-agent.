@@ -186,7 +186,7 @@ browser_screenshots/
 cache/
 
 # Infrastructure (should not be in profile dir, but safe to exclude)
-hermes-agent/
+shards-agent/
 .worktrees/
 profiles/
 bin/

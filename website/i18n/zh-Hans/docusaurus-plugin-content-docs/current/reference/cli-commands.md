@@ -71,7 +71,7 @@ hermes [global-options] <command> [subcommand/options]
 | `hermes memory` | 配置外部 memory provider。当对应 provider 激活时，特定于 plugin 的子命令（如 `hermes honcho`）会自动注册。 |
 | `hermes acp` | 将 Hermes 作为 ACP 服务器运行，用于编辑器集成。 |
 | `hermes mcp` | 管理 MCP 服务器配置，并将 Hermes 作为 MCP 服务器运行。 |
-| `hermes plugins` | 管理 Hermes Agent plugin（安装、启用、禁用、删除）。 |
+| `hermes plugins` | 管理 Shards Agent plugin（安装、启用、禁用、删除）。 |
 | `hermes portal` | Nous Portal 状态、订阅链接和 Tool Gateway 路由。参见 [Tool Gateway](../user-guide/features/tool-gateway.md)。 |
 | `hermes tools` | 按平台配置已启用的工具。 |
 | `hermes computer-use` | 安装或检查 cua-driver 后端（macOS Computer Use）。 |
@@ -602,7 +602,7 @@ hermes debug share --local      # 在终端打印报告（不上传）
 hermes backup [options]
 ```
 
-创建 Hermes 配置、skill、会话和数据的 zip 归档。备份不包含 hermes-agent 代码库本身。
+创建 Hermes 配置、skill、会话和数据的 zip 归档。备份不包含 shards-agent 代码库本身。
 
 | 选项 | 说明 |
 |--------|-------------|
@@ -616,7 +616,7 @@ hermes backup [options]
 
 - `*.db-wal`、`*.db-shm`、`*.db-journal` — SQLite 的 WAL/共享内存/日志附属文件。`*.db` 文件已通过 `sqlite3.backup()` 获得一致快照；将活跃附属文件一并打包会导致恢复时看到半提交状态。
 - `checkpoints/` — 每会话轨迹缓存。以 hash 为键，每次会话重新生成；无论如何都无法干净地移植到其他安装。
-- `hermes-agent` 代码本身（这是用户数据备份，不是仓库快照）。
+- `shards-agent` 代码本身（这是用户数据备份，不是仓库快照）。
 
 ### 示例
 
@@ -977,7 +977,7 @@ python -m acp_adapter
 首先安装支持：
 
 ```bash
-cd ~/.hermes/hermes-agent && python -c "import pm; pm.sync_venv(['acp'], explicit=True)"
+cd ~/.hermes/shards-agent && python -c "import pm; pm.sync_venv(['acp'], explicit=True)"
 ```
 
 参见 [ACP 编辑器集成](../user-guide/features/acp.md) 和 [ACP 内部原理](../developer-guide/acp-internals.md)。
@@ -1237,7 +1237,7 @@ PM 管理工具和 Python 依赖，不负责替换应用发布包。
 hermes update [--check] [--backup] [--restart-gateway]
 ```
 
-拉取最新的 `hermes-agent` 代码并在受管理的 venv 中重新安装依赖，然后重新运行安装后 hook（MCP 服务器、skill 同步、补全安装）。可在运行中的安装上安全执行。官方仓库的源码检出默认跟踪 `stable` 渠道（最新正式发布的 `vX.Y.Z` 版本）；运行 `hermes update --set-channel main` 改为跟踪 `main` 上的每个提交，`hermes update --set-channel stable` 切换回来。使用 `--check` 查看你的检出是否落后于所选渠道，而不安装。
+拉取最新的 `shards-agent` 代码并在受管理的 venv 中重新安装依赖，然后重新运行安装后 hook（MCP 服务器、skill 同步、补全安装）。可在运行中的安装上安全执行。官方仓库的源码检出默认跟踪 `stable` 渠道（最新正式发布的 `vX.Y.Z` 版本）；运行 `hermes update --set-channel main` 改为跟踪 `main` 上的每个提交，`hermes update --set-channel stable` 切换回来。使用 `--check` 查看你的检出是否落后于所选渠道，而不安装。
 
 | 选项 | 说明 |
 |--------|-------------|

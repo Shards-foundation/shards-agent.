@@ -161,7 +161,7 @@ def _paste_to_tasks(ctx, raw_args: str) -> str:
 
 第三个完整示例（包含图像输入）位于
 [`hermes-example-plugins`](https://github.com/NousResearch/hermes-example-plugins/tree/main/plugin-llm-example)
-仓库（参考 plugin 的配套仓库——不随 hermes-agent 本体打包）。关于异步接口（`acomplete()` / `acomplete_structured()` 与 `asyncio.gather()` 配合使用），请参见同一仓库中的
+仓库（参考 plugin 的配套仓库——不随 shards-agent 本体打包）。关于异步接口（`acomplete()` / `acomplete_structured()` 与 `asyncio.gather()` 配合使用），请参见同一仓库中的
 [`plugin-llm-async-example`](https://github.com/NousResearch/hermes-example-plugins/tree/main/plugin-llm-async-example)。
 
 ## 何时使用哪种方式

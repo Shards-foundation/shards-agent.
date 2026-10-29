@@ -1,7 +1,7 @@
 ---
 sidebar_position: 1
 title: "快速入门"
-description: "与 Hermes Agent 的第一次对话——从安装到开始聊天，5 分钟内完成"
+description: "与 Shards Agent 的第一次对话——从安装到开始聊天，5 分钟内完成"
 ---
 
 # 快速入门
@@ -13,13 +13,13 @@ description: "与 Hermes Agent 的第一次对话——从安装到开始聊天�
 
 ## 更喜欢看视频？
 
-**Onchain AI Garage** 制作了一套涵盖安装、配置和基本命令的 Masterclass 演示视频——如果你更习惯跟着视频操作，这是本页的绝佳补充。更多内容请查看完整的 [Hermes Agent 教程与使用案例](https://www.youtube.com/channel/UCqB1bhMwGsW-yefBxYwFCCg) 播放列表。
+**Onchain AI Garage** 制作了一套涵盖安装、配置和基本命令的 Masterclass 演示视频——如果你更习惯跟着视频操作，这是本页的绝佳补充。更多内容请查看完整的 [Shards Agent 教程与使用案例](https://www.youtube.com/channel/UCqB1bhMwGsW-yefBxYwFCCg) 播放列表。
 
 <div style={{position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden', maxWidth: '100%', marginBottom: '1.5rem'}}>
   <iframe
     style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}}
     src="https://www.youtube-nocookie.com/embed/R3YOGfTBcQg"
-    title="Hermes Agent Masterclass: Installation, Setup, Basic Commands"
+    title="Shards Agent Masterclass: Installation, Setup, Basic Commands"
     frameBorder="0"
     allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
     allowFullScreen
@@ -49,13 +49,13 @@ description: "与 Hermes Agent 的第一次对话——从安装到开始聊天�
 
 ---
 
-## 1. 安装 Hermes Agent
+## 1. 安装 Shards Agent
 
-### 在 macOS 或 Windows 上使用 Hermes Desktop 安装器（推荐）
+### 在 macOS 或 Windows 上使用 Shards Desktop 安装器（推荐）
 
-如需同时安装命令行与桌面应用，请从我们的官网[下载 Hermes Desktop 安装器](https://hermes-agent.nousresearch.com/)并运行。
+如需同时安装命令行与桌面应用，请从我们的官网[下载 Shards Desktop 安装器](https://hermes-agent.nousresearch.com/)并运行。
 
-### 不使用 Hermes Desktop：
+### 不使用 Shards Desktop：
 
 仅安装命令行版本（跟踪 main 分支）：
 
@@ -65,7 +65,7 @@ curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash
 ```
 
 源码脚本通过 PM 准备运行时。桌面软件包、Docker、Nix 和 Termux APT 是独立的安装方式。
-请勿使用 `pip install hermes-agent` 替代受管理的安装。
+请勿使用 `pip install shards-agent` 替代受管理的安装。
 
 Windows 原生安装可在 PowerShell 中运行 `iex (irm https://hermes-agent.nousresearch.com/install.ps1)`，无需 WSL。
 aarch64 Android 设备请使用 [Termux APT 指南](./termux.md)，而非上述脚本。
@@ -126,7 +126,7 @@ hermes setup --portal
 对于大多数初次使用的用户：选择一个 provider，接受默认值（除非你明确知道为何要修改）。完整的 provider 目录及环境变量和配置步骤请参阅 [Providers](../integrations/providers.md) 页面。
 
 :::caution 最低上下文要求：64K token
-Hermes Agent 要求模型至少具备 **64,000 个 token** 的上下文窗口。上下文窗口较小的模型无法为多步骤工具调用工作流维持足够的工作内存，启动时将被拒绝。大多数托管模型（Claude、GPT、Gemini、Qwen、DeepSeek）均轻松满足此要求。如果你运行本地模型，请将其上下文大小设置为至少 64K（例如 llama.cpp 使用 `--ctx-size 65536`，Ollama 使用 `-c 65536`）。
+Shards Agent 要求模型至少具备 **64,000 个 token** 的上下文窗口。上下文窗口较小的模型无法为多步骤工具调用工作流维持足够的工作内存，启动时将被拒绝。大多数托管模型（Claude、GPT、Gemini、Qwen、DeepSeek）均轻松满足此要求。如果你运行本地模型，请将其上下文大小设置为至少 64K（例如 llama.cpp 使用 `--ctx-size 65536`，Ollama 使用 `-c 65536`）。
 :::
 
 :::tip
@@ -254,8 +254,8 @@ hermes config set terminal.backend ssh       # 远程服务器
 
 ```bash
 # 在 Hermes 安装目录下运行（curl 安装器在 Linux/macOS 上将其放置于
-# ~/.hermes/hermes-agent，在 Windows 上为 %LOCALAPPDATA%\hermes\hermes-agent）：
-cd ~/.hermes/hermes-agent
+# ~/.hermes/shards-agent，在 Windows 上为 %LOCALAPPDATA%\hermes\shards-agent）：
+cd ~/.hermes/shards-agent
 python -c "import pm; pm.sync_venv(['voice'], explicit=True)"
 # 包含 faster-whisper，用于免费的本地语音转文字
 ```
@@ -291,7 +291,7 @@ ACP 支持已包含在标准 `[all]` 扩展中，因此 curl 安装器已默认�
 hermes acp
 ```
 
-（如果安装时未包含 `[all]`，请先运行 `cd ~/.hermes/hermes-agent && python -c "import pm; pm.sync_venv(['acp'], explicit=True)"`。）
+（如果安装时未包含 `[all]`，请先运行 `cd ~/.hermes/shards-agent && python -c "import pm; pm.sync_venv(['acp'], explicit=True)"`。）
 
 参阅 [ACP 编辑器集成](../user-guide/features/acp.md)。
 

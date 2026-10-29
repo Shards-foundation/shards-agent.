@@ -1,4 +1,4 @@
-# Hermes Desktop ☤
+# Shards Desktop ☤
 
 <p align="center">
   <a href="https://github.com/NousResearch/hermes-agent/releases"><img src="https://img.shields.io/badge/Download-macOS%20%C2%B7%20Windows%20%C2%B7%20Linux-FFD700?style=for-the-badge" alt="Download"></a>
@@ -7,7 +7,7 @@
   <a href="https://github.com/NousResearch/hermes-agent/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" alt="License: MIT"></a>
 </p>
 
-**The native desktop app for [Hermes Agent](../../README.md) — the self-improving AI agent from [Nous Research](https://nousresearch.com).** Same agent, same skills, same memory as the CLI and gateway, in a polished native window — chat with streaming tool output, side-by-side previews, a file browser, voice, and settings, no terminal required. Available for **macOS, Windows, and Linux**.
+**The native desktop app for [Shards Agent](../../README.md) — the self-improving AI agent from [Nous Research](https://nousresearch.com).** Same agent, same skills, same memory as the CLI and gateway, in a polished native window — chat with streaming tool output, side-by-side previews, a file browser, voice, and settings, no terminal required. Available for **macOS, Windows, and Linux**.
 
 > **Intel Macs:** the `Hermes-Setup.dmg` bootstrap installer is built for
 > Apple Silicon (arm64) only, so on an Intel Mac it reports "not supported on
@@ -41,7 +41,7 @@ It builds and launches the GUI against your existing install — same config, ke
 
 ### Prebuilt installers
 
-Prebuilt installers are built and distributed via [the Hermes Desktop website.](https://hermes-agent.nousresearch.com/).
+Prebuilt installers are built and distributed via [the Shards Desktop website.](https://hermes-agent.nousresearch.com/).
 
 ---
 
@@ -128,7 +128,7 @@ The app has three boundaries:
   filesystem/git/window capabilities, and exposes a narrow preload bridge.
 - **React** owns the Desktop routes, panes, interaction state, and
   `@assistant-ui/react` transcript.
-- **Hermes Agent** runs as a headless `hermes serve` process and exposes the
+- **Shards Agent** runs as a headless `hermes serve` process and exposes the
   `tui_gateway` JSON-RPC/WebSocket API. The renderer connects through
   [`apps/shared`](../shared/), which is also used by the browser dashboard.
 
@@ -236,9 +236,9 @@ Boot logs land in `HERMES_HOME/logs/desktop.log` (includes backend output and re
 
 ```bash
 # Force a clean first-launch setup
-rm "$HOME/.hermes/hermes-agent/.hermes-bootstrap-complete"
+rm "$HOME/.hermes/shards-agent/.hermes-bootstrap-complete"
 # Rebuild a broken Python venv
-rm -rf "$HOME/.hermes/hermes-agent/venv"
+rm -rf "$HOME/.hermes/shards-agent/venv"
 # Reset a stuck macOS microphone prompt (macOS only)
 tccutil reset Microphone com.nousresearch.hermes
 ```
@@ -247,9 +247,9 @@ tccutil reset Microphone com.nousresearch.hermes
 
 ```powershell
 # Force a clean first-launch setup
-Remove-Item "$env:LOCALAPPDATA\hermes\hermes-agent\.hermes-bootstrap-complete"
+Remove-Item "$env:LOCALAPPDATA\hermes\shards-agent\.hermes-bootstrap-complete"
 # Rebuild a broken Python venv
-Remove-Item -Recurse -Force "$env:LOCALAPPDATA\hermes\hermes-agent\venv"
+Remove-Item -Recurse -Force "$env:LOCALAPPDATA\hermes\shards-agent\venv"
 ```
 
 > The default Hermes home on Windows is `%LOCALAPPDATA%\hermes`. Set the `HERMES_HOME` env var if you've relocated it.

@@ -1,7 +1,7 @@
 ---
 sidebar_position: 14
 title: "AWS Bedrock"
-description: "Use Hermes Agent with Amazon Bedrock — native Converse API, Anthropic SDK routing, OpenAI models via Bedrock Mantle, IAM authentication, Guardrails, and cross-region inference"
+description: "Use Shards Agent with Amazon Bedrock — native Converse API, Anthropic SDK routing, OpenAI models via Bedrock Mantle, IAM authentication, Guardrails, and cross-region inference"
 ---
 
 # AWS Bedrock
@@ -10,7 +10,7 @@ Python dependency commands on this page use a
 [PM-prepared source checkout](../reference/package-management.md#developer-workflow).
 After a dependency change, reactivate the checkout and restart Hermes.
 
-Hermes Agent supports Amazon Bedrock as a native provider. This gives you full access to the Bedrock ecosystem: IAM authentication, Guardrails, cross-region inference profiles, and all foundation models.
+Shards Agent supports Amazon Bedrock as a native provider. This gives you full access to the Bedrock ecosystem: IAM authentication, Guardrails, cross-region inference profiles, and all foundation models.
 
 Hermes routes each model family through the API that serves it best:
 
@@ -30,7 +30,7 @@ All three routes share the same AWS credential chain and region resolution — n
   - `AWS_ACCESS_KEY_ID` + `AWS_SECRET_ACCESS_KEY` environment variables
   - `AWS_PROFILE` for SSO or named profiles
   - `aws configure` for local development
-- **boto3** — install with `cd ~/.hermes/hermes-agent && python -c "import pm; pm.sync_venv(['bedrock'], explicit=True)"`
+- **boto3** — install with `cd ~/.hermes/shards-agent && python -c "import pm; pm.sync_venv(['bedrock'], explicit=True)"`
 - **IAM permissions** — at minimum:
   - `bedrock:InvokeModel` and `bedrock:InvokeModelWithResponseStream` (for inference)
   - `bedrock:ListFoundationModels` and `bedrock:ListInferenceProfiles` (for model discovery)
@@ -44,7 +44,7 @@ On AWS compute, attach an IAM role with `AmazonBedrockFullAccess` and you're don
 
 ```bash
 # Install with Bedrock support
-cd ~/.hermes/hermes-agent && python -c "import pm; pm.sync_venv(['bedrock'], explicit=True)"
+cd ~/.hermes/shards-agent && python -c "import pm; pm.sync_venv(['bedrock'], explicit=True)"
 
 # Select Bedrock as your provider
 hermes model
@@ -209,4 +209,4 @@ You've hit the Bedrock per-model rate limit. Hermes automatically retries with b
 
 For a fully automated deployment on EC2 with CloudFormation:
 
-**[sample-hermes-agent-on-aws-with-bedrock](https://github.com/JiaDe-Wu/sample-hermes-agent-on-aws-with-bedrock)** — creates VPC, IAM role, EC2 instance, and configures Bedrock automatically. Deploy in any region with one click.
+**[sample-shards-agent-on-aws-with-bedrock](https://github.com/JiaDe-Wu/sample-shards-agent-on-aws-with-bedrock)** — creates VPC, IAM role, EC2 instance, and configures Bedrock automatically. Deploy in any region with one click.

@@ -1,10 +1,10 @@
 ---
 sidebar_position: 1
-title: "Hermes Agent Quickstart"
-description: "Your first conversation with Hermes Agent — from install to chatting in under 5 minutes"
+title: "Shards Agent Quickstart"
+description: "Your first conversation with Shards Agent — from install to chatting in under 5 minutes"
 ---
 
-# Hermes Agent Quickstart
+# Shards Agent Quickstart
 
 Python dependency commands on this page use a
 [PM-prepared source checkout](../reference/package-management.md#developer-workflow).
@@ -14,13 +14,13 @@ This guide gets you from zero to a working Hermes setup that survives real use. 
 
 ## Prefer to watch?
 
-**Onchain AI Garage** put together a Masterclass walkthrough of installation, setup, and basic commands — a good companion to this page if you'd rather follow along on video. For more, see the full [Hermes Agent Tutorials & Use Cases](https://www.youtube.com/playlist?list=PLmpUb_PWAkDxewld5ZYyKifuHxgIbiq2d) playlist.
+**Onchain AI Garage** put together a Masterclass walkthrough of installation, setup, and basic commands — a good companion to this page if you'd rather follow along on video. For more, see the full [Shards Agent Tutorials & Use Cases](https://www.youtube.com/playlist?list=PLmpUb_PWAkDxewld5ZYyKifuHxgIbiq2d) playlist.
 
 <div style={{position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden', maxWidth: '100%', marginBottom: '1.5rem'}}>
   <iframe
     style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}}
     src="https://www.youtube-nocookie.com/embed/R3YOGfTBcQg"
-    title="Hermes Agent Masterclass: Installation, Setup, Basic Commands"
+    title="Shards Agent Masterclass: Installation, Setup, Basic Commands"
     frameBorder="0"
     allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
     allowFullScreen
@@ -50,12 +50,12 @@ Pick the row that matches your goal:
 
 ---
 
-## 1. Install Hermes Agent
-### With the Hermes Desktop installer on macOS or Windows (recommended)
-To easily install the command-line and desktop applications, [download the Hermes Desktop installer](https://hermes-agent.nousresearch.com/) from our website and run it.
+## 1. Install Shards Agent
+### With the Shards Desktop installer on macOS or Windows (recommended)
+To easily install the command-line and desktop applications, [download the Shards Desktop installer](https://hermes-agent.nousresearch.com/) from our website and run it.
 
-### Without Hermes Desktop:
-For a command-line only install without Hermes Desktop, run:
+### Without Shards Desktop:
+For a command-line only install without Shards Desktop, run:
 
 For aarch64 Android devices, use the separate [Termux APT guide](./termux.md).
 
@@ -155,7 +155,7 @@ Good defaults:
 For most first-time users: choose a provider, accept the defaults unless you know why you're changing them. The full provider catalog with env vars and setup steps lives on the [Providers](../integrations/providers.md) page.
 
 :::caution Minimum context: 64K tokens
-Hermes Agent requires a model with at least **64,000 tokens** of context. Models with smaller windows cannot maintain enough working memory for multi-step tool-calling workflows and will be rejected at startup. Most hosted models (Claude, GPT, Gemini, Qwen, DeepSeek) meet this easily. If you're running a local model, set its context size to at least 64K (e.g. `--ctx-size 65536` for llama.cpp or `-c 65536` for Ollama).
+Shards Agent requires a model with at least **64,000 tokens** of context. Models with smaller windows cannot maintain enough working memory for multi-step tool-calling workflows and will be rejected at startup. Most hosted models (Claude, GPT, Gemini, Qwen, DeepSeek) meet this easily. If you're running a local model, set its context size to at least 64K (e.g. `--ctx-size 65536` for llama.cpp or `-c 65536` for Ollama).
 :::
 
 :::tip
@@ -337,7 +337,7 @@ ACP support ships with the standard `[all]` extras, so the curl installer alread
 hermes acp
 ```
 
-(If you installed without `[all]`, run `cd ~/.hermes/hermes-agent && python -c "import pm; pm.sync_venv(['acp'], explicit=True)"` first.)
+(If you installed without `[all]`, run `cd ~/.hermes/shards-agent && python -c "import pm; pm.sync_venv(['acp'], explicit=True)"` first.)
 
 See [ACP Editor Integration](../user-guide/features/acp.md).
 

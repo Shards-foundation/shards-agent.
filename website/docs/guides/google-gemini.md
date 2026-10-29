@@ -1,12 +1,12 @@
 ---
 sidebar_position: 16
 title: "Google Gemini"
-description: "Use Hermes Agent with Google Gemini — native AI Studio API, API-key setup, tool calling, streaming, and quota guidance"
+description: "Use Shards Agent with Google Gemini — native AI Studio API, API-key setup, tool calling, streaming, and quota guidance"
 ---
 
 # Google Gemini
 
-Hermes Agent supports Google Gemini as a native provider using the **Google AI Studio / Gemini API** — not the OpenAI-compatible endpoint. This lets Hermes translate its internal OpenAI-shaped message and tool loop into Gemini's native `generateContent` API while preserving tool calling, streaming, multimodal inputs, and Gemini-specific response metadata.
+Shards Agent supports Google Gemini as a native provider using the **Google AI Studio / Gemini API** — not the OpenAI-compatible endpoint. This lets Hermes translate its internal OpenAI-shaped message and tool loop into Gemini's native `generateContent` API while preserving tool calling, streaming, multimodal inputs, and Gemini-specific response metadata.
 
 ## Prerequisites
 

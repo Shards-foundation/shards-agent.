@@ -1,12 +1,12 @@
 ---
 sidebar_position: 16
 title: "xAI Grok OAuth（SuperGrok / X Premium+）"
-description: "使用 SuperGrok 或 X Premium+ 订阅登录，在 Hermes Agent 中使用 Grok 模型——无需 API 密钥"
+description: "使用 SuperGrok 或 X Premium+ 订阅登录，在 Shards Agent 中使用 Grok 模型——无需 API 密钥"
 ---
 
 # xAI Grok OAuth（SuperGrok / X Premium+）
 
-Hermes Agent 通过基于浏览器的 OAuth 登录流程支持 xAI Grok，认证服务器为 [accounts.x.ai](https://accounts.x.ai)，支持 **SuperGrok 订阅**（[grok.com](https://x.ai/grok)）或 **X Premium+ 订阅**（已关联的 X 账号）。无需 `XAI_API_KEY`——登录一次后，Hermes 会在后台自动刷新会话。
+Shards Agent 通过基于浏览器的 OAuth 登录流程支持 xAI Grok，认证服务器为 [accounts.x.ai](https://accounts.x.ai)，支持 **SuperGrok 订阅**（[grok.com](https://x.ai/grok)）或 **X Premium+ 订阅**（已关联的 X 账号）。无需 `XAI_API_KEY`——登录一次后，Hermes 会在后台自动刷新会话。
 
 当你使用拥有 Premium+ 的 X 账号登录时，xAI 会自动将订阅状态关联到你的 xAI 会话，因此 OAuth 流程与直接 SuperGrok 订阅者的体验完全相同。
 
@@ -31,7 +31,7 @@ Hermes Agent 通过基于浏览器的 OAuth 登录流程支持 xAI Grok，认证
 ## 前提条件
 
 - Python 3.9+
-- 已安装 Hermes Agent
+- 已安装 Shards Agent
 - 你的 xAI 账号拥有有效的 **SuperGrok** 订阅，**或**你登录所用的 X 账号拥有 **X Premium+** 订阅（xAI 会自动关联订阅）
 - 任意可打开打印出的验证 URL 的浏览器
 

@@ -305,7 +305,7 @@ You can override the default in `~/.codex/config.toml` outside Hermes' managed b
 default_permissions = ":read-only"
 ```
 
-(Hermes will preserve your override on re-migration as long as it lives outside the `# managed by hermes-agent` markers.)
+(Hermes will preserve your override on re-migration as long as it lives outside the `# managed by shards-agent` markers.)
 
 ## Auxiliary tasks and ChatGPT subscription token cost
 
@@ -338,13 +338,13 @@ The self-improvement review fork inherits the main runtime via `_current_main_ru
 Hermes wraps everything it manages between two marker comments:
 
 ```toml
-# managed by hermes-agent — `hermes codex-runtime migrate` regenerates this section
+# managed by shards-agent — `hermes codex-runtime migrate` regenerates this section
 default_permissions = ":workspace"
 [mcp_servers.filesystem]
 ...
 [plugins."github@openai-curated"]
 ...
-# end hermes-agent managed section
+# end shards-agent managed section
 ```
 
 Anything **outside** that block is yours. Re-running migration (via `/codex-runtime codex_app_server`, whenever you toggle the runtime on, or `hermes codex-runtime migrate`) replaces the managed block in place but preserves user content above and below it verbatim. This means you can:
@@ -453,7 +453,7 @@ Effective on the next session. The Codex managed block stays in `~/.codex/config
 
 ## Limitations
 
-This runtime is **opt-in beta**. Working as of Hermes Agent 2026.5 + Codex CLI 0.130.0:
+This runtime is **opt-in beta**. Working as of Shards Agent 2026.5 + Codex CLI 0.130.0:
 
 - Multi-turn conversations
 - `commandExecution` and `fileChange` (apply_patch) approvals via Hermes UI

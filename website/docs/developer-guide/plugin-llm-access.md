@@ -188,7 +188,7 @@ def _paste_to_tasks(ctx, raw_args: str) -> str:
 A third worked example, this time with image input, lives in the
 [`hermes-example-plugins`](https://github.com/NousResearch/hermes-example-plugins/tree/main/plugin-llm-example)
 repo (companion repo for reference plugins — not bundled with
-hermes-agent itself). For the async surface (`acomplete()` /
+shards-agent itself). For the async surface (`acomplete()` /
 `acomplete_structured()` with `asyncio.gather()`), see
 [`plugin-llm-async-example`](https://github.com/NousResearch/hermes-example-plugins/tree/main/plugin-llm-async-example)
 in the same repo.

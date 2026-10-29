@@ -1,12 +1,12 @@
 ---
 sidebar_position: 9
 title: "Optional Skills Catalog"
-description: "Official optional skills shipped with hermes-agent — install via hermes skills install official/<category>/<skill>"
+description: "Official optional skills shipped with shards-agent — install via hermes skills install official/<category>/<skill>"
 ---
 
 # Optional Skills Catalog
 
-Optional skills ship with hermes-agent under `optional-skills/` but are **not active by default**. Install them explicitly:
+Optional skills ship with shards-agent under `optional-skills/` but are **not active by default**. Install them explicitly:
 
 ```bash
 hermes skills install official/<category>/<skill>
@@ -267,7 +267,7 @@ hermes skills uninstall <skill-name>
 | [**ast-grep**](../user-guide/skills/optional/software-development/software-development-ast-grep.md) | AST-aware structural code search and rewrite via ast-grep. |
 | [**code-wiki**](../user-guide/skills/optional/software-development/software-development-code-wiki.md) | Generate wiki docs + Mermaid diagrams for any codebase. |
 | [**grill-me**](../user-guide/skills/optional/software-development/software-development-grill-me.md) | Adversarial plan interview before implementation. |
-| [**hermes-agent-skill-authoring**](../user-guide/skills/optional/software-development/software-development-hermes-agent-skill-authoring.md) | Author in-repo SKILL.md files: frontmatter and structure. |
+| [**shards-agent-skill-authoring**](../user-guide/skills/optional/software-development/software-development-shards-agent-skill-authoring.md) | Author in-repo SKILL.md files: frontmatter and structure. |
 | [**inspecting-hermes-desktop-dom**](../user-guide/skills/optional/software-development/software-development-inspecting-hermes-desktop-dom.md) | Read the live Hermes desktop DOM/CSS over CDP. |
 | [**node-inspect-debugger**](../user-guide/skills/optional/software-development/software-development-node-inspect-debugger.md) | Debug Node.js via --inspect + Chrome DevTools Protocol CLI. |
 | [**pr-lens**](../user-guide/skills/optional/software-development/software-development-pr-lens.md) | Draw code changes as animated architecture/data-flow SVGs. |

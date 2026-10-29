@@ -17,7 +17,7 @@ Drive and script tldraw offline canvases with an agent.
 | Source | Optional — install with `hermes skills install official/creative/tldraw-offline` |
 | Path | `optional-skills/creative/tldraw-offline` |
 | Version | `1.0.0` |
-| Author | Teknium + Hermes Agent |
+| Author | Teknium + Shards Agent |
 | License | MIT |
 | Platforms | linux, macos, windows |
 | Tags | `tldraw`, `canvas`, `whiteboard`, `document-script`, `diagramming` |

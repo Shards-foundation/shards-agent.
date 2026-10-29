@@ -17,11 +17,11 @@ Manual OAuth for remote MCP servers on headless gateways.
 | Source | Optional — install with `hermes skills install official/mcp/mcp-oauth-remote-gateway` |
 | Path | `optional-skills/mcp/mcp-oauth-remote-gateway` |
 | Version | `1.0.0` |
-| Author | Ben Barclay (benbarclay), Hermes Agent |
+| Author | Ben Barclay (benbarclay), Shards Agent |
 | License | MIT |
 | Platforms | linux, macos |
 | Tags | `MCP`, `OAuth`, `PKCE`, `Remote-Deployment` |
-| Related skills | [`hermes-agent`](../../bundled/autonomous-ai-agents/autonomous-ai-agents-hermes-agent.md), [`mcporter`](../../optional/mcp/mcp-mcporter.md), [`fastmcp`](../../optional/mcp/mcp-fastmcp.md) |
+| Related skills | [`shards-agent`](../../bundled/autonomous-ai-agents/autonomous-ai-agents-shards-agent.md), [`mcporter`](../../optional/mcp/mcp-mcporter.md), [`fastmcp`](../../optional/mcp/mcp-fastmcp.md) |
 
 ## Reference: full SKILL.md
 
@@ -199,7 +199,7 @@ POST to the `registration_endpoint` with:
 
 ```json
 {
-  "client_name": "Hermes Agent (manual OAuth)",
+  "client_name": "Shards Agent (manual OAuth)",
   "redirect_uris": ["http://127.0.0.1:8765/callback"],
   "grant_types": ["authorization_code", "refresh_token"],
   "response_types": ["code"],

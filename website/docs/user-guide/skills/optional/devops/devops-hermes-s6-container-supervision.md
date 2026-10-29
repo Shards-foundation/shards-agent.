@@ -17,11 +17,11 @@ Modify or debug s6 services in the Hermes Docker image.
 | Source | Optional — install with `hermes skills install official/devops/hermes-s6-container-supervision` |
 | Path | `optional-skills/devops/hermes-s6-container-supervision` |
 | Version | `1.0.0` |
-| Author | Hermes Agent |
+| Author | Shards Agent |
 | License | MIT |
 | Platforms | linux |
 | Tags | `docker`, `s6`, `supervision`, `gateway`, `profiles` |
-| Related skills | [`hermes-agent`](../../bundled/autonomous-ai-agents/autonomous-ai-agents-hermes-agent.md) |
+| Related skills | [`shards-agent`](../../bundled/autonomous-ai-agents/autonomous-ai-agents-shards-agent.md) |
 
 ## Reference: full SKILL.md
 
@@ -40,7 +40,7 @@ Load this skill when you're working on:
 - Modifying `cont-init.d` boot scripts (UID remap, volume seeding, profile reconciliation)
 - Changing the rendered run-script for per-profile gateways (Phase 4)
 
-If you're just running the Hermes Agent and want to use Docker, see `website/docs/user-guide/docker.md` instead.
+If you're just running the Shards Agent and want to use Docker, see `website/docs/user-guide/docker.md` instead.
 
 ## Architecture at a glance
 
@@ -155,8 +155,8 @@ Edit `S6ServiceManager._render_run_script` in `hermes_cli/service_manager.py`. T
 ### Run the docker test harness
 
 ```sh
-docker build -t hermes-agent-harness:latest .
-HERMES_TEST_IMAGE=hermes-agent-harness:latest scripts/run_tests.sh tests/docker/ -v
+docker build -t shards-agent-harness:latest .
+HERMES_TEST_IMAGE=shards-agent-harness:latest scripts/run_tests.sh tests/docker/ -v
 # Expect 19 passed, 0 xfailed against the s6 image
 ```
 
@@ -194,5 +194,5 @@ Check whether something is invoking `s6-svscanctl -t` or `/run/s6/basedir/bin/ha
 
 ## Related skills
 
-- `hermes-agent-dev`: General hermes-agent codebase navigation
+- `shards-agent-dev`: General shards-agent codebase navigation
 - `hermes-tool-quirks`: Specific Hermes-tool workarounds (sed/grep/etc.) — load when debugging the s6 stack's interaction with hermes built-in tools.

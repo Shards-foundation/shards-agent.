@@ -1,7 +1,7 @@
 ---
 sidebar_position: 3
 title: "Updating & Uninstalling"
-description: "How to update Hermes Agent to the latest version or uninstall it"
+description: "How to update Shards Agent to the latest version or uninstall it"
 ---
 
 # Updating & Uninstalling
@@ -18,7 +18,7 @@ Choose the update method for the installation that is running:
 | macOS bundled app | The desktop Update control, through `electron-updater`. |
 | Docker image | Pull the chosen image and recreate the container with the same data mount. |
 | Nix | Update the flake/profile and rebuild. |
-| Termux APT | `pkg update`, then `pkg upgrade hermes-agent`. |
+| Termux APT | `pkg update`, then `pkg upgrade shards-agent`. |
 
 `hermes update` does not rewrite package-owned application files. PM manages
 dependencies, not application distribution: `hermes pm update` is a maintainer
@@ -130,7 +130,7 @@ For an admitted source checkout, `hermes update` runs these phases:
 3. **Post-pull syntax validation + auto-rollback** — after the pull, Hermes compiles the nine critical files every `hermes` invocation imports at startup. If any fails to parse (e.g. an orphan merge-conflict marker, an accidentally truncated file), Hermes rolls the install back so your shell stays bootable: it resets the checkout to the commit it ran before the pull (`git reset --hard <pre-pull-sha>`), or, when the update switched away from a detached checkout or a parked feature branch, returns there with `git checkout --detach <sha>` / `git checkout <branch>` (a branch it cannot check out again is restored detached at the same commit). Re-run `hermes update` once the upstream fix lands.
 4. **Dependency preparation** — PM provisions required tools and prepares a complete Python environment from the new lock, existing extras, and enabled plugin requirements. It validates that environment before publishing its selection. A plugin never fails the update. A plugin that no longer fits the new core is moved from `plugins.enabled` to `plugins.disabled` in every profile that enables it. A memory provider keeps its `memory.provider` selection; while the plugin is disabled, Hermes uses built-in memory and says so at startup, in `hermes memory status` and in `hermes doctor`. That covers a `requires-python` that excludes Hermes's Python, a `manifest_version` newer than this Hermes supports, and dependencies that the resolver proves can't resolve alongside core and earlier plugins in config order, or that fail their own build. A download or network failure gets one retry and is disabled if it fails again. The update prints `⚠ Disabled plugin '<name>' in <home>: <reason>`, records it in the receipt's warnings and under `plugins.disabled_by_update` in that profile's config, and continues. The next update retries a plugin disabled by a download failure; one the resolver or its own build rejected is retried by the first update where the plugin or Hermes's dependencies have changed. Retries run after the enabled plugins have built, and turns it back on (memory provider included) once it fits, for example after the plugin ships a compatible release or Hermes fixes what broke it. A retried plugin never displaces an enabled one. A provider-only record is retried only while `memory.provider` still names it. To turn it back on sooner, run `hermes plugins enable <name>`. To keep it off, run `hermes plugins disable <name>`, which stops the retries. Updates before this behaviour could leave a plugin listed in both `plugins.enabled` and `plugins.disabled`, where it loads nowhere; `hermes doctor` reports that state, and `hermes plugins enable <name>` or `hermes plugins disable <name>` settles it. A `requires_hermes` range the running version misses never disables a plugin, because a source checkout without release tags can read as an older release. That plugin sits out instead (`⚠ Left plugin '<name>' … out of this update`), stays enabled, and rejoins once Hermes reports a version it accepts. A secondary profile whose config cannot be read sits out the same way until the config is fixed. Only a core that cannot build on its own fails this step.
 5. **Config migration** — detects new config options added since your version and prompts you to set them
-6. **Desktop rebuild (stage-and-swap)** — if the Hermes Desktop app was built from this checkout, it is rebuilt so the GUI matches the new code. The rebuild packs into a temporary staging directory next to `apps/desktop/release/`, verifies the staged app, and only then renames it over the previous build (on Windows a real-time scanner briefly holding `release/win-unpacked` is ridden out with a few short retries). A rebuild that fails at any point — corrupt Electron download, missing dependency, disk full — leaves the previous app untouched and launchable; the update prints a `⚠` line, still finishes the remaining steps (config migration, gateway restart) and exits 0 with a `build` follow-up in its receipt, and the next launch, `hermes update` or `hermes desktop --build-only --force-build` retries the rebuild. On macOS the rebuilt bundle is then copied (with `ditto`, signature intact) over a stale `/Applications/Hermes.app` or `~/Applications/Hermes.app`, so the copy Finder and the Dock launch matches the backend; an installed copy that is currently running is left alone and the update tells you to quit it and run `hermes update` again. If a copy an earlier update installed has since been removed (including dragged to the Trash), the update rebuilds it if needed, puts it back and says so, so Finder, the Dock and Spotlight find Hermes again; `hermes uninstall` removes the app for good. On Windows, when the update finishes from inside the Desktop app it would rebuild (the app completing an interrupted update at launch), the rebuild is skipped with a notice instead: Windows locks a running app's files, and stopping the app would end the update with it. The rest of the update completes; quit Hermes Desktop and run `hermes desktop` from a terminal, or use **Update now** in **Settings → About**, to rebuild and reopen it.
+6. **Desktop rebuild (stage-and-swap)** — if the Shards Desktop app was built from this checkout, it is rebuilt so the GUI matches the new code. The rebuild packs into a temporary staging directory next to `apps/desktop/release/`, verifies the staged app, and only then renames it over the previous build (on Windows a real-time scanner briefly holding `release/win-unpacked` is ridden out with a few short retries). A rebuild that fails at any point — corrupt Electron download, missing dependency, disk full — leaves the previous app untouched and launchable; the update prints a `⚠` line, still finishes the remaining steps (config migration, gateway restart) and exits 0 with a `build` follow-up in its receipt, and the next launch, `hermes update` or `hermes desktop --build-only --force-build` retries the rebuild. On macOS the rebuilt bundle is then copied (with `ditto`, signature intact) over a stale `/Applications/Hermes.app` or `~/Applications/Hermes.app`, so the copy Finder and the Dock launch matches the backend; an installed copy that is currently running is left alone and the update tells you to quit it and run `hermes update` again. If a copy an earlier update installed has since been removed (including dragged to the Trash), the update rebuilds it if needed, puts it back and says so, so Finder, the Dock and Spotlight find Hermes again; `hermes uninstall` removes the app for good. On Windows, when the update finishes from inside the Desktop app it would rebuild (the app completing an interrupted update at launch), the rebuild is skipped with a notice instead: Windows locks a running app's files, and stopping the app would end the update with it. The rest of the update completes; quit Shards Desktop and run `hermes desktop` from a terminal, or use **Update now** in **Settings → About**, to rebuild and reopen it.
 7. **Gateway auto-restart**: on Linux and macOS, gateways paused for the update are started again as soon as the dependencies are prepared and the launchers refreshed, before the product builds; on Windows they restart after the builds. Any other running gateway is refreshed after the update completes. Service-managed gateways (systemd on Linux, launchd on macOS) restart through the service manager. Manual gateways are relaunched when Hermes can map their PID to a profile. Manually launched `hermes serve` / `hermes dashboard` backends are different: the updater leaves them running and asks their owner to restart them. See [Manual backend restart reminders](#manual-backend-restart-reminders). Backends owned by a running Desktop app remain the app's responsibility.
 8. **Multiplex migration (multi-profile installs)** — once the fleet is verified on the new code, an install with two or more profiles that still run **one gateway per profile** is folded into a single multiplexed default gateway when nothing blocks it (same as `hermes gateway migrate --multiplex --yes`); if a blocker exists (a bot token shared by two profiles, a secondary profile binding a port with no `/p/<profile>/` ingress) the update prints the blockers with their fixes and changes nothing. Single-profile installs are never touched. See [Migrating from per-profile gateways](../user-guide/multi-profile-gateways.md#migrating-from-per-profile-gateways).
 
@@ -227,7 +227,7 @@ On Windows, a Desktop reopened during packaging is stopped again immediately bef
 
 `hermes update` stops with "This Hermes checkout's git data is damaged" when the install's `.git` folder is still there but git no longer accepts it: a lost or empty `HEAD`, or a `.git` file pointing at a folder that is gone. A killed update, a crash mid-write, or a sync or antivirus tool touching `.git` can leave it that way. No update can fetch on such a checkout. Gateways the update paused are started again on the unchanged code, since nothing was written.
 
-Run the installer again to repair it. It moves the damaged checkout aside as `hermes-agent.broken-<timestamp>` (nothing is deleted) and clones fresh; your config, sessions and other data live outside the checkout and are kept. The error prints the exact command for your checkout. For the default location it is:
+Run the installer again to repair it. It moves the damaged checkout aside as `shards-agent.broken-<timestamp>` (nothing is deleted) and clones fresh; your config, sessions and other data live outside the checkout and are kept. The error prints the exact command for your checkout. For the default location it is:
 
 - Linux / macOS / WSL2: `curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash`
 - Windows (PowerShell): `iex (irm https://hermes-agent.nousresearch.com/install.ps1)`
@@ -244,18 +244,18 @@ one, or when markers were lost. `hermes update` marks those packs and retries th
 an installer rerun marks them before it fetches. An install whose own updater predates that fix
 can't fetch it: rerun the installer, or mark the packs by hand (with Hermes closed) and update again.
 
-The checkout is `hermes-agent` under your Hermes home (`~/.hermes`, or `HERMES_HOME` when set;
+The checkout is `shards-agent` under your Hermes home (`~/.hermes`, or `HERMES_HOME` when set;
 on Windows `%LOCALAPPDATA%\hermes` unless `HERMES_HOME` is set).
 
 ```bash
 # macOS / Linux
-repo="${HERMES_HOME:-$HOME/.hermes}/hermes-agent"
+repo="${HERMES_HOME:-$HOME/.hermes}/shards-agent"
 for p in "$repo"/.git/objects/pack/pack-*.pack; do [ -e "${p%.pack}.promisor" ] || : > "${p%.pack}.promisor"; done
 ```
 
 ```powershell
 # Windows
-$repo = Join-Path ($(if ($env:HERMES_HOME) { $env:HERMES_HOME } else { "$env:LOCALAPPDATA\hermes" })) 'hermes-agent'
+$repo = Join-Path ($(if ($env:HERMES_HOME) { $env:HERMES_HOME } else { "$env:LOCALAPPDATA\hermes" })) 'shards-agent'
 Get-ChildItem "$repo\.git\objects\pack\pack-*.pack" | ForEach-Object {
   $m = [IO.Path]::ChangeExtension($_.FullName, '.promisor')
   if (-not (Test-Path -LiteralPath $m)) { New-Item -ItemType File -Path $m | Out-Null }
@@ -290,11 +290,11 @@ dependency work: one `git fetch --refetch --filter=blob:none` brings every commi
 converts it the same way. If that fetch fails, the update prints a warning, carries on, and retries
 the conversion next time.
 
-A Hermes Desktop built before the conversion existed runs path-filtered history walks every few
+A Shards Desktop built before the conversion existed runs path-filtered history walks every few
 minutes, so on a treeless checkout it could fill a disk with pack files (one report reached 434 GB)
 and keep going after a failed update. To recover when that already happened:
 
-1. Quit Hermes Desktop, then end any leftover `git rev-list`, `git maintenance` or
+1. Quit Shards Desktop, then end any leftover `git rev-list`, `git maintenance` or
    `git commit-graph` processes; quitting the app does not stop them.
 2. If the disk is completely full, delete the abandoned transfer files to get room back:
    `rm -f "$repo"/.git/objects/pack/tmp_pack_*` (Windows: delete `tmp_pack_*` in
@@ -390,7 +390,7 @@ In the desktop app this is **Settings → Advanced → In-App Update Local Chang
 **Desktop updates never auto-restore.** The desktop updater invokes `hermes update --keep-stash`: local source edits are still stashed so the update can proceed, but they are **not** re-applied afterward — they stay parked in `git stash` and the update log prints the exact `git stash apply <ref>` command to bring them back. This prevents local edits from silently riding along across desktop updates and breaking the freshly updated install. (`non_interactive_local_changes: discard` still wins if you've opted into discarding.) To restore parked changes manually:
 
 ```bash
-cd ~/.hermes/hermes-agent   # or your install root
+cd ~/.hermes/shards-agent   # or your install root
 git stash list --format='%gd %H %s'   # find the hermes-update-autostash entry
 git stash apply stash@{0}
 ```
@@ -528,9 +528,9 @@ You no longer need to wrap `hermes update` in `screen` or `tmux` to survive a te
 
 A few situations stop with a message rather than carry on, because carrying on could leave a half-updated checkout or a gateway running old code:
 
-- **Another launch is repairing an interrupted update.** When an update was killed while git moved the checkout, the next `hermes` launch puts the checkout back first. Launches that start together (a restarting gateway or Desktop backend next to your CLI) take turns. A launch that waits more than 10 seconds for another one's repair exits with status 1: `hermes: another Hermes launch is finishing an interrupted 'hermes update'; launch again in a moment.` Launch again once the other one finishes. A backend started by Hermes Desktop at that moment shows up as a failed start; reopening it is enough.
+- **Another launch is repairing an interrupted update.** When an update was killed while git moved the checkout, the next `hermes` launch puts the checkout back first. Launches that start together (a restarting gateway or Desktop backend next to your CLI) take turns. A launch that waits more than 10 seconds for another one's repair exits with status 1: `hermes: another Hermes launch is finishing an interrupted 'hermes update'; launch again in a moment.` Launch again once the other one finishes. A backend started by Shards Desktop at that moment shows up as a failed start; reopening it is enough.
 - **Windows git failure → ZIP fallback.** On Windows, a git error during `hermes update` falls back to downloading the release ZIP only when git has not touched the checkout yet: same commit and branch as when the update started, no stash taken, no tree move begun. Once git has stashed, switched branch or started moving files, the update reports the git error and exits 1 instead, because the ZIP overlay would bury that state. Re-run `hermes update` after fixing the git problem.
-- **Desktop builds need a writable `.git`.** Building Hermes Desktop from a checkout with `hermes desktop` takes the same checkout lock as `hermes update` (which needs it too), kept in the checkout's git directory. If that directory is not writable for your user (for example a checkout owned by another account), the build refuses with `.../.git/hermes-update.lock is not writable` instead of building alongside a possible update. Fix the ownership or permissions of `.git`. On macOS/Linux, a lock file left read-only by a `sudo hermes update` is still usable.
+- **Desktop builds need a writable `.git`.** Building Shards Desktop from a checkout with `hermes desktop` takes the same checkout lock as `hermes update` (which needs it too), kept in the checkout's git directory. If that directory is not writable for your user (for example a checkout owned by another account), the build refuses with `.../.git/hermes-update.lock is not writable` instead of building alongside a possible update. Fix the ownership or permissions of `.git`. On macOS/Linux, a lock file left read-only by a `sudo hermes update` is still usable.
 - **Restart record not writable.** `hermes update` records the owed gateway restart before it moves the checkout, in the host state directory (`$HERMES_GATEWAY_LOCK_DIR`, else `$XDG_STATE_HOME/hermes/gateway-locks`). If that directory cannot be written, the record goes into the current profile's Hermes home instead. Only that profile reads it, so the update goes ahead only on an install with no other profile. If other profiles exist, or the profile list cannot be read, the update refuses before moving anything. Make the state directory writable and run it again.
 
 ### Checking your current version
@@ -585,7 +585,7 @@ repoints the launchers. After that the old interpreter is no longer used.
 What this means outside `hermes update`:
 
 - `pip install .`, `uv pip install .`, `pip install -e .`, or a Homebrew/PyPI
-  package built on Python 3.11–3.13 installs `hermes-agent` with **no
+  package built on Python 3.11–3.13 installs `shards-agent` with **no
   dependencies** and the package does not import. These install methods are
   [unsupported](./platform-support.md#unsupported); use the source installer or
   a packaged build.
@@ -597,7 +597,7 @@ What this means outside `hermes update`:
 
 ### Image-managed installs (Docker): the provenance marker
 
-Published Docker images bake a small read-only marker (`/etc/hermes/image-provenance.json`) that authoritatively identifies the filesystem as image-managed. `hermes update`, `hermes update --check`, and the dashboard's Update button all consult it before touching anything: on an image-managed install they refuse cleanly (exit code 2), print the actual update command (`docker pull nousresearch/hermes-agent:latest`), and write a `refused` receipt so fleet tooling can see the attempt happened. The marker wins even when a source checkout is bind-mounted into the container — the refusal is based on what the running filesystem *is*, not what it looks like. A damaged marker still refuses (fail-closed). Nix- and apt-managed installs refuse through the same gate using the existing detection.
+Published Docker images bake a small read-only marker (`/etc/hermes/image-provenance.json`) that authoritatively identifies the filesystem as image-managed. `hermes update`, `hermes update --check`, and the dashboard's Update button all consult it before touching anything: on an image-managed install they refuse cleanly (exit code 2), print the actual update command (`docker pull nousresearch/shards-agent:latest`), and write a `refused` receipt so fleet tooling can see the attempt happened. The marker wins even when a source checkout is bind-mounted into the container — the refusal is based on what the running filesystem *is*, not what it looks like. A damaged marker still refuses (fail-closed). Nix- and apt-managed installs refuse through the same gate using the existing detection.
 
 ### Note for Nix users
 
@@ -605,10 +605,10 @@ Nix is no longer an explicitly supported install path (best-effort only) — see
 
 ```bash
 # Update the flake input
-nix flake update hermes-agent
+nix flake update shards-agent
 
 # Or rebuild with the latest
-nix profile upgrade hermes-agent
+nix profile upgrade shards-agent
 ```
 
 Nix installations are immutable — rollback is handled by Nix's generation system:
@@ -649,7 +649,7 @@ See [`hermes backup` vs `hermes profile export`](../reference/faq.md#hermes-back
 
 ```bash
 rm -f ~/.local/bin/hermes
-rm -rf /path/to/hermes-agent
+rm -rf /path/to/shards-agent
 rm -rf ~/.hermes            # Optional — keep if you plan to reinstall
 ```
 

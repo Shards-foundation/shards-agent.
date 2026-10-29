@@ -368,7 +368,7 @@ multi-gateway roster is the reference consumer.
 - **A remote gateway is missing from the roster** — its backend is down or
   unreachable; the roster lists it under gateways with the error. SSH connections
   show *connect-on-demand* until first use — that's by design, not a failure.
-- **"Update Hermes Desktop to chat with agents on other connections"** — the
+- **"Update Shards Desktop to chat with agents on other connections"** — the
   app predates the multi-connection stack; update the desktop app itself.
 - **Duplicate device names** — not possible; names are enforced unique at
   save time. If a migrated name collided, it was suffixed (`Homelab 2`).

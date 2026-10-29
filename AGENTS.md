@@ -1,6 +1,6 @@
-# Hermes Agent - Development Guide
+# Shards Agent - Development Guide
 
-For AI coding assistants and developers working on hermes-agent. This root file is a hub: what
+For AI coding assistants and developers working on shards-agent. This root file is a hub: what
 applies everywhere, then a routing table. Each area's `AGENTS.md` loads automatically when you work
 in that directory; read it before editing there. `python scripts/check` caps this file at 12k chars
 and every root-to-area chain at 30k, so it loads whole on 128k+ models: long form goes in the guide.
@@ -73,7 +73,7 @@ pulling to refresh the hook). `# noqa` does not waive a ratchet finding:
 Counts shift constantly; the filesystem is canonical. Load-bearing entry points:
 
 ```
-hermes-agent/
+shards-agent/
 ├── run_agent.py          # AIAgent facade; the turn loop lives in agent/turn_*.py
 ├── model_tools.py        # Tool orchestration, discover_builtin_tools(), handle_function_call()
 ├── toolsets.py           # TOOLSETS dict, _HERMES_CORE_TOOLS
@@ -166,4 +166,4 @@ Every former god file is a **facade** (public entry points + the names other pac
 | `hermes_platform/` | `hermes_platform/AGENTS.md` | host facts, resolvers |
 
 Long-form background: `website/docs/developer-guide/`. Workflow rules (PR/issue/review/salvage
-process) live in the `hermes-agent-dev` skill, not here.
+process) live in the `shards-agent-dev` skill, not here.

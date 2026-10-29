@@ -1,12 +1,12 @@
 ---
 sidebar_position: 4
 title: "Contributing"
-description: "How to contribute to Hermes Agent — dev setup, code style, PR process"
+description: "How to contribute to Shards Agent — dev setup, code style, PR process"
 ---
 
 # Contributing
 
-Thank you for contributing to Hermes Agent! This guide covers setting up your dev environment, understanding the codebase, and getting your PR merged.
+Thank you for contributing to Shards Agent! This guide covers setting up your dev environment, understanding the codebase, and getting your PR merged.
 
 ## Contribution Priorities
 
